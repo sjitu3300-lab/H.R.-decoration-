@@ -1,97 +1,153 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="hi" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Urlify.io - AI Media Extractor & Converter</title>
+    <title>Urlify.io - Next-Gen AI Media Extractor & Converter</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#eef2ff',
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                            950: '#090a0f',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        @keyframes blob {
-            0% { transform: translate(0px, 0px) scale(1); }
-            33% { transform: translate(30px, -50px) scale(1.1); }
-            66% { transform: translate(-20px, 20px) scale(0.9); }
-            100% { transform: translate(0px, 0px) scale(1); }
+        /* Custom Glowing Orb Animations */
+        @keyframes floatOrb1 {
+            0%, 100% { transform: translate(0px, 0px) scale(1); }
+            50% { transform: translate(50px, -70px) scale(1.2); }
         }
-        .animate-blob {
-            animation: blob 7s infinite;
+        @keyframes floatOrb2 {
+            0%, 100% { transform: translate(0px, 0px) scale(1); }
+            50% { transform: translate(-60px, 50px) scale(1.1); }
         }
-        .animation-delay-2000 {
-            animation-delay: 2s;
+        @keyframes floatOrb3 {
+            0%, 100% { transform: translate(0px, 0px) scale(1); }
+            50% { transform: translate(40px, 60px) scale(1.3); }
         }
-        .animation-delay-4000 {
-            animation-delay: 4s;
+        .orb-1 { animation: floatOrb1 10s ease-in-out infinite; }
+        .orb-2 { animation: floatOrb2 12s ease-in-out infinite; }
+        .orb-3 { animation: floatOrb3 14s ease-in-out infinite; }
+
+        /* Custom Glass Card Shine */
+        .glass-panel {
+            background: rgba(18, 20, 32, 0.65);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
         }
     </style>
 </head>
-<body class="bg-slate-950 min-h-screen text-white font-sans flex flex-col justify-between relative overflow-x-hidden">
+<body class="bg-brand-950 min-h-screen text-slate-100 font-sans flex flex-col justify-between relative overflow-x-hidden selection:bg-indigo-500 selection:text-white">
 
-    <!-- Animated Background Orbs ✨ -->
-    <div class="absolute top-0 -left-4 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob"></div>
-    <div class="absolute top-0 -right-4 w-72 h-72 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-2000"></div>
-    <div class="absolute -bottom-8 left-20 w-72 h-72 bg-indigo-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-4000"></div>
+    <!-- Ambient Background Lighting & Animation 🌌 -->
+    <div class="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-indigo-600/20 rounded-full blur-[120px] orb-1 pointer-events-none"></div>
+    <div class="absolute top-[30%] right-[-10%] w-[450px] h-[450px] bg-purple-600/20 rounded-full blur-[120px] orb-2 pointer-events-none"></div>
+    <div class="absolute bottom-[-10%] left-[20%] w-[600px] h-[600px] bg-blue-600/15 rounded-full blur-[140px] orb-3 pointer-events-none"></div>
 
-    <!-- Header 🌐 -->
-    <header class="w-full py-6 px-8 flex justify-between items-center border-b border-white/10 backdrop-blur-md relative z-10">
-        <div class="text-2xl font-extrabold tracking-wider bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
-            Urlify.io ⚡
+    <!-- Header / Navigation 🌐 -->
+    <header class="w-full py-5 px-6 md:px-12 flex justify-between items-center border-b border-white/5 backdrop-blur-md relative z-20">
+        <div class="flex items-center space-x-2">
+            <span class="text-2xl font-black tracking-tight bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+                Urlify.io
+            </span>
+            <span class="text-[10px] uppercase tracking-widest bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 px-2 py-0.5 rounded-full font-semibold">AI v2.0</span>
         </div>
-        <nav class="space-x-6 text-sm text-gray-300 hidden md:block">
-            <a href="#" class="hover:text-blue-400 transition">Home</a>
-            <a href="#features" class="hover:text-blue-400 transition">Features</a>
-            <a href="#docs" class="hover:text-blue-400 transition">API Docs</a>
+        <nav class="hidden md:flex items-center space-x-8 text-sm text-slate-400 font-medium">
+            <a href="#" class="hover:text-indigo-400 transition-colors">Platform</a>
+            <a href="#features" class="hover:text-indigo-400 transition-colors">Tools</a>
+            <a href="#api" class="hover:text-indigo-400 transition-colors">API Docs</a>
         </nav>
+        <div>
+            <button class="bg-white/10 hover:bg-white/15 text-white text-xs font-semibold px-4 py-2 rounded-lg border border-white/10 transition shadow-sm">
+                Get Started
+            </button>
+        </div>
     </header>
 
-    <!-- Main Content 🚀 -->
-    <main class="flex-grow flex flex-col items-center justify-center px-4 py-12 relative z-10">
-        <div class="text-center max-w-2xl mb-8">
-            <h1 class="text-4xl md:text-5xl font-extrabold mb-4 leading-tight">
-                Transform Links into Assets, Instantly 🛠️
+    <!-- Main Hero & Workbench 🚀 -->
+    <main class="flex-grow flex flex-col items-center justify-center px-4 py-12 relative z-20">
+        
+        <!-- Hero Header -->
+        <div class="text-center max-w-3xl mb-10">
+            <div class="inline-flex items-center gap-2 bg-indigo-500/10 border border-indigo-500/20 px-3 py-1 rounded-full text-xs text-indigo-300 font-medium mb-4">
+                <span class="w-2 h-2 rounded-full bg-indigo-400 animate-pulse"></span>
+                Instant Media Extraction & Format Conversion
+            </div>
+            <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight mb-4 text-white">
+                Turn any URL into <span class="bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">Assets</span>
             </h1>
-            <p class="text-gray-300 text-base md:text-lg">
-                Advanced engine to extract media from URLs or convert file formats on the fly.
+            <p class="text-slate-400 text-base md:text-lg max-w-xl mx-auto">
+                Extract high-res images, videos, and media elements instantly, or upload files to generate public links on the fly.
             </p>
         </div>
 
-        <!-- Interactive Tool Box 🎛️ -->
-        <div class="w-full max-w-xl bg-white/5 backdrop-blur-2xl border border-white/10 p-6 md:p-8 rounded-2xl shadow-2xl">
-            <div class="flex border-b border-white/10 mb-6">
-                <button id="tab-url-btn" onclick="switchTab('url')" class="flex-1 pb-3 text-center font-semibold border-b-2 border-blue-500 text-blue-400 transition">
+        <!-- Interactive Workbench Card 🎛️ -->
+        <div class="w-full max-w-xl glass-panel p-6 md:p-8 rounded-3xl relative">
+            
+            <!-- Tab Switcher -->
+            <div class="grid grid-cols-2 gap-2 bg-slate-900/80 p-1.5 rounded-2xl border border-white/5 mb-6">
+                <button id="tab-url-btn" onclick="switchTab('url')" class="py-2.5 text-center text-sm font-semibold rounded-xl bg-indigo-600 text-white shadow-lg transition-all">
                     🔗 URL to Media
                 </button>
-                <button id="tab-upload-btn" onclick="switchTab('upload')" class="flex-1 pb-3 text-center font-semibold border-b-2 border-transparent text-gray-400 hover:text-white transition">
+                <button id="tab-upload-btn" onclick="switchTab('upload')" class="py-2.5 text-center text-sm font-semibold rounded-xl text-slate-400 hover:text-white transition-all">
                     📤 Upload & Convert
                 </button>
             </div>
 
+            <!-- Tab 1: URL Extractor -->
             <div id="tab-url-content" class="space-y-4">
-                <label class="block text-sm text-gray-300">Enter Web or Media URL:</label>
-                <div class="flex gap-2">
-                    <input type="url" placeholder="https://example.com/page" class="flex-grow bg-black/40 border border-white/20 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 transition">
-                    <button class="bg-blue-600 hover:bg-blue-500 text-white px-6 py-3 rounded-lg font-medium transition shadow-lg shadow-blue-500/20">
-                        Extract
+                <label class="block text-xs font-semibold tracking-wider text-slate-400 uppercase">Target Webpage Link</label>
+                <div class="flex flex-col sm:flex-row gap-2">
+                    <input type="url" placeholder="https://example.com/article" class="flex-grow bg-slate-900/90 border border-slate-800 rounded-xl px-4 py-3.5 text-sm text-white placeholder-slate-600 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all">
+                    <button class="bg-indigo-600 hover:bg-indigo-500 text-white font-medium px-6 py-3.5 rounded-xl text-sm transition shadow-lg shadow-indigo-600/30 flex items-center justify-center gap-2">
+                        <span>Extract</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                     </button>
                 </div>
+                <p class="text-[11px] text-slate-500">Supports blogs, image galleries, and social media media streams.</p>
             </div>
 
+            <!-- Tab 2: Upload & Convert -->
             <div id="tab-upload-content" class="space-y-4 hidden">
-                <label class="block text-sm text-gray-300">Upload Image or Video File:</label>
-                <div class="border-2 border-dashed border-white/20 rounded-lg p-6 text-center hover:border-purple-500 transition cursor-pointer bg-black/20">
-                    <p class="text-gray-300 text-sm mb-1">Drag & drop files here, or <span class="text-purple-400 underline">Browse</span></p>
-                    <p class="text-xs text-gray-500">Supports PNG, JPG, MP4, WebP</p>
+                <label class="block text-xs font-semibold tracking-wider text-slate-400 uppercase">Upload Media Element</label>
+                <div class="border-2 border-dashed border-slate-800 hover:border-indigo-500/50 rounded-2xl p-8 text-center transition-all cursor-pointer bg-slate-900/40 group">
+                    <div class="w-10 h-10 mx-auto mb-3 rounded-full bg-indigo-500/10 flex items-center justify-center text-indigo-400 group-hover:scale-110 transition-transform">
+                        📁
+                    </div>
+                    <p class="text-slate-300 text-sm font-medium mb-1">Drop files here or <span class="text-indigo-400 underline">browse computer</span></p>
+                    <p class="text-[11px] text-slate-500">PNG, JPG, WebP, MP4 up to 50MB</p>
                 </div>
-                <button class="w-full bg-purple-600 hover:bg-purple-500 text-white py-3 rounded-lg font-medium transition shadow-lg shadow-purple-500/20">
-                    Generate Public URL
+                <button class="w-full bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-medium py-3.5 rounded-xl text-sm transition shadow-lg shadow-purple-600/20">
+                    Generate Public URL / Convert
                 </button>
             </div>
         </div>
     </main>
 
     <!-- Footer 📝 -->
-    <footer class="w-full py-4 text-center text-xs text-gray-500 border-t border-white/10 relative z-10">
-        &copy; 2026 Urlify.io. All rights reserved.
+    <footer class="w-full py-6 px-8 text-center text-xs text-slate-500 border-t border-white/5 relative z-20 flex flex-col md:flex-row justify-between items-center gap-4">
+        <div>&copy; 2026 Urlify.io. Optimized for Speed & SEO.</div>
+        <div class="flex space-x-6 text-slate-400">
+            <a href="#" class="hover:text-slate-200 transition">Privacy</a>
+            <a href="#" class="hover:text-slate-200 transition">Terms</a>
+            <a href="#" class="hover:text-slate-200 transition">Contact</a>
+        </div>
     </footer>
 
+    <!-- Interactive Logic Script -->
     <script>
         function switchTab(type) {
             const urlBtn = document.getElementById('tab-url-btn');
@@ -100,17 +156,13 @@
             const uploadContent = document.getElementById('tab-upload-content');
 
             if(type === 'url') {
-                urlBtn.classList.add('border-blue-500', 'text-blue-400');
-                urlBtn.classList.remove('border-transparent', 'text-gray-400');
-                uploadBtn.classList.remove('border-blue-500', 'text-blue-400');
-                uploadBtn.classList.add('border-transparent', 'text-gray-400');
+                urlBtn.className = "py-2.5 text-center text-sm font-semibold rounded-xl bg-indigo-600 text-white shadow-lg transition-all";
+                uploadBtn.className = "py-2.5 text-center text-sm font-semibold rounded-xl text-slate-400 hover:text-white transition-all";
                 urlContent.classList.remove('hidden');
                 uploadContent.classList.add('hidden');
             } else {
-                uploadBtn.classList.add('border-blue-500', 'text-blue-400');
-                uploadBtn.classList.remove('border-transparent', 'text-gray-400');
-                urlBtn.classList.remove('border-blue-500', 'text-blue-400');
-                urlBtn.classList.add('border-transparent', 'text-gray-400');
+                uploadBtn.className = "py-2.5 text-center text-sm font-semibold rounded-xl bg-indigo-600 text-white shadow-lg transition-all";
+                urlBtn.className = "py-2.5 text-center text-sm font-semibold rounded-xl text-slate-400 hover:text-white transition-all";
                 uploadContent.classList.remove('hidden');
                 urlContent.classList.add('hidden');
             }
