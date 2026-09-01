@@ -1,233 +1,118 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hotel Inder Paradise | Cinematic Experience</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Plus+Jakarta+Sans:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+    <title>Urlify.ai - AI Media Extractor & Converter</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        /* Animated Background Gradient */
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: #000;
-            color: #fff;
-            overflow-x: hidden;
-        }
-        h1, h2, h3 {
-            font-family: 'Playfair Display', serif;
-        }
-
-        /* --- STEP 1: INITIAL NAME & CLOUD REVEAL --- */
-        #intro-loader {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background: #000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 1000;
-        }
-        #loader-title {
-            font-size: clamp(3rem, 7vw, 7rem);
-            font-weight: 700;
-            letter-spacing: 0.25em;
-            color: #d4af37;
-            text-transform: uppercase;
-            text-align: center;
-        }
-
-        /* Cinematic Scroll Container for Scenes */
-        .cinematic-wrapper {
-            position: relative;
-            height: 600vh; /* Total scroll length for all scenes */
-            background: #000;
-        }
-        .sticky-viewport {
-            position: sticky;
-            top: 0;
-            height: 100vh;
-            width: 100vw;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        /* Individual Scene Slides */
-        .scene-slide {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            align-items: flex-end;
-            padding: 60px 10%;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.5s ease;
-        }
-        .scene-slide::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.9), rgba(0,0,0,0.2), transparent);
-        }
-        .scene-content {
-            position: relative;
-            z-index: 2;
-            max-width: 600px;
-        }
-        .scene-content span {
-            color: #d4af37;
-            letter-spacing: 0.3em;
-            text-transform: uppercase;
-            font-size: 0.85rem;
-            font-weight: 600;
-            display: block;
-            margin-bottom: 10px;
-        }
-        .scene-content h2 {
-            font-size: clamp(2.5rem, 5vw, 4.5rem);
-            margin-bottom: 15px;
-            color: #fff;
-        }
-        .scene-content p {
-            color: #d1d5db;
-            font-size: 1.1rem;
-            line-height: 1.6;
-        }
-
-        /* Cloud / Mask Reveal Element */
-        #cloud-mask-layer {
-            position: absolute;
-            inset: 0;
-            background: #000;
-            z-index: 10;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            clip-path: circle(100% at 50% 50%);
+        .animated-bg {
+            background: linear-gradient(-45deg, #0f172a, #1e1b4b, #312e81, #09090b);
+            background-size: 400% 400%;
+            animation: gradientAnimation 15s ease infinite;
         }
     </style>
 </head>
-<body>
+<body class="animated-bg min-h-screen text-white font-sans flex flex-col justify-between">
 
-    <div id="intro-loader">
-        <h1 id="loader-title">Inder Paradise</h1>
-    </div>
-
-    <div class="cinematic-wrapper" id="cinematicSection">
-        <div class="sticky-viewport">
-            
-            <div id="cloud-mask-layer">
-                <div style="text-align: center; padding: 20px;">
-                    <p style="color: #d4af37; letter-spacing: 0.4em; text-transform: uppercase; margin-bottom: 15px;">Didwana Road, Nagaur</p>
-                    <h2 style="font-size: clamp(2rem, 5vw, 4rem); font-family: 'Playfair Display', serif;">Entering Royalty</h2>
-                </div>
-            </div>
-
-            <div class="scene-slide" id="scene-1" style="background-image: url('https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1920&q=80');">
-                <div class="scene-content">
-                    <span>Scene 01</span>
-                    <h2>Majestic Aerial View</h2>
-                    <p>Nestled across a grand expanse in Nagaur, Inder Paradise welcomes you with breathtaking architecture from above.</p>
-                </div>
-            </div>
-
-            <div class="scene-slide" id="scene-2" style="background-image: url('https://images.unsplash.com/photo-1541971875076-8f970d573be6?auto=format&fit=crop&w=1920&q=80');">
-                <div class="scene-content">
-                    <span>Scene 02</span>
-                    <h2>Grand Entrance</h2>
-                    <p>Step through our magnificent gates into a world where traditional Rajasthani heritage meets modern luxury.</p>
-                </div>
-            </div>
-
-            <div class="scene-slide" id="scene-3" style="background-image: url('https://images.unsplash.com/photo-1591088398332-8a7791972843?auto=format&fit=crop&w=1920&q=80');">
-                <div class="scene-content">
-                    <span>Scene 03</span>
-                    <h2>Royal Suites & Rooms</h2>
-                    <p>Experience ultimate comfort with plush bedding, aesthetic interiors, and premium amenities designed for your relaxation.</p>
-                </div>
-            </div>
-
-            <div class="scene-slide" id="scene-4" style="background-image: url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1920&q=80');">
-                <div class="scene-content">
-                    <span>Scene 04</span>
-                    <h2>Exquisite Fine Dining</h2>
-                    <p>Indulge your senses with authentic Rajasthani flavors and multi-cuisine culinary masterpieces crafted by master chefs.</p>
-                </div>
-            </div>
-
-            <div class="scene-slide" id="scene-5" style="background-image: url('https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=1920&q=80');">
-                <div class="scene-content">
-                    <span>Scene 05</span>
-                    <h2>Grand Lawns & Banquets</h2>
-                    <p>Celebrate your timeless moments and special occasions in our sprawling, majestic event spaces.</p>
-                </div>
-            </div>
-
+    <!-- Header Section -->
+    <header class="w-full py-6 px-8 flex justify-between items-center border-b border-white/10 backdrop-blur-md">
+        <div class="text-2xl font-bold tracking-wider bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+            Urlify.ai ⚡
         </div>
-    </div>
+        <nav class="space-x-6 text-sm text-gray-300 hidden md:block">
+            <a href="#" class="hover:text-blue-400 transition">Home</a>
+            <a href="#features" class="hover:text-blue-400 transition">Features</a>
+            <a href="#about" class="hover:text-blue-400 transition">About</a>
+        </nav>
+    </header>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <!-- Main Content / Hero Section -->
+    <main class="flex-grow flex flex-col items-center justify-center px-4 py-12">
+        <div class="text-center max-w-2xl mb-8">
+            <h1 class="text-4xl md:text-5xl font-extrabold mb-4 leading-tight">
+                All-in-One Media Extractor & Converter 🛠️
+            </h1>
+            <p class="text-gray-300 text-base md:text-lg">
+                Paste any URL to extract images/videos or upload your media to convert formats instantly.
+            </p>
+        </div>
 
+        <!-- Interactive Tool Box Card -->
+        <div class="w-full max-w-xl bg-white/10 backdrop-blur-xl border border-white/20 p-6 md:p-8 rounded-2xl shadow-2xl">
+            <!-- Tabs -->
+            <div class="flex border-b border-white/10 mb-6">
+                <button id="tab-url-btn" onclick="switchTab('url')" class="flex-1 pb-3 text-center font-semibold border-b-2 border-blue-500 text-blue-400 transition">
+                    🔗 URL to Media
+                </button>
+                <button id="tab-upload-btn" onclick="switchTab('upload')" class="flex-1 pb-3 text-center font-semibold border-b-2 border-transparent text-gray-400 hover:text-white transition">
+                    📤 Upload & Convert
+                </button>
+            </div>
+
+            <!-- Tab 1: URL Input Form -->
+            <div id="tab-url-content" class="space-y-4">
+                <label class="block text-sm text-gray-300">Enter Website or Media URL:</label>
+                <div class="flex gap-2">
+                    <input type="url" placeholder="https://example.com/page" class="flex-grow bg-black/40 border border-white/20 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500">
+                    <button class="bg-blue-600 hover:bg-blue-500 text-white px-6 py-3 rounded-lg font-medium transition shadow-lg">
+                        Extract
+                    </button>
+                </div>
+            </div>
+
+            <!-- Tab 2: Upload Form (Hidden by default) -->
+            <div id="tab-upload-content" class="space-y-4 hidden">
+                <label class="block text-sm text-gray-300">Upload Image or Video:</label>
+                <div class="border-2 border-dashed border-white/30 rounded-lg p-6 text-center hover:border-blue-500 transition cursor-pointer">
+                    <p class="text-gray-300 text-sm mb-1">Drag & drop files here, or <span class="text-blue-400 underline">Browse</span></p>
+                    <p class="text-xs text-gray-500">Supports PNG, JPG, MP4 (Max 50MB)</p>
+                </div>
+                <button class="w-full bg-purple-600 hover:bg-purple-500 text-white py-3 rounded-lg font-medium transition shadow-lg">
+                    Generate Public URL / Convert
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-full py-4 text-center text-xs text-gray-500 border-t border-white/10">
+        &copy; 2026 Urlify.ai. Built for fast SEO ranking and performance.
+    </footer>
+
+    <!-- JavaScript for Tab Switching -->
     <script>
-        gsap.registerPlugin(ScrollTrigger);
+        function switchTab(type) {
+            const urlBtn = document.getElementById('tab-url-btn');
+            const uploadBtn = document.getElementById('tab-upload-btn');
+            const urlContent = document.getElementById('tab-url-content');
+            const uploadContent = document.getElementById('tab-upload-content');
 
-        // 1. Initial Loader Animation (Name Appears & Fades)
-        window.addEventListener('load', () => {
-            let loadTl = gsap.timeline();
-            loadTl.fromTo("#loader-title", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 1.2, ease: "power3.out" })
-                  .to("#loader-title", { opacity: 0, scale: 0.9, duration: 0.8, delay: 0.5 })
-                  .to("#intro-loader", { opacity: 0, duration: 0.5, display: "none" });
-        });
+            if(type === 'url') {
+                urlBtn.classList.add('border-blue-500', 'text-blue-400');
+                urlBtn.classList.remove('border-transparent', 'text-gray-400');
+                uploadBtn.classList.remove('border-blue-500', 'text-blue-400');
+                uploadBtn.classList.add('border-transparent', 'text-gray-400');
 
-        // 2. Cinematic Scroll Timeline (Step-by-Step Scene Reveal)
-        let mainTl = gsap.timeline({
-            scrollTrigger: {
-                trigger: "#cinematicSection",
-                start: "top top",
-                end: "bottom bottom",
-                scrub: 1,
-                pin: true
+                urlContent.classList.remove('hidden');
+                uploadContent.classList.add('hidden');
+            } else {
+                uploadBtn.classList.add('border-blue-500', 'text-blue-400');
+                uploadBtn.classList.remove('border-transparent', 'text-gray-400');
+                urlBtn.classList.remove('border-blue-500', 'text-blue-400');
+                urlBtn.classList.add('border-transparent', 'text-gray-400');
+
+                uploadContent.classList.remove('hidden');
+                urlContent.classList.add('hidden');
             }
-        });
-
-        // Step 1: Cloud/Dark screen opens up to reveal the hotel
-        mainTl.to("#cloud-mask-layer", { clipPath: "circle(0% at 50% 50%)", duration: 1 })
-
-        // Step 2: Scene 1 (Top View) appears and fades
-        .to("#scene-1", { opacity: 1, visibility: "visible", duration: 1 })
-        .to("#scene-1", { opacity: 0, duration: 1, delay: 0.5 })
-
-        // Step 3: Scene 2 (Main Gate Entry)
-        .to("#scene-2", { opacity: 1, visibility: "visible", duration: 1 })
-        .to("#scene-2", { opacity: 0, duration: 1, delay: 0.5 })
-
-        // Step 4: Scene 3 (Rooms)
-        .to("#scene-3", { opacity: 1, visibility: "visible", duration: 1 })
-        .to("#scene-3", { opacity: 0, duration: 1, delay: 0.5 })
-
-        // Step 5: Scene 4 (Restaurant)
-        .to("#scene-4", { opacity: 1, visibility: "visible", duration: 1 })
-        .to("#scene-4", { opacity: 0, duration: 1, delay: 0.5 })
-
-        // Step 6: Scene 5 (Banquets / Final View)
-        .to("#scene-5", { opacity: 1, visibility: "visible", duration: 1 });
+        }
     </script>
 </body>
-    </html>
-    
+</html>
