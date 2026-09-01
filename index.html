@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Urlify.io - Next-Gen AI Media Extractor & Converter</title>
+    <title>Urlify.io - AI Media Extractor & Converter Toolkit</title>
+    <meta name="description" content="Extract high-resolution images, videos from any URL or convert your media files instantly with Urlify.io.">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -23,7 +24,6 @@
         }
     </script>
     <style>
-        /* Custom Glowing Orb Animations */
         @keyframes floatOrb1 {
             0%, 100% { transform: translate(0px, 0px) scale(1); }
             50% { transform: translate(50px, -70px) scale(1.2); }
@@ -32,17 +32,10 @@
             0%, 100% { transform: translate(0px, 0px) scale(1); }
             50% { transform: translate(-60px, 50px) scale(1.1); }
         }
-        @keyframes floatOrb3 {
-            0%, 100% { transform: translate(0px, 0px) scale(1); }
-            50% { transform: translate(40px, 60px) scale(1.3); }
-        }
         .orb-1 { animation: floatOrb1 10s ease-in-out infinite; }
         .orb-2 { animation: floatOrb2 12s ease-in-out infinite; }
-        .orb-3 { animation: floatOrb3 14s ease-in-out infinite; }
-
-        /* Custom Glass Card Shine */
         .glass-panel {
-            background: rgba(18, 20, 32, 0.65);
+            background: rgba(18, 20, 32, 0.75);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.08);
@@ -52,12 +45,11 @@
 </head>
 <body class="bg-brand-950 min-h-screen text-slate-100 font-sans flex flex-col justify-between relative overflow-x-hidden selection:bg-indigo-500 selection:text-white">
 
-    <!-- Ambient Background Lighting & Animation 🌌 -->
+    <!-- 🌌 Background Lighting Effects -->
     <div class="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-indigo-600/20 rounded-full blur-[120px] orb-1 pointer-events-none"></div>
     <div class="absolute top-[30%] right-[-10%] w-[450px] h-[450px] bg-purple-600/20 rounded-full blur-[120px] orb-2 pointer-events-none"></div>
-    <div class="absolute bottom-[-10%] left-[20%] w-[600px] h-[600px] bg-blue-600/15 rounded-full blur-[140px] orb-3 pointer-events-none"></div>
 
-    <!-- Header / Navigation 🌐 -->
+    <!-- 🌐 Header Section -->
     <header class="w-full py-5 px-6 md:px-12 flex justify-between items-center border-b border-white/5 backdrop-blur-md relative z-20">
         <div class="flex items-center space-x-2">
             <span class="text-2xl font-black tracking-tight bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
@@ -66,38 +58,33 @@
             <span class="text-[10px] uppercase tracking-widest bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 px-2 py-0.5 rounded-full font-semibold">AI v2.0</span>
         </div>
         <nav class="hidden md:flex items-center space-x-8 text-sm text-slate-400 font-medium">
-            <a href="#" class="hover:text-indigo-400 transition-colors">Platform</a>
-            <a href="#features" class="hover:text-indigo-400 transition-colors">Tools</a>
-            <a href="#api" class="hover:text-indigo-400 transition-colors">API Docs</a>
+            <a href="#tool" class="hover:text-indigo-400 transition-colors">Tools</a>
+            <a href="#guide" class="hover:text-indigo-400 transition-colors">User Guide</a>
+            <a href="#faq" class="hover:text-indigo-400 transition-colors">FAQ</a>
         </nav>
         <div>
-            <button class="bg-white/10 hover:bg-white/15 text-white text-xs font-semibold px-4 py-2 rounded-lg border border-white/10 transition shadow-sm">
-                Get Started
-            </button>
+            <span class="text-xs text-indigo-300 bg-indigo-500/10 px-3 py-1.5 rounded-lg border border-indigo-500/20">AdSense Ready</span>
         </div>
     </header>
 
-    <!-- Main Hero & Workbench 🚀 -->
-    <main class="flex-grow flex flex-col items-center justify-center px-4 py-12 relative z-20">
+    <!-- 🚀 Main Hero & Interactive Workbench -->
+    <main class="flex-grow flex flex-col items-center px-4 py-12 relative z-20 max-w-5xl mx-auto w-full">
         
-        <!-- Hero Header -->
         <div class="text-center max-w-3xl mb-10">
             <div class="inline-flex items-center gap-2 bg-indigo-500/10 border border-indigo-500/20 px-3 py-1 rounded-full text-xs text-indigo-300 font-medium mb-4">
                 <span class="w-2 h-2 rounded-full bg-indigo-400 animate-pulse"></span>
-                Instant Media Extraction & Format Conversion
+                Instant Media Extraction & Format Conversion Engine
             </div>
             <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight mb-4 text-white">
                 Turn any URL into <span class="bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">Assets</span>
             </h1>
             <p class="text-slate-400 text-base md:text-lg max-w-xl mx-auto">
-                Extract high-res images, videos, and media elements instantly, or upload files to generate public links on the fly.
+                Extract high-res images and videos from web links or upload files to generate public hosting URLs instantly.
             </p>
         </div>
 
-        <!-- Interactive Workbench Card 🎛️ -->
-        <div class="w-full max-w-xl glass-panel p-6 md:p-8 rounded-3xl relative">
-            
-            <!-- Tab Switcher -->
+        <!-- 🎛️ Interactive Tool Workbench -->
+        <div id="tool" class="w-full max-w-xl glass-panel p-6 md:p-8 rounded-3xl relative mb-16">
             <div class="grid grid-cols-2 gap-2 bg-slate-900/80 p-1.5 rounded-2xl border border-white/5 mb-6">
                 <button id="tab-url-btn" onclick="switchTab('url')" class="py-2.5 text-center text-sm font-semibold rounded-xl bg-indigo-600 text-white shadow-lg transition-all">
                     🔗 URL to Media
@@ -111,43 +98,78 @@
             <div id="tab-url-content" class="space-y-4">
                 <label class="block text-xs font-semibold tracking-wider text-slate-400 uppercase">Target Webpage Link</label>
                 <div class="flex flex-col sm:flex-row gap-2">
-                    <input type="url" placeholder="https://example.com/article" class="flex-grow bg-slate-900/90 border border-slate-800 rounded-xl px-4 py-3.5 text-sm text-white placeholder-slate-600 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all">
-                    <button class="bg-indigo-600 hover:bg-indigo-500 text-white font-medium px-6 py-3.5 rounded-xl text-sm transition shadow-lg shadow-indigo-600/30 flex items-center justify-center gap-2">
-                        <span>Extract</span>
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                    <input type="url" placeholder="https://example.com/article" class="flex-grow bg-slate-900/90 border border-slate-800 rounded-xl px-4 py-3.5 text-sm text-white placeholder-slate-600 focus:outline-none focus:border-indigo-500 transition-all">
+                    <button class="bg-indigo-600 hover:bg-indigo-500 text-white font-medium px-6 py-3.5 rounded-xl text-sm transition shadow-lg shadow-indigo-600/30">
+                        Extract
                     </button>
                 </div>
-                <p class="text-[11px] text-slate-500">Supports blogs, image galleries, and social media media streams.</p>
+                <p class="text-[11px] text-slate-500">Extracts embedded images, vector graphics, and video streams seamlessly.</p>
             </div>
 
             <!-- Tab 2: Upload & Convert -->
             <div id="tab-upload-content" class="space-y-4 hidden">
                 <label class="block text-xs font-semibold tracking-wider text-slate-400 uppercase">Upload Media Element</label>
-                <div class="border-2 border-dashed border-slate-800 hover:border-indigo-500/50 rounded-2xl p-8 text-center transition-all cursor-pointer bg-slate-900/40 group">
-                    <div class="w-10 h-10 mx-auto mb-3 rounded-full bg-indigo-500/10 flex items-center justify-center text-indigo-400 group-hover:scale-110 transition-transform">
-                        📁
-                    </div>
+                <div class="border-2 border-dashed border-slate-800 hover:border-indigo-500/50 rounded-2xl p-8 text-center transition-all cursor-pointer bg-slate-900/40">
                     <p class="text-slate-300 text-sm font-medium mb-1">Drop files here or <span class="text-indigo-400 underline">browse computer</span></p>
-                    <p class="text-[11px] text-slate-500">PNG, JPG, WebP, MP4 up to 50MB</p>
+                    <p class="text-[11px] text-slate-500">Supports PNG, JPG, WebP, MP4 up to 50MB</p>
                 </div>
-                <button class="w-full bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-medium py-3.5 rounded-xl text-sm transition shadow-lg shadow-purple-600/20">
+                <button class="w-full bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-medium py-3.5 rounded-xl text-sm transition shadow-lg">
                     Generate Public URL / Convert
                 </button>
             </div>
         </div>
+
+        <!-- 📖 Guide Section (For AdSense Content Compliance) -->
+        <section id="guide" class="w-full mb-16 space-y-6">
+            <h2 class="text-2xl font-bold text-center text-white">How to Use Urlify.io 📚</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="glass-panel p-6 rounded-2xl">
+                    <h3 class="text-lg font-semibold text-indigo-400 mb-2">1. Extracting Media from URLs 🔗</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Simply paste any target web link into the URL extractor box and click extract. Our system scans the page layout to fetch high-resolution images, embedded video files, and graphic elements securely.
+                    </p>
+                </div>
+                <div class="glass-panel p-6 rounded-2xl">
+                    <h3 class="text-lg font-semibold text-purple-400 mb-2">2. Uploading & Generating Public Links 📤</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Upload local images or video clips (PNG, JPG, MP4) to instantly generate stable shareable public URLs or convert them into compressed formats optimized for web performance.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ❓ FAQ Section (Crucial for SEO & AdSense Approval) -->
+        <section id="faq" class="w-full space-y-6 mb-8">
+            <h2 class="text-2xl font-bold text-center text-white">Frequently Asked Questions 💡</h2>
+            <div class="space-y-4 max-w-3xl mx-auto">
+                <div class="glass-panel p-5 rounded-xl">
+                    <h4 class="font-semibold text-indigo-300 mb-1">Is Urlify.io completely free to use?</h4>
+                    <p class="text-slate-400 text-sm">Yes, basic URL extraction and standard media format conversions are completely free for all users.</p>
+                </div>
+                <div class="glass-panel p-5 rounded-xl">
+                    <h4 class="font-semibold text-indigo-300 mb-1">How secure are my uploaded media files?</h4>
+                    <p class="text-slate-400 text-sm">All uploaded files are processed securely through temporary cloud storage and deleted automatically to ensure maximum user privacy.</p>
+                </div>
+                <div class="glass-panel p-5 rounded-xl">
+                    <h4 class="font-semibold text-indigo-300 mb-1">Can I use generated public URLs on my website?</h4>
+                    <p class="text-slate-400 text-sm">Absolutely! You can use the generated public asset links directly in your blogs, applications, or documents.</p>
+                </div>
+            </div>
+        </section>
+
     </main>
 
-    <!-- Footer 📝 -->
+    <!-- 📝 Footer with Legal Placeholders (Required for AdSense) -->
     <footer class="w-full py-6 px-8 text-center text-xs text-slate-500 border-t border-white/5 relative z-20 flex flex-col md:flex-row justify-between items-center gap-4">
-        <div>&copy; 2026 Urlify.io. Optimized for Speed & SEO.</div>
+        <div>&copy; 2026 Urlify.io. All rights reserved. Optimized for Google AdSense.</div>
         <div class="flex space-x-6 text-slate-400">
-            <a href="#" class="hover:text-slate-200 transition">Privacy</a>
-            <a href="#" class="hover:text-slate-200 transition">Terms</a>
-            <a href="#" class="hover:text-slate-200 transition">Contact</a>
+            <a href="#" class="hover:text-slate-200 transition">Privacy Policy</a>
+            <a href="#" class="hover:text-slate-200 transition">Terms of Service</a>
+            <a href="#" class="hover:text-slate-200 transition">Contact Us</a>
         </div>
     </footer>
 
-    <!-- Interactive Logic Script -->
+    <!-- ⚡ JavaScript Logic -->
     <script>
         function switchTab(type) {
             const urlBtn = document.getElementById('tab-url-btn');
