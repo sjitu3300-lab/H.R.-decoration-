@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image to URL Converter - Urlify.io</title>
-    <meta name="description" content="Convert your images into permanent shareable public URLs instantly with Urlify.io.">
+    <title>Urlify.io - AI Media Extractor & Converter Toolkit</title>
+    <meta name="description" content="Extract high-resolution images, videos from any URL or convert media files instantly with AI automation.">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -55,14 +55,15 @@
 
     <header class="w-full py-5 px-6 md:px-12 flex justify-between items-center border-b border-white/5 backdrop-blur-md relative z-20">
         <div class="flex items-center space-x-2">
-            <a href="index.html" class="text-2xl font-black tracking-tight bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+            <span class="text-2xl font-black tracking-tight bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
                 Urlify.io
-            </a>
-            <span class="text-[10px] uppercase tracking-widest bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 px-2 py-0.5 rounded-full font-semibold">Image Tool</span>
+            </span>
+            <span class="text-[10px] uppercase tracking-widest bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 px-2 py-0.5 rounded-full font-semibold">AI v2.0</span>
         </div>
         <nav class="hidden md:flex items-center space-x-8 text-sm text-slate-400 font-medium">
-            <a href="index.html" class="hover:text-indigo-400 transition-colors">Home</a>
-            <a href="#tool" class="hover:text-indigo-400 transition-colors">Converter</a>
+            <a href="#categories" class="hover:text-indigo-400 transition-colors">Categories</a>
+            <a href="#pricing" class="hover:text-indigo-400 transition-colors">Pro Plans</a>
+            <a href="#comparison" class="hover:text-indigo-400 transition-colors">Comparison</a>
             <a href="#faq" class="hover:text-indigo-400 transition-colors">FAQ</a>
         </nav>
         <div>
@@ -72,41 +73,154 @@
         </div>
     </header>
 
-    <main class="flex-grow flex flex-col items-center px-4 py-12 relative z-20 max-w-4xl mx-auto w-full">
+    <main class="flex-grow flex flex-col items-center px-4 py-12 relative z-20 max-w-5xl mx-auto w-full">
         
-        <div class="text-center max-w-2xl mb-10">
-            <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight mb-4 text-white">
-                Image to <span class="bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">URL Converter</span>
+        <div class="text-center max-w-3xl mb-10">
+            <div class="inline-flex items-center gap-2 bg-indigo-500/10 border border-indigo-500/20 px-3 py-1 rounded-full text-xs text-indigo-300 font-medium mb-4">
+                <span class="w-2 h-2 rounded-full bg-indigo-400 animate-pulse"></span>
+                AI-Powered Media Extraction & Format Conversion
+            </div>
+            <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight mb-4 text-white">
+                Turn any URL into <span class="bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">Assets</span>
             </h1>
-            <p class="text-slate-400 text-sm md:text-base">
-                Transform your local images into permanent, shareable public links instantly. Free and lightning fast.
+            <p class="text-slate-400 text-base md:text-lg max-w-xl mx-auto">
+                Extract high-res images and videos from web links or upload media to generate public hosting URLs instantly.
             </p>
         </div>
 
-        <div id="tool" class="w-full max-w-xl glass-panel p-6 md:p-8 rounded-3xl relative mb-16">
-            <div class="space-y-4">
-                <label class="block text-xs font-semibold tracking-wider text-slate-400 uppercase">Upload Image File</label>
-                <div class="border-2 border-dashed border-slate-800 hover:border-indigo-500/50 rounded-2xl p-8 text-center transition-all cursor-pointer bg-slate-900/40" onclick="completeTask()">
-                    <div class="text-3xl mb-2">🖼️</div>
-                    <p class="text-slate-300 text-sm font-medium mb-1">Drop your image here or <span class="text-indigo-400 underline">browse device</span></p>
-                    <p class="text-[11px] text-slate-500">Supports JPG, PNG, WebP, GIF up to 5MB</p>
+        <section id="categories" class="w-full mb-12">
+            <h2 class="text-xl font-bold text-white mb-6 text-center">Browse Tools by Category 🗂️</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="glass-panel p-5 rounded-2xl border-l-4 border-indigo-500">
+                    <h3 class="font-bold text-indigo-400 mb-1">🖼️ Image Tools</h3>
+                    <p class="text-xs text-slate-400 mb-3">Image to URL, PNG/JPG Converter, Compressor</p>
+                    <a href="image-to-url.html" class="text-xs text-indigo-300 font-medium hover:underline">Open Tool &rarr;</a>
                 </div>
-                <button onclick="completeTask()" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-medium py-3.5 rounded-xl text-sm transition shadow-lg shadow-indigo-600/30">
-                    Generate Public URL
-                </button>
+                <div class="glass-panel p-5 rounded-2xl border-l-4 border-purple-500">
+                    <h3 class="font-bold text-purple-400 mb-1">🎥 Video Tools</h3>
+                    <p class="text-xs text-slate-400 mb-3">Video to MP4, Video Extractor, Thumbnail Saver</p>
+                    <button onclick="triggerAction()" class="text-xs text-purple-300 font-medium hover:underline">Open Tool &rarr;</button>
+                </div>
+                <div class="glass-panel p-5 rounded-2xl border-l-4 border-pink-500">
+                    <h3 class="font-bold text-pink-400 mb-1">📄 File & Docs Tools</h3>
+                    <p class="text-xs text-slate-400 mb-3">PDF to URL, Excel to URL, URL Shortener</p>
+                    <button onclick="triggerAction()" class="text-xs text-pink-300 font-medium hover:underline">Open Tool &rarr;</button>
+                </div>
             </div>
-        </div>
+        </section>
 
-        <section id="faq" class="w-full space-y-4 mb-8 max-w-2xl">
-            <h2 class="text-xl font-bold text-center text-white mb-6">Frequently Asked Questions 💡</h2>
-            <div class="glass-panel p-4 rounded-xl">
-                <h4 class="font-semibold text-indigo-300 text-sm mb-1">Are the generated image URLs permanent?</h4>
-                <p class="text-slate-400 text-xs">Yes! Once uploaded, your image URLs remain active indefinitely without expiration.</p>
+        <section id="pricing" class="w-full mb-16">
+            <h2 class="text-2xl font-bold text-center text-white mb-2">Upgrade Your Capabilities 💎</h2>
+            <p class="text-center text-slate-400 text-sm mb-8">All basic tools are 100% Free. Upgrade to Pro for high-speed automated workflows.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+                <div class="glass-panel p-6 rounded-3xl border border-white/10 flex flex-col justify-between">
+                    <div>
+                        <span class="text-xs font-bold text-slate-400 uppercase tracking-widest">Free Tier</span>
+                        <h3 class="text-3xl font-extrabold text-white mt-2 mb-4">₹0 <span class="text-sm font-normal text-slate-400">/ lifetime</span></h3>
+                        <ul class="space-y-2 text-sm text-slate-300 mb-6">
+                            <li>✔️ Standard URL Extraction</li>
+                            <li>✔️ Basic Format Conversions</li>
+                            <li>✔️ Community Support</li>
+                        </ul>
+                    </div>
+                    <button onclick="openLoginModal()" class="w-full bg-white/10 hover:bg-white/15 text-white py-3 rounded-xl font-medium text-sm transition">Get Started Free</button>
+                </div>
+                <div class="glass-panel p-6 rounded-3xl border-2 border-indigo-500/50 flex flex-col justify-between relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-indigo-600 text-white text-[10px] font-bold px-3 py-1 rounded-bl-xl uppercase tracking-wider">Popular</div>
+                    <div>
+                        <span class="text-xs font-bold text-indigo-400 uppercase tracking-widest">Pro Automation</span>
+                        <h3 class="text-3xl font-extrabold text-white mt-2 mb-4">₹499 <span class="text-sm font-normal text-slate-400">/ month</span></h3>
+                        <ul class="space-y-2 text-sm text-slate-300 mb-6">
+                            <li>✔️ Unlimited Bulk Extractions</li>
+                            <li>✔️ Priority AI Processing Engine</li>
+                            <li>✔️ Permanent Public Storage Links</li>
+                            <li>✔️ Zero Ads Experience</li>
+                        </ul>
+                    </div>
+                    <button onclick="alert('Redirecting to secure Pro subscription gateway...')" class="w-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white py-3 rounded-xl font-medium text-sm transition shadow-lg shadow-indigo-600/30">Upgrade to Pro</button>
+                </div>
             </div>
-            <div class="glass-panel p-4 rounded-xl">
-                <h4 class="font-semibold text-indigo-300 text-sm mb-1">What image formats are supported?</h4>
-                <p class="text-slate-400 text-xs">Our tool supports all popular formats including PNG, JPEG, WebP, and animated GIFs.</p>
+        </section>
+
+        <section id="comparison" class="w-full mb-16 space-y-6">
+            <h2 class="text-2xl font-bold text-center text-white">Why Choose Urlify.io? ⚖️</h2>
+            <div class="glass-panel overflow-hidden rounded-2xl">
+                <table class="w-full text-left border-collapse text-sm">
+                    <thead>
+                        <tr class="border-b border-white/10 bg-slate-900/50 text-slate-300">
+                            <th class="p-4 font-semibold">Features</th>
+                            <th class="p-4 font-semibold text-indigo-400">Urlify.io ⚡</th>
+                            <th class="p-4 font-semibold text-slate-500">Other Tools ❌</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-white/5 text-slate-300">
+                        <tr>
+                            <td class="p-4 font-medium">AI Automation Review</td>
+                            <td class="p-4 text-emerald-400 font-semibold">✔️ Instant Analysis</td>
+                            <td class="p-4 text-red-400">❌ Not Available</td>
+                        </tr>
+                        <tr>
+                            <td class="p-4 font-medium">Processing Speed</td>
+                            <td class="p-4 text-emerald-400 font-semibold">✔️ Under 1 Second</td>
+                            <td class="p-4 text-amber-400">⚠️ Slow / Laggy</td>
+                        </tr>
+                        <tr>
+                            <td class="p-4 font-medium">Public URL Generation</td>
+                            <td class="p-4 text-emerald-400 font-semibold">✔️ Permanent Links</td>
+                            <td class="p-4 text-red-400">❌ Expire Soon</td>
+                        </tr>
+                        <tr>
+                            <td class="p-4 font-medium">Ads & Popup Clutter</td>
+                            <td class="p-4 text-emerald-400 font-semibold">✔️ Clean UI</td>
+                            <td class="p-4 text-red-400">❌ Annoying Ads</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
+        </section>
+
+        <section id="faq" class="w-full space-y-4 mb-8 max-w-3xl mx-auto">
+            <h2 class="text-2xl font-bold text-center text-white mb-6">Frequently Asked Questions 💡</h2>
+            
+            <details class="glass-panel p-4 rounded-xl cursor-pointer">
+                <summary class="font-semibold text-indigo-300 text-sm flex justify-between items-center">Is Urlify.io completely free to use? <span>▼</span></summary>
+                <p class="text-slate-400 text-xs mt-3 leading-relaxed">Yes, basic URL extraction and standard media format conversions are completely free for all users without any registration required.</p>
+            </details>
+
+            <details class="glass-panel p-4 rounded-xl cursor-pointer">
+                <summary class="font-semibold text-indigo-300 text-sm flex justify-between items-center">Are the generated public URLs permanent? <span>▼</span></summary>
+                <p class="text-slate-400 text-xs mt-3 leading-relaxed">All generated asset links are permanent and remain active indefinitely, making them ideal for blogs, documentation, and websites.</p>
+            </details>
+
+            <details class="glass-panel p-4 rounded-xl cursor-pointer">
+                <summary class="font-semibold text-indigo-300 text-sm flex justify-between items-center">How secure are my uploaded files? <span>▼</span></summary>
+                <p class="text-slate-400 text-xs mt-3 leading-relaxed">All uploaded files are processed securely through encrypted cloud channels and deleted automatically to ensure maximum user privacy.</p>
+            </details>
+
+            <details class="glass-panel p-4 rounded-xl cursor-pointer">
+                <summary class="font-semibold text-indigo-300 text-sm flex justify-between items-center">Do I need to sign in to use the tools? <span>▼</span></summary>
+                <p class="text-slate-400 text-xs mt-3 leading-relaxed">Basic extractions are open to everyone, but signing in via Google helps you track your upload history and manage your links easily.</p>
+            </details>
+
+            <details class="glass-panel p-4 rounded-xl cursor-pointer">
+                <summary class="font-semibold text-indigo-300 text-sm flex justify-between items-center">What file formats are supported? <span>▼</span></summary>
+                <p class="text-slate-400 text-xs mt-3 leading-relaxed">We support a wide range of formats including JPG, PNG, WebP, GIF, MP4, PDF, and Excel documents.</p>
+            </details>
+
+            <details class="glass-panel p-4 rounded-xl cursor-pointer">
+                <summary class="font-semibold text-indigo-300 text-sm flex justify-between items-center">What is the maximum file upload size? <span>▼</span></summary>
+                <p class="text-slate-400 text-xs mt-3 leading-relaxed">Free users can upload files up to 2MB to 10MB, while Pro subscribers enjoy higher limits up to 50MB+ per file.</p>
+            </details>
+
+            <details class="glass-panel p-4 rounded-xl cursor-pointer">
+                <summary class="font-semibold text-indigo-300 text-sm flex justify-between items-center">Can I use generated URLs in HTML tags? <span>▼</span></summary>
+                <p class="text-slate-400 text-xs mt-3 leading-relaxed">Absolutely! You can copy the generated direct links and paste them directly into standard HTML img tags, markdown docs, or emails.</p>
+            </details>
+
+            <details class="glass-panel p-4 rounded-xl cursor-pointer">
+                <summary class="font-semibold text-indigo-300 text-sm flex justify-between items-center">How does the AI Automation Review work? <span>▼</span></summary>
+                <p class="text-slate-400 text-xs mt-3 leading-relaxed">Our AI scans your uploaded assets to analyze metadata, optimize formats, and provide smart feedback ratings after task completion.</p>
+            </details>
         </section>
 
     </main>
@@ -116,9 +230,9 @@
             <button onclick="closeLoginModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-sm">✕</button>
             <div class="w-12 h-12 mx-auto mb-4 rounded-full bg-indigo-500/10 flex items-center justify-center text-indigo-400 text-xl font-bold">G</div>
             <h3 class="text-xl font-bold text-white mb-2">Sign in to Urlify.io</h3>
-            <p class="text-slate-400 text-xs mb-6">Track your image history and manage your links.</p>
-            <button onclick="simulateGoogleLogin()" class="w-full bg-white hover:bg-slate-100 text-slate-900 font-semibold py-3 rounded-xl text-sm transition shadow-lg">
-                Continue with Google
+            <p class="text-slate-400 text-xs mb-6">Access AI automation tools and save your asset history instantly.</p>
+            <button onclick="simulateGoogleLogin()" class="w-full bg-white hover:bg-slate-100 text-slate-900 font-semibold py-3 rounded-xl text-sm transition shadow-lg flex items-center justify-center gap-2">
+                <span>Continue with Google</span>
             </button>
         </div>
     </div>
@@ -128,7 +242,7 @@
             <button onclick="closeReviewModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-sm">✕</button>
             <div class="w-12 h-12 mx-auto rounded-full bg-indigo-500/10 flex items-center justify-center text-indigo-400 text-xl font-bold">🤖</div>
             <h3 class="text-xl font-bold text-white">AI Automation Review</h3>
-            <p class="text-slate-400 text-xs">Aapka image URL successfully generate ho gaya hai! Kripya star select karein:</p>
+            <p class="text-slate-400 text-xs">Aapka task successfully complete ho gaya hai! Kripya star select karein:</p>
             
             <div class="flex justify-center space-x-2 text-2xl cursor-pointer py-2">
                 <span onclick="selectRating(1)" class="hover:scale-125 transition">⭐</span>
@@ -153,15 +267,16 @@
         <div class="glass-panel max-w-sm w-full p-8 rounded-3xl text-center modal-animation space-y-3">
             <div class="w-16 h-16 mx-auto rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-3xl">✨</div>
             <h3 class="text-2xl font-extrabold text-white">Thank You!</h3>
-            <p class="text-slate-400 text-xs">Aapka feedback safaltapoorvak mil gaya hai.</p>
+            <p class="text-slate-400 text-xs">Aapka valuable feedback safaltapoorvak mil gaya hai.</p>
         </div>
     </div>
 
     <footer class="w-full py-6 px-8 text-center text-xs text-slate-500 border-t border-white/5 relative z-20 flex flex-col md:flex-row justify-between items-center gap-4">
-        <div>&copy; 2026 Urlify.io. All rights reserved.</div>
+        <div>&copy; 2026 Urlify.io. All rights reserved. Optimized for Google AdSense & SEO.</div>
         <div class="flex space-x-6 text-slate-400">
             <a href="#" class="hover:text-slate-200 transition">Privacy Policy</a>
             <a href="#" class="hover:text-slate-200 transition">Terms of Service</a>
+            <a href="#" class="hover:text-slate-200 transition">Disclaimer</a>
         </div>
     </footer>
 
@@ -181,11 +296,11 @@
             closeLoginModal();
         }
 
-        function completeTask() {
+        function triggerAction() {
             if (!hasReviewed) {
                 document.getElementById('review-modal').classList.remove('hidden');
             } else {
-                alert("Image URL generated successfully!");
+                alert("Tool action processed successfully!");
             }
         }
 
@@ -203,15 +318,23 @@
             chipsContainer.innerHTML = '';
 
             let options = stars >= 4 ? [
-                "🚀 Instant image to URL conversion!",
-                "✨ Clean UI and lightning fast response.",
-                "🔥 Permanent links work without any issues.",
-                "💎 Best lightweight image hosting tool."
+                "🚀 Extremely fast extraction speed!",
+                "💡 Cleanest UI without ad clutter.",
+                "✨ Excellent AI metadata tools.",
+                "🔥 Permanent public links work great.",
+                "💎 Best platform for developers.",
+                "⚡ Very smooth file processing.",
+                "🎯 Accurate URL parsing.",
+                "🌟 Highly recommended!"
             ] : [
-                "⚙️ Conversion took a bit longer.",
-                "📱 Mobile layout can be adjusted.",
-                "🛠️ Need support for larger image sizes.",
-                "💬 Clear options needed."
+                "⚙️ Processing took slightly longer.",
+                "📱 Mobile layout needs adjustment.",
+                "🛠️ Need more file format support.",
+                "💬 Clear options needed.",
+                "📊 Add more link analytics.",
+                "🔔 Notification alert needed.",
+                "🌐 Minor UI adjustment requested.",
+                "⚡ General speed improvement needed."
             ];
 
             options.forEach((text) => {
