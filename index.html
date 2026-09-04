@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Urlify.io - AI Media Extractor & Converter Toolkit</title>
-    <meta name="description" content="Extract high-resolution images, videos from any URL or convert media files instantly with AI automation.">
+    <title>Urlify.io - Autonomous Cloud Vault & AI Asset Pipeline</title>
+    <meta name="description" content="Bi-directional media conversion, instant URL generation, and AI-driven asset management platform.">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -48,25 +48,42 @@
         .modal-animation { animation: modalPop 0.3s ease-out forwards; }
     </style>
 </head>
-<body class="bg-brand-950 min-h-screen text-slate-100 font-sans flex flex-col justify-between relative overflow-x-hidden selection:bg-indigo-500 selection:text-white pb-16 md:pb-0">
+<body class="bg-brand-950 min-h-screen text-slate-100 font-sans flex flex-col justify-between relative overflow-x-hidden selection:bg-indigo-500 selection:text-white pb-20 md:pb-0">
 
     <!-- 🌌 Background Lighting Effects -->
     <div class="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-indigo-600/20 rounded-full blur-[120px] orb-1 pointer-events-none"></div>
     <div class="absolute top-[30%] right-[-10%] w-[450px] h-[450px] bg-purple-600/20 rounded-full blur-[120px] orb-2 pointer-events-none"></div>
 
-    <!-- 🌐 Header Section (Center Logo, Right Sign-In, Left Menu) -->
-    <header class="w-full py-4 px-6 md:px-12 flex justify-between items-center border-b border-white/5 backdrop-blur-md relative z-20 sticky top-0 bg-brand-950/80">
-        <div class="flex items-center space-x-4 text-sm text-slate-400">
-            <a href="#tools" class="hover:text-indigo-400 transition hidden sm:inline">Tools</a>
-            <a href="#pricing" class="hover:text-indigo-400 transition hidden sm:inline">Pricing</a>
+    <!-- 🌐 Header Section with Sub-menus & Centered Brand -->
+    <header class="w-full py-4 px-6 md:px-12 flex justify-between items-center border-b border-white/5 backdrop-blur-md relative z-30 sticky top-0 bg-brand-950/80">
+        <!-- Left Navigation with Sub-menus -->
+        <div class="flex items-center space-x-6 text-sm text-slate-300 font-medium">
+            <a href="/" class="hover:text-indigo-400 transition hidden sm:inline">🏠 Home</a>
+            
+            <!-- Tools Dropdown Sub-menu -->
+            <div class="relative group">
+                <button class="hover:text-indigo-400 transition flex items-center gap-1 py-2">
+                    🛠️ Tools ▾
+                </button>
+                <div class="absolute top-full left-0 w-56 glass-panel rounded-2xl p-2 shadow-2xl hidden group-hover:block space-y-1 border border-white/10">
+                    <a href="#tools" class="block px-3 py-2 text-xs rounded-xl hover:bg-indigo-600/20 hover:text-indigo-300 transition">🖼️ Image to URL</a>
+                    <a href="#tools" class="block px-3 py-2 text-xs rounded-xl hover:bg-indigo-600/20 hover:text-indigo-300 transition">📐 Image Size Optimizer</a>
+                    <a href="#tools" class="block px-3 py-2 text-xs rounded-xl hover:bg-indigo-600/20 hover:text-indigo-300 transition">🔗 URL to Media Extractor</a>
+                    <a href="#tools" class="block px-3 py-2 text-xs rounded-xl hover:bg-indigo-600/20 hover:text-indigo-300 transition">📄 PDF & Excel to URL</a>
+                </div>
+            </div>
+
+            <a href="#pricing" class="hover:text-indigo-400 transition hidden sm:inline">💎 Pricing</a>
         </div>
         
+        <!-- Center Logo -->
         <div class="absolute left-1/2 transform -translate-x-1/2">
             <a href="/" class="text-2xl font-black tracking-tight bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
                 Urlify.io
             </a>
         </div>
 
+        <!-- Right Sign In / User Profile -->
         <div class="flex items-center space-x-3">
             <div id="user-profile-display" class="hidden text-xs text-indigo-300 font-medium bg-indigo-500/10 border border-indigo-500/20 px-3 py-1.5 rounded-lg"></div>
             <button onclick="openLoginModal()" class="bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold px-4 py-2 rounded-lg transition shadow-lg shadow-indigo-600/25">
@@ -78,21 +95,34 @@
     <!-- 🚀 Main Body Content -->
     <main class="flex-grow flex flex-col items-center px-4 py-8 relative z-20 max-w-5xl mx-auto w-full space-y-16">
         
-        <!-- 🌟 Hero Section -->
-        <section class="text-center max-w-3xl pt-6">
-            <div class="inline-flex items-center gap-2 bg-indigo-500/10 border border-indigo-500/20 px-3 py-1 rounded-full text-xs text-indigo-300 font-medium mb-4 animate-bounce">
-                <span class="w-2 h-2 rounded-full bg-indigo-400"></span>
-                Autonomous Cloud Vault & AI Asset Pipeline
+        <!-- 🌟 Unique AI Automation Hero Template -->
+        <section class="text-center max-w-3xl pt-8 relative">
+            <div class="absolute -top-10 left-1/2 -translate-x-1/2 w-32 h-32 bg-indigo-500/15 rounded-full blur-2xl pointer-events-none"></div>
+            
+            <div class="inline-flex items-center gap-2 bg-indigo-500/10 border border-indigo-500/20 px-3.5 py-1.5 rounded-full text-xs text-indigo-300 font-medium mb-6 shadow-inner">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                Neural Pipeline v2.4 Active
             </div>
-            <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight mb-4 text-white">
-                Turn any URL into <span class="bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">Smart Assets</span>
+            
+            <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight mb-6 text-white leading-tight">
+                Turn any URL into <span class="bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">Smart Assets</span> with AI
             </h1>
-            <p class="text-slate-400 text-base md:text-lg max-w-xl mx-auto">
-                Bi-directional media conversion, instant URL generation, and AI-driven asset management in one unified space.
+            
+            <p class="text-slate-400 text-base md:text-lg max-w-2xl mx-auto mb-8 leading-relaxed">
+                Bi-directional media conversion, automated metadata tagging, and instant cloud-hosted URL publishing designed for high-performance workflows.
             </p>
+
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="#tools" class="bg-indigo-600 hover:bg-indigo-500 text-white font-semibold px-6 py-3.5 rounded-xl text-sm transition shadow-lg shadow-indigo-600/30 flex items-center gap-2">
+                    <span>🚀 Explore All Tools</span>
+                </a>
+                <a href="#pricing" class="bg-white/5 hover:bg-white/10 text-slate-200 font-semibold px-6 py-3.5 rounded-xl text-sm transition border border-white/10">
+                    💎 View Pricing Plans
+                </a>
+            </div>
         </section>
 
-        <!-- 🎛️ Tool Boxes Grid -->
+        <!-- 🎛️ Tool Boxes Grid with Try Now Buttons -->
         <section id="tools" class="w-full space-y-6">
             <div class="text-center">
                 <h2 class="text-2xl font-bold text-white">Explore Conversion Tools 🛠️</h2>
@@ -104,7 +134,7 @@
                     <div>
                         <span class="text-2xl mb-2 block">🖼️</span>
                         <h3 class="font-bold text-white text-base mb-1">Image to URL</h3>
-                        <p class="text-xs text-slate-400 mb-4">Convert local PNG, JPG, WebP into permanent public hosting links.</p>
+                        <p class="text-xs text-slate-400 mb-4">Convert local PNG, JPG, WebP into permanent public hosting links with AI tags.</p>
                     </div>
                     <button onclick="openToolModal('Image to URL')" class="w-full bg-indigo-600/20 hover:bg-indigo-600 text-indigo-300 hover:text-white py-2 rounded-xl text-xs font-semibold transition border border-indigo-500/30">
                         Try Now &rarr;
@@ -135,7 +165,7 @@
             </div>
         </section>
 
-        <!-- 📊 Comparison Table -->
+        <!-- 📊 Premium Comparison Table -->
         <section id="comparison" class="w-full space-y-6">
             <h2 class="text-2xl font-bold text-center text-white">Why Urlify.io Stands Out ⚖️</h2>
             <div class="glass-panel overflow-hidden rounded-2xl">
@@ -173,7 +203,7 @@
             </div>
         </section>
 
-        <!-- 💎 3-Tier Subscription Plans -->
+        <!-- 💎 3-Tier Affordable Subscription Plans -->
         <section id="pricing" class="w-full space-y-6">
             <div class="text-center">
                 <h2 class="text-2xl font-bold text-white">Affordable Pricing Tiers 💎</h2>
@@ -223,7 +253,7 @@
             </div>
         </section>
 
-        <!-- ⭐ AI Automatic Review Section -->
+        <!-- ⭐ AI Automatic Review Section (Foodzilla Style with 3,4,5 stars & generated smart review chips) -->
         <section id="reviews" class="w-full space-y-6">
             <div class="text-center">
                 <h2 class="text-2xl font-bold text-white">AI Automation Feedback 🤖</h2>
@@ -236,15 +266,15 @@
                     <input id="review-name-input" type="text" placeholder="Enter your name" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-indigo-500"/>
                 </div>
                 <div>
-                    <label class="block text-xs font-semibold text-slate-400 mb-1">Select Rating</label>
-                    <div id="star-rating-container" class="flex space-x-2 text-xl cursor-pointer">
-                        <span onclick="selectReviewStars(3)">⭐</span>
-                        <span onclick="selectReviewStars(4)">⭐</span>
-                        <span onclick="selectReviewStars(5)">⭐</span>
+                    <label class="block text-xs font-semibold text-slate-400 mb-1">Select Rating (3, 4 or 5 Stars)</label>
+                    <div id="star-rating-container" class="flex space-x-3 text-2xl cursor-pointer">
+                        <span onclick="selectReviewStars(3)" class="hover:scale-125 transition">⭐</span>
+                        <span onclick="selectReviewStars(4)" class="hover:scale-125 transition">⭐</span>
+                        <span onclick="selectReviewStars(5)" class="hover:scale-125 transition">⭐</span>
                     </div>
                 </div>
                 <div id="auto-review-options" class="space-y-2 hidden">
-                    <label class="block text-xs font-semibold text-indigo-300">Select generated smart review:</label>
+                    <label class="block text-xs font-semibold text-indigo-300">Select AI smart generated review:</label>
                     <div id="review-chips-list" class="flex flex-col gap-2"></div>
                 </div>
                 <button id="submit-user-review-btn" onclick="submitUserReview()" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white py-2.5 rounded-xl font-semibold text-xs transition shadow-lg hidden">
@@ -284,7 +314,7 @@
                     What is the best secure file to URL converter for web developers? 
                     <span class="transform transition-transform duration-300">▼</span>
                 </summary>
-                <p class="text-slate-400 text-xs mt-3 leading-relaxed">यह प्लेटफॉर्म डेवलपर्स और ब्लॉगर्स के लिए सबसे सुरक्षित है क्योंकि इसमें एंड-टू-एंड एनक्रिप्शन और ऑटोमैटिक क्लाउड ऑप्टिमाइज़ेशन मिलता है।</p>
+         <p class="text-slate-400 text-xs mt-3 leading-relaxed">यह प्लेटफॉर्म डेवलपर्स और ब्लॉगर्स के लिए सबसे सुरक्षित है क्योंकि इसमें एंड-टू-एंड एनक्रिप्शन और ऑटोमैटिक क्लाउड ऑप्टिमाइज़ेशन मिलता है।</p>
             </details>
 
             <details class="glass-panel p-4 rounded-xl cursor-pointer">
@@ -314,5 +344,158 @@
 
     </main>
 
-    <!-- 📱 Bottom Navigation Bar for Mobile & Quick Access -->
-    <nav class="fixed bottom-0 left-0 right-0 bg-brand-950/90 backdrop-blur-md border-t border-white/
+    <!-- 📱 Bottom Navigation Bar with Sub-menus / Options -->
+    <nav class="fixed bottom-0 left-0 right-0 bg-brand-950/95 backdrop-blur-md border-t border-white/15 py-3 px-4 flex justify-around items-center z-40 md:hidden text-[11px] text-slate-300 font-medium">
+        <a href="/" class="flex flex-col items-center hover:text-indigo-400">🏠 Home</a>
+        <a href="#tools" class="flex flex-col items-center hover:text-indigo-400">🛠️ Tools</a>
+        <a href="#reviews" class="flex flex-col items-center hover:text-indigo-400">⭐ Review</a>
+        <a href="#pricing" class="flex flex-col items-center hover:text-indigo-400">💎 Pricing</a>
+        <button onclick="openLoginModal()" class="flex flex-col items-center hover:text-indigo-400">🔐 Sign In</button>
+    </nav>
+
+    <!-- 🔐 Unique Modern Instagram Reel Style Login Modal -->
+    <div id="login-modal" class="fixed inset-0 bg-black/85 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+        <div class="glass-panel max-w-sm w-full p-8 rounded-3xl text-center relative modal-animation border border-white/15 space-y-5 shadow-2xl">
+            <button onclick="closeLoginModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-sm">✕</button>
+            <div class="w-14 h-14 mx-auto rounded-full bg-gradient-to-tr from-indigo-500 to-pink-500 flex items-center justify-center text-white text-2xl font-bold shadow-lg">⚡</div>
+            <h3 class="text-2xl font-extrabold text-white tracking-tight">Welcome to Urlify</h3>
+            <p class="text-slate-400 text-xs leading-relaxed">Connect your Google workspace account securely. Permanent session enabled without auto-logout.</p>
+            
+            <button onclick="performGoogleLogin()" class="w-full bg-white hover:bg-slate-100 text-slate-900 font-bold py-3.5 rounded-2xl text-xs transition shadow-xl flex items-center justify-center gap-3 active:scale-95">
+                <svg class="w-4 h-4" viewBox="0 0 24 24"><path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.66-5.17 3.66-9.17z"/><path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.13 0-5.78-2.11-6.73-4.96H1.18v3.15C3.15 21.32 7.23 24 12 24z"/><path fill="#FBBC05" d="M5.27 14.24c-.25-.72-.38-1.49-.38-2.24s.13-1.52.38-2.24V6.61H1.18C.43 8.13 0 9.83 0 12s.43 3.87 1.18 5.39l4.09-3.15z"/><path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.23 0 3.15 2.68 1.18 6.61l4.09 3.15c.95-2.85 3.6-4.96 6.73-4.96z"/></svg>
+                <span>Continue with Google</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- 🛠️ Dynamic Tool Action Modal with AI Metadata Tag Generator -->
+    <div id="tool-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="glass-panel max-w-md w-full p-6 rounded-3xl text-center relative modal-animation border border-white/10 space-y-4">
+            <button onclick="closeToolModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-sm">✕</button>
+            <h3 id="modal-tool-title" class="text-xl font-bold text-white">Tool Workspace</h3>
+            <div class="border-2 border-dashed border-slate-800 rounded-2xl p-5 bg-slate-900/50">
+                <p class="text-xs text-slate-300 mb-2">Drag & Drop file or insert target URL</p>
+                <input type="text" placeholder="https://..." class="w-full bg-slate-900 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white"/>
+            </div>
+            <div class="text-left bg-indigo-950/40 p-3 rounded-xl border border-indigo-500/20">
+                <span class="text-[10px] font-bold text-indigo-300 uppercase block mb-1">🤖 AI Smart Metadata Tag Generator:</span>
+                <p class="text-[11px] text-slate-400">Automatic Alt Text & Markdown Snippets will be generated on process.</p>
+            </div>
+            <button onclick="executeToolProcess()" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white py-3 rounded-xl text-xs font-semibold transition">
+                Process & Generate URL
+            </button>
+        </div>
+    </div>
+
+    <!-- 🎉 Thank You Animation Overlay -->
+    <div id="thankyou-modal" class="fixed inset-0 bg-black/90 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+        <div class="glass-panel max-w-sm w-full p-8 rounded-3xl text-center modal-animation space-y-3">
+            <div class="w-16 h-16 mx-auto rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-3xl animate-bounce">✨</div>
+            <h3 class="text-2xl font-extrabold text-white">Thank You!</h3>
+            <p class="text-slate-400 text-xs">Aapka valuable review safaltapoorvak save ho gaya hai.</p>
+        </div>
+    </div>
+
+    <!-- 📝 Footer with Legal Pages Menu (About, Contact, Privacy, Terms, Disclaimer) -->
+    <footer class="w-full py-8 px-8 text-center text-xs text-slate-500 border-t border-white/5 relative z-20 flex flex-col md:flex-row justify-between items-center gap-4 mb-16 md:mb-0">
+        <div>&copy; 2026 Urlify.io. All rights reserved. Built for high performance.</div>
+        <div class="flex flex-wrap justify-center gap-6 text-slate-400">
+            <a href="#" class="hover:text-indigo-400 transition">About Us</a>
+            <a href="#" class="hover:text-indigo-400 transition">Contact</a>
+            <a href="#" class="hover:text-indigo-400 transition">Privacy Policy</a>
+            <a href="#" class="hover:text-indigo-400 transition">Terms of Service</a>
+            <a href="#" class="hover:text-indigo-400 transition">Disclaimer</a>
+        </div>
+    </footer>
+
+    <!-- ⚡ JavaScript Logic for Persistence & Modals -->
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedUser = localStorage.getItem('urlify_user_email');
+            if(savedUser) {
+                showUserProfile(savedUser);
+            }
+        });
+
+        function openLoginModal() {
+            document.getElementById('login-modal').classList.remove('hidden');
+        }
+        function closeLoginModal() {
+            document.getElementById('login-modal').classList.add('hidden');
+        }
+
+        function performGoogleLogin() {
+            const mockEmail = "creator.user@gmail.com";
+            localStorage.setItem('urlify_user_email', mockEmail);
+            showUserProfile(mockEmail);
+            closeLoginModal();
+            alert("Google Sign-In successful! Profile saved permanently.");
+        }
+
+        function showUserProfile(email) {
+            const display = document.getElementById('user-profile-display');
+            display.innerText = "👤 " + email.split('@')[0];
+            display.classList.remove('hidden');
+        }
+
+        function openToolModal(toolName) {
+            document.getElementById('modal-tool-title').innerText = toolName + " Workspace";
+            document.getElementById('tool-modal').classList.remove('hidden');
+        }
+        function closeToolModal() {
+            document.getElementById('tool-modal').classList.add('hidden');
+        }
+
+        function executeToolProcess() {
+            closeToolModal();
+            const thankyou = document.getElementById('thankyou-modal');
+            thankyou.classList.remove('hidden');
+            setTimeout(() => { thankyou.classList.add('hidden'); }, 2000);
+        }
+
+        function selectReviewStars(stars) {
+            const container = document.getElementById('auto-review-options');
+            const chips = document.getElementById('review-chips-list');
+            const submitBtn = document.getElementById('submit-user-review-btn');
+            
+            container.classList.remove('hidden');
+            submitBtn.classList.remove('hidden');
+            chips.innerHTML = '';
+
+            let reviews = stars >= 4 ? [
+                "🚀 Blazing fast image-to-url processing pipeline!",
+                "💡 Cleanest interface with zero ad clutters.",
+                "✨ AI metadata tagging is extremely helpful.",
+                "🔥 Permanent links work seamlessly across all platforms.",
+                "💎 Best micro-saas tool for developers.",
+                "⚡ Super smooth mobile navigation experience.",
+                "🎯 Highly accurate conversion speeds.",
+                "🌟 Exceptional utility platform!"
+            ] : [
+                "⚙️ Conversion took a minor moment.",
+                "📱 Mobile responsiveness can be adjusted.",
+                "🛠️ Need extended file format support.",
+                "💬 Clear UI tweaks required."
+            ];
+
+            reviews.forEach(text => {
+                const label = document.createElement('label');
+                label.className = "flex items-center space-x-2 text-xs bg-slate-900/80 p-2.5 rounded-xl border border-white/5 cursor-pointer hover:border-indigo-500 transition text-slate-300";
+                label.innerHTML = `<input type='radio' name='selected_review_chip' value='${text}' class='text-indigo-600'/> <span>${text}</span>`;
+                chips.appendChild(label);
+            });
+        }
+
+        function submitUserReview() {
+            const name = document.getElementById('review-name-input').value;
+            if(!name) {
+                alert("Kripya apna naam darj karein.");
+                return;
+            }
+            const thankyou = document.getElementById('thankyou-modal');
+            thankyou.classList.remove('hidden');
+            setTimeout(() => { thankyou.classList.add('hidden'); }, 2500);
+        }
+    </script>
+</body>
+                                              </html>
