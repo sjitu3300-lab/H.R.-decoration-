@@ -1,466 +1,318 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="hi" class="dark">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ashray Bar Menu | Hotel Inder Paradise Nagaur</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <style>
-    :root { 
-      --primary: #e63946;
-      --primary-hover: #ff4757;
-      --primary-glow: rgba(230, 57, 70, 0.35);
-      --gold: #f5a623;
-      --gold-light: #ffc048;
-      --dark-bg: #09090b;
-      --card-bg: #141418;
-      --border-color: #24242c;
-      --text: #f8f9fa;
-      --text-muted: #9e9ea7;
-    }
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
-    body { background: var(--dark-bg); color: var(--text); line-height: 1.7; overflow-x: hidden; }
-    
-    header { background: rgba(9, 9, 11, 0.95); backdrop-filter: blur(12px); padding: 15px 25px; display: flex; justify-content: space-between; align-items: center; position: sticky; top:0; z-index:100; border-bottom: 1px solid var(--border-color); }
-    .logo { font-family: Georgia, serif; font-size: 1.5rem; color: var(--gold); text-decoration: none; font-weight: bold; }
-    .btn-home { background: linear-gradient(135deg, var(--primary) 0%, #d63031 100%); color: #fff; padding: 7px 18px; text-decoration: none; font-size: 0.8rem; font-weight: 700; border-radius: 8px; box-shadow: 0 4px 15px var(--primary-glow); transition: 0.3s; display: inline-flex; align-items: center; gap: 6px; }
-    .btn-home:hover { background: linear-gradient(135deg, var(--primary-hover) 0%, #c0392b 100%); transform: translateY(-2px); }
-
-    .container { max-width: 1100px; margin: 40px auto; background: var(--card-bg); padding: 45px; border-radius: 14px; border: 1px solid var(--border-color); box-shadow: 0 15px 35px rgba(0,0,0,0.5); }
-    h1 { font-family: Georgia, serif; color: #fff; font-size: 2.3rem; margin-bottom: 10px; text-align: center; }
-    p.subtitle { color: var(--text-muted); margin-bottom: 25px; font-size: 0.95rem; text-align: center; }
-
-    /* Search Box */
-    .menu-search-box { display: flex; justify-content: center; margin-bottom: 25px; }
-    .menu-search-box input { width: 100%; max-width: 450px; background: #111116; border: 1px solid var(--border-color); padding: 12px 20px; border-radius: 30px; color: #fff; font-size: 0.95rem; outline: none; transition: 0.3s; }
-    .menu-search-box input:focus { border-color: var(--gold); box-shadow: 0 0 15px rgba(245, 166, 35, 0.2); }
-
-    /* Category Filter Tabs */
-    .menu-tabs { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; margin-bottom: 30px; }
-    .menu-tab { background: #111116; border: 1px solid var(--border-color); padding: 8px 16px; font-size: 0.82rem; border-radius: 20px; color: var(--text-muted); cursor: pointer; font-weight: 500; transition: 0.3s; }
-    .menu-tab:hover, .menu-tab.active { background: var(--primary); color: #fff; border-color: var(--primary); box-shadow: 0 4px 15px var(--primary-glow); }
-
-    /* Swipe / Scroll Menu Card Book Feel */
-    .menu-book-viewport {
-      position: relative;
-      width: 100%;
-      overflow: hidden;
-      border-radius: 12px;
-      border: 1px solid var(--border-color);
-      background: #111116;
-      padding: 25px;
-    }
-
-    .menu-scroll-track {
-      display: flex;
-      gap: 30px;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      scroll-behavior: smooth;
-      -webkit-overflow-scrolling: touch;
-      padding-bottom: 15px;
-      scrollbar-width: thin;
-      scrollbar-color: var(--gold) var(--border-color);
-    }
-    .menu-scroll-track::-webkit-scrollbar { height: 8px; }
-    .menu-scroll-track::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 4px; }
-
-    .menu-category-page {
-      flex: 0 0 100%;
-      min-width: 100%;
-      scroll-snap-align: start;
-      animation: fadeInPage 0.5s ease forwards;
-    }
-
-    .category-title {
-      font-family: Georgia, serif;
-      font-size: 1.8rem;
-      color: var(--gold);
-      margin-bottom: 20px;
-      border-bottom: 2px solid var(--primary);
-      display: inline-block;
-      padding-bottom: 5px;
-    }
-
-    .items-table-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 15px;
-    }
-
-    .menu-row-item {
-      background: #181820;
-      border: 1px solid var(--border-color);
-      padding: 14px 18px;
-      border-radius: 8px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      transition: 0.3s;
-    }
-    .menu-row-item:hover {
-      border-color: var(--gold);
-      transform: translateX(4px);
-      background: #1f1f2a;
-    }
-
-    .menu-row-item .item-name {
-      font-size: 0.98rem;
-      color: #fff;
-      font-weight: 500;
-    }
-
-    .menu-row-item .item-price {
-      font-size: 1.05rem;
-      font-weight: 700;
-      color: var(--gold);
-      background: rgba(245, 166, 35, 0.1);
-      padding: 4px 10px;
-      border-radius: 6px;
-      border: 1px solid rgba(245, 166, 35, 0.2);
-    }
-
-    .menu-nav-instructions {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 20px;
-      font-size: 0.85rem;
-      color: var(--text-muted);
-    }
-    .scroll-arrows { display: flex; gap: 10px; }
-    .scroll-btn {
-      background: #181820; border: 1px solid var(--border-color); color: var(--gold); width: 38px; height: 38px;
-      border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: 0.3s;
-    }
-    .scroll-btn:hover { background: var(--primary); color: #fff; border-color: var(--primary); }
-
-    @keyframes fadeInPage {
-      from { opacity: 0; transform: scale(0.98); }
-      to { opacity: 1; transform: scale(1); }
-    }
-
-    footer { background: #060608; color: var(--text-muted); text-align: center; padding: 30px; margin-top: 60px; font-size: 0.85rem; border-top: 1px solid var(--border-color); }
-    @media(max-width: 768px) { .container { padding: 20px; margin: 20px; } .items-table-list { grid-template-columns: 1fr; } }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Urlify.io - AI Media Extractor & Converter Toolkit</title>
+    <meta name="description" content="Extract high-resolution images, videos from any URL or convert media files instantly with AI automation.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#eef2ff',
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                            950: '#090a0f',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @keyframes floatOrb1 {
+            0%, 100% { transform: translate(0px, 0px) scale(1); }
+            50% { transform: translate(50px, -70px) scale(1.2); }
+        }
+        @keyframes floatOrb2 {
+            0%, 100% { transform: translate(0px, 0px) scale(1); }
+            50% { transform: translate(-60px, 50px) scale(1.1); }
+        }
+        .orb-1 { animation: floatOrb1 10s ease-in-out infinite; }
+        .orb-2 { animation: floatOrb2 12s ease-in-out infinite; }
+        .glass-panel {
+            background: rgba(18, 20, 32, 0.75);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+        @keyframes modalPop {
+            0% { transform: scale(0.9); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        .modal-animation { animation: modalPop 0.3s ease-out forwards; }
+    </style>
 </head>
-<body>
-  <header>
-    <a href="index.html" class="logo">INDER PARADISE</a>
-    <a href="index.html" class="btn-home"><i class="fa-solid fa-house"></i> Home Page</a>
-  </header>
+<body class="bg-brand-950 min-h-screen text-slate-100 font-sans flex flex-col justify-between relative overflow-x-hidden selection:bg-indigo-500 selection:text-white pb-16 md:pb-0">
 
-  <div class="container">
-    <h1>Ashray Bar & Beverage Menu</h1>
-    <p class="subtitle">Hotel Inder Paradise, Nagaur ke bar menu ke sabhi items yahan dekhein. Right se left swipe karke pne paltein.</p>
+    <!-- 🌌 Background Lighting Effects -->
+    <div class="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-indigo-600/20 rounded-full blur-[120px] orb-1 pointer-events-none"></div>
+    <div class="absolute top-[30%] right-[-10%] w-[450px] h-[450px] bg-purple-600/20 rounded-full blur-[120px] orb-2 pointer-events-none"></div>
 
-    <!-- Search Box -->
-    <div class="menu-search-box">
-      <input type="text" id="menuSearch" placeholder="🔍 Koi bhi drink ya beverage search karein..." onkeyup="filterMenu()">
-    </div>
-
-    <!-- Category Filter Quick Tabs -->
-    <div class="menu-tabs" id="menuTabsContainer">
-      <!-- Tabs will be generated dynamically -->
-    </div>
-
-    <!-- Swipeable Menu Book Viewport -->
-    <div class="menu-book-viewport">
-      <div class="menu-scroll-track" id="menuScrollTrack">
-        <!-- Categories will be dynamically injected here -->
-      </div>
-
-      <div class="menu-nav-instructions">
-        <span>💡 Tip: Left ya Right scroll karke menu ke pne paltein</span>
-        <div class="scroll-arrows">
-          <button class="scroll-btn" onclick="slideMenu('left')"><i class="fa-solid fa-arrow-left"></i></button>
-          <button class="scroll-btn" onclick="slideMenu('right')"><i class="fa-solid fa-arrow-right"></i></button>
+    <!-- 🌐 Header Section (Center Logo, Right Sign-In, Left Menu) -->
+    <header class="w-full py-4 px-6 md:px-12 flex justify-between items-center border-b border-white/5 backdrop-blur-md relative z-20 sticky top-0 bg-brand-950/80">
+        <div class="flex items-center space-x-4 text-sm text-slate-400">
+            <a href="#tools" class="hover:text-indigo-400 transition hidden sm:inline">Tools</a>
+            <a href="#pricing" class="hover:text-indigo-400 transition hidden sm:inline">Pricing</a>
         </div>
-      </div>
-    </div>
-  </div>
-
-  <footer>
-    <p>© 2026 Hotel Inder Paradise, Didwana Road, Nagaur, Rajasthan. All Rights Reserved.</p>
-  </footer>
-
-  <script>
-    // Complete Bar Menu Database extracted directly from your hotel menu images
-    const barMenuCategories = [
-      {
-        id: "indian-beer",
-        title: "Indian Beer (650 ML)",
-        items: [
-          { name: "Kingfisher Strong", price: "260" },
-          { name: "Kingfisher Ultra", price: "400" },
-          { name: "Kingfisher Ultra Max", price: "410" },
-          { name: "Kingfisher Storm", price: "410" },
-          { name: "King Fisher Lager", price: "260" },
-          { name: "Tuborg Strong", price: "260" },
-          { name: "Tuborg Green", price: "290" },
-          { name: "Tuborg Classic", price: "310" },
-          { name: "Haywards 5000", price: "280" },
-          { name: "Budweiser Magnum", price: "480" },
-          { name: "Budweiser Beer", price: "430" },
-          { name: "Carlsberg (Elephant)", price: "350" },
-          { name: "Carlsberg (Lager)", price: "340" },
-          { name: "Foster (Lager)", price: "370" },
-          { name: "Foster (Strong)", price: "360" }
-        ]
-      },
-      {
-        id: "important-beer",
-        title: "Important Beer (330 ML)",
-        items: [
-          { name: "Corona Beer", price: "400" },
-          { name: "Hoegaarden Beer", price: "300" },
-          { name: "Bira White Beer", price: "200" },
-          { name: "Heineken Beer", price: "350" }
-        ]
-      },
-      {
-        id: "alcoholic-drink",
-        title: "Alcoholic Drink / Breezer (275 ML)",
-        items: [
-          { name: "Bacardi Pre. + Cranberry", price: "220" },
-          { name: "Bacardi Pre. + Lemonade", price: "220" },
-          { name: "Bacardi Pre. + Orange", price: "220" },
-          { name: "Bacardi Pre. + J/P", price: "220" }
-        ]
-      },
-      {
-        id: "aerated-drinks",
-        title: "Aerated Drinks & Juice",
-        items: [
-          { name: "Coke Can", price: "50" },
-          { name: "Sprite Can", price: "50" },
-          { name: "Thums Up", price: "50" },
-          { name: "Diet Coke", price: "50" },
-          { name: "Fanta", price: "50" },
-          { name: "Water Bottle", price: "30" },
-          { name: "Tonic / Soda / Water", price: "50" },
-          { name: "Guava Juice", price: "60" },
-          { name: "Mango Juice", price: "50" },
-          { name: "Orange Juice", price: "50" },
-          { name: "Pine Apple Juice", price: "50" },
-          { name: "Mix Fruit Juice", price: "60" },
-          { name: "Red Bull", price: "200" },
-          { name: "Power Horse", price: "150" }
-        ]
-      },
-      {
-        id: "red-wine",
-        title: "Red Wine",
-        items: [
-          { name: "Sula Satori Merlot (Bottle)", price: "2400" },
-          { name: "Sula Satori Merlot (By The Glass)", price: "500" },
-          { name: "Grover La Reserve (Bottle)", price: "2400" },
-          { name: "Grover La Reserve (By The Glass)", price: "500" },
-          { name: "Sula Shiraz Cabernet (Bottle)", price: "2300" },
-          { name: "Sula Shiraz Cabernet (By The Glass)", price: "500" }
-        ]
-      },
-      {
-        id: "sparkling-wine",
-        title: "Sparkling Wine",
-        items: [
-          { name: "Sula Brut (Bottle)", price: "3100" },
-          { name: "Sula Sauvignon Blanc (Bottle)", price: "1800" },
-          { name: "Sula Sauvignon Blanc (By The Glass)", price: "400" },
-          { name: "Grover Blanc De Blanc (Bottle)", price: "2400" },
-          { name: "Grover Blanc De Blanc (By The Glass)", price: "500" }
-        ]
-      },
-      {
-        id: "scotch-whisky",
-        title: "Blended Scotch Whisky (30 ML / 60 ML)",
-        items: [
-          { name: "The Glenlivet 12 Year", price: "450 / 900" },
-          { name: "Chivas Regal 12 Year", price: "350 / 650" },
-          { name: "Johnnie Walker B/L", price: "350 / 650" },
-          { name: "Teacher's Highland Cream", price: "180 / 350" },
-          { name: "Johnnie Walker R/L", price: "180 / 350" },
-          { name: "Teacher's 50", price: "230 / 450" },
-          { name: "Black Dog Reserve", price: "180 / 350" },
-          { name: "Black Dog 12 Years", price: "250 / 490" },
-          { name: "100 Piper Whisky", price: "250 / 490" },
-          { name: "Ballantine 12 Years", price: "180 / 350" },
-          { name: "Black & White", price: "210 / 400" },
-          { name: "Vat 69", price: "180 / 350" }
-        ]
-      },
-      {
-        id: "premium-whisky",
-        title: "Premium Whisky (30 ML / 60 ML)",
-        items: [
-          { name: "Blenders Pride (Premium)", price: "110 / 200" },
-          { name: "Blender Pried (Reserve)", price: "120 / 210" },
-          { name: "Antiquity Blue Whisky", price: "110 / 200" },
-          { name: "Singnature Whisky", price: "110 / 200" },
-          { name: "Royal Stag Whisky", price: "90 / 160" },
-          { name: "Royal Challenge Whisky", price: "110 / 200" },
-          { name: "MC Dowell's No.1 Deluxe Whisky", price: "70 / 130" },
-          { name: "Imperial Blue Whisky", price: "90 / 160" }
-        ]
-      },
-      {
-        id: "vodka",
-        title: "Vodka (30 ML / 60 ML)",
-        items: [
-          { name: "Grey Goose", price: "350 / 650" },
-          { name: "Absolut", price: "210 / 400" },
-          { name: "Sim-off", price: "120 / 230" },
-          { name: "Sim-off Apple", price: "120 / 230" },
-          { name: "Sim-off Orange", price: "120 / 230" },
-          { name: "Romanov-off", price: "100 / 190" },
-          { name: "Magic Moments", price: "100 / 190" }
-        ]
-      },
-      {
-        id: "gin-rum",
-        title: "Gin & Rum (30 ML / 60 ML)",
-        items: [
-          { name: "Bombay Sapphire (Gin)", price: "180 / 350" },
-          { name: "Blue Riband (Gin)", price: "90 / 170" },
-          { name: "Bacardi White Rum", price: "110 / 200" },
-          { name: "Bacardi Dark Rum", price: "80 / 150" },
-          { name: "Captain Morgan Rum", price: "80 / 150" },
-          { name: "Old Monk Rum", price: "80 / 150" },
-          { name: "MC Dowell's No. 1 Celebration", price: "70 / 150" }
-        ]
-      },
-      {
-        id: "tequila-shot",
-        title: "Tequila Shot",
-        items: [
-          { name: "Camino Gold Tequila", price: "220" },
-          { name: "Camino Silver Tequila", price: "220" },
-          { name: "Komakali Gold Tequila", price: "220" },
-          { name: "Broinhemta Tequila", price: "220" }
-        ]
-      },
-      {
-        id: "cocktail",
-        title: "Cocktail Alcoholic Drink",
-        items: [
-          { name: "Mojito", price: "350" },
-          { name: "Screwdriver", price: "260" },
-          { name: "Sex On The Beach", price: "300" },
-          { name: "Cosmopolitan", price: "300" },
-          { name: "Pina Colada", price: "260" },
-          { name: "Sangria", price: "450" }
-        ]
-      },
-      {
-        id: "mocktail",
-        title: "Mocktail Non Alcoholic Drink",
-        items: [
-          { name: "Fresh Lime Soda", price: "70" },
-          { name: "Virgin Mojito", price: "180" },
-          { name: "Blue Lagoon", price: "180" },
-          { name: "Virgin Margarita", price: "180" },
-          { name: "Guava Punch", price: "180" },
-          { name: "Virgin Mary", price: "180" },
-          { name: "Virgin Mango Mojito", price: "180" },
-          { name: "Virgin Orange Mojito", price: "180" }
-        ]
-      },
-      {
-        id: "snacks",
-        title: "Bar Snacks Menu",
-        items: [
-          { name: "Chilly Paneer (Dry/Gravy)", price: "320 / 340" },
-          { name: "Veg. Manchurian (Dry/Gravy)", price: "230 / 240" },
-          { name: "Paneer 65", price: "360" },
-          { name: "Veg Crispy Corn", price: "200" },
-          { name: "Veg Spring Roll", price: "230" },
-          { name: "French Fry", price: "200" },
-          { name: "Masala Peanut", price: "100" },
-          { name: "Paneer Bhuji", price: "390" },
-          { name: "Amritsari Paneer Tikka", price: "320" },
-          { name: "Lasauni Paneer Tikka", price: "310" },
-          { name: "Achari Paneer Tikka", price: "340" },
-          { name: "Haryali Paneer Tikka", price: "330" },
-          { name: "Malai Paneer Tikka", price: "330" },
-          { name: "Paneer Tikka", price: "320" },
-          { name: "Hara Bhara Kabab", price: "230" },
-          { name: "Veg Seekh Kabab", price: "210" },
-          { name: "Inder Paradise's Special Kabab", price: "390" },
-          { name: "Roasted Masala Papad", price: "60" },
-          { name: "Fry Masala Papad", price: "70" },
-          { name: "Green Salad", price: "100" }
-        ]
-      }
-    ];
-
-    function renderMenuBook(categories) {
-      const track = document.getElementById('menuScrollTrack');
-      const tabsContainer = document.getElementById('menuTabsContainer');
-
-      // Render Tabs
-      tabsContainer.innerHTML = `
-        <button class="menu-tab active" onclick="scrollToCategory('all', this)">All Categories</button>
-        ${categories.map(cat => `<button class="menu-tab" onclick="scrollToCategory('${cat.id}', this)">${cat.title}</button>`).join('')}
-      `;
-
-      // Render Pages
-      track.innerHTML = categories.map(cat => `
-        <div class="menu-category-page" id="page-${cat.id}">
-          <h2 class="category-title">${cat.title}</h2>
-          <div class="items-table-list">
-            ${cat.items.map(item => `
-              <div class="menu-row-item">
-                <span class="item-name">${item.name}</span>
-                <span class="item-price">₹${item.price}</span>
-              </div>
-            `).join('')}
-          </div>
+        
+        <div class="absolute left-1/2 transform -translate-x-1/2">
+            <a href="/" class="text-2xl font-black tracking-tight bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+                Urlify.io
+            </a>
         </div>
-      `).join('');
-    }
 
-    function scrollToCategory(catId, btn) {
-      document.querySelectorAll('.menu-tab').forEach(t => t.classList.remove('active'));
-      btn.classList.add('active');
+        <div class="flex items-center space-x-3">
+            <div id="user-profile-display" class="hidden text-xs text-indigo-300 font-medium bg-indigo-500/10 border border-indigo-500/20 px-3 py-1.5 rounded-lg"></div>
+            <button onclick="openLoginModal()" class="bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold px-4 py-2 rounded-lg transition shadow-lg shadow-indigo-600/25">
+                Sign In
+            </button>
+        </div>
+    </header>
 
-      if (catId === 'all') {
-        document.getElementById('menuScrollTrack').scrollTo({ left: 0, behavior: 'smooth' });
-        return;
-      }
+    <!-- 🚀 Main Body Content -->
+    <main class="flex-grow flex flex-col items-center px-4 py-8 relative z-20 max-w-5xl mx-auto w-full space-y-16">
+        
+        <!-- 🌟 Hero Section -->
+        <section class="text-center max-w-3xl pt-6">
+            <div class="inline-flex items-center gap-2 bg-indigo-500/10 border border-indigo-500/20 px-3 py-1 rounded-full text-xs text-indigo-300 font-medium mb-4 animate-bounce">
+                <span class="w-2 h-2 rounded-full bg-indigo-400"></span>
+                Autonomous Cloud Vault & AI Asset Pipeline
+            </div>
+            <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight mb-4 text-white">
+                Turn any URL into <span class="bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">Smart Assets</span>
+            </h1>
+            <p class="text-slate-400 text-base md:text-lg max-w-xl mx-auto">
+                Bi-directional media conversion, instant URL generation, and AI-driven asset management in one unified space.
+            </p>
+        </section>
 
-      const pageElem = document.getElementById(`page-${catId}`);
-      if (pageElem) {
-        pageElem.scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
-      }
-    }
+        <!-- 🎛️ Tool Boxes Grid -->
+        <section id="tools" class="w-full space-y-6">
+            <div class="text-center">
+                <h2 class="text-2xl font-bold text-white">Explore Conversion Tools 🛠️</h2>
+                <p class="text-xs text-slate-400">Choose your desired utility below to get started instantly.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="glass-panel p-5 rounded-2xl flex flex-col justify-between hover:border-indigo-500/40 transition">
+                    <div>
+                        <span class="text-2xl mb-2 block">🖼️</span>
+                        <h3 class="font-bold text-white text-base mb-1">Image to URL</h3>
+                        <p class="text-xs text-slate-400 mb-4">Convert local PNG, JPG, WebP into permanent public hosting links.</p>
+                    </div>
+                    <button onclick="openToolModal('Image to URL')" class="w-full bg-indigo-600/20 hover:bg-indigo-600 text-indigo-300 hover:text-white py-2 rounded-xl text-xs font-semibold transition border border-indigo-500/30">
+                        Try Now &rarr;
+                    </button>
+                </div>
 
-    function slideMenu(direction) {
-      const track = document.getElementById('menuScrollTrack');
-      const scrollAmount = 400;
-      if (direction === 'left') {
-        track.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-      } else {
-        track.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-      }
-    }
+                <div class="glass-panel p-5 rounded-2xl flex flex-col justify-between hover:border-purple-500/40 transition">
+                    <div>
+                        <span class="text-2xl mb-2 block">🔗</span>
+                        <h3 class="font-bold text-white text-base mb-1">URL to Image / Media</h3>
+                        <p class="text-xs text-slate-400 mb-4">Extract and download raw media elements or images from any web page link.</p>
+                    </div>
+                    <button onclick="openToolModal('URL to Media')" class="w-full bg-purple-600/20 hover:bg-purple-600 text-purple-300 hover:text-white py-2 rounded-xl text-xs font-semibold transition border border-purple-500/30">
+                        Try Now &rarr;
+                    </button>
+                </div>
 
-    function filterMenu() {
-      const query = document.getElementById('menuSearch').value.toLowerCase();
-      if (!query) {
-        renderMenuBook(barMenuCategories);
-        return;
-      }
+                <div class="glass-panel p-5 rounded-2xl flex flex-col justify-between hover:border-pink-500/40 transition">
+                    <div>
+                        <span class="text-2xl mb-2 block">📄</span>
+                        <h3 class="font-bold text-white text-base mb-1">PDF & Excel to URL</h3>
+                        <p class="text-xs text-slate-400 mb-4">Upload office document sheets and generate secure viewable web links.</p>
+                    </div>
+                    <button onclick="openToolModal('PDF/Excel to URL')" class="w-full bg-pink-600/20 hover:bg-pink-600 text-pink-300 hover:text-white py-2 rounded-xl text-xs font-semibold transition border border-pink-500/30">
+                        Try Now &rarr;
+                    </button>
+                </div>
+            </div>
+        </section>
 
-      const filteredCategories = barMenuCategories.map(cat => {
-        const filteredItems = cat.items.filter(item => item.name.toLowerCase().includes(query));
-        return { ...cat, items: filteredItems };
-      }).filter(cat => cat.items.length > 0);
+        <!-- 📊 Comparison Table -->
+        <section id="comparison" class="w-full space-y-6">
+            <h2 class="text-2xl font-bold text-center text-white">Why Urlify.io Stands Out ⚖️</h2>
+            <div class="glass-panel overflow-hidden rounded-2xl">
+                <table class="w-full text-left border-collapse text-xs md:text-sm">
+                    <thead>
+                        <tr class="border-b border-white/10 bg-slate-900/50 text-slate-300">
+                            <th class="p-4 font-semibold">Core Feature</th>
+                            <th class="p-4 font-semibold text-indigo-400">Urlify.io ⚡</th>
+                            <th class="p-4 font-semibold text-slate-500">Standard Hosts ❌</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-white/5 text-slate-300">
+                        <tr>
+                            <td class="p-4 font-medium">Bi-directional Conversion</td>
+                            <td class="p-4 text-emerald-400 font-semibold">✔️ Supported</td>
+                            <td class="p-4 text-red-400">❌ One-way only</td>
+                        </tr>
+                        <tr>
+                            <td class="p-4 font-medium">AI Metadata Tagging</td>
+                            <td class="p-4 text-emerald-400 font-semibold">✔️ Automatic Alt/Markdown</td>
+                            <td class="p-4 text-red-400">❌ Manual work</td>
+                        </tr>
+                        <tr>
+                            <td class="p-4 font-medium">Link Lifespan</td>
+                            <td class="p-4 text-emerald-400 font-semibold">✔️ Never Expire</td>
+                            <td class="p-4 text-amber-400">⚠️ Expires in 30 days</td>
+                        </tr>
+                        <tr>
+                            <td class="p-4 font-medium">Ads Clutter</td>
+                            <td class="p-4 text-emerald-400 font-semibold">✔️ Clean Space UI</td>
+                            <td class="p-4 text-red-400">❌ Heavy Popup Ads</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
 
-      renderMenuBook(filteredCategories);
-    }
+        <!-- 💎 3-Tier Subscription Plans -->
+        <section id="pricing" class="w-full space-y-6">
+            <div class="text-center">
+                <h2 class="text-2xl font-bold text-white">Affordable Pricing Tiers 💎</h2>
+                <p class="text-xs text-slate-400">Choose a plan that fits your professional workflow.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="glass-panel p-6 rounded-3xl border border-white/10 flex flex-col justify-between">
+                    <div>
+                        <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Starter</span>
+                        <h3 class="text-2xl font-extrabold text-white mt-2 mb-3">₹0 <span class="text-xs font-normal text-slate-400">/ lifetime</span></h3>
+                        <ul class="space-y-2 text-xs text-slate-300 mb-6">
+                            <li>✔️ Standard File Conversions</li>
+                            <li>✔️ Basic Link Generation</li>
+                            <li>✔️ Community Access</li>
+                        </ul>
+                    </div>
+                    <button onclick="openLoginModal()" class="w-full bg-white/10 hover:bg-white/15 text-white py-2.5 rounded-xl font-medium text-xs transition">Get Started</button>
+                </div>
 
-    // Initial Load
-    renderMenuBook(barMenuCategories);
-  </script>
-</body>
-</html>
+                <div class="glass-panel p-6 rounded-3xl border-2 border-indigo-500/50 flex flex-col justify-between relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-indigo-600 text-white text-[9px] font-bold px-3 py-1 rounded-bl-xl uppercase">Popular</div>
+                    <div>
+                        <span class="text-[10px] font-bold text-indigo-400 uppercase tracking-widest">Professional</span>
+                        <h3 class="text-2xl font-extrabold text-white mt-2 mb-3">₹199 <span class="text-xs font-normal text-slate-400">/ month</span></h3>
+                        <ul class="space-y-2 text-xs text-slate-300 mb-6">
+                            <li>✔️ Unlimited Extractions</li>
+                            <li>✔️ AI Metadata Tag Generator</li>
+                            <li>✔️ High-speed Global CDN</li>
+                        </ul>
+                    </div>
+                    <button onclick="alert('Redirecting to secure gateway...')" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white py-2.5 rounded-xl font-medium text-xs transition shadow-lg shadow-indigo-600/30">Choose Pro</button>
+                </div>
+
+                <div class="glass-panel p-6 rounded-3xl border border-purple-500/30 flex flex-col justify-between">
+                    <div>
+                        <span class="text-[10px] font-bold text-purple-400 uppercase tracking-widest">Developer API</span>
+                        <h3 class="text-2xl font-extrabold text-white mt-2 mb-3">₹499 <span class="text-xs font-normal text-slate-400">/ month</span></h3>
+                        <ul class="space-y-2 text-xs text-slate-300 mb-6">
+                            <li>✔️ Direct API Access</li>
+                            <li>✔️ Bulk Pipeline Automation</li>
+                            <li>✔️ Dedicated Support</li>
+                        </ul>
+                    </div>
+                    <button onclick="alert('Redirecting to API onboarding...')" class="w-full bg-purple-600/20 hover:bg-purple-600 text-purple-300 hover:text-white py-2.5 rounded-xl font-medium text-xs transition border border-purple-500/40">Get API Access</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ⭐ AI Automatic Review Section -->
+        <section id="reviews" class="w-full space-y-6">
+            <div class="text-center">
+                <h2 class="text-2xl font-bold text-white">AI Automation Feedback 🤖</h2>
+                <p class="text-xs text-slate-400">Share your experience to help improve our neural pipelines.</p>
+            </div>
+
+            <div class="glass-panel p-6 rounded-3xl max-w-xl mx-auto space-y-4">
+                <div>
+                    <label class="block text-xs font-semibold text-slate-400 mb-1">Your Name</label>
+                    <input id="review-name-input" type="text" placeholder="Enter your name" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-indigo-500"/>
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-400 mb-1">Select Rating</label>
+                    <div id="star-rating-container" class="flex space-x-2 text-xl cursor-pointer">
+                        <span onclick="selectReviewStars(3)">⭐</span>
+                        <span onclick="selectReviewStars(4)">⭐</span>
+                        <span onclick="selectReviewStars(5)">⭐</span>
+                    </div>
+                </div>
+                <div id="auto-review-options" class="space-y-2 hidden">
+                    <label class="block text-xs font-semibold text-indigo-300">Select generated smart review:</label>
+                    <div id="review-chips-list" class="flex flex-col gap-2"></div>
+                </div>
+                <button id="submit-user-review-btn" onclick="submitUserReview()" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white py-2.5 rounded-xl font-semibold text-xs transition shadow-lg hidden">
+                    Submit Review with Animation
+                </button>
+            </div>
+        </section>
+
+        <!-- 👨‍💻 Owner / Creator Profile Box -->
+        <section class="w-full max-w-xl mx-auto">
+            <div class="glass-panel p-6 rounded-3xl flex items-center space-x-4 border border-white/10">
+                <div class="w-14 h-14 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white font-bold text-xl">
+                    U
+                </div>
+                <div>
+                    <h4 class="text-sm font-bold text-white">Created by Urlify Core Team</h4>
+                    <p class="text-xs text-slate-400 mt-0.5">Passionate developer and cloud utility architect building next-gen developer tools for global creators.</p>
+                    <span class="inline-block mt-2 text-[10px] text-indigo-400 bg-indigo-500/10 px-2 py-0.5 rounded-full">Verified Maintainer</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ❓ High-SEO FAQ Section (Accordion Box Format with Arrows) -->
+        <section id="faq" class="w-full space-y-3 max-w-3xl mx-auto">
+            <h2 class="text-2xl font-bold text-center text-white mb-6">Frequently Asked Questions 💡</h2>
+            
+            <details class="glass-panel p-4 rounded-xl cursor-pointer">
+                <summary class="font-semibold text-indigo-300 text-xs md:text-sm flex justify-between items-center">
+                    How to convert images to permanent public URLs for free without expiration? 
+                    <span class="transform transition-transform duration-300">▼</span>
+                </summary>
+                <p class="text-slate-400 text-xs mt-3 leading-relaxed">Urlify.io ka उपयोग करके आप बिना किसी रजिस्ट्रेशन के अपनी इमेज (PNG, JPG, WebP) को तुरंत परमानेंट पब्लिक लिंक में बदल सकते हैं जो कभी एक्सपायर नहीं होते।</p>
+            </details>
+
+            <details class="glass-panel p-4 rounded-xl cursor-pointer">
+                <summary class="font-semibold text-indigo-300 text-xs md:text-sm flex justify-between items-center">
+                    What is the best secure file to URL converter for web developers? 
+                    <span class="transform transition-transform duration-300">▼</span>
+                </summary>
+                <p class="text-slate-400 text-xs mt-3 leading-relaxed">यह प्लेटफॉर्म डेवलपर्स और ब्लॉगर्स के लिए सबसे सुरक्षित है क्योंकि इसमें एंड-टू-एंड एनक्रिप्शन और ऑटोमैटिक क्लाउड ऑप्टिमाइज़ेशन मिलता है।</p>
+            </details>
+
+            <details class="glass-panel p-4 rounded-xl cursor-pointer">
+                <summary class="font-semibold text-indigo-300 text-xs md:text-sm flex justify-between items-center">
+                    How to extract media and videos from any webpage link instantly? 
+                    <span class="transform transition-transform duration-300">▼</span>
+                </summary>
+                <p class="text-slate-400 text-xs mt-3 leading-relaxed">हमारे वीडियो और मीडिया एक्सट्रैक्टर टूल की मदद से आप किसी भी वेब लिंक से हाई-रिज़ॉल्यूशन वीडियो या इमेजेस को एक सेकंड में डाउनलोड या लिंक रूप में प्राप्त कर सकते हैं।</p>
+            </details>
+
+            <details class="glass-panel p-4 rounded-xl cursor-pointer">
+                <summary class="font-semibold text-indigo-300 text-xs md:text-sm flex justify-between items-center">
+                    Can I use generated URLs directly in HTML img tags and Markdown documents? 
+                    <span class="transform transition-transform duration-300">▼</span>
+                </summary>
+                <p class="text-slate-400 text-xs mt-3 leading-relaxed">हाँ! जनरेट किए गए डायरेक्ट यूआरएल पूरी तरह से अनुकूलित होते हैं, जिन्हें आप सीधे HTML, CSS, या Markdown फाइलों में उपयोग कर सकते हैं।</p>
+            </details>
+
+            <details class="glass-panel p-4 rounded-xl cursor-pointer">
+                <summary class="font-semibold text-indigo-300 text-xs md:text-sm flex justify-between items-center">
+                    Why is Urlify.io better and faster than Imgur or traditional image hosts? 
+                    <span class="transform transition-transform duration-300">▼</span>
+                </summary>
+                <p class="text-slate-400 text-xs mt-3 leading-relaxed">अन्य होस्टिंग साइट्स के विपरीत, यहाँ कोई विज्ञापन क्लटर (Ads clutter) नहीं है, ग्लोबल सीडीएन (CDN) स्पीड तेज है और एआई ऑटोमेशन रिव्यू सुविधा मिलती है।</p>
+            </details>
+        </section>
+
+    </main>
+
+    <!-- 📱 Bottom Navigation Bar for Mobile & Quick Access -->
+    <nav class="fixed bottom-0 left-0 right-0 bg-brand-950/90 backdrop-blur-md border-t border-white/
