@@ -50,17 +50,13 @@
 </head>
 <body class="bg-brand-950 min-h-screen text-slate-100 font-sans flex flex-col justify-between relative overflow-x-hidden selection:bg-indigo-500 selection:text-white pb-20 md:pb-0">
 
-    <!-- 🌌 Background Lighting Effects -->
     <div class="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-indigo-600/20 rounded-full blur-[120px] orb-1 pointer-events-none"></div>
     <div class="absolute top-[30%] right-[-10%] w-[450px] h-[450px] bg-purple-600/20 rounded-full blur-[120px] orb-2 pointer-events-none"></div>
 
-    <!-- 🌐 Header Section with Sub-menus & Centered Brand -->
     <header class="w-full py-4 px-6 md:px-12 flex justify-between items-center border-b border-white/5 backdrop-blur-md relative z-30 sticky top-0 bg-brand-950/80">
-        <!-- Left Navigation with Sub-menus -->
         <div class="flex items-center space-x-6 text-sm text-slate-300 font-medium">
             <a href="/" class="hover:text-indigo-400 transition hidden sm:inline">🏠 Home</a>
             
-            <!-- Tools Dropdown Sub-menu -->
             <div class="relative group">
                 <button class="hover:text-indigo-400 transition flex items-center gap-1 py-2">
                     🛠️ Tools ▾
@@ -76,14 +72,12 @@
             <a href="#pricing" class="hover:text-indigo-400 transition hidden sm:inline">💎 Pricing</a>
         </div>
         
-        <!-- Center Logo -->
         <div class="absolute left-1/2 transform -translate-x-1/2">
             <a href="/" class="text-2xl font-black tracking-tight bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
                 Urlify.io
             </a>
         </div>
 
-        <!-- Right Sign In / User Profile -->
         <div class="flex items-center space-x-3">
             <div id="user-profile-display" class="hidden text-xs text-indigo-300 font-medium bg-indigo-500/10 border border-indigo-500/20 px-3 py-1.5 rounded-lg"></div>
             <button onclick="openLoginModal()" class="bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold px-4 py-2 rounded-lg transition shadow-lg shadow-indigo-600/25">
@@ -92,37 +86,35 @@
         </div>
     </header>
 
-    <!-- 🚀 Main Body Content -->
     <main class="flex-grow flex flex-col items-center px-4 py-8 relative z-20 max-w-5xl mx-auto w-full space-y-16">
         
-        <!-- 🌟 Unique AI Automation Hero Template -->
-        <section class="text-center max-w-3xl pt-8 relative">
-            <div class="absolute -top-10 left-1/2 -translate-x-1/2 w-32 h-32 bg-indigo-500/15 rounded-full blur-2xl pointer-events-none"></div>
+        <section class="text-center max-w-4xl pt-10 relative">
+            <div class="absolute -top-12 left-1/2 -translate-x-1/2 w-48 h-48 bg-indigo-500/20 rounded-full blur-3xl pointer-events-none"></div>
             
-            <div class="inline-flex items-center gap-2 bg-indigo-500/10 border border-indigo-500/20 px-3.5 py-1.5 rounded-full text-xs text-indigo-300 font-medium mb-6 shadow-inner">
+            <div class="inline-flex items-center gap-2 bg-indigo-500/10 border border-indigo-500/20 px-4 py-1.5 rounded-full text-xs text-indigo-300 font-medium mb-6 shadow-inner">
                 <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                Neural Pipeline v2.4 Active
+                ⚡ Next-Gen Media to URL & Asset Pipeline
             </div>
             
-            <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight mb-6 text-white leading-tight">
+            <h1 class="text-4xl md:text-7xl font-extrabold tracking-tight mb-6 text-white leading-tight">
                 Turn any URL into <span class="bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">Smart Assets</span> with AI
             </h1>
             
-            <p class="text-slate-400 text-base md:text-lg max-w-2xl mx-auto mb-8 leading-relaxed">
+            <p class="text-slate-400 text-base md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
                 Bi-directional media conversion, automated metadata tagging, and instant cloud-hosted URL publishing designed for high-performance workflows.
             </p>
 
-            <div class="flex flex-wrap justify-center gap-4">
-                <a href="#tools" class="bg-indigo-600 hover:bg-indigo-500 text-white font-semibold px-6 py-3.5 rounded-xl text-sm transition shadow-lg shadow-indigo-600/30 flex items-center gap-2">
-                    <span>🚀 Explore All Tools</span>
-                </a>
-                <a href="#pricing" class="bg-white/5 hover:bg-white/10 text-slate-200 font-semibold px-6 py-3.5 rounded-xl text-sm transition border border-white/10">
-                    💎 View Pricing Plans
-                </a>
+            <div class="glass-panel p-8 md:p-12 rounded-3xl border border-indigo-500/30 max-w-2xl mx-auto shadow-2xl relative group cursor-pointer" onclick="openToolModal('Instant Media Uploader')">
+                <div class="absolute inset-0 bg-indigo-600/5 rounded-3xl opacity-0 group-hover:opacity-100 transition"></div>
+                <div class="text-4xl mb-3">📁</div>
+                <h3 class="text-lg font-bold text-white mb-2">Drag, Drop, or Paste your File / Image</h3>
+                <p class="text-xs text-slate-400 mb-6">Supports PNG, JPG, WebP, MP4, PDF (Instant Direct Link Generation)</p>
+                <div class="inline-block bg-indigo-600 hover:bg-indigo-500 text-white font-semibold px-6 py-3 rounded-xl text-xs transition shadow-lg shadow-indigo-600/30">
+                    Browse or Paste (Ctrl+V)
+                </div>
             </div>
         </section>
 
-        <!-- 🎛️ Tool Boxes Grid with Try Now Buttons -->
         <section id="tools" class="w-full space-y-6">
             <div class="text-center">
                 <h2 class="text-2xl font-bold text-white">Explore Conversion Tools 🛠️</h2>
@@ -165,7 +157,6 @@
             </div>
         </section>
 
-        <!-- 📊 Premium Comparison Table -->
         <section id="comparison" class="w-full space-y-6">
             <h2 class="text-2xl font-bold text-center text-white">Why Urlify.io Stands Out ⚖️</h2>
             <div class="glass-panel overflow-hidden rounded-2xl">
@@ -203,7 +194,6 @@
             </div>
         </section>
 
-        <!-- 💎 3-Tier Affordable Subscription Plans -->
         <section id="pricing" class="w-full space-y-6">
             <div class="text-center">
                 <h2 class="text-2xl font-bold text-white">Affordable Pricing Tiers 💎</h2>
@@ -253,7 +243,6 @@
             </div>
         </section>
 
-        <!-- ⭐ AI Automatic Review Section (Foodzilla Style with 3,4,5 stars & generated smart review chips) -->
         <section id="reviews" class="w-full space-y-6">
             <div class="text-center">
                 <h2 class="text-2xl font-bold text-white">AI Automation Feedback 🤖</h2>
@@ -283,7 +272,6 @@
             </div>
         </section>
 
-        <!-- 👨‍💻 Owner / Creator Profile Box -->
         <section class="w-full max-w-xl mx-auto">
             <div class="glass-panel p-6 rounded-3xl flex items-center space-x-4 border border-white/10">
                 <div class="w-14 h-14 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white font-bold text-xl">
@@ -297,7 +285,6 @@
             </div>
         </section>
 
-        <!-- ❓ High-SEO FAQ Section (Accordion Box Format with Arrows) -->
         <section id="faq" class="w-full space-y-3 max-w-3xl mx-auto">
             <h2 class="text-2xl font-bold text-center text-white mb-6">Frequently Asked Questions 💡</h2>
             
@@ -306,7 +293,7 @@
                     How to convert images to permanent public URLs for free without expiration? 
                     <span class="transform transition-transform duration-300">▼</span>
                 </summary>
-                <p class="text-slate-400 text-xs mt-3 leading-relaxed">Urlify.io ka उपयोग करके आप बिना किसी रजिस्ट्रेशन के अपनी इमेज (PNG, JPG, WebP) को तुरंत परमानेंट पब्लिक लिंक में बदल सकते हैं जो कभी एक्सपायर नहीं होते।</p>
+                <p class="text-slate-400 text-xs mt-3 leading-relaxed">Urlify.io का उपयोग करके आप बिना किसी रजिस्ट्रेशन के अपनी इमेज (PNG, JPG, WebP) को तुरंत परमानेंट पब्लिक लिंक में बदल सकते हैं जो कभी एक्सपायर नहीं होते।</p>
             </details>
 
             <details class="glass-panel p-4 rounded-xl cursor-pointer">
@@ -314,10 +301,10 @@
                     What is the best secure file to URL converter for web developers? 
                     <span class="transform transition-transform duration-300">▼</span>
                 </summary>
-         <p class="text-slate-400 text-xs mt-3 leading-relaxed">यह प्लेटफॉर्म डेवलपर्स और ब्लॉगर्स के लिए सबसे सुरक्षित है क्योंकि इसमें एंड-टू-एंड एनक्रिप्शन और ऑटोमैटिक क्लाउड ऑप्टिमाइज़ेशन मिलता है।</p>
+                <p class="text-slate-400 text-xs mt-3 leading-relaxed">यह प्लेटफॉर्म डेवलपर्स और ब्लॉगर्स के लिए सबसे सुरक्षित है क्योंकि इसमें एंड-टू-एंड एनक्रिप्शन और ऑटोमैटिक क्लाउड ऑप्टिमाइज़ेशन मिलता है।</p>
             </details>
 
-            <details class="glass-panel p-4 rounded-xl cursor-pointer">
+               <details class="glass-panel p-4 rounded-xl cursor-pointer">
                 <summary class="font-semibold text-indigo-300 text-xs md:text-sm flex justify-between items-center">
                     How to extract media and videos from any webpage link instantly? 
                     <span class="transform transition-transform duration-300">▼</span>
@@ -344,7 +331,6 @@
 
     </main>
 
-    <!-- 📱 Bottom Navigation Bar with Sub-menus / Options -->
     <nav class="fixed bottom-0 left-0 right-0 bg-brand-950/95 backdrop-blur-md border-t border-white/15 py-3 px-4 flex justify-around items-center z-40 md:hidden text-[11px] text-slate-300 font-medium">
         <a href="/" class="flex flex-col items-center hover:text-indigo-400">🏠 Home</a>
         <a href="#tools" class="flex flex-col items-center hover:text-indigo-400">🛠️ Tools</a>
@@ -353,28 +339,36 @@
         <button onclick="openLoginModal()" class="flex flex-col items-center hover:text-indigo-400">🔐 Sign In</button>
     </nav>
 
-    <!-- 🔐 Unique Modern Instagram Reel Style Login Modal -->
     <div id="login-modal" class="fixed inset-0 bg-black/85 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
         <div class="glass-panel max-w-sm w-full p-8 rounded-3xl text-center relative modal-animation border border-white/15 space-y-5 shadow-2xl">
             <button onclick="closeLoginModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-sm">✕</button>
             <div class="w-14 h-14 mx-auto rounded-full bg-gradient-to-tr from-indigo-500 to-pink-500 flex items-center justify-center text-white text-2xl font-bold shadow-lg">⚡</div>
-            <h3 class="text-2xl font-extrabold text-white tracking-tight">Welcome to Urlify</h3>
-            <p class="text-slate-400 text-xs leading-relaxed">Connect your Google workspace account securely. Permanent session enabled without auto-logout.</p>
+            <h3 class="text-2xl font-extrabold text-white tracking-tight">Sign in to Urlify</h3>
+            <p class="text-slate-400 text-xs leading-relaxed">Choose your preferred authentication method. Permanent session enabled.</p>
             
-            <button onclick="performGoogleLogin()" class="w-full bg-white hover:bg-slate-100 text-slate-900 font-bold py-3.5 rounded-2xl text-xs transition shadow-xl flex items-center justify-center gap-3 active:scale-95">
-                <svg class="w-4 h-4" viewBox="0 0 24 24"><path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.66-5.17 3.66-9.17z"/><path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.13 0-5.78-2.11-6.73-4.96H1.18v3.15C3.15 21.32 7.23 24 12 24z"/><path fill="#FBBC05" d="M5.27 14.24c-.25-.72-.38-1.49-.38-2.24s.13-1.52.38-2.24V6.61H1.18C.43 8.13 0 9.83 0 12s.43 3.87 1.18 5.39l4.09-3.15z"/><path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.23 0 3.15 2.68 1.18 6.61l4.09 3.15c.95-2.85 3.6-4.96 6.73-4.96z"/></svg>
-                <span>Continue with Google</span>
-            </button>
+            <div class="space-y-3 pt-2">
+                <button onclick="performGoogleLogin()" class="w-full bg-white hover:bg-slate-100 text-slate-900 font-bold py-3.5 rounded-2xl text-xs transition shadow-xl flex items-center justify-center gap-3 active:scale-95">
+                    <svg class="w-4 h-4" viewBox="0 0 24 24"><path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.66-5.17 3.66-9.17z"/><path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.13 0-5.78-2.11-6.73-4.96H1.18v3.15C3.15 21.32 7.23 24 12 24z"/><path fill="#FBBC05" d="M5.27 14.24c-.25-.72-.38-1.49-.38-2.24s.13-1.52.38-2.24V6.61H1.18C.43 8.13 0 9.83 0 12s.43 3.87 1.18 5.39l4.09-3.15z"/><path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.23 0 3.15 2.68 1.18 6.61l4.09 3.15c.95-2.85 3.6-4.96 6.73-4.96z"/></svg>
+                    <span>Continue with Google Gmail</span>
+                </button>
+
+                <button onclick="performPhoneLogin()" class="w-full bg-slate-900 hover:bg-slate-800 text-white font-semibold py-3 rounded-2xl text-xs transition border border-white/10 flex items-center justify-center gap-2">
+                    <span>🍏 Continue with Apple / Phone ID</span>
+                </button>
+
+                <button onclick="performEmailLogin()" class="w-full bg-indigo-600/20 hover:bg-indigo-600 text-indigo-300 hover:text-white font-semibold py-3 rounded-2xl text-xs transition border border-indigo-500/30 flex items-center justify-center gap-2">
+                    <span>✉️ Continue with Email ID</span>
+                </button>
+            </div>
         </div>
     </div>
 
-    <!-- 🛠️ Dynamic Tool Action Modal with AI Metadata Tag Generator -->
     <div id="tool-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
         <div class="glass-panel max-w-md w-full p-6 rounded-3xl text-center relative modal-animation border border-white/10 space-y-4">
             <button onclick="closeToolModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-sm">✕</button>
             <h3 id="modal-tool-title" class="text-xl font-bold text-white">Tool Workspace</h3>
             <div class="border-2 border-dashed border-slate-800 rounded-2xl p-5 bg-slate-900/50">
-                <p class="text-xs text-slate-300 mb-2">Drag & Drop file or insert target URL</p>
+                <p class="text-xs text-slate-300 mb-2">Drag & Drop file or Paste URL (Ctrl+V)</p>
                 <input type="text" placeholder="https://..." class="w-full bg-slate-900 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white"/>
             </div>
             <div class="text-left bg-indigo-950/40 p-3 rounded-xl border border-indigo-500/20">
@@ -387,7 +381,6 @@
         </div>
     </div>
 
-    <!-- 🎉 Thank You Animation Overlay -->
     <div id="thankyou-modal" class="fixed inset-0 bg-black/90 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
         <div class="glass-panel max-w-sm w-full p-8 rounded-3xl text-center modal-animation space-y-3">
             <div class="w-16 h-16 mx-auto rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-3xl animate-bounce">✨</div>
@@ -396,7 +389,6 @@
         </div>
     </div>
 
-    <!-- 📝 Footer with Legal Pages Menu (About, Contact, Privacy, Terms, Disclaimer) -->
     <footer class="w-full py-8 px-8 text-center text-xs text-slate-500 border-t border-white/5 relative z-20 flex flex-col md:flex-row justify-between items-center gap-4 mb-16 md:mb-0">
         <div>&copy; 2026 Urlify.io. All rights reserved. Built for high performance.</div>
         <div class="flex flex-wrap justify-center gap-6 text-slate-400">
@@ -408,7 +400,6 @@
         </div>
     </footer>
 
-    <!-- ⚡ JavaScript Logic for Persistence & Modals -->
     <script>
         window.addEventListener('DOMContentLoaded', () => {
             const savedUser = localStorage.getItem('urlify_user_email');
@@ -425,11 +416,33 @@
         }
 
         function performGoogleLogin() {
-            const mockEmail = "creator.user@gmail.com";
-            localStorage.setItem('urlify_user_email', mockEmail);
-            showUserProfile(mockEmail);
-            closeLoginModal();
-            alert("Google Sign-In successful! Profile saved permanently.");
+            const gmailAccount = prompt("Select or enter your Google Gmail account:", "creator.user@gmail.com");
+            if(gmailAccount) {
+                localStorage.setItem('urlify_user_email', gmailAccount);
+                showUserProfile(gmailAccount);
+                closeLoginModal();
+                alert("Google Sign-In successful with " + gmailAccount + "! Profile saved permanently.");
+            }
+        }
+
+        function performPhoneLogin() {
+            const phoneId = prompt("Enter your Apple ID or Phone number:", "+91 9876543210");
+            if(phoneId) {
+                localStorage.setItem('urlify_user_email', phoneId);
+                showUserProfile(phoneId);
+                closeLoginModal();
+                alert("Apple/Phone login successful!");
+            }
+        }
+
+        function performEmailLogin() {
+            const emailId = prompt("Enter your Email address:", "user@domain.com");
+            if(emailId) {
+                localStorage.setItem('urlify_user_email', emailId);
+                showUserProfile(emailId);
+                closeLoginModal();
+                alert("Email login successful!");
+            }
         }
 
         function showUserProfile(email) {
@@ -498,4 +511,4 @@
         }
     </script>
 </body>
-                                              </html>
+                    </html>
