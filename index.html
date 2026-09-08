@@ -3,14 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jitendra Portfolio</title>
+  <title>Jitendra Portfolio & Templates</title>
+  <!-- यूनिक फॉन्ट्स के लिए Google Fonts लिंक -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  
   <style>
-    /* बेसिक रिसेट */
+    /* 🎨 बेसिक रिसेट और थीम सेटिंग्स */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: 'Poppins', sans-serif;
     }
     body {
       background-color: #0b0f19;
@@ -18,7 +21,7 @@
       overflow-x: hidden;
     }
 
-    /* नेविगेशन बार (Navigation Bar) */
+    /* 🧭 नेविगेशन बार */
     .navbar {
       display: flex;
       justify-content: space-between;
@@ -65,7 +68,7 @@
       color: #38bdf8;
     }
     
-    /* टेम्पलेट्स ड्रॉपडाउन मेनू */
+    /* ड्रॉपडाउन मेनू */
     .dropdown-menu {
       position: absolute;
       top: 100%;
@@ -76,12 +79,11 @@
       padding: 10px 0;
       width: 180px;
       display: none;
-      box-shadow: 0 10px 15px -3px rgba(0,0,0,0.5);
       border-radius: 6px;
+      box-shadow: 0 10px 15px rgba(0,0,0,0.5);
     }
     .nav-center li:hover .dropdown-menu {
       display: block;
-      animation: slideDown 0.3s ease;
     }
     .dropdown-menu li a {
       padding: 10px 18px;
@@ -92,11 +94,6 @@
     .dropdown-menu li a:hover {
       background-color: #374151;
       color: #38bdf8;
-    }
-
-    @keyframes slideDown {
-      from { opacity: 0; transform: translateY(-10px); }
-      to { opacity: 1; transform: translateY(0); }
     }
 
     .nav-right {
@@ -111,45 +108,59 @@
       border-radius: 6px;
       cursor: pointer;
       font-size: 0.95rem;
-      transition: all 0.3s;
       text-decoration: none;
+      transition: all 0.3s;
     }
     .btn-auth:hover {
       background-color: #38bdf8;
       color: #0b0f19;
     }
 
-    /* "PORTFOLIO" बिग टेक्स्ट - बिना बैकग्राउंड और नए एनिमेशन के साथ */
+    /* ✨ पोर्टफोलियो टेक्स्ट और विशेष एनिमेशन (1s आना, 10s रुकना, फास्ट जाना) */
     .hero-ticker {
-      /* यहाँ से बैकग्राउंड हटा दिया गया है ताकि यह पूरी तरह ट्रांसपेरेंट रहे */
-      background: transparent; 
+      background: transparent;
       overflow: hidden;
       white-space: nowrap;
-      padding: 30px 0;
+      padding: 40px 0 20px 0;
+      text-align: center;
     }
     .ticker-text {
       display: inline-block;
-      /* यहाँ से आप font-size को बड़ा या छोटा कर सकते हैं */
-      font-size: 6rem; 
+      font-family: 'Orbitron', sans-serif;
+      font-size: 5.5rem;
       font-weight: 900;
       color: #38bdf8;
       text-transform: uppercase;
       letter-spacing: 6px;
-      animation: fastSlidePortfolio 12s linear infinite;
+      animation: portfolioCustomAnim 13s infinite ease-in-out;
     }
 
-    /* नया एनिमेशन: लेफ्ट से फास्ट आना, सेंटर में रुकना, फिर राइट जाना और तुरंत वापस लेफ्ट आना */
-    @keyframes fastSlidePortfolio {
-      0% { transform: translateX(-100%); }
-      20% { transform: translateX(0%); }   /* सेंटर में पहुँचना और रुकना शुरू */
-      70% { transform: translateX(0%); }   /* यहाँ तक सेंटर में 10 सेकंड रुकना */
-      90% { transform: translateX(100%); } /* राइट साइड तेजी से निकल जाना */
-      100% { transform: translateX(-100%); } /* तुरंत वापस लेफ्ट साइड पहुँचना */
+    @keyframes portfolioCustomAnim {
+      0% {
+        transform: translateX(-120%);
+        opacity: 0;
+      }
+      8% {
+        transform: translateX(0%);
+        opacity: 1;
+      }
+      85% {
+        transform: translateX(0%);
+        opacity: 1;
+      }
+      93% {
+        transform: translateX(120%);
+        opacity: 0;
+      }
+      100% {
+        transform: translateX(-120%);
+        opacity: 0;
+      }
     }
 
-    /* इंट्रो बॉक्स सेक्शन (क्यूब बॉक्स) */
+    /* 📦 इंट्रो बॉक्स सेक्शन (सही स्पेसिंग के साथ) */
     .intro-section {
-      padding: 40px 40px 80px 40px;
+      padding: 20px 40px 60px 40px;
       max-width: 1200px;
       margin: 0 auto;
     }
@@ -163,7 +174,7 @@
       justify-content: space-between;
       align-items: center;
       gap: 40px;
-      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 20px 25px rgba(0, 0, 0, 0.3);
     }
     .intro-left {
       flex: 1;
@@ -173,14 +184,25 @@
       font-size: 3.5rem;
       font-weight: 800;
       color: #ffffff;
-      margin-bottom: 20px;
+      margin-bottom: 10px;
+      font-family: 'Orbitron', sans-serif;
     }
     .intro-name span {
       color: #38bdf8;
     }
+    
+    /* 💻 डायनेमिक टाइपिंग/क्लियरिंग वेब डेवलपर टेक्स्ट */
+    .typing-role {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #f43f5e;
+      margin-bottom: 20px;
+      height: 40px;
+    }
+
     .intro-desc {
       color: #94a3b8;
-      font-size: 1.15rem;
+      font-size: 1.1rem;
       margin-bottom: 30px;
       line-height: 1.7;
     }
@@ -189,7 +211,7 @@
       gap: 20px;
     }
     
-    /* एक्सप्लोर बटन यूनिक एनिमेशन */
+    /* एक्सप्लोर बटन */
     .btn-explore {
       background: linear-gradient(135deg, #38bdf8, #2563eb);
       border: none;
@@ -200,8 +222,6 @@
       border-radius: 8px;
       cursor: pointer;
       text-decoration: none;
-      position: relative;
-      overflow: hidden;
       transition: transform 0.3s, box-shadow 0.3s;
     }
     .btn-explore:hover {
@@ -226,7 +246,7 @@
       color: #38bdf8;
     }
 
-    /* दाईं तरफ इमेज क्यूब बॉक्स */
+    /* इमेज क्यूब बॉक्स */
     .intro-right {
       flex: 1;
       min-width: 300px;
@@ -249,6 +269,91 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+    }
+
+    /* 🛒 टेम्पलेट्स सेक्शन और 10 कार्ड्स */
+    .templates-section {
+      padding: 60px 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .templates-heading {
+      font-size: 2.2rem;
+      color: #ffffff;
+      margin-bottom: 30px;
+      font-family: 'Orbitron', sans-serif;
+      border-left: 5px solid #38bdf8;
+      padding-left: 15px;
+    }
+    .templates-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 25px;
+    }
+    .template-card {
+      background-color: #111827;
+      border: 1px solid #1f2937;
+      border-radius: 12px;
+      overflow: hidden;
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.3s;
+    }
+    .template-card:hover {
+      transform: translateY(-5px);
+      border-color: #38bdf8;
+    }
+    .template-img {
+      width: 100%;
+      height: 130px;
+      background-color: #1f2937;
+      border-radius: 8px;
+      object-fit: cover;
+      margin-bottom: 12px;
+    }
+    .template-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #ffffff;
+      margin-bottom: 6px;
+    }
+    .template-desc {
+      font-size: 0.85rem;
+      color: #94a3b8;
+      margin-bottom: 15px;
+    }
+    .template-buttons {
+      display: flex;
+      gap: 10px;
+    }
+    .btn-prev, .btn-buy {
+      flex: 1;
+      padding: 8px 0;
+      text-align: center;
+      font-size: 0.85rem;
+      font-weight: 600;
+      border-radius: 6px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+    .btn-prev {
+      background-color: transparent;
+      border: 1px solid #475569;
+      color: #e2e8f0;
+    }
+    .btn-prev:hover {
+      background-color: #1e293b;
+    }
+    .btn-buy {
+      background-color: #38bdf8;
+      border: none;
+      color: #0b0f19;
+    }
+    .btn-buy:hover {
+      background-color: #0ea5e9;
     }
   </style>
 </head>
@@ -280,31 +385,177 @@
     </div>
   </nav>
 
-  <!-- "PORTFOLIO" बिग टेक्स्ट - बिना बैकग्राउंड और नए एनिमेशन के साथ -->
+  <!-- 🌟 पोर्टफोलियो टेक्स्ट स्पेशल एनिमेशन -->
   <div class="hero-ticker">
     <div class="ticker-text">PORTFOLIO</div>
   </div>
 
-  <!-- इंट्रो बॉक्स सेक्शन (क्यूब बॉक्स) -->
+  <!-- 💡 इंट्रो बॉक्स सेक्शन -->
   <section class="intro-section">
     <div class="cube-box">
       <div class="intro-left">
         <div class="intro-name">Hi, I'm <span>Jitendra</span></div>
-        <p class="intro-desc">A passionate Web Developer & UI/UX Design Enthusiast. Building modern, high-performance, and responsive digital interfaces with clean code and creative aesthetics.</p>
+        <!-- टाइपिंग और क्लियरिंग रोल टेक्स्ट -->
+        <div class="typing-role" id="typingText"></div>
+        <p class="intro-desc">A passionate Web Developer & UI/UX Design Enthusiast. Building modern, responsive digital interfaces with clean code and unique aesthetics.</p>
         <div class="intro-buttons">
-          <!-- Explore button smooth transition ke liye -->
           <a href="explore.html" class="btn-explore">Explore</a>
           <a href="#projects" class="btn-project">My Project</a>
         </div>
       </div>
       <div class="intro-right">
         <div class="image-cube-box">
-          <!-- yahan apni image ka link ya path dalein -->
           <img src="YOUR_IMAGE_URL_HERE" alt="Jitendra Profile Image">
         </div>
       </div>
     </div>
   </section>
+
+  <!-- 📋 10 टेम्पलेट्स कार्ड्स सेक्शन -->
+  <section class="templates-section" id="templates">
+    <h2 class="templates-heading">UI/UX Templates Market</h2>
+    <div class="templates-grid">
+      
+      <!-- कार्ड 1 -->
+      <div class="template-card">
+        <img src="TEMPLATE_IMG_1" alt="Template" class="template-img">
+        <div class="template-title">E-Commerce Kit</div>
+        <div class="template-desc">Modern online store layout.</div>
+        <div class="template-buttons">
+          <a href="#" class="btn-prev">Previous</a>
+          <a href="#" class="btn-buy">Buy</a>
+        </div>
+      </div>
+
+      <!-- कार्ड 2 -->
+      <div class="template-card">
+        <img src="TEMPLATE_IMG_2" alt="Template" class="template-img">
+        <div class="template-title">Cooking Blog</div>
+        <div class="template-desc">Recipe and food UI design.</div>
+        <div class="template-buttons">
+          <a href="#" class="btn-prev">Previous</a>
+          <a href="#" class="btn-buy">Buy</a>
+        </div>
+      </div>
+
+      <!-- कार्ड 3 -->
+      <div class="template-card">
+        <img src="TEMPLATE_IMG_3" alt="Template" class="template-img">
+        <div class="template-title">Fitness Tracker</div>
+        <div class="template-desc">Gym and sports dashboard.</div>
+        <div class="template-buttons">
+          <a href="#" class="btn-prev">Previous</a>
+          <a href="#" class="btn-buy">Buy</a>
+        </div>
+      </div>
+
+      <!-- कार्ड 4 -->
+      <div class="template-card">
+        <img src="TEMPLATE_IMG_4" alt="Template" class="template-img">
+        <div class="template-title">SaaS Landing</div>
+        <div class="template-desc">High conversion tech layout.</div>
+        <div class="template-buttons">
+          <a href="#" class="btn-prev">Previous</a>
+          <a href="#" class="btn-buy">Buy</a>
+        </div>
+      </div>
+
+      <!-- कार्ड 5 -->
+      <div class="template-card">
+        <img src="TEMPLATE_IMG_5" alt="Template" class="template-img">
+        <div class="template-title">Portfolio UI</div>
+        <div class="template-desc">Creative personal showcase.</div>
+        <div class="template-buttons">
+          <a href="#" class="btn-prev">Previous</a>
+          <a href="#" class="btn-buy">Buy</a>
+        </div>
+      </div>
+
+      <!-- कार्ड 6 -->
+      <div class="template-card">
+        <img src="TEMPLATE_IMG_6" alt="Template" class="template-img">
+        <div class="template-title">Real Estate</div>
+        <div class="template-desc">Property listing interface.</div>
+        <div class="template-buttons">
+          <a href="#" class="btn-prev">Previous</a>
+          <a href="#" class="btn-buy">Buy</a>
+        </div>
+      </div>
+
+      <!-- कार्ड 7 -->
+      <div class="template-card">
+        <img src="TEMPLATE_IMG_7" alt="Template" class="template-img">
+        <div class="template-title">Crypto Dashboard</div>
+        <div class="template-desc">Trading and finance UI.</div>
+        <div class="template-buttons">
+          <a href="#" class="btn-prev">Previous</a>
+          <a href="#" class="btn-buy">Buy</a>
+        </div>
+      </div>
+
+      <!-- कार्ड 8 -->
+      <div class="template-card">
+        <img src="TEMPLATE_IMG_8" alt="Template" class="template-img">
+        <div class="template-title">Education Hub</div>
+        <div class="template-desc">Online course platform.</div>
+        <div class="template-buttons">
+          <a href="#" class="btn-prev">Previous</a>
+          <a href="#" class="btn-buy">Buy</a>
+        </div>
+      </div>
+
+      <!-- कार्ड 9 -->
+      <div class="template-card">
+        <img src="TEMPLATE_IMG_9" alt="Template" class="template-img">
+        <div class="template-title">Travel Agency</div>
+        <div class="template-desc">Booking and tour design.</div>
+        <div class="template-buttons">
+          <a href="#" class="btn-prev">Previous</a>
+          <a href="#" class="btn-buy">Buy</a>
+        </div>
+      </div>
+
+      <!-- कार्ड 10 -->
+      <div class="template-card">
+        <img src="TEMPLATE_IMG_10" alt="Template" class="template-img">
+        <div class="template-title">Agency Pro</div>
+        <div class="template-desc">Corporate business layout.</div>
+        <div class="template-buttons">
+          <a href="#" class="btn-prev">Previous</a>
+          <a href="#" class="btn-buy">Buy</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ⚡ "Web Developer" टेक्स्ट के लिए टाइपिंग और क्लियरिंग लॉजिक (JavaScript) -->
+  <script>
+    const textElement = document.getElementById("typingText");
+    const phrase = "Web Developer";
+    let isDeleting = false;
+    let i = 0;
+
+    function loopTyping() {
+      if (!isDeleting) {
+        textElement.innerHTML = phrase.substring(0, i + 1);
+        i++;
+        if (i === phrase.length) {
+          setTimeout(() => { isDeleting = true; }, 1500); // पूरा लिखने के बाद 1.5 सेकंड रुकना
+        }
+      } else {
+        textElement.innerHTML = phrase.substring(0, i - 1);
+        i--;
+        if (i === 0) {
+          isDeleting = false;
+        }
+      }
+      const speed = isDeleting ? 100 : 150;
+      setTimeout(loopTyping, speed);
+    }
+
+    loopTyping();
+  </script>
 
 </body>
 </html>
