@@ -1,514 +1,265 @@
 <!DOCTYPE html>
-<html lang="hi" class="dark">
+<html lang="hi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Urlify.io - Autonomous Cloud Vault & AI Asset Pipeline</title>
-    <meta name="description" content="Bi-directional media conversion, instant URL generation, and AI-driven asset management platform.">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        brand: {
-                            50: '#eef2ff',
-                            500: '#6366f1',
-                            600: '#4f46e5',
-                            950: '#090a0f',
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        @keyframes floatOrb1 {
-            0%, 100% { transform: translate(0px, 0px) scale(1); }
-            50% { transform: translate(50px, -70px) scale(1.2); }
-        }
-        @keyframes floatOrb2 {
-            0%, 100% { transform: translate(0px, 0px) scale(1); }
-            50% { transform: translate(-60px, 50px) scale(1.1); }
-        }
-        .orb-1 { animation: floatOrb1 10s ease-in-out infinite; }
-        .orb-2 { animation: floatOrb2 12s ease-in-out infinite; }
-        .glass-panel {
-            background: rgba(18, 20, 32, 0.75);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-        }
-        @keyframes modalPop {
-            0% { transform: scale(0.9); opacity: 0; }
-            100% { transform: scale(1); opacity: 1; }
-        }
-        .modal-animation { animation: modalPop 0.3s ease-out forwards; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JL Portfolio & Templates</title>
+  <style>
+    /* बेसिक रिसेट और डार्क थीम */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+    body {
+      background-color: #0b0b0b;
+      color: #ffffff;
+      line-height: 1.6;
+    }
+
+    /* नेविगेशन बार (Navbar) */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      background-color: #121212;
+      border-bottom: 1px solid #222222;
+    }
+    .logo {
+      color: #ff3333;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 20px;
+    }
+    .nav-links a {
+      color: #ffffff;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .nav-links a:hover {
+      color: #ff3333;
+    }
+    .auth-buttons button {
+      background-color: transparent;
+      border: 1px solid #ff3333;
+      color: #ffffff;
+      padding: 8px 16px;
+      margin-left: 10px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .auth-buttons button:hover {
+      background-color: #ff3333;
+    }
+
+    /* हीरो सेक्शन (Hero Section) */
+    .hero-section {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      padding: 60px 40px;
+      min-height: 80vh;
+    }
+    .hero-content {
+      flex: 1;
+      min-width: 300px;
+    }
+    .hero-content h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+    }
+    .hero-content h1 span {
+      color: #ff3333;
+    }
+    .hero-content p {
+      color: #bbbbbb;
+      margin-bottom: 20px;
+      font-size: 1.1rem;
+    }
+    .hero-buttons {
+      display: flex;
+      gap: 15px;
+    }
+    .btn-primary {
+      background-color: #ff3333;
+      color: #ffffff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .btn-secondary {
+      background-color: transparent;
+      border: 1px solid #ffffff;
+      color: #ffffff;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .hero-image {
+      flex: 1;
+      min-width: 300px;
+      text-align: center;
+    }
+    .hero-image img {
+      max-width: 80%;
+      height: auto;
+      border-radius: 10px;
+      border: 2px solid #ff3333;
+    }
+
+    /* टेम्पलेट्स ग्रिड सेक्शन (Templates Section) */
+    .templates-section {
+      padding: 40px;
+    }
+    .templates-section h2 {
+      color: #ff3333;
+      margin-bottom: 20px;
+      font-size: 2rem;
+      border-bottom: 2px solid #ff3333;
+      display: inline-block;
+      padding-bottom: 5px;
+    }
+    .templates-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-top: 20px;
+    }
+    .template-card {
+      background-color: #1a1a1a;
+      border: 1px solid #333333;
+      border-radius: 8px;
+      width: calc(33.333% - 14px);
+      min-width: 280px;
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .template-card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+    .template-card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 5px;
+    }
+    .template-card p {
+      color: #bbbbbb;
+      font-size: 0.9rem;
+      margin-bottom: 15px;
+    }
+    .card-buttons {
+      display: flex;
+      gap: 10px;
+    }
+    .btn-preview, .btn-buy {
+      flex: 1;
+      padding: 8px;
+      border-radius: 4px;
+      cursor: pointer;
+      text-align: center;
+      font-size: 0.9rem;
+      text-decoration: none;
+    }
+    .btn-preview {
+      background-color: transparent;
+      border: 1px solid #ffffff;
+      color: #ffffff;
+    }
+    .btn-buy {
+      background-color: #ff3333;
+      border: none;
+      color: #ffffff;
+    }
+  </style>
 </head>
-<body class="bg-brand-950 min-h-screen text-slate-100 font-sans flex flex-col justify-between relative overflow-x-hidden selection:bg-indigo-500 selection:text-white pb-20 md:pb-0">
+<body>
 
-    <div class="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-indigo-600/20 rounded-full blur-[120px] orb-1 pointer-events-none"></div>
-    <div class="absolute top-[30%] right-[-10%] w-[450px] h-[450px] bg-purple-600/20 rounded-full blur-[120px] orb-2 pointer-events-none"></div>
-
-    <header class="w-full py-4 px-6 md:px-12 flex justify-between items-center border-b border-white/5 backdrop-blur-md relative z-30 sticky top-0 bg-brand-950/80">
-        <div class="flex items-center space-x-6 text-sm text-slate-300 font-medium">
-            <a href="/" class="hover:text-indigo-400 transition hidden sm:inline">🏠 Home</a>
-            
-            <div class="relative group">
-                <button class="hover:text-indigo-400 transition flex items-center gap-1 py-2">
-                    🛠️ Tools ▾
-                </button>
-                <div class="absolute top-full left-0 w-56 glass-panel rounded-2xl p-2 shadow-2xl hidden group-hover:block space-y-1 border border-white/10">
-                    <a href="#tools" class="block px-3 py-2 text-xs rounded-xl hover:bg-indigo-600/20 hover:text-indigo-300 transition">🖼️ Image to URL</a>
-                    <a href="#tools" class="block px-3 py-2 text-xs rounded-xl hover:bg-indigo-600/20 hover:text-indigo-300 transition">📐 Image Size Optimizer</a>
-                    <a href="#tools" class="block px-3 py-2 text-xs rounded-xl hover:bg-indigo-600/20 hover:text-indigo-300 transition">🔗 URL to Media Extractor</a>
-                    <a href="#tools" class="block px-3 py-2 text-xs rounded-xl hover:bg-indigo-600/20 hover:text-indigo-300 transition">📄 PDF & Excel to URL</a>
-                </div>
-            </div>
-
-            <a href="#pricing" class="hover:text-indigo-400 transition hidden sm:inline">💎 Pricing</a>
-        </div>
-        
-        <div class="absolute left-1/2 transform -translate-x-1/2">
-            <a href="/" class="text-2xl font-black tracking-tight bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-                Urlify.io
-            </a>
-        </div>
-
-        <div class="flex items-center space-x-3">
-            <div id="user-profile-display" class="hidden text-xs text-indigo-300 font-medium bg-indigo-500/10 border border-indigo-500/20 px-3 py-1.5 rounded-lg"></div>
-            <button onclick="openLoginModal()" class="bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold px-4 py-2 rounded-lg transition shadow-lg shadow-indigo-600/25">
-                Sign In
-            </button>
-        </div>
-    </header>
-
-    <main class="flex-grow flex flex-col items-center px-4 py-8 relative z-20 max-w-5xl mx-auto w-full space-y-16">
-        
-        <section class="text-center max-w-4xl pt-10 relative">
-            <div class="absolute -top-12 left-1/2 -translate-x-1/2 w-48 h-48 bg-indigo-500/20 rounded-full blur-3xl pointer-events-none"></div>
-            
-            <div class="inline-flex items-center gap-2 bg-indigo-500/10 border border-indigo-500/20 px-4 py-1.5 rounded-full text-xs text-indigo-300 font-medium mb-6 shadow-inner">
-                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                ⚡ Next-Gen Media to URL & Asset Pipeline
-            </div>
-            
-            <h1 class="text-4xl md:text-7xl font-extrabold tracking-tight mb-6 text-white leading-tight">
-                Turn any URL into <span class="bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">Smart Assets</span> with AI
-            </h1>
-            
-            <p class="text-slate-400 text-base md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
-                Bi-directional media conversion, automated metadata tagging, and instant cloud-hosted URL publishing designed for high-performance workflows.
-            </p>
-
-            <div class="glass-panel p-8 md:p-12 rounded-3xl border border-indigo-500/30 max-w-2xl mx-auto shadow-2xl relative group cursor-pointer" onclick="openToolModal('Instant Media Uploader')">
-                <div class="absolute inset-0 bg-indigo-600/5 rounded-3xl opacity-0 group-hover:opacity-100 transition"></div>
-                <div class="text-4xl mb-3">📁</div>
-                <h3 class="text-lg font-bold text-white mb-2">Drag, Drop, or Paste your File / Image</h3>
-                <p class="text-xs text-slate-400 mb-6">Supports PNG, JPG, WebP, MP4, PDF (Instant Direct Link Generation)</p>
-                <div class="inline-block bg-indigo-600 hover:bg-indigo-500 text-white font-semibold px-6 py-3 rounded-xl text-xs transition shadow-lg shadow-indigo-600/30">
-                    Browse or Paste (Ctrl+V)
-                </div>
-            </div>
-        </section>
-
-        <section id="tools" class="w-full space-y-6">
-            <div class="text-center">
-                <h2 class="text-2xl font-bold text-white">Explore Conversion Tools 🛠️</h2>
-                <p class="text-xs text-slate-400">Choose your desired utility below to get started instantly.</p>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div class="glass-panel p-5 rounded-2xl flex flex-col justify-between hover:border-indigo-500/40 transition">
-                    <div>
-                        <span class="text-2xl mb-2 block">🖼️</span>
-                        <h3 class="font-bold text-white text-base mb-1">Image to URL</h3>
-                        <p class="text-xs text-slate-400 mb-4">Convert local PNG, JPG, WebP into permanent public hosting links with AI tags.</p>
-                    </div>
-                    <button onclick="openToolModal('Image to URL')" class="w-full bg-indigo-600/20 hover:bg-indigo-600 text-indigo-300 hover:text-white py-2 rounded-xl text-xs font-semibold transition border border-indigo-500/30">
-                        Try Now &rarr;
-                    </button>
-                </div>
-
-                <div class="glass-panel p-5 rounded-2xl flex flex-col justify-between hover:border-purple-500/40 transition">
-                    <div>
-                        <span class="text-2xl mb-2 block">🔗</span>
-                        <h3 class="font-bold text-white text-base mb-1">URL to Image / Media</h3>
-                        <p class="text-xs text-slate-400 mb-4">Extract and download raw media elements or images from any web page link.</p>
-                    </div>
-                    <button onclick="openToolModal('URL to Media')" class="w-full bg-purple-600/20 hover:bg-purple-600 text-purple-300 hover:text-white py-2 rounded-xl text-xs font-semibold transition border border-purple-500/30">
-                        Try Now &rarr;
-                    </button>
-                </div>
-
-                <div class="glass-panel p-5 rounded-2xl flex flex-col justify-between hover:border-pink-500/40 transition">
-                    <div>
-                        <span class="text-2xl mb-2 block">📄</span>
-                        <h3 class="font-bold text-white text-base mb-1">PDF & Excel to URL</h3>
-                        <p class="text-xs text-slate-400 mb-4">Upload office document sheets and generate secure viewable web links.</p>
-                    </div>
-                    <button onclick="openToolModal('PDF/Excel to URL')" class="w-full bg-pink-600/20 hover:bg-pink-600 text-pink-300 hover:text-white py-2 rounded-xl text-xs font-semibold transition border border-pink-500/30">
-                        Try Now &rarr;
-                    </button>
-                </div>
-            </div>
-        </section>
-
-        <section id="comparison" class="w-full space-y-6">
-            <h2 class="text-2xl font-bold text-center text-white">Why Urlify.io Stands Out ⚖️</h2>
-            <div class="glass-panel overflow-hidden rounded-2xl">
-                <table class="w-full text-left border-collapse text-xs md:text-sm">
-                    <thead>
-                        <tr class="border-b border-white/10 bg-slate-900/50 text-slate-300">
-                            <th class="p-4 font-semibold">Core Feature</th>
-                            <th class="p-4 font-semibold text-indigo-400">Urlify.io ⚡</th>
-                            <th class="p-4 font-semibold text-slate-500">Standard Hosts ❌</th>
-                        </tr>
-                    </thead>
-                    <tbody class="divide-y divide-white/5 text-slate-300">
-                        <tr>
-                            <td class="p-4 font-medium">Bi-directional Conversion</td>
-                            <td class="p-4 text-emerald-400 font-semibold">✔️ Supported</td>
-                            <td class="p-4 text-red-400">❌ One-way only</td>
-                        </tr>
-                        <tr>
-                            <td class="p-4 font-medium">AI Metadata Tagging</td>
-                            <td class="p-4 text-emerald-400 font-semibold">✔️ Automatic Alt/Markdown</td>
-                            <td class="p-4 text-red-400">❌ Manual work</td>
-                        </tr>
-                        <tr>
-                            <td class="p-4 font-medium">Link Lifespan</td>
-                            <td class="p-4 text-emerald-400 font-semibold">✔️ Never Expire</td>
-                            <td class="p-4 text-amber-400">⚠️ Expires in 30 days</td>
-                        </tr>
-                        <tr>
-                            <td class="p-4 font-medium">Ads Clutter</td>
-                            <td class="p-4 text-emerald-400 font-semibold">✔️ Clean Space UI</td>
-                            <td class="p-4 text-red-400">❌ Heavy Popup Ads</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
-
-        <section id="pricing" class="w-full space-y-6">
-            <div class="text-center">
-                <h2 class="text-2xl font-bold text-white">Affordable Pricing Tiers 💎</h2>
-                <p class="text-xs text-slate-400">Choose a plan that fits your professional workflow.</p>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="glass-panel p-6 rounded-3xl border border-white/10 flex flex-col justify-between">
-                    <div>
-                        <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Starter</span>
-                        <h3 class="text-2xl font-extrabold text-white mt-2 mb-3">₹0 <span class="text-xs font-normal text-slate-400">/ lifetime</span></h3>
-                        <ul class="space-y-2 text-xs text-slate-300 mb-6">
-                            <li>✔️ Standard File Conversions</li>
-                            <li>✔️ Basic Link Generation</li>
-                            <li>✔️ Community Access</li>
-                        </ul>
-                    </div>
-                    <button onclick="openLoginModal()" class="w-full bg-white/10 hover:bg-white/15 text-white py-2.5 rounded-xl font-medium text-xs transition">Get Started</button>
-                </div>
-
-                <div class="glass-panel p-6 rounded-3xl border-2 border-indigo-500/50 flex flex-col justify-between relative overflow-hidden">
-                    <div class="absolute top-0 right-0 bg-indigo-600 text-white text-[9px] font-bold px-3 py-1 rounded-bl-xl uppercase">Popular</div>
-                    <div>
-                        <span class="text-[10px] font-bold text-indigo-400 uppercase tracking-widest">Professional</span>
-                        <h3 class="text-2xl font-extrabold text-white mt-2 mb-3">₹199 <span class="text-xs font-normal text-slate-400">/ month</span></h3>
-                        <ul class="space-y-2 text-xs text-slate-300 mb-6">
-                            <li>✔️ Unlimited Extractions</li>
-                            <li>✔️ AI Metadata Tag Generator</li>
-                            <li>✔️ High-speed Global CDN</li>
-                        </ul>
-                    </div>
-                    <button onclick="alert('Redirecting to secure gateway...')" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white py-2.5 rounded-xl font-medium text-xs transition shadow-lg shadow-indigo-600/30">Choose Pro</button>
-                </div>
-
-                <div class="glass-panel p-6 rounded-3xl border border-purple-500/30 flex flex-col justify-between">
-                    <div>
-                        <span class="text-[10px] font-bold text-purple-400 uppercase tracking-widest">Developer API</span>
-                        <h3 class="text-2xl font-extrabold text-white mt-2 mb-3">₹499 <span class="text-xs font-normal text-slate-400">/ month</span></h3>
-                        <ul class="space-y-2 text-xs text-slate-300 mb-6">
-                            <li>✔️ Direct API Access</li>
-                            <li>✔️ Bulk Pipeline Automation</li>
-                            <li>✔️ Dedicated Support</li>
-                        </ul>
-                    </div>
-                    <button onclick="alert('Redirecting to API onboarding...')" class="w-full bg-purple-600/20 hover:bg-purple-600 text-purple-300 hover:text-white py-2.5 rounded-xl font-medium text-xs transition border border-purple-500/40">Get API Access</button>
-                </div>
-            </div>
-        </section>
-
-        <section id="reviews" class="w-full space-y-6">
-            <div class="text-center">
-                <h2 class="text-2xl font-bold text-white">AI Automation Feedback 🤖</h2>
-                <p class="text-xs text-slate-400">Share your experience to help improve our neural pipelines.</p>
-            </div>
-
-            <div class="glass-panel p-6 rounded-3xl max-w-xl mx-auto space-y-4">
-                <div>
-                    <label class="block text-xs font-semibold text-slate-400 mb-1">Your Name</label>
-                    <input id="review-name-input" type="text" placeholder="Enter your name" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-indigo-500"/>
-                </div>
-                <div>
-                    <label class="block text-xs font-semibold text-slate-400 mb-1">Select Rating (3, 4 or 5 Stars)</label>
-                    <div id="star-rating-container" class="flex space-x-3 text-2xl cursor-pointer">
-                        <span onclick="selectReviewStars(3)" class="hover:scale-125 transition">⭐</span>
-                        <span onclick="selectReviewStars(4)" class="hover:scale-125 transition">⭐</span>
-                        <span onclick="selectReviewStars(5)" class="hover:scale-125 transition">⭐</span>
-                    </div>
-                </div>
-                <div id="auto-review-options" class="space-y-2 hidden">
-                    <label class="block text-xs font-semibold text-indigo-300">Select AI smart generated review:</label>
-                    <div id="review-chips-list" class="flex flex-col gap-2"></div>
-                </div>
-                <button id="submit-user-review-btn" onclick="submitUserReview()" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white py-2.5 rounded-xl font-semibold text-xs transition shadow-lg hidden">
-                    Submit Review with Animation
-                </button>
-            </div>
-        </section>
-
-        <section class="w-full max-w-xl mx-auto">
-            <div class="glass-panel p-6 rounded-3xl flex items-center space-x-4 border border-white/10">
-                <div class="w-14 h-14 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white font-bold text-xl">
-                    U
-                </div>
-                <div>
-                    <h4 class="text-sm font-bold text-white">Created by Urlify Core Team</h4>
-                    <p class="text-xs text-slate-400 mt-0.5">Passionate developer and cloud utility architect building next-gen developer tools for global creators.</p>
-                    <span class="inline-block mt-2 text-[10px] text-indigo-400 bg-indigo-500/10 px-2 py-0.5 rounded-full">Verified Maintainer</span>
-                </div>
-            </div>
-        </section>
-
-        <section id="faq" class="w-full space-y-3 max-w-3xl mx-auto">
-            <h2 class="text-2xl font-bold text-center text-white mb-6">Frequently Asked Questions 💡</h2>
-            
-            <details class="glass-panel p-4 rounded-xl cursor-pointer">
-                <summary class="font-semibold text-indigo-300 text-xs md:text-sm flex justify-between items-center">
-                    How to convert images to permanent public URLs for free without expiration? 
-                    <span class="transform transition-transform duration-300">▼</span>
-                </summary>
-                <p class="text-slate-400 text-xs mt-3 leading-relaxed">Urlify.io का उपयोग करके आप बिना किसी रजिस्ट्रेशन के अपनी इमेज (PNG, JPG, WebP) को तुरंत परमानेंट पब्लिक लिंक में बदल सकते हैं जो कभी एक्सपायर नहीं होते।</p>
-            </details>
-
-            <details class="glass-panel p-4 rounded-xl cursor-pointer">
-                <summary class="font-semibold text-indigo-300 text-xs md:text-sm flex justify-between items-center">
-                    What is the best secure file to URL converter for web developers? 
-                    <span class="transform transition-transform duration-300">▼</span>
-                </summary>
-                <p class="text-slate-400 text-xs mt-3 leading-relaxed">यह प्लेटफॉर्म डेवलपर्स और ब्लॉगर्स के लिए सबसे सुरक्षित है क्योंकि इसमें एंड-टू-एंड एनक्रिप्शन और ऑटोमैटिक क्लाउड ऑप्टिमाइज़ेशन मिलता है।</p>
-            </details>
-
-               <details class="glass-panel p-4 rounded-xl cursor-pointer">
-                <summary class="font-semibold text-indigo-300 text-xs md:text-sm flex justify-between items-center">
-                    How to extract media and videos from any webpage link instantly? 
-                    <span class="transform transition-transform duration-300">▼</span>
-                </summary>
-                <p class="text-slate-400 text-xs mt-3 leading-relaxed">हमारे वीडियो और मीडिया एक्सट्रैक्टर टूल की मदद से आप किसी भी वेब लिंक से हाई-रिज़ॉल्यूशन वीडियो या इमेजेस को एक सेकंड में डाउनलोड या लिंक रूप में प्राप्त कर सकते हैं।</p>
-            </details>
-
-            <details class="glass-panel p-4 rounded-xl cursor-pointer">
-                <summary class="font-semibold text-indigo-300 text-xs md:text-sm flex justify-between items-center">
-                    Can I use generated URLs directly in HTML img tags and Markdown documents? 
-                    <span class="transform transition-transform duration-300">▼</span>
-                </summary>
-                <p class="text-slate-400 text-xs mt-3 leading-relaxed">हाँ! जनरेट किए गए डायरेक्ट यूआरएल पूरी तरह से अनुकूलित होते हैं, जिन्हें आप सीधे HTML, CSS, या Markdown फाइलों में उपयोग कर सकते हैं।</p>
-            </details>
-
-            <details class="glass-panel p-4 rounded-xl cursor-pointer">
-                <summary class="font-semibold text-indigo-300 text-xs md:text-sm flex justify-between items-center">
-                    Why is Urlify.io better and faster than Imgur or traditional image hosts? 
-                    <span class="transform transition-transform duration-300">▼</span>
-                </summary>
-                <p class="text-slate-400 text-xs mt-3 leading-relaxed">अन्य होस्टिंग साइट्स के विपरीत, यहाँ कोई विज्ञापन क्लटर (Ads clutter) नहीं है, ग्लोबल सीडीएन (CDN) स्पीड तेज है और एआई ऑटोमेशन रिव्यू सुविधा मिलती है।</p>
-            </details>
-        </section>
-
-    </main>
-
-    <nav class="fixed bottom-0 left-0 right-0 bg-brand-950/95 backdrop-blur-md border-t border-white/15 py-3 px-4 flex justify-around items-center z-40 md:hidden text-[11px] text-slate-300 font-medium">
-        <a href="/" class="flex flex-col items-center hover:text-indigo-400">🏠 Home</a>
-        <a href="#tools" class="flex flex-col items-center hover:text-indigo-400">🛠️ Tools</a>
-        <a href="#reviews" class="flex flex-col items-center hover:text-indigo-400">⭐ Review</a>
-        <a href="#pricing" class="flex flex-col items-center hover:text-indigo-400">💎 Pricing</a>
-        <button onclick="openLoginModal()" class="flex flex-col items-center hover:text-indigo-400">🔐 Sign In</button>
-    </nav>
-
-    <div id="login-modal" class="fixed inset-0 bg-black/85 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
-        <div class="glass-panel max-w-sm w-full p-8 rounded-3xl text-center relative modal-animation border border-white/15 space-y-5 shadow-2xl">
-            <button onclick="closeLoginModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-sm">✕</button>
-            <div class="w-14 h-14 mx-auto rounded-full bg-gradient-to-tr from-indigo-500 to-pink-500 flex items-center justify-center text-white text-2xl font-bold shadow-lg">⚡</div>
-            <h3 class="text-2xl font-extrabold text-white tracking-tight">Sign in to Urlify</h3>
-            <p class="text-slate-400 text-xs leading-relaxed">Choose your preferred authentication method. Permanent session enabled.</p>
-            
-            <div class="space-y-3 pt-2">
-                <button onclick="performGoogleLogin()" class="w-full bg-white hover:bg-slate-100 text-slate-900 font-bold py-3.5 rounded-2xl text-xs transition shadow-xl flex items-center justify-center gap-3 active:scale-95">
-                    <svg class="w-4 h-4" viewBox="0 0 24 24"><path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.66-5.17 3.66-9.17z"/><path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.13 0-5.78-2.11-6.73-4.96H1.18v3.15C3.15 21.32 7.23 24 12 24z"/><path fill="#FBBC05" d="M5.27 14.24c-.25-.72-.38-1.49-.38-2.24s.13-1.52.38-2.24V6.61H1.18C.43 8.13 0 9.83 0 12s.43 3.87 1.18 5.39l4.09-3.15z"/><path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.23 0 3.15 2.68 1.18 6.61l4.09 3.15c.95-2.85 3.6-4.96 6.73-4.96z"/></svg>
-                    <span>Continue with Google Gmail</span>
-                </button>
-
-                <button onclick="performPhoneLogin()" class="w-full bg-slate-900 hover:bg-slate-800 text-white font-semibold py-3 rounded-2xl text-xs transition border border-white/10 flex items-center justify-center gap-2">
-                    <span>🍏 Continue with Apple / Phone ID</span>
-                </button>
-
-                <button onclick="performEmailLogin()" class="w-full bg-indigo-600/20 hover:bg-indigo-600 text-indigo-300 hover:text-white font-semibold py-3 rounded-2xl text-xs transition border border-indigo-500/30 flex items-center justify-center gap-2">
-                    <span>✉️ Continue with Email ID</span>
-                </button>
-            </div>
-        </div>
+  <!-- नेविगेशन बार -->
+  <nav>
+    <div class="logo">JL Portfolio</div>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#templates">Templates</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#blogs">Blogs</a></li>
+    </ul>
+    <div class="auth-buttons">
+      <button>Login</button>
+      <button>Sign Up</button>
     </div>
+  </nav>
 
-    <div id="tool-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-        <div class="glass-panel max-w-md w-full p-6 rounded-3xl text-center relative modal-animation border border-white/10 space-y-4">
-            <button onclick="closeToolModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-sm">✕</button>
-            <h3 id="modal-tool-title" class="text-xl font-bold text-white">Tool Workspace</h3>
-            <div class="border-2 border-dashed border-slate-800 rounded-2xl p-5 bg-slate-900/50">
-                <p class="text-xs text-slate-300 mb-2">Drag & Drop file or Paste URL (Ctrl+V)</p>
-                <input type="text" placeholder="https://..." class="w-full bg-slate-900 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white"/>
-            </div>
-            <div class="text-left bg-indigo-950/40 p-3 rounded-xl border border-indigo-500/20">
-                <span class="text-[10px] font-bold text-indigo-300 uppercase block mb-1">🤖 AI Smart Metadata Tag Generator:</span>
-                <p class="text-[11px] text-slate-400">Automatic Alt Text & Markdown Snippets will be generated on process.</p>
-            </div>
-            <button onclick="executeToolProcess()" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white py-3 rounded-xl text-xs font-semibold transition">
-                Process & Generate URL
-            </button>
-        </div>
+  <!-- हीरो सेक्शन -->
+  <section class="hero-section" id="home">
+    <div class="hero-content">
+      <h1>Hello I am <span>Shadin</span></h1>
+      <p>Web Developer | Creating clean, modern, and responsive web templates with a premium dark and red aesthetic.</p>
+      <div class="hero-buttons">
+        <button class="btn-primary">Explore</button>
+        <button class="btn-secondary">My Project</button>
+      </div>
     </div>
-
-    <div id="thankyou-modal" class="fixed inset-0 bg-black/90 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
-        <div class="glass-panel max-w-sm w-full p-8 rounded-3xl text-center modal-animation space-y-3">
-            <div class="w-16 h-16 mx-auto rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-3xl animate-bounce">✨</div>
-            <h3 class="text-2xl font-extrabold text-white">Thank You!</h3>
-            <p class="text-slate-400 text-xs">Aapka valuable review safaltapoorvak save ho gaya hai.</p>
-        </div>
+    <div class="hero-image">
+      <!-- यहाँ अपनी इमेज का लिंक डालें -->
+      <img src="YOUR_IMAGE_URL_HERE" alt="Profile Image">
     </div>
+  </section>
 
-    <footer class="w-full py-8 px-8 text-center text-xs text-slate-500 border-t border-white/5 relative z-20 flex flex-col md:flex-row justify-between items-center gap-4 mb-16 md:mb-0">
-        <div>&copy; 2026 Urlify.io. All rights reserved. Built for high performance.</div>
-        <div class="flex flex-wrap justify-center gap-6 text-slate-400">
-            <a href="#" class="hover:text-indigo-400 transition">About Us</a>
-            <a href="#" class="hover:text-indigo-400 transition">Contact</a>
-            <a href="#" class="hover:text-indigo-400 transition">Privacy Policy</a>
-            <a href="#" class="hover:text-indigo-400 transition">Terms of Service</a>
-            <a href="#" class="hover:text-indigo-400 transition">Disclaimer</a>
+  <!-- टेम्पलेट्स ग्रिड सेक्शन -->
+  <section class="templates-section" id="templates">
+    <h2>UI UX Templates</h2>
+    <div class="templates-grid">
+      
+      <!-- टेम्पलेट कार्ड 1 -->
+      <div class="template-card">
+        <img src="TEMPLATE_IMAGE_URL_1" alt="Template 1">
+        <h3>E-Commerce UI Kit</h3>
+        <p>A modern dark theme e-commerce template ready for stores.</p>
+        <div class="card-buttons">
+          <a href="#" class="btn-preview">Previous</a>
+          <a href="#" class="btn-buy">Buy</a>
         </div>
-    </footer>
+      </div>
 
-    <script>
-        window.addEventListener('DOMContentLoaded', () => {
-            const savedUser = localStorage.getItem('urlify_user_email');
-            if(savedUser) {
-                showUserProfile(savedUser);
-            }
-        });
+      <!-- टेम्पलेट कार्ड 2 -->
+      <div class="template-card">
+        <img src="TEMPLATE_IMAGE_URL_2" alt="Template 2">
+        <h3>Cooking Website Template</h3>
+        <p>Clean layout designed for food and recipe blogs.</p>
+        <div class="card-buttons">
+          <a href="#" class="btn-preview">Previous</a>
+          <a href="#" class="btn-buy">Buy</a>
+        </div>
+      </div>
 
-        function openLoginModal() {
-            document.getElementById('login-modal').classList.remove('hidden');
-        }
-        function closeLoginModal() {
-            document.getElementById('login-modal').classList.add('hidden');
-        }
+      <!-- टेम्पलेट कार्ड 3 -->
+      <div class="template-card">
+        <img src="TEMPLATE_IMAGE_URL_3" alt="Template 3">
+        <h3>Sports & Fitness UI</h3>
+        <p>Dynamic red and dark template for fitness trainers.</p>
+        <div class="card-buttons">
+          <a href="#" class="btn-preview">Previous</a>
+          <a href="#" class="btn-buy">Buy</a>
+        </div>
+      </div>
 
-        function performGoogleLogin() {
-            const gmailAccount = prompt("Select or enter your Google Gmail account:", "creator.user@gmail.com");
-            if(gmailAccount) {
-                localStorage.setItem('urlify_user_email', gmailAccount);
-                showUserProfile(gmailAccount);
-                closeLoginModal();
-                alert("Google Sign-In successful with " + gmailAccount + "! Profile saved permanently.");
-            }
-        }
+    </div>
+  </section>
 
-        function performPhoneLogin() {
-            const phoneId = prompt("Enter your Apple ID or Phone number:", "+91 9876543210");
-            if(phoneId) {
-                localStorage.setItem('urlify_user_email', phoneId);
-                showUserProfile(phoneId);
-                closeLoginModal();
-                alert("Apple/Phone login successful!");
-            }
-        }
-
-        function performEmailLogin() {
-            const emailId = prompt("Enter your Email address:", "user@domain.com");
-            if(emailId) {
-                localStorage.setItem('urlify_user_email', emailId);
-                showUserProfile(emailId);
-                closeLoginModal();
-                alert("Email login successful!");
-            }
-        }
-
-        function showUserProfile(email) {
-            const display = document.getElementById('user-profile-display');
-            display.innerText = "👤 " + email.split('@')[0];
-            display.classList.remove('hidden');
-        }
-
-        function openToolModal(toolName) {
-            document.getElementById('modal-tool-title').innerText = toolName + " Workspace";
-            document.getElementById('tool-modal').classList.remove('hidden');
-        }
-        function closeToolModal() {
-            document.getElementById('tool-modal').classList.add('hidden');
-        }
-
-        function executeToolProcess() {
-            closeToolModal();
-            const thankyou = document.getElementById('thankyou-modal');
-            thankyou.classList.remove('hidden');
-            setTimeout(() => { thankyou.classList.add('hidden'); }, 2000);
-        }
-
-        function selectReviewStars(stars) {
-            const container = document.getElementById('auto-review-options');
-            const chips = document.getElementById('review-chips-list');
-            const submitBtn = document.getElementById('submit-user-review-btn');
-            
-            container.classList.remove('hidden');
-            submitBtn.classList.remove('hidden');
-            chips.innerHTML = '';
-
-            let reviews = stars >= 4 ? [
-                "🚀 Blazing fast image-to-url processing pipeline!",
-                "💡 Cleanest interface with zero ad clutters.",
-                "✨ AI metadata tagging is extremely helpful.",
-                "🔥 Permanent links work seamlessly across all platforms.",
-                "💎 Best micro-saas tool for developers.",
-                "⚡ Super smooth mobile navigation experience.",
-                "🎯 Highly accurate conversion speeds.",
-                "🌟 Exceptional utility platform!"
-            ] : [
-                "⚙️ Conversion took a minor moment.",
-                "📱 Mobile responsiveness can be adjusted.",
-                "🛠️ Need extended file format support.",
-                "💬 Clear UI tweaks required."
-            ];
-
-            reviews.forEach(text => {
-                const label = document.createElement('label');
-                label.className = "flex items-center space-x-2 text-xs bg-slate-900/80 p-2.5 rounded-xl border border-white/5 cursor-pointer hover:border-indigo-500 transition text-slate-300";
-                label.innerHTML = `<input type='radio' name='selected_review_chip' value='${text}' class='text-indigo-600'/> <span>${text}</span>`;
-                chips.appendChild(label);
-            });
-        }
-
-        function submitUserReview() {
-            const name = document.getElementById('review-name-input').value;
-            if(!name) {
-                alert("Kripya apna naam darj karein.");
-                return;
-            }
-            const thankyou = document.getElementById('thankyou-modal');
-            thankyou.classList.remove('hidden');
-            setTimeout(() => { thankyou.classList.add('hidden'); }, 2500);
-        }
-    </script>
 </body>
-                    </html>
+</html>
