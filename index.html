@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Jitendra Portfolio</title>
   <style>
-    /* बेसिक रिसेट और नई प्रीमियम थीम (डार्क और गोल्ड/एम्बर टच) */
+    /* बेसिक रिसेट */
     * {
       margin: 0;
       padding: 0;
@@ -119,32 +119,37 @@
       color: #0b0f19;
     }
 
-    /* केवल "PORTFOLIO" बिग टेक्स्ट स्लाइडिंग सेक्शन */
+    /* "PORTFOLIO" बिग टेक्स्ट - बिना बैकग्राउंड और नए एनिमेशन के साथ */
     .hero-ticker {
-      background-color: #0f172a;
+      /* यहाँ से बैकग्राउंड हटा दिया गया है ताकि यह पूरी तरह ट्रांसपेरेंट रहे */
+      background: transparent; 
       overflow: hidden;
       white-space: nowrap;
-      padding: 20px 0;
-      border-bottom: 1px solid #1e293b;
+      padding: 30px 0;
     }
     .ticker-text {
       display: inline-block;
-      font-size: 4rem;
-      font-weight: 800;
+      /* यहाँ से आप font-size को बड़ा या छोटा कर सकते हैं */
+      font-size: 6rem; 
+      font-weight: 900;
       color: #38bdf8;
       text-transform: uppercase;
-      letter-spacing: 4px;
-      animation: slidePortfolio 15s linear infinite;
-    }
-    @keyframes slidePortfolio {
-      0% { transform: translateX(-100%); }
-      30%, 70% { transform: translateX(0%); } /* 10 सेकंड रुकने का प्रभाव */
-      100% { transform: translateX(100%); }
+      letter-spacing: 6px;
+      animation: fastSlidePortfolio 12s linear infinite;
     }
 
-    /* इंट्रो बॉक्स सेक्शन (क्यूब बॉक्स लेआउट) */
+    /* नया एनिमेशन: लेफ्ट से फास्ट आना, सेंटर में रुकना, फिर राइट जाना और तुरंत वापस लेफ्ट आना */
+    @keyframes fastSlidePortfolio {
+      0% { transform: translateX(-100%); }
+      20% { transform: translateX(0%); }   /* सेंटर में पहुँचना और रुकना शुरू */
+      70% { transform: translateX(0%); }   /* यहाँ तक सेंटर में 10 सेकंड रुकना */
+      90% { transform: translateX(100%); } /* राइट साइड तेजी से निकल जाना */
+      100% { transform: translateX(-100%); } /* तुरंत वापस लेफ्ट साइड पहुँचना */
+    }
+
+    /* इंट्रो बॉक्स सेक्शन (क्यूब बॉक्स) */
     .intro-section {
-      padding: 80px 40px;
+      padding: 40px 40px 80px 40px;
       max-width: 1200px;
       margin: 0 auto;
     }
@@ -243,7 +248,7 @@
     .image-cube-box img {
       width: 100%;
       height: 100%;
-      object-type: cover;
+      object-fit: cover;
     }
   </style>
 </head>
@@ -275,7 +280,7 @@
     </div>
   </nav>
 
-  <!-- केवल PORTFOLIO बिग टेक्स्ट स्लाइडिंग सेक्शन -->
+  <!-- "PORTFOLIO" बिग टेक्स्ट - बिना बैकग्राउंड और नए एनिमेशन के साथ -->
   <div class="hero-ticker">
     <div class="ticker-text">PORTFOLIO</div>
   </div>
