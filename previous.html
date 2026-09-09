@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Live Template Preview - Marketplace</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    /* 🎨 Dynamic Theme Variables */
+    :root {
+      --primary: #2563eb;
+      --primary-hover: #1d4ed8;
+      --bg-main: #ffffff;
+      --text-main: #111111;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      transition: background 0.3s, color 0.3s;
+    }
+
+    /* 🎛️ टॉप फ्लोटिंग कस्टमाइज़र बार (कलर बदलने के लिए) */
+    .top-customizer {
+      background-color: #0a0a0a;
+      color: #ffffff;
+      padding: 12px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .customizer-info {
+      font-size: 0.9rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .palette-box {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+    .color-dot {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      cursor: pointer;
+      border: 2px solid #fff;
+      transition: transform 0.2s;
+    }
+    .color-dot:hover {
+      transform: scale(1.2);
+    }
+    .btn-return {
+      background: #ffffff;
+      color: #000;
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    /* 🌐 असली वेबसाइट का लेआउट स्ट्रक्चर */
+    .web-navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 50px;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    .web-logo {
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: var(--primary);
+    }
+    .web-nav-links {
+      display: flex;
+      gap: 25px;
+      list-style: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+    .web-nav-links a {
+      text-decoration: none;
+      color: #374151;
+    }
+    .web-cta-btn {
+      background-color: var(--primary);
+      color: #ffffff;
+      padding: 10px 22px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: background 0.3s;
+    }
+    .web-cta-btn:hover {
+      background-color: var(--primary-hover);
+    }
+
+    /* हीरो सेक्शन */
+    .web-hero {
+      padding: 100px 50px;
+      text-align: center;
+      background: linear-gradient(to bottom, #f9fafb, #ffffff);
+    }
+    .web-hero h1 {
+      font-size: 3.5rem;
+      font-weight: 900;
+      margin-bottom: 20px;
+      letter-spacing: -1px;
+    }
+    .web-hero p {
+      font-size: 1.15rem;
+      color: #4b5563;
+      max-width: 650px;
+      margin: 0 auto 30px auto;
+      line-height: 1.7;
+    }
+
+    /* कंटेंट ग्रिड सेक्शन */
+    .web-content-section {
+      padding: 60px 50px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .section-title {
+      font-size: 2.2rem;
+      font-weight: 800;
+      margin-bottom: 40px;
+      text-align: center;
+    }
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+    .info-card {
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+      border-radius: 14px;
+      padding: 30px;
+      text-align: left;
+      transition: transform 0.3s;
+    }
+    .info-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    }
+    .info-card h3 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: var(--primary);
+    }
+    .info-card p {
+      color: #6b7280;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    /* फुटर */
+    .web-footer {
+      background-color: #111111;
+      color: #9ca3af;
+      padding: 40px 50px;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 🎛️ कलर कस्टमाइज़र बार -->
+  <div class="top-customizer">
+    <div class="customizer-info">
+      ⚡ Live Preview Mode | Change Theme Color:
+    </div>
+    <div class="palette-box">
+      <div class="color-dot" style="background: #2563eb;" onclick="setTheme('#2563eb', '#1d4ed8')"></div>
+      <div class="color-dot" style="background: #ccff00;" onclick="setTheme('#84cc16', '#65a30d')"></div>
+      <div class="color-dot" style="background: #dc2626;" onclick="setTheme('#dc2626', '#b91c1c')"></div>
+      <div class="color-dot" style="background: #9333ea;" onclick="setTheme('#9333ea', '#7e22ce')"></div>
+      <div class="color-dot" style="background: #059669;" onclick="setTheme('#059669', '#047857')"></div>
+    </div>
+    <a href="index.html" class="btn-return">← Back to Marketplace</a>
+  </div>
+
+  <!-- 🌐 असली वेबसाइट का मुखौटा (डेटा जावास्क्रिप्ट से लोड होगा) -->
+  <header class="web-navbar">
+    <div class="web-logo" id="brandLogo">BrandLogo</div>
+    <ul class="web-nav-links">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Explore</a></li>
+      <li><a href="#">Services</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+    <a href="buy.html" class="web-cta-btn" id="navCtaBtn">Book Now</a>
+  </header>
+
+  <section class="web-hero">
+    <h1 id="heroTitle">Loading Website...</h1>
+    <p id="heroDesc">Please wait while we set up your fully functional live template environment.</p>
+    <a href="buy.html" class="web-cta-btn" id="heroCtaBtn" style="font-size: 1.1rem; padding: 14px 32px;">Get Started</a>
+  </section>
+
+  <section class="web-content-section">
+    <h2 class="section-title" id="sectionHeading">Featured Highlights</h2>
+    <div class="cards-grid" id="cardsGridContainer">
+      <!-- कार्ड्स यहाँ डायनेमिकली लोड होंगे -->
+    </div>
+  </section>
+
+  <footer class="web-footer" id="footerText">
+    &copy; 2026 Marketplace Template. All Rights Reserved.
+  </footer>
+
+  <!-- ⚡ जावास्क्रिप्ट जो होटल या रेस्टोरेंट की असली वेबसाइट का डेटा भरेगी -->
+  <script>
+    // URL से पहचानें कि कौन सा टेम्पलेट खुला है
+    const urlParams = new URLSearchParams(window.location.search);
+    const type = urlParams.get('template');
+
+    // डेटाबेस जिसमें होटल और रेस्टोरेंट की पूरी असली वेबसाइट की जानकारी है
+    const sitesData = {
+      "hotel": {
+        logo: "Inder Paradise 🏨",
+        title: "Experience Luxury & Comfort at Inder Paradise Hotel",
+        desc: "Book your stay in our royal suites, enjoy world-class dining, relaxing spa treatments, and breathtaking views designed for an unforgettable vacation.",
+        ctaText: "Reserve Room",
+        sectionTitle: "Exclusive Hotel Amenities",
+        features: [
+          { title: "Royal Deluxe Suites", desc: "Spacious rooms equipped with modern luxury, king-size beds, and 24/7 room service." },
+          { title: "Fine Dining & Bar", desc: "Savor multi-cuisine delicacies prepared by master chefs in an ambient setting." },
+          { title: "Swimming & Spa", desc: "Rejuvenate your mind and body with our heated infinity pool and professional spa." }
+        ]
+      },
+      "restaurant": {
+        logo: "The Gourmet Cafe 🍽️",
+        title: "Savor the Ultimate Culinary Delight at Our Restaurant",
+        desc: "Discover fresh, locally-sourced ingredients crafted into mouth-watering dishes by award-winning culinary artists in a cozy ambiance.",
+        ctaText: "Book a Table",
+        sectionTitle: "Our Signature Menu Highlights",
+        features: [
+          { title: "Wood-Fired Pizzas", desc: "Authentic Italian crust pizzas baked to crisp perfection with premium melting cheese." },
+          { title: "Artisan Coffee & Desserts", desc: "Handcrafted coffee blends paired with freshly baked organic pastries and cakes." },
+          { title: "Private Dining Area", desc: "Cozy spaces reserved for family gatherings, romantic dates, and corporate dinners." }
+        ]
+      }
+    };
+
+    // डेटा को पेज पर इंजेक्ट करना
+    const currentSite = sitesData[type] || sitesData["hotel"]; // डिफ़ॉल्ट होटल रहेगा
+
+    document.getElementById("brandLogo").innerText = currentSite.logo;
+    document.getElementById("heroTitle").innerText = currentSite.title;
+    document.getElementById("heroDesc").innerText = currentSite.desc;
+    document.getElementById("navCtaBtn").innerText = currentSite.ctaText;
+    document.getElementById("heroCtaBtn").innerText = currentSite.ctaText;
+    document.getElementById("sectionHeading").innerText = currentSite.sectionTitle;
+    document.getElementById("footerText").innerHTML = `&copy; 2026 ${currentSite.logo}. All Rights Reserved. Powered by Jitendra Marketplace.`;
+
+    // फीचर्स कार्ड्स जनरेट करना
+    const gridContainer = document.getElementById("cardsGridContainer");
+    gridContainer.innerHTML = currentSite.features.map(f => `
+      <div class="info-card">
+        <h3>${f.title}</h3>
+        <p>${f.desc}</p>
+      </div>
+    `).join('');
+
+    // लाइव थीम कलर बदलने का फंक्शन
+    function setTheme(primaryHex, hoverHex) {
+      document.documentElement.style.setProperty('--primary', primaryHex);
+      document.documentElement.style.setProperty('--primary-hover', hoverHex);
+    }
+  </script>
+
+</body>
+  </html>
+
