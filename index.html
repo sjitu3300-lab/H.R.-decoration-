@@ -21,7 +21,7 @@
       overflow-x: hidden;
     }
 
-    /* 🧭 1. नेविगेशन बार - सफेद बैकग्राउंड और काले टेक्स्ट */
+    /* 🧭 1. नेविगेशन बार */
     .navbar {
       display: flex;
       justify-content: space-between;
@@ -120,7 +120,7 @@
       border-color: #111827;
     }
 
-    /* ✨ 2. पोर्टफोलियो टेक्स्ट स्पेशल एनिमेशन - काला बैकग्राउंड */
+    /* ✨ 2. पोर्टफोलियो टेक्स्ट स्पेशल एनिमेशन */
     .hero-ticker {
       background-color: #0a0a0a;
       overflow: hidden;
@@ -146,7 +146,7 @@
       100% { transform: translateX(-120%); opacity: 0; }
     }
 
-    /* 📦 3. इंट्रो बॉक्स सेक्शन - सफेद बैकग्राउंड और काला टेक्स्ट */
+    /* 📦 3. इंट्रो बॉक्स सेक्शन */
     .intro-section {
       padding: 40px 50px;
       max-width: 1200px;
@@ -179,7 +179,6 @@
       color: #2563eb;
     }
     
-    /* टाइपिंग रोल टेक्स्ट */
     .typing-role {
       font-size: 1.4rem;
       font-weight: 700;
@@ -199,7 +198,6 @@
       gap: 15px;
     }
     
-    /* एक्सप्लोर बटन */
     .btn-explore {
       background-color: #111111;
       border: none;
@@ -233,7 +231,6 @@
       border-color: #111111;
     }
 
-    /* इमेज क्यूब बॉक्स */
     .intro-right {
       flex: 1;
       min-width: 300px;
@@ -257,7 +254,7 @@
       object-fit: cover;
     }
 
-    /* 🔥 4. नई इमेज के अनुसार UI / UX Designs हेडिंग सेक्शन (नियोन-ग्रीन थीम) */
+    /* 🔥 4. UI / UX Designs हेडिंग सेक्शन */
     .section-dark-heading {
       background-color: #0a0a0a;
       padding: 60px 20px;
@@ -267,7 +264,7 @@
     .section-dark-heading h2 {
       font-size: 4.5rem;
       font-weight: 900;
-      color: #ccff00; /* इमेज के अनुसार नियोन-ग्रीन कलर */
+      color: #ccff00;
       text-transform: capitalize;
       letter-spacing: -1px;
       margin-bottom: 15px;
@@ -280,9 +277,9 @@
       line-height: 1.6;
     }
 
-    /* 🛒 5. टेम्पलेट्स सेक्शन - सफेद कार्ड्स ग्रिड */
+    /* 🛒 5. टेम्पलेट्स सेक्शन */
     .templates-section {
-      padding: 20px 50px 60px 50px;
+      padding: 20px 50px 40px 50px;
       max-width: 1200px;
       margin: 0 auto;
     }
@@ -357,6 +354,102 @@
     .btn-buy:hover {
       background-color: #2563eb;
     }
+
+    /* ✨ 6. "Thank's For Scrolling!" सेक्शन (इमेज के अनुसार चारों ओर डैश लाइन बॉक्स) */
+    .thankyou-section {
+      background-color: #0a0a0a;
+      padding: 80px 20px;
+      text-align: center;
+      margin-top: 40px;
+    }
+    .thankyou-box-wrapper {
+      max-width: 900px;
+      margin: 0 auto;
+      border: 2px dashed #ccff00; /* चारों तरफ की लाइन */
+      padding: 50px 30px;
+      position: relative;
+      border-radius: 4px;
+    }
+    .work-together-tag {
+      position: absolute;
+      top: -25px;
+      left: 30px;
+      color: #ccff00;
+      font-size: 1rem;
+      font-weight: 600;
+      font-style: italic;
+    }
+    .thankyou-title {
+      font-size: 4rem;
+      font-weight: 900;
+      color: #ffffff;
+      margin-bottom: 20px;
+      letter-spacing: -1px;
+    }
+    .thankyou-desc {
+      color: #d1d5db;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+    .thankyou-desc span {
+      color: #ccff00;
+      font-weight: 700;
+    }
+
+    /* 🤖 7. AI Automatic Review सेक्शन (UI/UX स्टाइल हेडिंग के साथ) */
+    .review-section {
+      background-color: #f8f9fa;
+      padding: 60px 50px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .review-heading-box {
+      background-color: #0a0a0a;
+      padding: 40px 20px;
+      text-align: center;
+      border-radius: 12px;
+      margin-bottom: 40px;
+    }
+    .review-heading-box h2 {
+      font-size: 3.5rem;
+      font-weight: 900;
+      color: #ccff00;
+      text-transform: uppercase;
+      letter-spacing: -1px;
+    }
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+    }
+    .review-card {
+      background-color: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 14px;
+      padding: 25px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+    }
+    .review-author {
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: #111111;
+      margin-bottom: 8px;
+    }
+    .review-text {
+      color: #4b5563;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 15px;
+    }
+    .ai-badge {
+      display: inline-block;
+      background-color: #eff6ff;
+      color: #2563eb;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 20px;
+    }
   </style>
 </head>
 <body>
@@ -412,7 +505,7 @@
     </div>
   </section>
 
-  <!-- 4. नई इमेज के अनुसार UI / UX Designs हेडिंग सेक्शन -->
+  <!-- 4. UI / UX Designs हेडिंग सेक्शन -->
   <div class="section-dark-heading">
     <h2>UI / UX Designs</h2>
     <p>These UI/UX Design projects involve creating impactful digital interface marks of user mission and goals.</p>
@@ -421,7 +514,6 @@
   <!-- 5. टेम्पलेट्स कार्ड्स सेक्शन -->
   <section class="templates-section" id="templates">
     <div class="templates-grid">
-      
       <script>
         const templatesData = [
           {title: "E-Commerce Kit", desc: "Modern online store layout."},
@@ -431,7 +523,7 @@
           {title: "Portfolio UI", desc: "Creative personal showcase."},
           {title: "Real Estate", desc: "Property listing interface."},
           {title: "Crypto Dashboard", desc: "Trading and finance UI."},
-          {title: "Education Hub", desc: "Online course platform."},
+          {title: "EducationHub", desc: "Online course platform."},
           {title: "Travel Agency", desc: "Booking and tour design."},
           {title: "Agency Pro", desc: "Corporate business layout."}
         ];
@@ -448,7 +540,39 @@
           </div>
         `).join(''));
       </script>
+    </div>
+  </section>
 
+  <!-- 6. Thank's For Scrolling! सेक्शन (इमेज के अनुसार डैश लाइन बॉक्स) -->
+  <div class="thankyou-section">
+    <div class="thankyou-box-wrapper">
+      <div class="work-together-tag">Let's Work Together</div>
+      <h2 class="thankyou-title">Thank's For Scrolling!</h2>
+      <p class="thankyou-desc">Don't forget that <span>LIKE BUTTON</span> below if you like my portfolio!<br>I really appreciate it!</p>
+    </div>
+  </div>
+
+  <!-- 7. AI Automatic Review सेक्शन -->
+  <section class="review-section">
+    <div class="review-heading-box">
+      <h2>AI Automatic Reviews</h2>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="review-author">Alex Morgan</div>
+        <p class="review-text">"Incredible template designs! The dark and light contrast gives it a true Behance professional feel."</p>
+        <span class="ai-badge">🤖 AI Verified Review</span>
+      </div>
+      <div class="review-card">
+        <div class="review-author">Sarah Jenkins</div>
+        <p class="review-text">"The smooth animations and clean code made integrating this into my workflow a breeze."</p>
+        <span class="ai-badge">🤖 AI Verified Review</span>
+      </div>
+      <div class="review-card">
+        <div class="review-author">David Miller</div>
+        <p class="review-text">"Super clean UI/UX layout. The buy and preview buttons work seamlessly!"</p>
+        <span class="ai-badge">🤖 AI Verified Review</span>
+      </div>
     </div>
   </section>
 
