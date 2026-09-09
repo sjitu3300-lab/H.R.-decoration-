@@ -355,7 +355,7 @@
       background-color: #2563eb;
     }
 
-    /* ✨ 6. "Thank's For Scrolling!" सेक्शन (इमेज के अनुसार चारों ओर डैश लाइन बॉक्स) */
+    /* ✨ 6. Thank's For Scrolling! सेक्शन */
     .thankyou-section {
       background-color: #0a0a0a;
       padding: 80px 20px;
@@ -365,7 +365,7 @@
     .thankyou-box-wrapper {
       max-width: 900px;
       margin: 0 auto;
-      border: 2px dashed #ccff00; /* चारों तरफ की लाइन */
+      border: 2px dashed #ccff00;
       padding: 50px 30px;
       position: relative;
       border-radius: 4px;
@@ -396,7 +396,40 @@
       font-weight: 700;
     }
 
-    /* 🤖 7. AI Automatic Review सेक्शन (UI/UX स्टाइल हेडिंग के साथ) */
+    /* 🏷️ 7. कीवर्ड्स बॉक्स (Behance Style Tags) */
+    .keywords-container {
+      background-color: #ffffff;
+      padding: 30px 20px;
+      text-align: center;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    .keywords-flex {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .keyword-tag {
+      background-color: #f3f4f6;
+      border: 1px solid #e5e7eb;
+      color: #333333;
+      padding: 8px 20px;
+      border-radius: 30px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: all 0.3s;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .keyword-tag:hover {
+      background-color: #111111;
+      color: #ffffff;
+      border-color: #111111;
+    }
+
+    /* 🤖 8. 12+ AI Automatic Reviews सेक्शन */
     .review-section {
       background-color: #f8f9fa;
       padding: 60px 50px;
@@ -419,7 +452,7 @@
     }
     .reviews-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 25px;
     }
     .review-card {
@@ -449,6 +482,53 @@
       font-weight: 700;
       padding: 4px 10px;
       border-radius: 20px;
+    }
+
+    /* 🖤 9. ब्लैक फुटर सेक्शन (सोशल मीडिया और पेजेस) */
+    .footer-section {
+      background-color: #0a0a0a;
+      color: #9ca3af;
+      padding: 60px 50px;
+      border-top: 1px solid #222222;
+    }
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 40px;
+    }
+    .footer-col h3 {
+      color: #ffffff;
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+    }
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .footer-links a {
+      color: #9ca3af;
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: color 0.3s;
+    }
+    .footer-links a:hover {
+      color: #ccff00;
+    }
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 40px auto 0 auto;
+      padding-top: 20px;
+      border-top: 1px solid #1f2937;
+      text-align: center;
+      font-size: 0.85rem;
+      color: #6b7280;
     }
   </style>
 </head>
@@ -523,7 +603,7 @@
           {title: "Portfolio UI", desc: "Creative personal showcase."},
           {title: "Real Estate", desc: "Property listing interface."},
           {title: "Crypto Dashboard", desc: "Trading and finance UI."},
-          {title: "EducationHub", desc: "Online course platform."},
+          {title: "Education Hub", desc: "Online course platform."},
           {title: "Travel Agency", desc: "Booking and tour design."},
           {title: "Agency Pro", desc: "Corporate business layout."}
         ];
@@ -534,8 +614,8 @@
             <div class="template-title">${item.title}</div>
             <div class="template-desc">${item.desc}</div>
             <div class="template-buttons">
-              <a href="#" class="btn-prev">Previous</a>
-              <a href="#" class="btn-buy">Buy</a>
+              <a href="preview.html" class="btn-prev">Previous</a>
+              <a href="buy.html" class="btn-buy">Buy</a>
             </div>
           </div>
         `).join(''));
@@ -543,7 +623,7 @@
     </div>
   </section>
 
-  <!-- 6. Thank's For Scrolling! सेक्शन (इमेज के अनुसार डैश लाइन बॉक्स) -->
+  <!-- 6. Thank's For Scrolling! सेक्शन -->
   <div class="thankyou-section">
     <div class="thankyou-box-wrapper">
       <div class="work-together-tag">Let's Work Together</div>
@@ -552,10 +632,26 @@
     </div>
   </div>
 
-  <!-- 7. AI Automatic Review सेक्शन -->
+  <!-- 7. कीवर्ड्स बॉक्स (Behance Style Tags) -->
+  <div class="keywords-container">
+    <div class="keywords-flex">
+      <a href="#" class="keyword-tag">graphic</a>
+      <a href="#" class="keyword-tag">design</a>
+      <a href="#" class="keyword-tag">portfolio</a>
+      <a href="#" class="keyword-tag">branding</a>
+      <a href="#" class="keyword-tag">Logo Design</a>
+      <a href="#" class="keyword-tag">brand identity</a>
+      <a href="#" class="keyword-tag">UI/UX</a>
+      <a href="#" class="keyword-tag">Web Design</a>
+      <a href="#" class="keyword-tag">Graphic Designer</a>
+      <a href="#" class="keyword-tag">visual identity</a>
+    </div>
+  </div>
+
+  <!-- 8. 12+ AI Automatic Reviews सेक्शन -->
   <section class="review-section">
     <div class="review-heading-box">
-      <h2>AI Automatic Reviews</h2>
+      <h2>Reviews</h2>
     </div>
     <div class="reviews-grid">
       <div class="review-card">
@@ -573,8 +669,91 @@
         <p class="review-text">"Super clean UI/UX layout. The buy and preview buttons work seamlessly!"</p>
         <span class="ai-badge">🤖 AI Verified Review</span>
       </div>
+      <div class="review-card">
+        <div class="review-author">Priya Sharma</div>
+        <p class="review-text">"Amazing typography and spacing. Best place to buy production-ready templates."</p>
+        <span class="ai-badge">🤖 AI Verified Review</span>
+      </div>
+      <div class="review-card">
+        <div class="review-author">Rahul Verma</div>
+        <p class="review-text">"The sliding portfolio animation on top looks absolute class!"</p>
+        <span class="ai-badge">🤖 AI Verified Review</span>
+      </div>
+      <div class="review-card">
+        <div class="review-author">Elena Rostova</div>
+        <p class="review-text">"Clean architecture, fully responsive, and AdSense friendly layout. Highly recommended."</p>
+        <span class="ai-badge">🤖 AI Verified Review</span>
+      </div>
+      <div class="review-card">
+        <div class="review-author">Liam Smith</div>
+        <p class="review-text">"Loved the modern UI elements. Saved me weeks of development time."</p>
+        <span class="ai-badge">🤖 AI Verified Review</span>
+      </div>
+      <div class="review-card">
+        <div class="review-author">Ananya Roy</div>
+        <p class="review-text">"The dark theme toggle and layout styling is top-notch."</p>
+        <span class="ai-badge">🤖 AI Verified Review</span>
+      </div>
+      <div class="review-card">
+        <div class="review-author">Marcus Vance</div>
+        <p class="review-text">"Professional presentation from top to bottom. Great work Jitendra!"</p>
+        <span class="ai-badge">🤖 AI Verified Review</span>
+      </div>
+      <div class="review-card">
+        <div class="review-author">Neha Gupta</div>
+        <p class="review-text">"Super intuitive layout. The navigation and dropdown menus are buttery smooth."</p>
+        <span class="ai-badge">🤖 AI Verified Review</span>
+      </div>
+      <div class="review-card">
+        <div class="review-author">Kevin Durant</div>
+        <p class="review-text">"Top-tier web design templates. Worth every penny."</p>
+        <span class="ai-badge">🤖 AI Verified Review</span>
+      </div>
+      <div class="review-card">
+        <div class="review-author">Sophia Turner</div>
+        <p class="review-text">"The aesthetic matches top global portfolios on Behance and Dribbble."</p>
+        <span class="ai-badge">🤖 AI Verified Review</span>
+      </div>
     </div>
   </section>
+
+  <!-- 9. ब्लैक फुटर सेक्शन (सोशल मीडिया और पेजेस) -->
+  <footer class="footer-section">
+    <div class="footer-container">
+      <div class="footer-col">
+        <h3>Social Media</h3>
+        <ul class="footer-links">
+          <li><a href="https://instagram.com" target="_blank">Instagram</a></li>
+          <li><a href="https://twitter.com" target="_blank">Twitter</a></li>
+          <li><a href="https://pinterest.com" target="_blank">Pinterest</a></li>
+          <li><a href="https://facebook.com" target="_blank">Facebook</a></li>
+          <li><a href="https://linkedin.com" target="_blank">LinkedIn</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Quick Pages</h3>
+        <ul class="footer-links">
+          <li><a href="explore.html">Explore Page</a></li>
+          <li><a href="#templates">UI/UX Templates</a></li>
+          <li><a href="#pricing">Pricing Plans</a></li>
+          <li><a href="#blog">Blogs</a></li>
+          <li><a href="#contact">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Legal & Policies</h3>
+        <ul class="footer-links">
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Use</a></li>
+          <li><a href="#">Disclaimer</a></li>
+          <li><a href="#">Cookie Preferences</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2026 Jitendra Portfolio. All Rights Reserved.
+    </div>
+  </footer>
 
   <!-- ⚡ टाइपिंग एनिमेशन लॉजिक -->
   <script>
