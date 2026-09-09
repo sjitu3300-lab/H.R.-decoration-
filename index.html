@@ -16,12 +16,12 @@
       font-family: 'Plus Jakarta Sans', sans-serif;
     }
     body {
-      background-color: #f8f9fa; /* ओवरऑल लाइट थीम बेस */
+      background-color: #f8f9fa;
       color: #111111;
       overflow-x: hidden;
     }
 
-    /* 🧭 1. नेविगेशन बार - पूरी तरह सफेद बैकग्राउंड और काले टेक्स्ट */
+    /* 🧭 1. नेविगेशन बार - सफेद बैकग्राउंड और काले टेक्स्ट */
     .navbar {
       display: flex;
       justify-content: space-between;
@@ -257,19 +257,27 @@
       object-fit: cover;
     }
 
-    /* 🔥 4. दूसरा बड़ा हेडिंग सेक्शन - काला बैकग्राउंड */
+    /* 🔥 4. नई इमेज के अनुसार UI / UX Designs हेडिंग सेक्शन (नियोन-ग्रीन थीम) */
     .section-dark-heading {
       background-color: #0a0a0a;
-      padding: 40px 50px;
+      padding: 60px 20px;
       text-align: center;
       margin: 40px 0;
     }
     .section-dark-heading h2 {
-      font-size: 3rem;
+      font-size: 4.5rem;
       font-weight: 900;
-      color: #ffffff;
-      text-transform: uppercase;
+      color: #ccff00; /* इमेज के अनुसार नियोन-ग्रीन कलर */
+      text-transform: capitalize;
       letter-spacing: -1px;
+      margin-bottom: 15px;
+    }
+    .section-dark-heading p {
+      color: #d1d5db;
+      font-size: 1.1rem;
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.6;
     }
 
     /* 🛒 5. टेम्पलेट्स सेक्शन - सफेद कार्ड्स ग्रिड */
@@ -353,7 +361,7 @@
 </head>
 <body>
 
-  <!-- 1. नेविगेशन बार (सफेद बैकग्राउंड और काले टेक्स्ट) -->
+  <!-- 1. नेविगेशन बार -->
   <nav class="navbar">
     <div class="nav-left">
       <span class="nav-logo-icon">⚡</span>
@@ -379,12 +387,12 @@
     </div>
   </nav>
 
-  <!-- 2. पोर्टफोलियो टेक्स्ट स्पेशल एनिमेशन (काला बैकग्राउंड) -->
+  <!-- 2. पोर्टफोलियो टेक्स्ट स्पेशल एनिमेशन -->
   <div class="hero-ticker">
     <div class="ticker-text">PORTFOLIO</div>
   </div>
 
-  <!-- 3. इंट्रो बॉक्स सेक्शन (सफेद बैकग्राउंड और काला टेक्स्ट) -->
+  <!-- 3. इंट्रो बॉक्स सेक्शन -->
   <section class="intro-section">
     <div class="cube-box">
       <div class="intro-left">
@@ -404,12 +412,13 @@
     </div>
   </section>
 
-  <!-- 4. दूसरा बड़ा हेडिंग सेक्शन (UI / UX DESIGNS) -->
+  <!-- 4. नई इमेज के अनुसार UI / UX Designs हेडिंग सेक्शन -->
   <div class="section-dark-heading">
-    <h2>UI / UX DESIGNS</h2>
+    <h2>UI / UX Designs</h2>
+    <p>These UI/UX Design projects involve creating impactful digital interface marks of user mission and goals.</p>
   </div>
 
-  <!-- 5. टेम्पलेट्स कार्ड्स सेक्शन (सफेद कार्ड्स) -->
+  <!-- 5. टेम्पलेट्स कार्ड्स सेक्शन -->
   <section class="templates-section" id="templates">
     <div class="templates-grid">
       
