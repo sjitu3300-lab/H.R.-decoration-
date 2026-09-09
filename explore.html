@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Explore Jitendra - Portfolio & Journey</title>
+  <!-- मॉडर्न क्लीन फॉन्ट -->
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    /* 🎨 ग्लोबल रिसेट */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    body {
+      background-color: #f8f9fa;
+      color: #111111;
+      overflow-x: hidden;
+    }
+
+    /* 🧭 1. नेविगेशन बार (होमपेज जैसी) */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 50px;
+      background-color: #ffffff;
+      border-bottom: 1px solid #e5e7eb;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+    }
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .nav-logo-icon {
+      font-size: 1.5rem;
+    }
+    .nav-title {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: #111111;
+    }
+    .nav-center {
+      display: flex;
+      list-style: none;
+      gap: 30px;
+      align-items: center;
+    }
+    .nav-center li {
+      position: relative;
+    }
+    .nav-center a {
+      color: #333333;
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      transition: color 0.3s;
+    }
+    .nav-center a:hover {
+      color: #000000;
+    }
+
+    .nav-right {
+      display: flex;
+      gap: 12px;
+    }
+    .btn-auth {
+      background: transparent;
+      border: 1.5px solid #111111;
+      color: #111111;
+      padding: 8px 18px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+    .btn-auth:hover {
+      background-color: #111827;
+      color: #ffffff;
+      border-color: #111827;
+    }
+
+    /* 🌟 2. एक्सप्लोर हीरो सेक्शन (इमेज लेआउट के अनुसार) */
+    .explore-hero {
+      padding: 80px 50px;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 50px;
+    }
+    .explore-bio-col {
+      flex: 1.2;
+      min-width: 320px;
+    }
+    .explore-title {
+      font-size: 3.5rem;
+      font-weight: 900;
+      color: #111111;
+      margin-bottom: 20px;
+      line-height: 1.1;
+      letter-spacing: -1px;
+    }
+    .explore-title span {
+      color: #2563eb;
+    }
+    .explore-story {
+      color: #4b5563;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      margin-bottom: 30px;
+    }
+    .explore-actions {
+      display: flex;
+      gap: 15px;
+    }
+    .btn-primary-custom {
+      background-color: #111111;
+      color: #ffffff;
+      padding: 12px 28px;
+      border-radius: 8px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+    .btn-primary-custom:hover {
+      background-color: #2563eb;
+    }
+    .btn-secondary-custom {
+      background-color: transparent;
+      border: 1.5px solid #d1d5db;
+      color: #111111;
+      padding: 12px 28px;
+      border-radius: 8px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+    .btn-secondary-custom:hover {
+      border-color: #111111;
+    }
+
+    /* 🪪 3. दाईं तरफ व्हाइट बैकग्राउंड आईडी-कार्ड लेआउट */
+    .explore-idcard-col {
+      flex: 0.8;
+      min-width: 280px;
+      display: flex;
+      justify-content: center;
+    }
+    .id-card {
+      background-color: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 20px;
+      padding: 25px;
+      width: 280px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+      text-align: center;
+      position: relative;
+    }
+    .id-card-top-tag {
+      font-size: 0.75rem;
+      font-weight: 800;
+      color: #2563eb;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 15px;
+    }
+    .id-card-img-box {
+      width: 140px;
+      height: 140px;
+      margin: 0 auto 20px auto;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 3px solid #f3f4f6;
+    }
+    .id-card-img-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .id-card-name {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: #111111;
+      margin-bottom: 5px;
+    }
+    .id-card-role {
+      font-size: 0.9rem;
+      color: #6b7280;
+      font-weight: 600;
+    }
+
+    /* 🛠️ 4. टेक्निकल स्किल्स सेक्शन */
+    .skills-section {
+      padding: 60px 50px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .section-heading {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #111111;
+      margin-bottom: 30px;
+      border-left: 5px solid #2563eb;
+      padding-left: 15px;
+    }
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+    .skill-card {
+      background-color: #ffffff;
+      border: 1px solid #e5e7eb;
+      padding: 20px;
+      border-radius: 12px;
+      font-weight: 700;
+      color: #111111;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+    }
+
+    /* 📈 5. वर्टिकल एक्सपीरियंस टाइमलाइन सेक्शन */
+    .timeline-section {
+      padding: 40px 50px 80px 50px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .timeline {
+      position: relative;
+      border-left: 2px solid #2563eb;
+      margin-left: 20px;
+      padding-left: 30px;
+    }
+    .timeline-item {
+      margin-bottom: 35px;
+      position: relative;
+    }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -37px;
+      top: 5px;
+      width: 12px;
+      height: 12px;
+      background-color: #2563eb;
+      border-radius: 50%;
+      border: 2px solid #ffffff;
+    }
+    .timeline-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #111111;
+      margin-bottom: 5px;
+    }
+    .timeline-desc {
+      color: #4b5563;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    /* 🖤 फुटर सेक्शन */
+    .footer-section {
+      background-color: #0a0a0a;
+      color: #9ca3af;
+      padding: 40px 50px;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+    .footer-section a {
+      color: #ccff00;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 1. नेविगेशन बार -->
+  <nav class="navbar">
+    <div class="nav-left">
+      <span class="nav-logo-icon">⚡</span>
+      <span class="nav-title">JL Portfolio</span>
+    </div>
+    <ul class="nav-center">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="explore.html">Explore</a></li>
+      <li><a href="index.html#templates">Templates</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="#login" class="btn-auth">Login</a>
+      <a href="#signup" class="btn-auth">Sign Up</a>
+    </div>
+  </nav>
+
+  <!-- 2. एक्सप्लोर हीरो सेक्शन और व्हाइट आईडी-कार्ड -->
+  <section class="explore-hero">
+    <div class="explore-bio-col">
+      <h1 class="explore-title">Hello, I'm <br><span>Jitendra</span></h1>
+      <p class="explore-story">
+        I am a passionate Web Developer & UI/UX Design Enthusiast on a mission to build high-performance, clean, and visually stunning digital products. My journey began with a curiosity for how code brings imagination to life. Today, I craft modern web interfaces that blend aesthetic perfection with lightning-fast performance, helping creators and businesses scale digitally.
+      </p>
+      <div class="explore-actions">
+        <a href="index.html#templates" class="btn-primary-custom">View Templates</a>
+        <a href="index.html" class="btn-secondary-custom">Back to Home</a>
+      </div>
+    </div>
+
+    <!-- दाईं तरफ व्हाइट बैकग्राउंड आईडी-कार्ड -->
+    <div class="explore-idcard-col">
+      <div class="id-card">
+        <div class="id-card-top-tag">Verified Creator</div>
+        <div class="id-card-img-box">
+          <!-- अपनी इमेज का लिंक यहाँ डालें -->
+          <img src="YOUR_IMAGE_URL_HERE" alt="Jitendra ID Photo">
+        </div>
+        <div class="id-card-name">Jitendra</div>
+        <div class="id-card-role">Web Developer & Designer</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. टेक्निकल स्किल्स सेक्शन -->
+  <section class="skills-section">
+    <h2 class="section-heading">Technical Expertise</h2>
+    <div class="skills-grid">
+      <div class="skill-card">HTML5 & CSS3 Architecture</div>
+      <div class="skill-card">JavaScript (ES6+) & DOM</div>
+      <div class="skill-card">UI/UX Wireframing & Prototyping</div>
+      <div class="skill-card">Responsive & Mobile-First Design</div>
+    </div>
+  </section>
+
+  <!-- 4. अनुभव और सफर (Experience & Timeline) -->
+  <section class="timeline-section">
+    <h2 class="section-heading">Experience & Journey</h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-title">Foundational Learning & Core Dev</div>
+        <div class="timeline-desc">Mastered core web development fundamentals, building semantic layouts and clean structures using HTML and CSS.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-title">UI/UX & Advanced Frontend</div>
+        <div class="timeline-desc">Integrated advanced JavaScript animations, responsive grids, and modern Behance-inspired dark/light aesthetics.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-title">Template Marketplace Launch</div>
+        <div class="timeline-desc">Currently building and expanding production-ready UI kits and web templates optimized for performance and creators worldwide.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- फुटर -->
+  <footer class="footer-section">
+    &copy; 2026 Jitendra Portfolio. Designed with precision. <a href="index.html">Return Home</a>
+  </footer>
+
+</body>
+</html>
+
