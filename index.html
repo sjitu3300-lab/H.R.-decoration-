@@ -429,7 +429,7 @@
       border-color: #111111;
     }
 
-    /* 🤖 8. 12+ AI Automatic Reviews सेक्शन */
+    /* 🤖 8. Reviews सेक्शन और Interactive Review Form */
     .review-section {
       background-color: #f8f9fa;
       padding: 60px 50px;
@@ -450,6 +450,57 @@
       text-transform: uppercase;
       letter-spacing: -1px;
     }
+
+    /* रिव्यू सबमिट फॉर्म बॉक्स */
+    .review-form-box {
+      background-color: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 14px;
+      padding: 30px;
+      margin-bottom: 40px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+    }
+    .review-form-box h3 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #111111;
+      margin-bottom: 20px;
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    .form-group input, .form-group textarea {
+      width: 100%;
+      padding: 12px 15px;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+    .form-group input:focus, .form-group textarea:focus {
+      border-color: #2563eb;
+    }
+    .form-group textarea {
+      height: 100px;
+      resize: vertical;
+    }
+    .btn-submit-review {
+      background-color: #111111;
+      color: #ffffff;
+      border: none;
+      padding: 12px 30px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .btn-submit-review:hover {
+      background-color: #2563eb;
+    }
+
     .reviews-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -484,7 +535,7 @@
       border-radius: 20px;
     }
 
-    /* 🖤 9. ब्लैक फुटर सेक्शन (सोशल मीडिया और पेजेस) */
+    /* 🖤 9. ब्लैक फुटर सेक्शन */
     .footer-section {
       background-color: #0a0a0a;
       color: #9ca3af;
@@ -632,7 +683,7 @@
     </div>
   </div>
 
-  <!-- 7. कीवर्ड्स बॉक्स (Behance Style Tags) -->
+  <!-- 7. कीवर्ड्स बॉक्स -->
   <div class="keywords-container">
     <div class="keywords-flex">
       <a href="#" class="keyword-tag">graphic</a>
@@ -648,12 +699,28 @@
     </div>
   </div>
 
-  <!-- 8. 12+ AI Automatic Reviews सेक्शन -->
+  <!-- 8. Reviews सेक्शन (फॉर्म और 12+ रेडी रिव्यूज के साथ) -->
   <section class="review-section">
     <div class="review-heading-box">
       <h2>Reviews</h2>
     </div>
-    <div class="reviews-grid">
+
+    <!-- यूजर रिव्यू देने के लिए फॉर्म बॉक्स -->
+    <div class="review-form-box">
+      <h3>Leave Your Review</h3>
+      <form id="reviewForm" onsubmit="addReview(event)">
+        <div class="form-group">
+          <input type="text" id="reviewerName" placeholder="Your Name" required>
+        </div>
+        <div class="form-group">
+          <textarea id="reviewerText" placeholder="Write your review here..." required></textarea>
+        </div>
+        <button type="submit" class="btn-submit-review">Submit Review</button>
+      </form>
+    </div>
+
+    <!-- रिव्यूज की ग्रिड (रेडी रिव्यूज + नए सबमिट होने वाले रिव्यूज यहाँ आएंगे) -->
+    <div class="reviews-grid" id="reviewsGrid">
       <div class="review-card">
         <div class="review-author">Alex Morgan</div>
         <p class="review-text">"Incredible template designs! The dark and light contrast gives it a true Behance professional feel."</p>
@@ -673,6 +740,7 @@
         <div class="review-author">Priya Sharma</div>
         <p class="review-text">"Amazing typography and spacing. Best place to buy production-ready templates."</p>
         <span class="ai-badge">🤖 AI Verified Review</span>
+      </div>
       </div>
       <div class="review-card">
         <div class="review-author">Rahul Verma</div>
@@ -717,7 +785,7 @@
     </div>
   </section>
 
-  <!-- 9. ब्लैक फुटर सेक्शन (सोशल मीडिया और पेजेस) -->
+  <!-- 9. ब्लैक फुटर सेक्शन -->
   <footer class="footer-section">
     <div class="footer-container">
       <div class="footer-col">
@@ -755,8 +823,9 @@
     </div>
   </footer>
 
-  <!-- ⚡ टाइपिंग एनिमेशन लॉजिक -->
+  <!-- ⚡ जावास्क्रिप्ट (टाइपिंग और नया रिव्यू लाइव जोड़ने के लिए) -->
   <script>
+    // टाइपिंग एनिमेशन
     const textElement = document.getElementById("typingText");
     const phrase = "Web Developer & UI/UX Designer";
     let isDeleting = false;
@@ -779,9 +848,28 @@
       const speed = isDeleting ? 80 : 120;
       setTimeout(loopTyping, speed);
     }
-
     loopTyping();
+
+    // नया रिव्यू सबमिट करने का फंक्शन
+    function addReview(event) {
+      event.preventDefault();
+      const name = document.getElementById("reviewerName").value;
+      const text = document.getElementById("reviewerText").value;
+      const grid = document.getElementById("reviewsGrid");
+
+      const newCard = document.createElement("div");
+      newCard.className = "review-card";
+      newCard.innerHTML = `
+        <div class="review-author">${name}</div>
+        <p class="review-text">"${text}"</p>
+        <span class="ai-badge" style="background-color: #fef08a; color: #854d0e;">✨ User Submitted Review</span>
+      `;
+
+      grid.prepend(newCard); // नए रिव्यू को सबसे ऊपर दिखाना
+      document.getElementById("reviewForm").reset();
+      alert("Thank you! Your review has been added successfully.");
+    }
   </script>
 
 </body>
-</html>
+  </html>
