@@ -681,23 +681,72 @@
     <p>These UI/UX Design projects involve creating impactful digital interface marks of user mission and goals.</p>
   </div>
 
-  <!-- 5. टेम्पलेट्स कार्ड्स सेक्शन -->
+   <!-- 5. टेम्पलेट्स कार्ड्स सेक्शन (सभी टेम्पलेट्स के नाम, विवरण और इमेज के साथ) -->
   <section class="templates-section" id="templates">
     <div class="templates-grid">
       <script>
         const templatesData = [
-          {title: "E-Commerce Kit", desc: "Modern online store layout."},
-          {title: "Cooking Blog", desc: "Recipe and food UI design."},
-          {title: "Fitness Tracker", desc: "Gym and sports dashboard."},
-          {title: "SaaS Landing", desc: "High conversion tech layout."},
-          {title: "Portfolio UI", desc: "Creative personal showcase."},
-          {title: "Real Estate", desc: "Property listing interface."},
-          {title: "Crypto Dashboard", desc: "Trading and finance UI."},
-          {title: "Education Hub", desc: "Online course platform."},
-          {title: "Travel Agency", desc: "Booking and tour design."},
-          {title: "Agency Pro", desc: "Corporate business layout."}
+          {
+            id: "hotel",
+            title: "Inder Paradise Hotel", 
+            desc: "Luxury booking & hospitality UI layout.", 
+            img: "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=500&auto=format&fit=crop&q=60"
+          },
+          {
+            id: "restaurant",
+            title: "Restaurant & Cafe", 
+            desc: "Modern food & dining menu layout.", 
+            img: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=500&auto=format&fit=crop&q=60"
+          },
+          {
+            id: "fitness",
+            title: "Fitness Tracker", 
+            desc: "Gym and sports dashboard.", 
+            img: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=500&auto=format&fit=crop&q=60"
+          },
+          {
+            id: "saas",
+            title: "SaaS Landing", 
+            desc: "High conversion tech layout.", 
+            img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&auto=format&fit=crop&q=60"
+          },
+          {
+            id: "portfolio",
+            title: "Portfolio UI", 
+            desc: "Creative personal showcase.", 
+            img: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=500&auto=format&fit=crop&q=60"
+          },
+          {
+            id: "realestate",
+            title: "Real Estate", 
+            desc: "Property listing interface.", 
+            img: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=500&auto=format&fit=crop&q=60"
+          },
+          {
+            id: "crypto",
+            title: "Crypto Dashboard", 
+            desc: "Trading and finance UI.", 
+            img: "https://images.unsplash.com/photo-1621416894569-0f39ed31d247?w=500&auto=format&fit=crop&q=60"
+          },
+          {
+            id: "education",
+            title: "Education Hub", 
+            desc: "Online course platform.", 
+            img: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=500&auto=format&fit=crop&q=60"
+          },
+          {
+            id: "travel",
+            title: "Travel Agency", 
+            desc: "Booking and tour design.", 
+            img: "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=500&auto=format&fit=crop&q=60"
+          },
+          {
+            id: "agency",
+            title: "Agency Pro", 
+            desc: "Corporate business layout.", 
+            img: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=500&auto=format&fit=crop&q=60"
+          }
         ];
-
         document.write(templatesData.map((item, index) => `
           <div class="template-card">
             <img src="TEMPLATE_IMG_${index + 1}" alt="Template" class="template-img">
