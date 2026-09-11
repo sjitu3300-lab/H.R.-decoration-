@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jitendra - Explore & Identity Hub</title>
+  <title>Jitendra - Explore & Developer Profile Hub</title>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
   
@@ -15,8 +15,8 @@
       font-family: 'Plus Jakarta Sans', sans-serif;
     }
     body {
-      background-color: #030712;
-      color: #f3f4f6;
+      background-color: #f8f9fa;
+      color: #111111;
       overflow-x: hidden;
       min-height: 100vh;
       display: flex;
@@ -24,42 +24,23 @@
       justify-content: space-between;
     }
 
-    /* Background Futuristic Grid & Glow */
-    .bg-grid {
-      position: fixed;
-      inset: 0;
-      background-image: linear-gradient(to right, #1e293b 1px, transparent 1px),
-                        linear-gradient(to bottom, #1e293b 1px, transparent 1px);
-      background-size: 3rem 3.5rem;
-      opacity: 0.15;
-      z-index: -1;
-    }
-    .glow-orb {
-      position: absolute;
-      top: 10%;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 500px;
-      height: 300px;
-      background: radial-gradient(circle, rgba(6,182,212,0.15) 0%, rgba(139,92,246,0.05) 70%, transparent 100%);
-      filter: blur(80px);
-      z-index: -1;
-    }
-
-    /* Navbar */
+    /* Navbar (Matched with index.html) */
     .explore-nav {
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 20px 50px;
-      background: rgba(15, 23, 42, 0.75);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(56, 189, 248, 0.2);
+      background-color: #ffffff;
+      border-bottom: 1px solid #e5e7eb;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.03);
     }
     .nav-brand {
       font-size: 1.25rem;
       font-weight: 800;
-      color: #ffffff;
+      color: #111111;
       text-decoration: none;
       display: flex;
       align-items: center;
@@ -67,52 +48,55 @@
     }
     .back-btn {
       background: transparent;
-      border: 1px solid rgba(56, 189, 248, 0.4);
-      color: #38bdf8;
+      border: 1.5px solid #111111;
+      color: #111111;
       padding: 8px 20px;
-      border-radius: 8px;
-      font-weight: 600;
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: 0.9rem;
       text-decoration: none;
       transition: all 0.3s;
     }
     .back-btn:hover {
-      background: rgba(56, 189, 248, 0.1);
-      border-color: #38bdf8;
+      background-color: #111827;
+      color: #ffffff;
+      border-color: #111827;
     }
 
-    /* Main Container with Falling Identity Card Animation */
+    /* Main Explore Section */
     .explore-main {
       flex: 1;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 40px 20px;
+      padding: 60px 20px;
       text-align: center;
     }
 
     .explore-heading {
-      font-size: 2.5rem;
-      font-weight: 800;
+      font-size: 3rem;
+      font-weight: 900;
+      color: #111111;
       margin-bottom: 40px;
-      background: linear-gradient(to right, #38bdf8, #a855f7, #ec4899);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: fadeIn 1s ease-in-out;
+      letter-spacing: -1px;
+    }
+    .explore-heading span {
+      color: #2563eb;
     }
 
     /* 🪂 Gravity Falling Animation for Identity Card */
     @keyframes dropInElastic {
       0% {
-        transform: translateY(-400px) rotate(-10deg);
+        transform: translateY(-450px) rotate(-8deg);
         opacity: 0;
       }
       60% {
-        transform: translateY(20px) rotate(2deg);
+        transform: translateY(20px) rotate(1.5deg);
         opacity: 1;
       }
       80% {
-        transform: translateY(-10px) rotate(-1deg);
+        transform: translateY(-8px) rotate(-0.5deg);
       }
       100% {
         transform: translateY(0) rotate(0deg);
@@ -120,25 +104,25 @@
       }
     }
 
+    /* Identity Card Design (Professional Developer Profile) */
     .identity-card {
       width: 100%;
-      max-width: 400px;
-      background: linear-gradient(145deg, rgba(30, 41, 59, 0.9), rgba(15, 23, 42, 0.95));
-      border: 2px solid rgba(56, 189, 248, 0.4);
+      max-width: 440px;
+      background-color: #ffffff;
+      border: 1px solid #e5e7eb;
       border-radius: 24px;
-      padding: 35px;
-      box-shadow: 0 20px 50px rgba(6, 182, 212, 0.25);
+      padding: 40px;
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.08);
       position: relative;
       overflow: hidden;
       animation: dropInElastic 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
     }
 
-    /* Card Glowing Border Highlight */
     .identity-card::before {
       content: '';
       position: absolute;
-      top: 0; left: 0; width: 100%; height: 4px;
-      background: linear-gradient(90deg, #06b6d4, #8b5cf6, #ec4899);
+      top: 0; left: 0; width: 100%; height: 6px;
+      background: linear-gradient(90deg, #2563eb, #9333ea);
     }
 
     .id-header {
@@ -150,18 +134,19 @@
     .id-tag {
       font-size: 0.75rem;
       font-weight: 700;
-      letter-spacing: 1px;
-      color: #38bdf8;
-      background: rgba(56, 189, 248, 0.1);
-      padding: 4px 12px;
+      letter-spacing: 0.5px;
+      color: #2563eb;
+      background: #eff6ff;
+      padding: 6px 14px;
       border-radius: 20px;
-      border: 1px solid rgba(56, 189, 248, 0.3);
+      border: 1px solid #dbeafe;
     }
     .id-status {
       display: flex;
       align-items: center;
       gap: 6px;
-      font-size: 0.8rem;
+      font-size: 0.85rem;
+      font-weight: 600;
       color: #10b981;
     }
     .status-dot {
@@ -169,7 +154,7 @@
       height: 8px;
       background-color: #10b981;
       border-radius: 50%;
-      box-shadow: 0 0 10px #10b981;
+      box-shadow: 0 0 8px #10b981;
       animation: pulse 2s infinite;
     }
 
@@ -180,141 +165,140 @@
     }
 
     .id-avatar-box {
-      width: 110px;
-      height: 110px;
+      width: 100px;
+      height: 100px;
       margin: 0 auto 20px auto;
       border-radius: 20px;
-      background: linear-gradient(135deg, #06b6d4, #8b5cf6);
-      padding: 3px;
-      box-shadow: 0 0 20px rgba(6, 182, 212, 0.4);
-    }
-    .id-avatar-inner {
-      width: 100%;
-      height: 100%;
-      background: #0f172a;
-      border-radius: calc(20px - 3px);
+      background: #f3f4f6;
+      border: 2px solid #e5e7eb;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 2.5rem;
-      color: #38bdf8;
+      color: #2563eb;
     }
 
     .id-name {
-      font-size: 1.8rem;
+      font-size: 2rem;
       font-weight: 800;
-      color: #ffffff;
+      color: #111111;
       margin-bottom: 5px;
+      letter-spacing: -0.5px;
     }
     .id-role {
-      font-size: 0.95rem;
-      color: #a855f7;
-      font-weight: 600;
-      margin-bottom: 20px;
+      font-size: 1rem;
+      color: #2563eb;
+      font-weight: 700;
+      margin-bottom: 25px;
     }
+
     .id-details {
       text-align: left;
-      background: rgba(15, 23, 42, 0.6);
-      border-radius: 12px;
-      padding: 15px;
-      border: 1px solid rgba(255, 255, 255, 0.05);
+      background: #f8f9fa;
+      border-radius: 14px;
+      padding: 18px;
+      border: 1px solid #e5e7eb;
       margin-bottom: 25px;
       font-size: 0.9rem;
-      color: #94a3b8;
+      color: #4b5563;
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 10px;
     }
     .id-detail-row {
       display: flex;
       justify-content: space-between;
     }
     .id-detail-row span:last-child {
-      color: #f8fafc;
-      font-weight: 600;
+      color: #111111;
+      font-weight: 700;
     }
 
     .id-action-btn {
       display: block;
       width: 100%;
-      padding: 12px;
-      background: linear-gradient(135deg, #06b6d4, #2563eb);
+      padding: 14px;
+      background-color: #111111;
       color: #ffffff;
       font-weight: 700;
+      font-size: 1rem;
       text-decoration: none;
       border-radius: 10px;
-      transition: all 0.3s;
-      box-shadow: 0 4px 15px rgba(6, 182, 212, 0.4);
+      transition: background 0.3s, transform 0.2s;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
     }
     .id-action-btn:hover {
+      background-color: #2563eb;
       transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(6, 182, 212, 0.6);
     }
 
-    /* Footer */
+    /* Footer (Matched with index.html) */
     .explore-footer {
+      background-color: #0a0a0a;
+      color: #6b7280;
+      padding: 30px 50px;
       text-align: center;
-      padding: 25px;
       font-size: 0.85rem;
-      color: #64748b;
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      border-top: 1px solid #222222;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-10px); }
-      to { opacity: 1; transform: translateY(0); }
+    @media (max-width: 768px) {
+      .explore-nav {
+        padding: 15px 20px;
+      }
+      .explore-heading {
+        font-size: 2.2rem;
+      }
+      .identity-card {
+        padding: 25px;
+      }
     }
   </style>
 </head>
 <body>
 
-  <div class="bg-grid"></div>
-  <div class="glow-orb"></div>
-
-  <!-- Navigation -->
+  <!-- Navbar -->
   <header class="explore-nav">
-    <a href="index.html" class="nav-brand"><i class="fa-solid fa-bolt text-cyan-400"></i> JL Portfolio</a>
+    <a href="index.html" class="nav-brand"><span class="nav-logo-icon">⚡</span> JL Portfolio</a>
     <a href="index.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i> Back to Home</a>
   </header>
 
-  <!-- Main Explore Section with Identity Card -->
+  <!-- Main Explore Section -->
   <main class="explore-main">
-    <h1 class="explore-heading">Verified Digital Identity</h1>
+    <h1 class="explore-heading">Developer <span>Identity Hub</span></h1>
 
     <!-- Falling Identity Card -->
     <div class="identity-card">
       <div class="id-header">
-        <span class="id-tag">ACCESS PASSPORT</span>
+        <span class="id-tag">VERIFIED PROFILE</span>
         <div class="id-status">
-          <span class="status-dot"></span> Verified
+          <span class="status-dot"></span> Active Now
         </div>
       </div>
 
       <div class="id-avatar-box">
-        <div class="id-avatar-inner">
-          <i class="fa-solid fa-user-astronaut"></i>
-        </div>
+        <i class="fa-solid fa-code"></i>
       </div>
 
       <div class="id-name">Jitendra Soni</div>
-      <div class="id-role">Lead Web & UI/UX Developer</div>
+      <div class="id-role">Web Developer & UI/UX Designer</div>
 
       <div class="id-details">
         <div class="id-detail-row">
-          <span>Core Domain:</span>
+          <span>Primary Skill:</span>
           <span>Frontend Architecture</span>
         </div>
         <div class="id-detail-row">
           <span>Tech Stack:</span>
-          <span>HTML, CSS, JS, React</span>
+          <span>HTML5, CSS3, JS, React</span>
         </div>
         <div class="id-detail-row">
-          <span>Security Clearance:</span>
-          <span>Level 5 (Verified)</span>
+          <span>Experience:</span>
+          <span>Modern UI Development</span>
         </div>
       </div>
 
-      <a href="index.html#templates" class="id-action-btn">Explore Templates Hub</a>
+      <a href="index.html#templates" class="id-action-btn">Explore Marketplace</a>
     </div>
   </main>
 
