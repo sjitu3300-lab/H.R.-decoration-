@@ -70,7 +70,7 @@
       color: #000000;
     }
     
-    /* ड्रॉपडाउन मेनू */
+    /* ड्रॉपडाउन मेनू (Category & Sub-Category Support) */
     .dropdown-menu {
       position: absolute;
       top: 100%;
@@ -79,7 +79,7 @@
       border: 1px solid #e5e7eb;
       list-style: none;
       padding: 10px 0;
-      width: 180px;
+      width: 220px;
       display: none;
       border-radius: 8px;
       box-shadow: 0 10px 25px rgba(0,0,0,0.08);
@@ -89,13 +89,23 @@
     }
     .dropdown-menu li a {
       padding: 10px 18px;
-      display: block;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       font-size: 0.9rem;
       color: #333333;
     }
     .dropdown-menu li a:hover {
       background-color: #f3f4f6;
       color: #000000;
+    }
+    .dropdown-category-title {
+      padding: 6px 18px;
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: #2563eb;
+      letter-spacing: 0.5px;
     }
 
     .nav-right {
@@ -277,7 +287,7 @@
       line-height: 1.6;
     }
 
-    /* 🛒 5. टेम्पलेट्स सेक्शन */
+    /* 🛒 5. टेम्पलेट्स सेक्शन (Fully Clickable Cards with Lightning Border Effect) */
     .templates-section {
       padding: 20px 50px 40px 50px;
       max-width: 1300px;
@@ -288,7 +298,9 @@
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 30px;
     }
+    
     .template-card {
+      position: relative;
       background-color: #ffffff;
       border: 1px solid #e5e7eb;
       border-radius: 14px;
@@ -298,12 +310,35 @@
       flex-direction: column;
       justify-content: space-between;
       box-shadow: 0 4px 15px rgba(0,0,0,0.03);
-      transition: transform 0.3s, box-shadow 0.3s;
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s;
     }
+    
+    /* ⚡ Charo aur lighting effect on hover */
+    .template-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      border: 2px solid transparent;
+      border-radius: 14px;
+      background: linear-gradient(45deg, #06b6d4, #8b5cf6, #3b82f6) border-box;
+      -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: destination-out;
+      mask-composite: exclude;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
     .template-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 12px 30px rgba(6,182,212,0.25);
     }
+    
+    .template-card:hover::before {
+      opacity: 1;
+    }
+
     .template-img {
       width: 100%;
       height: 160px;
@@ -321,38 +356,7 @@
     .template-desc {
       font-size: 0.85rem;
       color: #6b7280;
-      margin-bottom: 18px;
-    }
-    .template-buttons {
-      display: flex;
-      gap: 10px;
-    }
-    .btn-prev, .btn-buy {
-      flex: 1;
-      padding: 9px 0;
-      text-align: center;
-      font-size: 0.85rem;
-      font-weight: 700;
-      border-radius: 6px;
-      cursor: pointer;
-      text-decoration: none;
-      transition: all 0.3s;
-    }
-    .btn-prev {
-      background-color: transparent;
-      border: 1.5px solid #d1d5db;
-      color: #111111;
-    }
-    .btn-prev:hover {
-      border-color: #111111;
-    }
-    .btn-buy {
-      background-color: #111111;
-      border: none;
-      color: #ffffff;
-    }
-    .btn-buy:hover {
-      background-color: #2563eb;
+      margin-bottom: 10px;
     }
 
     /* ✨ 6. Thank's For Scrolling! सेक्शन */
@@ -624,7 +628,7 @@
 </head>
 <body>
 
-  <!-- 1. नेविगेशन बार -->
+  <!-- 1. नेविगेशन बार (Updated with Category & Sub-Category Dropdown) -->
   <nav class="navbar">
     <div class="nav-left">
       <span class="nav-logo-icon">⚡</span>
@@ -635,9 +639,14 @@
       <li class="dropdown-parent">
         <a href="#templates">Templates ▾</a>
         <ul class="dropdown-menu">
-          <li><a href="#ecommerce">E-commerce</a></li>
-          <li><a href="#cooking">Cooking</a></li>
-          <li><a href="#sports">Sports</a></li>
+          <li class="dropdown-category-title">Categories</li>
+          <li><a href="#ecommerce">E-commerce <span>🛒</span></a></li>
+          <li><a href="#cooking">Cooking <span>🍳</span></a></li>
+          <li><a href="#sports">Sports & Fitness <span>⚽</span></a></li>
+          <li class="dropdown-category-title" style="margin-top: 5px;">Sub-Categories</li>
+          <li><a href="#saas">SaaS & Tech <span>💻</span></a></li>
+          <li><a href="#realestate">Real Estate <span>🏠</span></a></li>
+          <li><a href="#crypto">Crypto & Finance <span>📈</span></a></li>
         </ul>
       </li>
       <li><a href="#pricing">Pricing</a></li>
@@ -669,7 +678,7 @@
       </div>
       <div class="intro-right">
         <div class="image-cube-box">
-          <img src="YOUR_IMAGE_URL_HERE" alt="Jitendra Profile Image">
+          <img src="https://i.ibb.co/S7699GcQ/IMG-20260909-224638.jpg" alt="Jitendra Profile Image">
         </div>
       </div>
     </div>
@@ -681,7 +690,7 @@
     <p>These UI/UX Design projects involve creating impactful digital interface marks of user mission and goals.</p>
   </div>
 
-   <!-- 5. टेम्पलेट्स कार्ड्स सेक्शन (सभी टेम्पलेट्स के नाम, विवरण और इमेज के साथ) -->
+  <!-- 5. टेम्पलेट्स कार्ड्स सेक्शन (Fully Clickable Cards without Buy/Prev buttons & Lightning Effect) -->
   <section class="templates-section" id="templates">
     <div class="templates-grid">
       <script>
@@ -690,73 +699,80 @@
             id: "hotel",
             title: "Inder Paradise Hotel", 
             desc: "Luxury booking & hospitality UI layout.", 
-            img: "https://i.ibb.co/S7699GcQ/IMG-20260909-224638.jpg?w=500&auto=format&fit=crop&q=60"
+            img: "https://i.ibb.co/S7699GcQ/IMG-20260909-224638.jpg?w=500&auto=format&fit=crop&q=60",
+            link: "previous.html"
           },
           {
             id: "restaurant",
             title: "Restaurant & Cafe", 
             desc: "Modern food & dining menu layout.", 
-            img: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=500&auto=format&fit=crop&q=60"
+            img: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=500&auto=format&fit=crop&q=60",
+            link: "previous.html"
           },
           {
             id: "fitness",
             title: "Fitness Tracker", 
             desc: "Gym and sports dashboard.", 
-            img: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=500&auto=format&fit=crop&q=60"
+            img: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=500&auto=format&fit=crop&q=60",
+            link: "previous.html"
           },
           {
             id: "saas",
             title: "SaaS Landing", 
             desc: "High conversion tech layout.", 
-            img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&auto=format&fit=crop&q=60"
+            img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&auto=format&fit=crop&q=60",
+            link: "previous.html"
           },
           {
             id: "portfolio",
             title: "Portfolio UI", 
             desc: "Creative personal showcase.", 
-            img: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=500&auto=format&fit=crop&q=60"
+            img: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=500&auto=format&fit=crop&q=60",
+            link: "previous.html"
           },
           {
             id: "realestate",
             title: "Real Estate", 
             desc: "Property listing interface.", 
-            img: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=500&auto=format&fit=crop&q=60"
+            img: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=500&auto=format&fit=crop&q=60",
+            link: "previous.html"
           },
           {
             id: "crypto",
             title: "Crypto Dashboard", 
             desc: "Trading and finance UI.", 
-            img: "https://images.unsplash.com/photo-1621416894569-0f39ed31d247?w=500&auto=format&fit=crop&q=60"
+            img: "https://images.unsplash.com/photo-1621416894569-0f39ed31d247?w=500&auto=format&fit=crop&q=60",
+            link: "previous.html"
           },
           {
             id: "education",
             title: "Education Hub", 
             desc: "Online course platform.", 
-            img: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=500&auto=format&fit=crop&q=60"
+            img: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=500&auto=format&fit=crop&q=60",
+            link: "previous.html"
           },
           {
             id: "travel",
             title: "Travel Agency", 
             desc: "Booking and tour design.", 
-            img: "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=500&auto=format&fit=crop&q=60"
+            img: "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=500&auto=format&fit=crop&q=60",
+            link: "previous.html"
           },
           {
             id: "agency",
             title: "Agency Pro", 
             desc: "Corporate business layout.", 
-            img: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=500&auto=format&fit=crop&q=60"
+            img: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=500&auto=format&fit=crop&q=60",
+            link: "previous.html"
           }
         ];
-        document.write(templatesData.map((item, index) => `
-          <div class="template-card">
-            <img src="TEMPLATE_IMG_${index + 1}" alt="Template" class="template-img">
+        
+        document.write(templatesData.map((item) => `
+          <a href="${item.link}" class="template-card">
+            <img src="${item.img}" alt="${item.title}" class="template-img">
             <div class="template-title">${item.title}</div>
             <div class="template-desc">${item.desc}</div>
-            <div class="template-buttons">
-              <a href="previous.html" class="btn-prev">Previous</a>
-              <a href="buy.html" class="btn-buy">Buy</a>
-            </div>
-          </div>
+          </a>
         `).join(''));
       </script>
     </div>
@@ -940,5 +956,4 @@
   </script>
 
 </body>
-        </html>
-              
+</html>
