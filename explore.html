@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jitendra - 3D Interactive Explore Profile</title>
+  <title>Jitendra - 3D Cinematic Explore Profile</title>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
   
@@ -24,7 +24,7 @@
       justify-content: space-between;
     }
 
-    /* 🚪 Gate Opening Animation Overlay (Fixed z-index and pointer events) */
+    /* 🚪 Gate Opening Animation Overlay */
     #gate-overlay {
       position: fixed;
       inset: 0;
@@ -96,9 +96,34 @@
       box-shadow: 0 2px 0 #000000, 0 5px 10px rgba(0,0,0,0.15);
     }
 
+    /* 1. 3D Scrolling Marquee Banner */
+    .hero-ticker {
+      background-color: #0a0a0a;
+      overflow: hidden;
+      white-space: nowrap;
+      padding: 25px 0;
+      border-bottom: 2px solid #222;
+    }
+    .ticker-content {
+      display: inline-block;
+      font-size: 3rem;
+      font-weight: 900;
+      color: #ffffff;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      animation: marqueeScroll 20s linear infinite;
+    }
+    .ticker-content span {
+      color: #2563eb;
+      margin: 0 20px;
+    }
+    @keyframes marqueeScroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
     /* Main Split Profile Section */
     .explore-main {
-      flex: 1;
       max-width: 1300px;
       margin: 0 auto;
       padding: 60px 50px;
@@ -113,7 +138,6 @@
     .profile-left {
       flex: 1.2;
       min-width: 320px;
-      animation: fadeInSlide 1s ease-out forwards;
     }
     .hello-tag {
       font-size: 1.1rem;
@@ -152,13 +176,17 @@
       color: #1e293b;
     }
 
-    /* Right Side: 3D Tilt ID Card */
+    /* 2. Right Side: 360-Degree Draggable 3D ID Card */
     .profile-right {
       flex: 0.8;
       min-width: 300px;
       display: flex;
       justify-content: center;
       perspective: 1000px;
+      cursor: grab;
+    }
+    .profile-right:active {
+      cursor: grabbing;
     }
 
     .id-card-3d {
@@ -169,7 +197,7 @@
       padding: 25px;
       box-shadow: 0 20px 40px rgba(0,0,0,0.08);
       transform-style: preserve-3d;
-      transition: transform 0.1s ease;
+      user-select: none;
       position: relative;
     }
 
@@ -206,7 +234,7 @@
     .id-photo-box img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: pointer;
     }
 
     .id-info-name {
@@ -224,6 +252,66 @@
       margin-bottom: 15px;
     }
 
+    /* 3. Scroll-Triggered Left/Right Sliding Sections (Trust Building) */
+    .trust-section {
+      max-width: 1300px;
+      margin: 40px auto 80px auto;
+      padding: 0 50px;
+    }
+    .trust-title {
+      text-align: center;
+      font-size: 2.5rem;
+      font-weight: 900;
+      margin-bottom: 50px;
+      color: #111111;
+    }
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+    }
+
+    .scroll-box {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 18px;
+      padding: 35px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+      opacity: 0;
+      transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    
+    /* Directional initial states for scroll animation */
+    .scroll-box.from-left {
+      transform: translateX(-100px);
+    }
+    .scroll-box.from-right {
+      transform: translateX(100px);
+    }
+    /* When active */
+    .scroll-box.active {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .scroll-box h3 {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: #111111;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .scroll-box h3 i {
+      color: #2563eb;
+    }
+    .scroll-box p {
+      color: #4b5563;
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
     /* Footer */
     .explore-footer {
       background-color: #0a0a0a;
@@ -234,15 +322,11 @@
       border-top: 1px solid #222222;
     }
 
-    @keyframes fadeInSlide {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
     @media (max-width: 768px) {
-      .explore-main { padding: 30px 20px; }
+      .explore-main, .trust-section { padding: 30px 20px; }
       .profile-name { font-size: 3rem; }
       .explore-nav { padding: 15px 20px; }
+      .ticker-content { font-size: 2rem; }
     }
   </style>
 </head>
@@ -254,19 +338,24 @@
     <div class="gate-right"></div>
   </div>
 
-  <!-- Audio element for Gate Opening Sound -->
   <audio id="gateSound" src="https://assets.mixkit.co/active_storage/sfx/2571/2571-preview.mp3" preload="auto"></audio>
 
   <!-- Navbar -->
   <header class="explore-nav">
     <a href="index.html" class="nav-brand"><span class="nav-logo-icon">⚡</span> JL Portfolio</a>
-    <!-- 3D Home Button -->
     <button onclick="openHome(event)" class="btn-3d-home">
       <i class="fa-solid fa-house"></i> Home
     </button>
   </header>
 
-  <!-- Main Profile & 3D ID Card Section -->
+  <!-- 1. 3D Scrolling Marquee Banner -->
+  <div class="hero-ticker">
+    <div class="ticker-content">
+      <span>WELCOME TO JL PORTFOLIO</span> • <span>UI/UX DESIGN EXPERT</span> • <span>WEB ARCHITECT</span> • <span>WELCOME TO JL PORTFOLIO</span> • <span>UI/UX DESIGN EXPERT</span> • <span>WEB ARCHITECT</span>
+    </div>
+  </div>
+
+  <!-- Main Profile & 360 Draggable 3D ID Card Section -->
   <main class="explore-main">
     <div class="profile-left">
       <div class="hello-tag">Hello, I'm</div>
@@ -281,8 +370,8 @@
       </div>
     </div>
 
-    <!-- Right Side 3D Tilt ID Card -->
-    <div class="profile-right">
+    <!-- Right Side 360-Degree Movable 3D ID Card -->
+    <div class="profile-right" id="cardContainer">
       <div class="id-card-3d" id="idCard">
         <div class="id-lanyard-hole"></div>
         <div class="id-card-top">
@@ -298,37 +387,107 @@
     </div>
   </main>
 
+  <!-- 3. Scroll-Triggered Trust Building Sections -->
+  <section class="trust-section">
+    <h2 class="trust-title">Why Trust My Expertise?</h2>
+    <div class="trust-grid">
+      <div class="scroll-box from-left">
+        <h3><i class="fa-solid fa-code"></i> Clean & Modern Architecture</h3>
+        <p>Every single line of code is optimized for lightning-fast loading speeds, responsiveness across all mobile devices, and seamless Google AdSense compliance.</p>
+      </div>
+      <div class="scroll-box from-right">
+        <h3><i class="fa-solid fa-wand-magic-sparkles"></i> Futuristic UI/UX Aesthetics</h3>
+        <p>Specialized in crafting immersive dark and light contrasting layouts inspired by world-class platforms like Behance and Dribbble to engage visitors instantly.</p>
+      </div>
+    </div>
+  </section>
+
   <!-- Footer -->
   <footer class="explore-footer">
     &copy; 2026 Jitendra Portfolio. All Rights Reserved.
   </footer>
 
-  <!-- JavaScript for 3D Tilt & Gate Opening Sound/Animation -->
+  <!-- JavaScript for 360 Rotation, Scroll Animations & Gate Opening -->
   <script>
-    // Page Load par gates automatically open ho jayenge taaki screen black na dikhe
+    // Auto-open gate on load
     window.addEventListener('DOMContentLoaded', () => {
       setTimeout(() => {
         document.body.classList.add('open-gates');
       }, 100);
     });
 
-    // 3D Tilt Effect on ID Card
+    // 360-Degree Draggable / Movable 3D ID Card Logic
     const card = document.getElementById('idCard');
-    const container = document.querySelector('.profile-right');
+    const container = document.getElementById('cardContainer');
+    
+    let isDragging = false;
+    let startX, startY;
+    let currentX = 0, currentY = 0;
 
-    container.addEventListener('mousemove', (e) => {
-      const rect = card.getBoundingClientRect();
-      const x = e.clientX - rect.left - rect.width / 2;
-      const y = e.clientY - rect.top - rect.height / 2;
-      
-      const rotateX = (-y / 10);
-      const rotateY = (x / 10);
-
-      card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.03)`;
+    container.addEventListener('mousedown', (e) => {
+      isDragging = true;
+      startX = e.clientX;
+      startY = e.clientY;
     });
 
-    container.addEventListener('mouseleave', () => {
-      card.style.transform = `rotateX(0deg) rotateY(0deg) scale(1)`;
+    window.addEventListener('mousemove', (e) => {
+      if (!isDragging) return;
+      const deltaX = e.clientX - startX;
+      const deltaY = e.clientY - startY;
+
+      currentY = currentY + deltaX * 0.5;
+      currentX = currentX - deltaY * 0.5;
+
+      card.style.transform = `rotateX(${currentX}deg) rotateY(${currentY}deg)`;
+      startX = e.clientX;
+      startY = e.clientY;
+    });
+
+    window.addEventListener('mouseup', () => {
+      isDragging = false;
+    });
+
+    // Touch support for mobile phones (Finger 360 rotation)
+    container.addEventListener('touchstart', (e) => {
+      isDragging = true;
+      startX = e.touches[0].clientX;
+      startY = e.touches[0].clientY;
+    });
+
+    window.addEventListener('touchmove', (e) => {
+      if (!isDragging) return;
+      const deltaX = e.touches[0].clientX - startX;
+      const deltaY = e.touches[0].clientY - startY;
+
+      currentY = currentY + deltaX * 0.5;
+      currentX = currentX - deltaY * 0.5;
+
+      card.style.transform = `rotateX(${currentX}deg) rotateY(${currentY}deg)`;
+      startX = e.touches[0].clientX;
+      startY = e.touches[0].clientY;
+    });
+
+    window.addEventListener('touchend', () => {
+      isDragging = false;
+    });
+
+    // Scroll-triggered Left/Right sliding animation using Intersection Observer
+    const observerOptions = {
+      threshold: 0.2
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        } else {
+          entry.target.classList.remove('active');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.scroll-box').forEach(box => {
+      observer.observe(box);
     });
 
     // Gate Opening Animation & Sound on Home Click
@@ -337,7 +496,6 @@
       const sound = document.getElementById('gateSound');
       sound.play().catch(e => console.log("Audio play blocked"));
       
-      // Gate band hone ki animation ke liye class toggle karenge
       const overlay = document.getElementById('gate-overlay');
       overlay.style.transition = 'none';
       document.body.classList.remove('open-gates');
