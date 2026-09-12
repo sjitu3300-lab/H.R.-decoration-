@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jitendra - 3D Cinematic Explore Profile</title>
+  <title>Jitendra - 3D Cinematic Explore & Developer Profile</title>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
   
@@ -33,7 +33,7 @@
       pointer-events: none;
       visibility: visible;
       opacity: 1;
-      transition: visibility 0s 1s, opacity 1s ease;
+      transition: visibility 0s 0.8s, opacity 0.8s ease;
     }
     body.open-gates #gate-overlay {
       visibility: hidden;
@@ -50,6 +50,28 @@
 
     body.open-gates .gate-left { transform: scaleX(0); }
     body.open-gates .gate-right { transform: scaleX(0); }
+
+    /* 1. Top 3D Scrolling Ticker Banner (Matched with Index style) */
+    .explore-ticker {
+      background-color: #0a0a0a;
+      overflow: hidden;
+      white-space: nowrap;
+      padding: 15px 0;
+      border-bottom: 1px solid #222;
+    }
+    .ticker-track {
+      display: inline-block;
+      font-size: 1.5rem;
+      font-weight: 900;
+      color: #ccff00;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      animation: tickerScroll 20s linear infinite;
+    }
+    @keyframes tickerScroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
 
     /* Top Navigation with 3D Home Button */
     .explore-nav {
@@ -96,33 +118,7 @@
       box-shadow: 0 2px 0 #000000, 0 5px 10px rgba(0,0,0,0.15);
     }
 
-    /* 1. 3D Scrolling Marquee Banner */
-    .hero-ticker {
-      background-color: #0a0a0a;
-      overflow: hidden;
-      white-space: nowrap;
-      padding: 25px 0;
-      border-bottom: 2px solid #222;
-    }
-    .ticker-content {
-      display: inline-block;
-      font-size: 3rem;
-      font-weight: 900;
-      color: #ffffff;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      animation: marqueeScroll 20s linear infinite;
-    }
-    .ticker-content span {
-      color: #2563eb;
-      margin: 0 20px;
-    }
-    @keyframes marqueeScroll {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
-
-    /* Main Split Profile Section */
+    /* 2. Main Hero Profile Section */
     .explore-main {
       max-width: 1300px;
       margin: 0 auto;
@@ -134,7 +130,6 @@
       flex-wrap: wrap;
     }
 
-    /* Left Side: Name, Intro & Description */
     .profile-left {
       flex: 1.2;
       min-width: 320px;
@@ -176,7 +171,7 @@
       color: #1e293b;
     }
 
-    /* 2. Right Side: 360-Degree Draggable 3D ID Card */
+    /* 360-Degree Draggable 3D ID Card */
     .profile-right {
       flex: 0.8;
       min-width: 300px;
@@ -190,7 +185,7 @@
     }
 
     .id-card-3d {
-      width: 320px;
+      width: 300px;
       background: #ffffff;
       border: 1px solid #e2e8f0;
       border-radius: 20px;
@@ -205,9 +200,9 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 20px;
+      margin-bottom: 15px;
       border-bottom: 2px dashed #f1f5f9;
-      padding-bottom: 12px;
+      padding-bottom: 10px;
     }
     .id-badge-title {
       font-size: 0.8rem;
@@ -222,10 +217,9 @@
       border-radius: 4px;
       margin: 0 auto 15px auto;
     }
-
     .id-photo-box {
       width: 100%;
-      height: 240px;
+      height: 220px;
       border-radius: 14px;
       overflow: hidden;
       background: #f1f5f9;
@@ -234,9 +228,9 @@
     .id-photo-box img {
       width: 100%;
       height: 100%;
-      object-fit: pointer;
+      object-fit: cover;
+      pointer-events: none;
     }
-
     .id-info-name {
       font-size: 1.4rem;
       font-weight: 800;
@@ -249,67 +243,56 @@
       font-weight: 700;
       color: #2563eb;
       text-align: center;
-      margin-bottom: 15px;
     }
 
-    /* 3. Scroll-Triggered Left/Right Sliding Sections (Trust Building) */
+    /* 3. Scroll-Triggered Trust-Building Sections */
     .trust-section {
       max-width: 1300px;
       margin: 40px auto 80px auto;
       padding: 0 50px;
     }
-    .trust-title {
-      text-align: center;
-      font-size: 2.5rem;
-      font-weight: 900;
-      margin-bottom: 50px;
-      color: #111111;
-    }
     .trust-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 30px;
     }
-
+    
+    /* Scroll Animation Base Classes */
     .scroll-box {
       background: #ffffff;
-      border: 1px solid #e2e8f0;
+      border: 1px solid #e5e7eb;
       border-radius: 18px;
       padding: 35px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.03);
       opacity: 0;
       transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    
-    /* Directional initial states for scroll animation */
     .scroll-box.from-left {
       transform: translateX(-100px);
     }
     .scroll-box.from-right {
       transform: translateX(100px);
     }
-    /* When active */
-    .scroll-box.active {
+    .scroll-box.show {
       opacity: 1;
       transform: translateX(0);
     }
 
-    .scroll-box h3 {
+    .trust-box-icon {
+      font-size: 2.5rem;
+      color: #2563eb;
+      margin-bottom: 20px;
+    }
+    .trust-box-title {
       font-size: 1.3rem;
       font-weight: 800;
       color: #111111;
-      margin-bottom: 12px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
+      margin-bottom: 10px;
     }
-    .scroll-box h3 i {
-      color: #2563eb;
-    }
-    .scroll-box p {
+    .trust-box-desc {
       color: #4b5563;
-      font-size: 1rem;
-      line-height: 1.7;
+      font-size: 0.95rem;
+      line-height: 1.6;
     }
 
     /* Footer */
@@ -326,7 +309,6 @@
       .explore-main, .trust-section { padding: 30px 20px; }
       .profile-name { font-size: 3rem; }
       .explore-nav { padding: 15px 20px; }
-      .ticker-content { font-size: 2rem; }
     }
   </style>
 </head>
@@ -338,7 +320,15 @@
     <div class="gate-right"></div>
   </div>
 
+  <!-- Audio for Gate Opening Sound -->
   <audio id="gateSound" src="https://assets.mixkit.co/active_storage/sfx/2571/2571-preview.mp3" preload="auto"></audio>
+
+  <!-- 1. Top 3D Scrolling Ticker Banner -->
+  <div class="explore-ticker">
+    <div class="ticker-track">
+      WELCOME TO JL PORTFOLIO &nbsp;&bull;&nbsp; WEB DEVELOPER & UI/UX DESIGNER &nbsp;&bull;&nbsp; HIGH PERFORMANCE DIGITAL EXPERIENCES &nbsp;&bull;&nbsp; WELCOME TO JL PORTFOLIO &nbsp;&bull;&nbsp; WEB DEVELOPER & UI/UX DESIGNER &nbsp;&bull;&nbsp;
+    </div>
+  </div>
 
   <!-- Navbar -->
   <header class="explore-nav">
@@ -348,14 +338,7 @@
     </button>
   </header>
 
-  <!-- 1. 3D Scrolling Marquee Banner -->
-  <div class="hero-ticker">
-    <div class="ticker-content">
-      <span>WELCOME TO JL PORTFOLIO</span> • <span>UI/UX DESIGN EXPERT</span> • <span>WEB ARCHITECT</span> • <span>WELCOME TO JL PORTFOLIO</span> • <span>UI/UX DESIGN EXPERT</span> • <span>WEB ARCHITECT</span>
-    </div>
-  </div>
-
-  <!-- Main Profile & 360 Draggable 3D ID Card Section -->
+  <!-- 2. Main Profile & 360-Degree Draggable ID Card Section -->
   <main class="explore-main">
     <div class="profile-left">
       <div class="hello-tag">Hello, I'm</div>
@@ -370,7 +353,7 @@
       </div>
     </div>
 
-    <!-- Right Side 360-Degree Movable 3D ID Card -->
+    <!-- Right Side 360-Degree Draggable 3D ID Card -->
     <div class="profile-right" id="cardContainer">
       <div class="id-card-3d" id="idCard">
         <div class="id-lanyard-hole"></div>
@@ -387,17 +370,21 @@
     </div>
   </main>
 
-  <!-- 3. Scroll-Triggered Trust Building Sections -->
+  <!-- 3. Scroll-Triggered Trust-Building Sections -->
   <section class="trust-section">
-    <h2 class="trust-title">Why Trust My Expertise?</h2>
     <div class="trust-grid">
+      <!-- Box 1 (Slides from Left) -->
       <div class="scroll-box from-left">
-        <h3><i class="fa-solid fa-code"></i> Clean & Modern Architecture</h3>
-        <p>Every single line of code is optimized for lightning-fast loading speeds, responsiveness across all mobile devices, and seamless Google AdSense compliance.</p>
+        <div class="trust-box-icon"><i class="fa-solid fa-shield-halved"></i></div>
+        <h3 class="trust-box-title">Verified Quality Code</h3>
+        <p class="trust-box-desc">Every template and interface is crafted using modern semantic markup, responsive design principles, and lightning-fast optimization techniques.</p>
       </div>
+
+      <!-- Box 2 (Slides from Right) -->
       <div class="scroll-box from-right">
-        <h3><i class="fa-solid fa-wand-magic-sparkles"></i> Futuristic UI/UX Aesthetics</h3>
-        <p>Specialized in crafting immersive dark and light contrasting layouts inspired by world-class platforms like Behance and Dribbble to engage visitors instantly.</p>
+        <div class="trust-box-icon"><i class="fa-solid fa-bolt"></i></div>
+        <h3 class="trust-box-title">AdSense & SEO Optimized</h3>
+        <p class="trust-box-desc">Built completely inline with Google search ranking guidelines and AdSense content compliance to ensure seamless monetization capability.</p>
       </div>
     </div>
   </section>
@@ -407,9 +394,9 @@
     &copy; 2026 Jitendra Portfolio. All Rights Reserved.
   </footer>
 
-  <!-- JavaScript for 360 Rotation, Scroll Animations & Gate Opening -->
+  <!-- JavaScript for 360-Degree Rotation, Scroll Animations, and Gate Sound -->
   <script>
-    // Auto-open gate on load
+    // Page Load Gate Auto-Open
     window.addEventListener('DOMContentLoaded', () => {
       setTimeout(() => {
         document.body.classList.add('open-gates');
@@ -417,14 +404,13 @@
     });
 
     // 360-Degree Draggable / Movable 3D ID Card Logic
+    const cardContainer = document.getElementById('cardContainer');
     const card = document.getElementById('idCard');
-    const container = document.getElementById('cardContainer');
-    
     let isDragging = false;
-    let startX, startY;
-    let currentX = 0, currentY = 0;
+    let startX = 0, startY = 0;
+    let rotX = 0, rotY = 0;
 
-    container.addEventListener('mousedown', (e) => {
+    cardContainer.addEventListener('mousedown', (e) => {
       isDragging = true;
       startX = e.clientX;
       startY = e.clientY;
@@ -434,11 +420,11 @@
       if (!isDragging) return;
       const deltaX = e.clientX - startX;
       const deltaY = e.clientY - startY;
+      
+      rotY += deltaX * 0.8;
+      rotX -= deltaY * 0.8;
 
-      currentY = currentY + deltaX * 0.5;
-      currentX = currentX - deltaY * 0.5;
-
-      card.style.transform = `rotateX(${currentX}deg) rotateY(${currentY}deg)`;
+      card.style.transform = `rotateX(${rotX}deg) rotateY(${rotY}deg)`;
       startX = e.clientX;
       startY = e.clientY;
     });
@@ -447,8 +433,8 @@
       isDragging = false;
     });
 
-    // Touch support for mobile phones (Finger 360 rotation)
-    container.addEventListener('touchstart', (e) => {
+    // Touch Support for Mobile Dragging
+    cardContainer.addEventListener('touchstart', (e) => {
       isDragging = true;
       startX = e.touches[0].clientX;
       startY = e.touches[0].clientY;
@@ -458,11 +444,11 @@
       if (!isDragging) return;
       const deltaX = e.touches[0].clientX - startX;
       const deltaY = e.touches[0].clientY - startY;
+      
+      rotY += deltaX * 0.8;
+      rotX -= deltaY * 0.8;
 
-      currentY = currentY + deltaX * 0.5;
-      currentX = currentX - deltaY * 0.5;
-
-      card.style.transform = `rotateX(${currentX}deg) rotateY(${currentY}deg)`;
+      card.style.transform = `rotateX(${rotX}deg) rotateY(${rotY}deg)`;
       startX = e.touches[0].clientX;
       startY = e.touches[0].clientY;
     });
@@ -471,22 +457,18 @@
       isDragging = false;
     });
 
-    // Scroll-triggered Left/Right sliding animation using Intersection Observer
-    const observerOptions = {
-      threshold: 0.2
-    };
-
+    // Scroll-Triggered Left & Right Sliding Animation (Intersection Observer)
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('active');
+          entry.target.classList.add('show');
         } else {
-          entry.target.classList.remove('active');
+          entry.target.classList.remove('show');
         }
       });
-    }, observerOptions);
+    }, { threshold: 0.2 });
 
-    document.querySelectorAll('.scroll-box').forEach(box => {
+    document.querySelectorAll('.scroll-box').forEach((box) => {
       observer.observe(box);
     });
 
