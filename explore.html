@@ -24,25 +24,32 @@
       justify-content: space-between;
     }
 
-    /* 🚪 Gate Opening Animation Overlay */
+    /* 🚪 Gate Opening Animation Overlay (Fixed z-index and pointer events) */
     #gate-overlay {
       position: fixed;
       inset: 0;
       z-index: 9999;
       display: flex;
       pointer-events: none;
+      visibility: visible;
+      opacity: 1;
+      transition: visibility 0s 1s, opacity 1s ease;
+    }
+    body.open-gates #gate-overlay {
+      visibility: hidden;
+      opacity: 0;
     }
     .gate-left, .gate-right {
       position: absolute;
       top: 0; width: 50%; height: 100%;
-      background-color: #0a0a0a;
-      transition: transform 1s cubic-bezier(0.77, 0, 0.175, 1);
+      background-color: #0f172a;
+      transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1);
     }
     .gate-left { left: 0; transform-origin: left; }
     .gate-right { right: 0; transform-origin: right; }
 
-    .open-gates .gate-left { transform: scaleX(0); }
-    .open-gates .gate-right { transform: scaleX(0); }
+    body.open-gates .gate-left { transform: scaleX(0); }
+    body.open-gates .gate-right { transform: scaleX(0); }
 
     /* Top Navigation with 3D Home Button */
     .explore-nav {
@@ -298,6 +305,13 @@
 
   <!-- JavaScript for 3D Tilt & Gate Opening Sound/Animation -->
   <script>
+    // Page Load par gates automatically open ho jayenge taaki screen black na dikhe
+    window.addEventListener('DOMContentLoaded', () => {
+      setTimeout(() => {
+        document.body.classList.add('open-gates');
+      }, 100);
+    });
+
     // 3D Tilt Effect on ID Card
     const card = document.getElementById('idCard');
     const container = document.querySelector('.profile-right');
@@ -323,11 +337,14 @@
       const sound = document.getElementById('gateSound');
       sound.play().catch(e => console.log("Audio play blocked"));
       
-      document.body.classList.add('open-gates');
-
+      // Gate band hone ki animation ke liye class toggle karenge
+      const overlay = document.getElementById('gate-overlay');
+      overlay.style.transition = 'none';
+      document.body.classList.remove('open-gates');
+      
       setTimeout(() => {
         window.location.href = "index.html";
-      }, 900); // Wait for animation to finish
+      }, 800);
     }
   </script>
 
