@@ -63,13 +63,14 @@
       background: #2563eb;
     }
 
-    /* ✨ 2. Black Background 3D Scrolling Ticker Banner (Pauses for 20s in Center) */
+    /* ✨ 2. Black Background Ticker Banner (Left to center pause for 20s, then right exit) */
     .explore-ticker {
       background-color: #0a0a0a;
       overflow: hidden;
       white-space: nowrap;
       padding: 45px 0;
       border-bottom: 1px solid #222222;
+      text-align: center;
     }
     .explore-ticker-text {
       display: inline-block;
@@ -81,11 +82,11 @@
       animation: exploreTickerPauseAnim 25s infinite ease-in-out;
     }
     @keyframes exploreTickerPauseAnim {
-      0% { transform: translateX(100vw); opacity: 0; }
+      0% { transform: translateX(-100vw); opacity: 0; }
       15% { transform: translateX(0%); opacity: 1; }
-      75% { transform: translateX(0%); opacity: 1; } /* Center me 20 seconds / duration ka pause */
-      90% { transform: translateX(-100%); opacity: 1; }
-      100% { transform: translateX(-100vw); opacity: 0; }
+      75% { transform: translateX(0%); opacity: 1; } /* Center me 20 seconds ka pause */
+      90% { transform: translateX(100vw); opacity: 1; }
+      100% { transform: translateX(100vw); opacity: 0; }
     }
 
     /* 👤 3. Profile Split Section (Enlarged Card & Rich Detailed Bio) */
@@ -398,14 +399,14 @@
     </a>
   </nav>
 
-  <!-- ✨ 3D Scrolling Ticker Banner (Left to center pause for 20s, then right exit) -->
+  <!-- ✨ Updated Welcome Portfolio Ticker Banner (Left in, 20s center pause, right out) -->
   <div class="explore-ticker">
     <div class="explore-ticker-text">
-      WELCOME TO PORTFOLIO &nbsp;&bull;&nbsp; WELCOME TO PORTFOLIO &nbsp;&bull;&nbsp; WELCOME TO PORTFOLIO &nbsp;&bull;&nbsp;
+      WELCOME PORTFOLIO
     </div>
   </div>
 
-  <!-- 👤 Profile Hero Section (Enlarged Card & Detailed Bio) -->
+  <!-- 👤 Profile Hero Section -->
   <section class="profile-hero">
     <div class="profile-left-box">
       <div class="profile-img-wrapper">
@@ -429,7 +430,7 @@
     </div>
   </section>
 
-  <!-- 📱 Interactive Mockup & Enhanced Developer Points -->
+  <!-- 📱 Interactive Mockup & Developer Points -->
   <section class="mockup-section">
     <div class="mockup-img-box">
       <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=500&auto=format&fit=crop&q=60" alt="Mobile Development Mockup">
