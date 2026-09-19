@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jitendra - 3D Cinematic Explore & Developer Profile</title>
+  <title>Jitendra - Explore & Advanced Portfolio</title>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
   
@@ -18,63 +18,10 @@
       background-color: #f8f9fa;
       color: #111111;
       overflow-x: hidden;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
     }
 
-    /* 🚪 Gate Opening Animation Overlay */
-    #gate-overlay {
-      position: fixed;
-      inset: 0;
-      z-index: 9999;
-      display: flex;
-      pointer-events: none;
-      visibility: visible;
-      opacity: 1;
-      transition: visibility 0s 0.8s, opacity 0.8s ease;
-    }
-    body.open-gates #gate-overlay {
-      visibility: hidden;
-      opacity: 0;
-    }
-    .gate-left, .gate-right {
-      position: absolute;
-      top: 0; width: 50%; height: 100%;
-      background-color: #0f172a;
-      transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1);
-    }
-    .gate-left { left: 0; transform-origin: left; }
-    .gate-right { right: 0; transform-origin: right; }
-
-    body.open-gates .gate-left { transform: scaleX(0); }
-    body.open-gates .gate-right { transform: scaleX(0); }
-
-    /* 1. Top 3D Scrolling Ticker Banner (Matched with Index style) */
-    .explore-ticker {
-      background-color: #0a0a0a;
-      overflow: hidden;
-      white-space: nowrap;
-      padding: 15px 0;
-      border-bottom: 1px solid #222;
-    }
-    .ticker-track {
-      display: inline-block;
-      font-size: 1.5rem;
-      font-weight: 900;
-      color: #ccff00;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      animation: tickerScroll 20s linear infinite;
-    }
-    @keyframes tickerScroll {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
-
-    /* Top Navigation with 3D Home Button */
-    .explore-nav {
+    /* 🧭 1. Navbar (Matched with Index) */
+    .navbar {
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -83,410 +30,467 @@
       border-bottom: 1px solid #e5e7eb;
       position: sticky;
       top: 0;
-      z-index: 100;
+      z-index: 1000;
       box-shadow: 0 2px 10px rgba(0,0,0,0.03);
     }
-    .nav-brand {
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .nav-logo-icon {
+      font-size: 1.5rem;
+    }
+    .nav-title {
       font-size: 1.25rem;
       font-weight: 800;
       color: #111111;
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 8px;
     }
-
-    /* 3D Home Button */
-    .btn-3d-home {
-      background: linear-gradient(135deg, #111111 0%, #1e293b 100%);
+    .btn-home {
+      background: #111111;
       color: #ffffff;
       padding: 10px 22px;
-      border-radius: 10px;
+      border-radius: 8px;
       font-weight: 700;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       text-decoration: none;
+      transition: all 0.3s;
       display: flex;
       align-items: center;
       gap: 8px;
-      box-shadow: 0 6px 0 #000000, 0 10px 20px rgba(0,0,0,0.15);
-      transition: all 0.15s ease;
-      cursor: pointer;
-      border: none;
     }
-    .btn-3d-home:active {
-      transform: translateY(4px);
-      box-shadow: 0 2px 0 #000000, 0 5px 10px rgba(0,0,0,0.15);
+    .btn-home:hover {
+      background: #2563eb;
     }
 
-    /* 2. Main Hero Profile Section */
-    .explore-main {
+    /* ✨ 2. Black Background 3D Scrolling Ticker Banner */
+    .explore-ticker {
+      background-color: #0a0a0a;
+      overflow: hidden;
+      white-space: nowrap;
+      padding: 35px 0;
+      border-bottom: 1px solid #222222;
+    }
+    .explore-ticker-text {
+      display: inline-block;
+      font-size: 3.5rem;
+      font-weight: 900;
+      color: #ffffff;
+      text-transform: uppercase;
+      letter-spacing: -1px;
+      animation: exploreTickerAnim 15s infinite linear;
+    }
+    @keyframes exploreTickerAnim {
+      0% { transform: translateX(0%); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* 👤 3. Profile Split Section (Curved Profile + ID Card + Location) */
+    .profile-hero {
       max-width: 1300px;
-      margin: 0 auto;
-      padding: 60px 50px;
+      margin: 60px auto;
+      padding: 0 50px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 50px;
       flex-wrap: wrap;
     }
-
-    .profile-left {
-      flex: 1.2;
-      min-width: 320px;
-    }
-    .hello-tag {
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: #2563eb;
-      margin-bottom: 8px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-    .profile-name {
-      font-size: 4rem;
-      font-weight: 900;
-      color: #111111;
-      line-height: 1.1;
-      margin-bottom: 20px;
-      letter-spacing: -2px;
-    }
-    .profile-desc {
-      color: #4b5563;
-      font-size: 1.15rem;
-      line-height: 1.8;
-      margin-bottom: 30px;
-    }
-    .profile-badges {
-      display: flex;
-      gap: 15px;
-      flex-wrap: wrap;
-    }
-    .badge-pill {
-      background: #f1f5f9;
-      border: 1px solid #e2e8f0;
-      padding: 8px 16px;
-      border-radius: 30px;
-      font-size: 0.85rem;
-      font-weight: 700;
-      color: #1e293b;
-    }
-
-    /* 360-Degree Draggable 3D ID Card */
-    .profile-right {
-      flex: 0.8;
+    .profile-left-box {
+      flex: 1.1;
       min-width: 300px;
-      display: flex;
-      justify-content: center;
-      perspective: 1000px;
-      cursor: grab;
     }
-    .profile-right:active {
-      cursor: grabbing;
-    }
-
-    .id-card-3d {
-      width: 300px;
-      background: #ffffff;
-      border: 1px solid #e2e8f0;
-      border-radius: 20px;
-      padding: 25px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.08);
-      transform-style: preserve-3d;
-      user-select: none;
+    .profile-img-wrapper {
       position: relative;
-    }
-
-    .id-card-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 15px;
-      border-bottom: 2px dashed #f1f5f9;
-      padding-bottom: 10px;
-    }
-    .id-badge-title {
-      font-size: 0.8rem;
-      font-weight: 800;
-      color: #dc2626;
-      letter-spacing: 1px;
-    }
-    .id-lanyard-hole {
-      width: 35px;
-      height: 8px;
-      background: #e2e8f0;
-      border-radius: 4px;
-      margin: 0 auto 15px auto;
-    }
-    .id-photo-box {
-      width: 100%;
-      height: 220px;
-      border-radius: 14px;
+      width: 280px;
+      height: 350px;
+      border-radius: 30px;
       overflow: hidden;
-      background: #f1f5f9;
-      margin-bottom: 15px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+      border: 3px solid #ffffff;
+      transform: rotate(-2deg);
+      transition: transform 0.3s;
     }
-    .id-photo-box img {
+    .profile-img-wrapper:hover {
+      transform: rotate(0deg) scale(1.02);
+    }
+    .profile-img-wrapper img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      pointer-events: none;
     }
-    .id-info-name {
-      font-size: 1.4rem;
-      font-weight: 800;
+
+    .profile-right-box {
+      flex: 1.3;
+      min-width: 320px;
+    }
+    .greeting-title {
+      font-size: 3.2rem;
+      font-weight: 900;
       color: #111111;
-      text-align: center;
-      margin-bottom: 4px;
+      line-height: 1.1;
+      margin-bottom: 10px;
+      letter-spacing: -1px;
     }
-    .id-info-role {
-      font-size: 0.9rem;
+    .location-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #eff6ff;
+      color: #2563eb;
       font-weight: 700;
-      color: #2563eb;
-      text-align: center;
-    }
-
-    /* 3. Scroll-Triggered Trust-Building Sections */
-    .trust-section {
-      max-width: 1300px;
-      margin: 40px auto 80px auto;
-      padding: 0 50px;
-    }
-    .trust-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 30px;
-    }
-    
-    /* Scroll Animation Base Classes */
-    .scroll-box {
-      background: #ffffff;
-      border: 1px solid #e5e7eb;
-      border-radius: 18px;
-      padding: 35px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.03);
-      opacity: 0;
-      transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .scroll-box.from-left {
-      transform: translateX(-100px);
-    }
-    .scroll-box.from-right {
-      transform: translateX(100px);
-    }
-    .scroll-box.show {
-      opacity: 1;
-      transform: translateX(0);
-    }
-
-    .trust-box-icon {
-      font-size: 2.5rem;
-      color: #2563eb;
+      font-size: 0.9rem;
+      padding: 6px 14px;
+      border-radius: 20px;
       margin-bottom: 20px;
+      border: 1px solid #dbeafe;
     }
-    .trust-box-title {
-      font-size: 1.3rem;
+    .highlight-desc {
+      font-size: 1.1rem;
+      color: #4b5563;
+      line-height: 1.8;
+      margin-bottom: 25px;
+    }
+    .highlight-desc span {
+      color: #2563eb;
+      font-weight: 700;
+      background: #e0e7ff;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+
+    /* 📱 4. Phone Mockup & Web Developer Points Section */
+    .mockup-section {
+      max-width: 1300px;
+      margin: 80px auto;
+      padding: 0 50px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 50px;
+      flex-wrap: wrap;
+    }
+    .mockup-img-box {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+    }
+    .mockup-img-box img {
+      width: 100%;
+      max-width: 380px;
+      border-radius: 24px;
+      box-shadow: 0 25px 50px rgba(0,0,0,0.1);
+    }
+    .mockup-content {
+      flex: 1.2;
+    }
+    .mockup-content h2 {
+      font-size: 2.5rem;
+      font-weight: 900;
+      margin-bottom: 20px;
+      letter-spacing: -1px;
+    }
+    .tick-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    .tick-list li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #374151;
+    }
+    .tick-list li i {
+      color: #10b981;
+      font-size: 1.2rem;
+    }
+
+    /* 🔄 5. Zig-Zag Layout (Goal ➔ Problem ➔ Insights) */
+    .zigzag-section {
+      max-width: 1300px;
+      margin: 80px auto;
+      padding: 0 50px;
+      display: flex;
+      flex-direction: column;
+      gap: 60px;
+    }
+    .zigzag-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 50px;
+      flex-wrap: wrap;
+    }
+    .zigzag-row.reverse {
+      flex-direction: row-reverse;
+    }
+    .zigzag-text {
+      flex: 1;
+      min-width: 300px;
+    }
+    .zigzag-text h3 {
+      font-size: 2.2rem;
       font-weight: 800;
       color: #111111;
+      margin-bottom: 15px;
+    }
+    .zigzag-text p {
+      color: #4b5563;
+      font-size: 1.05rem;
+      line-height: 1.8;
+    }
+    .zigzag-img {
+      flex: 1;
+      min-width: 300px;
+    }
+    .zigzag-img img {
+      width: 100%;
+      border-radius: 20px;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+    }
+
+    /* 📊 6. Percentage Problem Analysis & Solution Section */
+    .stats-solution-section {
+      background-color: #0a0a0a;
+      color: #ffffff;
+      padding: 80px 50px;
+      margin: 80px 0;
+    }
+    .stats-container {
+      max-width: 1300px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 30px;
+      flex-wrap: wrap;
+      margin-bottom: 50px;
+    }
+    .stat-box {
+      flex: 1;
+      min-width: 250px;
+      background: #171717;
+      padding: 30px;
+      border-radius: 16px;
+      border: 1px solid #262626;
+      text-align: center;
+    }
+    .stat-number {
+      font-size: 3rem;
+      font-weight: 900;
+      color: #ccff00;
       margin-bottom: 10px;
     }
-    .trust-box-desc {
-      color: #4b5563;
+    .stat-label {
+      color: #d1d5db;
       font-size: 0.95rem;
-      line-height: 1.6;
+      line-height: 1.5;
     }
 
-    /* Footer */
-    .explore-footer {
+    /* 🖤 7. Footer (Same as Index File) */
+    .footer-section {
       background-color: #0a0a0a;
-      color: #6b7280;
-      padding: 30px 50px;
+      color: #9ca3af;
+      padding: 60px 50px;
+      border-top: 1px solid #222222;
+    }
+    .footer-container {
+      max-width: 1300px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 40px;
+    }
+    .footer-col h3 {
+      color: #ffffff;
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+    }
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .footer-links a {
+      color: #9ca3af;
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: color 0.3s;
+    }
+    .footer-links a:hover {
+      color: #ccff00;
+    }
+    .footer-bottom {
+      max-width: 1300px;
+      margin: 40px auto 0 auto;
+      padding-top: 20px;
+      border-top: 1px solid #1f2937;
       text-align: center;
       font-size: 0.85rem;
-      border-top: 1px solid #222222;
+      color: #6b7280;
     }
 
     @media (max-width: 768px) {
-      .explore-main, .trust-section { padding: 30px 20px; }
-      .profile-name { font-size: 3rem; }
-      .explore-nav { padding: 15px 20px; }
+      .navbar, .profile-hero, .mockup-section, .zigzag-section, .stats-solution-section, .footer-section {
+        padding: 20px;
+      }
+      .greeting-title { font-size: 2.5rem; }
+      .explore-ticker-text { font-size: 2.5rem; }
     }
   </style>
 </head>
 <body>
 
-  <!-- 🚪 Gate Opening Animation Overlay -->
-  <div id="gate-overlay">
-    <div class="gate-left"></div>
-    <div class="gate-right"></div>
-  </div>
-
-  <!-- Audio for Gate Opening Sound -->
-  <audio id="gateSound" src="https://assets.mixkit.co/active_storage/sfx/2571/2571-preview.mp3" preload="auto"></audio>
-
-  <!-- 1. Top 3D Scrolling Ticker Banner -->
-  <div class="explore-ticker">
-    <div class="ticker-track">
-      WELCOME TO JL PORTFOLIO &nbsp;&bull;&nbsp; WEB DEVELOPER & UI/UX DESIGNER &nbsp;&bull;&nbsp; HIGH PERFORMANCE DIGITAL EXPERIENCES &nbsp;&bull;&nbsp; WELCOME TO JL PORTFOLIO &nbsp;&bull;&nbsp; WEB DEVELOPER & UI/UX DESIGNER &nbsp;&bull;&nbsp;
+  <!-- 🧭 Navbar -->
+  <nav class="navbar">
+    <div class="nav-left">
+      <span class="nav-logo-icon">⚡</span>
+      <span class="nav-title">JL Portfolio</span>
     </div>
-  </div>
-
-  <!-- Navbar -->
-  <header class="explore-nav">
-    <a href="index.html" class="nav-brand"><span class="nav-logo-icon">⚡</span> JL Portfolio</a>
-    <button onclick="openHome(event)" class="btn-3d-home">
+    <a href="index.html" class="btn-home">
       <i class="fa-solid fa-house"></i> Home
-    </button>
-  </header>
+    </a>
+  </nav>
 
-  <!-- 2. Main Profile & 360-Degree Draggable ID Card Section -->
-  <main class="explore-main">
-    <div class="profile-left">
-      <div class="hello-tag">Hello, I'm</div>
-      <h1 class="profile-name">JITENDRA <br>SONI</h1>
-      <p class="profile-desc">
-        A passionate Computer Science enthusiast and Web Developer. Focused on building high-performance digital experiences, interactive UI components, and modern scalable web applications that stand out in the global tech landscape.
+  <!-- ✨ 3D Scrolling Ticker Banner -->
+  <div class="explore-ticker">
+    <div class="explore-ticker-text">
+      WELCOME TO PORTFOLIO &nbsp;&bull;&nbsp; WELCOME TO PORTFOLIO &nbsp;&bull;&nbsp; WELCOME TO PORTFOLIO &nbsp;&bull;&nbsp;
+    </div>
+  </div>
+
+  <!-- 👤 Profile Hero Section (Curved Image + Details + Location) -->
+  <section class="profile-hero">
+    <div class="profile-left-box">
+      <div class="profile-img-wrapper">
+        <img src="https://i.ibb.co/S7699GcQ/IMG-20260909-224638.jpg" alt="Jitendra Profile">
+      </div>
+    </div>
+    <div class="profile-right-box">
+      <h1 class="greeting-title">Hi, I'm Jitendra</h1>
+      <div class="location-tag">
+        <i class="fa-solid fa-location-dot"></i> Nagaur (Rajasthan)
+      </div>
+      <p class="highlight-desc">
+        A passionate <span>Web Developer & UI/UX Designer</span> specializing in building high-performance, responsive web architectures and lightning-fast modern digital interfaces.
       </p>
-      <div class="profile-badges">
-        <span class="badge-pill">🚀 2nd Year Tech Explorer</span>
-        <span class="badge-pill">💻 Frontend Architect</span>
-        <span class="badge-pill">⚡ UI/UX Specialist</span>
+    </div>
+  </section>
+
+  <!-- 📱 Interactive Mockup & Developer Points -->
+  <section class="mockup-section">
+    <div class="mockup-img-box">
+      <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=500&auto=format&fit=crop&q=60" alt="Mobile Development Mockup">
+    </div>
+    <div class="mockup-content">
+      <h2>Crafting Future-Ready Web Solutions</h2>
+      <ul class="tick-list">
+        <li><i class="fa-solid fa-circle-check"></i> 100% Responsive & Mobile-First UI Design</li>
+        <li><i class="fa-solid fa-circle-check"></i> Optimized Clean Code for AdSense Approval</li>
+        <li><i class="fa-solid fa-circle-check"></i> Interactive 3D Animations & Micro-Interactions</li>
+        <li><i class="fa-solid fa-circle-check"></i> High-Speed Performance & SEO Architecture</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 🔄 Zig-Zag Section (Goal ➔ Problem ➔ Insights) -->
+  <section class="zigzag-section">
+    <!-- GOAL -->
+    <div class="zigzag-row">
+      <div class="zigzag-text">
+        <h3>Our Primary Goal</h3>
+        <p>To bridge the gap between creative visual aesthetics and high-end technical performance, ensuring users get an immersive experience without sacrificing speed.</p>
+      </div>
+      <div class="zigzag-img">
+        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&auto=format&fit=crop&q=60" alt="Goal">
       </div>
     </div>
 
-    <!-- Right Side 360-Degree Draggable 3D ID Card -->
-    <div class="profile-right" id="cardContainer">
-      <div class="id-card-3d" id="idCard">
-        <div class="id-lanyard-hole"></div>
-        <div class="id-card-top">
-          <span class="id-badge-title">OFFICIAL PASS</span>
-          <span style="font-size: 0.75rem; font-weight: 700; color: #64748b;">ID: #JL-2026</span>
-        </div>
-        <div class="id-photo-box">
-          <img src="https://i.ibb.co/S7699GcQ/IMG-20260909-224638.jpg" alt="Jitendra Profile">
-        </div>
-        <div class="id-info-name">Jitendra Soni</div>
-        <div class="id-info-role">UI/UX & Web Developer</div>
+    <!-- PROBLEM STATEMENT -->
+    <div class="zigzag-row reverse">
+      <div class="zigzag-text">
+        <h3>Website Problem Statement</h3>
+        <p>Most modern websites suffer from heavy unoptimized assets, cluttered layouts, and slow loading times, which severely damages user retention and search engine rankings.</p>
+      </div>
+      <div class="zigzag-img">
+        <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=500&auto=format&fit=crop&q=60" alt="Problem Statement">
       </div>
     </div>
-  </main>
 
-  <!-- 3. Scroll-Triggered Trust-Building Sections -->
-  <section class="trust-section">
-    <div class="trust-grid">
-      <!-- Box 1 (Slides from Left) -->
-      <div class="scroll-box from-left">
-        <div class="trust-box-icon"><i class="fa-solid fa-shield-halved"></i></div>
-        <h3 class="trust-box-title">Verified Quality Code</h3>
-        <p class="trust-box-desc">Every template and interface is crafted using modern semantic markup, responsive design principles, and lightning-fast optimization techniques.</p>
+    <!-- INSIGHTS -->
+    <div class="zigzag-row">
+      <div class="zigzag-text">
+        <h3>Strategic Insights</h3>
+        <p>Data shows that implementing clean component structures, minimal CSS frameworks, and smart caching can boost engagement rates by over 40% instantly.</p>
       </div>
-
-      <!-- Box 2 (Slides from Right) -->
-      <div class="scroll-box from-right">
-        <div class="trust-box-icon"><i class="fa-solid fa-bolt"></i></div>
-        <h3 class="trust-box-title">AdSense & SEO Optimized</h3>
-        <p class="trust-box-desc">Built completely inline with Google search ranking guidelines and AdSense content compliance to ensure seamless monetization capability.</p>
+      <div class="zigzag-img">
+        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500&auto=format&fit=crop&q=60" alt="Insights">
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="explore-footer">
-    &copy; 2026 Jitendra Portfolio. All Rights Reserved.
+  <!-- 📊 Percentage Problem Analysis & Solution -->
+  <section class="stats-solution-section">
+    <div class="stats-container">
+      <div class="stat-box">
+        <div class="stat-number">85%</div>
+        <div class="stat-label">Of users abandon websites that take longer than 3 seconds to load fully.</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-number">90%</div>
+        <div class="stat-label">Of digital traffic prefers clean, minimalist, and responsive mobile layouts.</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-number">100%</div>
+        <div class="stat-label">AdSense compliance achieved through unique structure and policy pages.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 🖤 Footer Section (Same as Index File) -->
+  <footer class="footer-section">
+    <div class="footer-container">
+      <div class="footer-col">
+        <h3>Social Media</h3>
+        <ul class="footer-links">
+          <li><a href="https://instagram.com" target="_blank">Instagram</a></li>
+          <li><a href="https://twitter.com" target="_blank">Twitter</a></li>
+          <li><a href="https://pinterest.com" target="_blank">Pinterest</a></li>
+          <li><a href="https://facebook.com" target="_blank">Facebook</a></li>
+          <li><a href="https://linkedin.com" target="_blank">LinkedIn</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Quick Pages</h3>
+        <ul class="footer-links">
+          <li><a href="explore.html">Explore Page</a></li>
+          <li><a href="index.html#templates">UI/UX Templates</a></li>
+          <li><a href="index.html#pricing">Pricing Plans</a></li>
+          <li><a href="index.html#blog">Blogs</a></li>
+          <li><a href="#contact">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Legal & Policies</h3>
+        <ul class="footer-links">
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Use</a></li>
+          <li><a href="#">Disclaimer</a></li>
+          <li><a href="#">Cookie Preferences</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2026 Jitendra Portfolio. All Rights Reserved.
+    </div>
   </footer>
-
-  <!-- JavaScript for 360-Degree Rotation, Scroll Animations, and Gate Sound -->
-  <script>
-    // Page Load Gate Auto-Open
-    window.addEventListener('DOMContentLoaded', () => {
-      setTimeout(() => {
-        document.body.classList.add('open-gates');
-      }, 100);
-    });
-
-    // 360-Degree Draggable / Movable 3D ID Card Logic
-    const cardContainer = document.getElementById('cardContainer');
-    const card = document.getElementById('idCard');
-    let isDragging = false;
-    let startX = 0, startY = 0;
-    let rotX = 0, rotY = 0;
-
-    cardContainer.addEventListener('mousedown', (e) => {
-      isDragging = true;
-      startX = e.clientX;
-      startY = e.clientY;
-    });
-
-    window.addEventListener('mousemove', (e) => {
-      if (!isDragging) return;
-      const deltaX = e.clientX - startX;
-      const deltaY = e.clientY - startY;
-      
-      rotY += deltaX * 0.8;
-      rotX -= deltaY * 0.8;
-
-      card.style.transform = `rotateX(${rotX}deg) rotateY(${rotY}deg)`;
-      startX = e.clientX;
-      startY = e.clientY;
-    });
-
-    window.addEventListener('mouseup', () => {
-      isDragging = false;
-    });
-
-    // Touch Support for Mobile Dragging
-    cardContainer.addEventListener('touchstart', (e) => {
-      isDragging = true;
-      startX = e.touches[0].clientX;
-      startY = e.touches[0].clientY;
-    });
-
-    window.addEventListener('touchmove', (e) => {
-      if (!isDragging) return;
-      const deltaX = e.touches[0].clientX - startX;
-      const deltaY = e.touches[0].clientY - startY;
-      
-      rotY += deltaX * 0.8;
-      rotX -= deltaY * 0.8;
-
-      card.style.transform = `rotateX(${rotX}deg) rotateY(${rotY}deg)`;
-      startX = e.touches[0].clientX;
-      startY = e.touches[0].clientY;
-    });
-
-    window.addEventListener('touchend', () => {
-      isDragging = false;
-    });
-
-    // Scroll-Triggered Left & Right Sliding Animation (Intersection Observer)
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('show');
-        } else {
-          entry.target.classList.remove('show');
-        }
-      });
-    }, { threshold: 0.2 });
-
-    document.querySelectorAll('.scroll-box').forEach((box) => {
-      observer.observe(box);
-    });
-
-    // Gate Opening Animation & Sound on Home Click
-    function openHome(event) {
-      event.preventDefault();
-      const sound = document.getElementById('gateSound');
-      sound.play().catch(e => console.log("Audio play blocked"));
-      
-      const overlay = document.getElementById('gate-overlay');
-      overlay.style.transition = 'none';
-      document.body.classList.remove('open-gates');
-      
-      setTimeout(() => {
-        window.location.href = "index.html";
-      }, 800);
-    }
-  </script>
 
 </body>
 </html>
