@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html b:css='false' b:js='false' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gdata/blender' xmlns:data='http://www.google.com/2005/gdata/data' xmlns:expr='http://www.google.com/2005/gdata/expr'>
+<head>
+    <meta charset='UTF-8'/>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'/>
+    <title>Jitendra Portfolio - Login &amp; Sign Up</title>
+    <!-- Tailwind CSS CDN -->
+    <script src='https://cdn.tailwindcss.com'></script>
+    <!-- FontAwesome Icons -->
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css' rel='stylesheet'/>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, sans-serif;
+        }
+        body {
+            background-color: #030712;
+            color: #f3f4f6;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
+        }
+
+        /* 3D Flip Container Setup */
+        .flip-container {
+            perspective: 1500px;
+            width: 100%;
+            max-width: 440px;
+            padding: 20px;
+        }
+        .flipper {
+            position: relative;
+            width: 100%;
+            height: 640px;
+            transition: transform 0.9s cubic-bezier(0.4, 0.2, 0.2, 1);
+            transform-style: preserve-3d;
+        }
+        .flip-container.flipped .flipper {
+            transform: rotateY(180deg);
+        }
+
+        /* Front & Back Card Design (Embossed Neumorphic Dark Theme) */
+        .card-face {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            background: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            border-radius: 2.5rem;
+            padding: 40px 32px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+        }
+        .card-back {
+            transform: rotateY(180deg);
+        }
+
+        /* Embossed Inset Input Fields */
+        .embossed-input {
+            width: 100%;
+            background: #090d16;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 14px 18px;
+            color: #ffffff;
+            font-size: 0.95rem;
+            outline: none;
+            box-shadow: inset 4px 4px 8px rgba(0, 0, 0, 0.8), inset -4px -4px 8px rgba(255, 255, 255, 0.04);
+            transition: all 0.3s ease;
+        }
+        .embossed-input:focus {
+            border-color: #06b6d4;
+            box-shadow: inset 4px 4px 8px rgba(0, 0, 0, 0.9), 0 0 15px rgba(6, 182, 212, 0.4);
+        }
+
+        /* Embossed Center Top Icon Circle */
+        .embossed-circle {
+            width: 70px;
+            height: 70px;
+            background: #0f172a;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            box-shadow: 6px 6px 14px rgba(0, 0, 0, 0.7), -6px -6px 14px rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            color: #06b6d4;
+            font-size: 1.6rem;
+        }
+        
+        /* Action Circle Buttons (+ and Arrow) */
+        .action-circle {
+            width: 45px;
+            height: 45px;
+            background: #0f172a;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.6), -5px -5px 10px rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            color: #38bdf8;
+            transition: all 0.3s ease;
+        }
+        .action-circle:hover {
+            transform: scale(1.1);
+            color: #ffffff;
+            box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.9);
+        }
+
+        /* Social Icons */
+        .social-btn {
+            width: 44px;
+            height: 44px;
+            background: #0f172a;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.6), -4px -4px 8px rgba(255, 255, 255, 0.04);
+            color: #94a3b8;
+            transition: all 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+        }
+        .social-btn:hover {
+            color: #06b6d4;
+            box-shadow: inset 3px 3px 6px rgba(0, 0, 0, 0.9);
+        }
+    </style>
+    <b:skin><![CDATA[/* Login Signup Skin */]]></b:skin>
+</head>
+<body>
+
+    <div class='flip-container' id='flipCard'>
+        <div class='flipper'>
+            
+            <!-- FRONT SIDE: LOGIN -->
+            <div class='card-face card-front'>
+                <div class='text-center space-y-3'>
+                    <div class='embossed-circle'>
+                        <i class='fa-solid fa-lock-keyhole'></i>
+                    </div>
+                    <h2 class='text-2xl font-bold text-white tracking-wide'>Welcome Back</h2>
+                    <p class='text-xs text-slate-400'>Login to continue your journey</p>
+                </div>
+
+                <div class='space-y-4 my-auto'>
+                    <div>
+                        <label class='block text-xs font-semibold text-slate-400 mb-1.5'>Email Address</label>
+                        <input type='email' placeholder='name@example.com' class='embossed-input'/>
+                    </div>
+                    <div>
+                        <label class='block text-xs font-semibold text-slate-400 mb-1.5'>Password</label>
+                        <div class='relative'>
+                            <input type='password' placeholder='••••••••' class='embossed-input pr-10'/>
+                            <i class='fa-solid fa-eye absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 text-sm cursor-pointer'></i>
+                        </div>
+                    </div>
+                    <div class='flex justify-between items-center text-xs text-slate-400 pt-1'>
+                        <label class='flex items-center gap-2 cursor-pointer'>
+                            <input type='checkbox' class='rounded bg-slate-900 border-slate-700 text-cyan-500 focus:ring-0'/> Remember me
+                        </label>
+                        <a href='#' class='text-cyan-400 hover:underline'>Forgot Password?</a>
+                    </div>
+                </div>
+
+                <div class='space-y-4'>
+                    <button class='w-full py-3.5 rounded-xl bg-gradient-to-r from-cyan-500 via-blue-600 to-indigo-600 font-bold text-white shadow-[0_0_20px_rgba(6,182,212,0.4)] hover:scale-[1.02] transition'>
+                        LOGIN
+                    </button>
+                    
+                    <div class='flex items-center justify-between pt-2 border-t border-slate-800 text-xs text-slate-400'>
+                        <span>Don't have an account?</span>
+                        <div onclick='toggleCard()' class='action-circle' title='Create Account'>
+                            <i class='fa-solid fa-plus'></i>
+                        </div>
+                    </div>
+
+                    <!-- Social Icons -->
+                    <div class='flex justify-center gap-4 pt-1'>
+                        <a href='#' class='social-btn'><i class='fa-brands fa-google'></i></a>
+                        <a href='#' class='social-btn'><i class='fa-brands fa-facebook-f'></i></a>
+                        <a href='#' class='social-btn'><i class='fa-brands fa-linkedin-in'></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BACK SIDE: SIGN UP (CREATE ACCOUNT) -->
+            <div class='card-face card-back'>
+                <div class='text-center space-y-2'>
+                    <div class='embossed-circle text-purple-400' style='color: #a855f7;'>
+                        <i class='fa-solid fa-user-plus'></i>
+                    </div>
+                    <h2 class='text-2xl font-bold text-white tracking-wide'>Create Account</h2>
+                    <p class='text-xs text-slate-400'>Start your journey with us</p>
+                </div>
+
+                <div class='space-y-3 my-auto'>
+                    <div>
+                        <label class='block text-xs font-semibold text-slate-400 mb-1'>Full Name</label>
+                        <input type='text' placeholder='Jitendra Soni' class='embossed-input'/>
+                    </div>
+                    <div>
+                        <label class='block text-xs font-semibold text-slate-400 mb-1'>Email Address</label>
+                        <input type='email' placeholder='name@example.com' class='embossed-input'/>
+                    </div>
+                    <div>
+                        <label class='block text-xs font-semibold text-slate-400 mb-1'>Password</label>
+                        <input type='password' placeholder='••••••••' class='embossed-input'/>
+                    </div>
+                    <div>
+                        <label class='block text-xs font-semibold text-slate-400 mb-1'>Confirm Password</label>
+                        <input type='password' placeholder='••••••••' class='embossed-input'/>
+                    </div>
+                </div>
+
+                <div class='space-y-4'>
+                    <button class='w-full py-3.5 rounded-xl bg-gradient-to-r from-purple-500 to-indigo-600 font-bold text-white shadow-[0_0_20px_rgba(139,92,246,0.4)] hover:scale-[1.02] transition'>
+                        CREATE ACCOUNT
+                    </button>
+                    
+                    <div class='flex items-center justify-between pt-2 border-t border-slate-800 text-xs text-slate-400'>
+                        <span>Already have an account?</span>
+                        <div onclick='toggleCard()' class='action-circle' title='Back to Login'>
+                            <i class='fa-solid fa-arrow-left'></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Hidden Blogger Section Tag -->
+    <div style='display:none;'>
+        <b:section id='main' showaddelement='no'>
+            <b:widget id='Blog1' locked='true' title='Blog Posts' type='Blog'/>
+        </b:section>
+    </div>
+
+    <!-- JavaScript for 3D Flip Action -->
+    <script>
+        function toggleCard() {
+            const card = document.getElementById('flipCard');
+            card.classList.toggle('flipped');
+        }
+    </script>
+</body>
+  </html>
+                  
