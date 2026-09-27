@@ -1007,5 +1007,26 @@
       });
   }
 </script>
+  <script>
+  // Dropdown ko open/close karne ka function ⚙️
+  function toggleDropdown() {
+    const dropdown = document.getElementById("authDropdown");
+    if (dropdown.style.display === "block") {
+      dropdown.style.display = "none";
+    } else {
+      dropdown.style.display = "block";
+    }
+  }
+
+  // Agar user screen par kahin aur click kare, toh dropdown band ho jaye 🖱️
+  window.onclick = function(event) {
+    if (!event.target.closest('#profileContainer')) {
+      const dropdown = document.getElementById("authDropdown");
+      if (dropdown && dropdown.style.display === "block") {
+        dropdown.style.display = "none";
+      }
+    }
+  }
+</script>
 </body>
 </html>
