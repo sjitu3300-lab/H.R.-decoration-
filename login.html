@@ -9,6 +9,11 @@
     <!-- FontAwesome Icons -->
     <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css' rel='stylesheet'/>
     
+    <!-- Firebase App (Core SDK) -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <!-- Firebase Authentication SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+
     <style>
         * {
             margin: 0;
@@ -129,6 +134,8 @@
             color: #4b5563;
             transition: all 0.3s;
             border: 1px solid #e5e7eb;
+            cursor: pointer;
+            text-decoration: none;
         }
         .social-btn:hover {
             background-color: #111111;
@@ -184,10 +191,10 @@
                         </div>
                     </div>
 
-                    <!-- Social Icons -->
+                    <!-- Social Icons Connected with Firebase -->
                     <div class='flex justify-center gap-4 pt-1'>
-                        <a href='#' class='social-btn'><i class='fa-brands fa-google'></i></a>
-                        <a href='#' class='social-btn'><i class='fa-brands fa-facebook-f'></i></a>
+                        <a onclick='loginWithGoogle()' class='social-btn' title='Login with Google'><i class='fa-brands fa-google'></i></a>
+                        <a onclick='loginWithFacebook()' class='social-btn' title='Login with Facebook'><i class='fa-brands fa-facebook-f'></i></a>
                         <a href='#' class='social-btn'><i class='fa-brands fa-linkedin-in'></i></a>
                     </div>
                 </div>
@@ -246,11 +253,50 @@
         </b:section>
     </div>
 
-    <!-- JavaScript for 3D Flip Action -->
+    <!-- JavaScript for 3D Flip Action and Firebase Auth -->
     <script>
         function toggleCard() {
             const card = document.getElementById('flipCard');
             card.classList.toggle('flipped');
+        }
+
+        // Firebase Configuration (Yahan aapko apne Firebase Console ki details dalni hain)
+        const firebaseConfig = {
+            apiKey: "AAPKI_API_KEY_YAHAN_DALEIN",
+            authDomain: "aapke-project-id.firebaseapp.com",
+            projectId: "aapke-project-id",
+            storageBucket: "aapke-project-id.appspot.com",
+            messagingSenderId: "SENDER_ID",
+            appId: "APP_ID"
+        };
+
+        // Firebase Initialize karna
+        firebase.initializeApp(firebaseConfig);
+
+        // Auth Providers Setup
+        const googleProvider = new firebase.auth.GoogleAuthProvider();
+        const facebookProvider = new firebase.auth.FacebookAuthProvider();
+
+        // Google Login Function
+        function loginWithGoogle() {
+            firebase.auth().signInWithPopup(googleProvider)
+                .then((result) => {
+                    alert("Google Login Successful! Welcome " + result.user.displayName);
+                })
+                .catch((error) => {
+                    alert("Login Error: " + error.message);
+                });
+        }
+
+        // Facebook Login Function
+        function loginWithFacebook() {
+            firebase.auth().signInWithPopup(facebookProvider)
+                .then((result) => {
+                    alert("Facebook Login Successful! Welcome " + result.user.displayName);
+                })
+                .catch((error) => {
+                    alert("Login Error: " + error.message);
+                });
         }
     </script>
 </body>
