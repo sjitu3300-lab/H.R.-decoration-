@@ -958,6 +958,45 @@
 
     window.onload = loadReviews;
   </script>
+<script>
+  // 1. Aapki Firebase Project ki details (Ise apne Firebase console se replace karein)
+  const firebaseConfig = {
+    apiKey: "AAPKI_API_KEY_YAHAN_DALEIN",
+    authDomain: "aapke-project-id.firebaseapp.com",
+    projectId: "aapke-project-id",
+    storageBucket: "aapke-project-id.appspot.com",
+    messagingSenderId: "SENDER_ID",
+    appId: "APP_ID"
+  };
 
+  // Firebase ko initialize karna
+  firebase.initializeApp(firebaseConfig);
+
+  // 2. Auth Providers Setup
+  const googleProvider = new firebase.auth.GoogleAuthProvider();
+  const facebookProvider = new firebase.auth.FacebookAuthProvider();
+
+  // 3. Google Login Function
+  function loginWithGoogle() {
+    firebase.auth().signInWithPopup(googleProvider)
+      .then((result) => {
+        alert("Google Login Successful! Welcome " + result.user.displayName);
+      })
+      .catch((error) => {
+        alert("Login Error: " + error.message);
+      });
+  }
+
+  // 4. Facebook Login Function
+  function loginWithFacebook() {
+    firebase.auth().signInWithPopup(facebookProvider)
+      .then((result) => {
+        alert("Facebook Login Successful! Welcome " + result.user.displayName);
+      })
+      .catch((error) => {
+        alert("Login Error: " + error.message);
+      });
+  }
+</script>
 </body>
 </html>
