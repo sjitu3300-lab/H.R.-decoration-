@@ -657,13 +657,17 @@
       <li><a href="#blog">Blog</a></li>
       <li><a href="#pages">Pages</a></li>
     </ul>
-   <div class="nav-right">
-  <!-- Profile Circle (Initially redirects to login if not signed in) -->
-  <div id="profileIconContainer" onclick="handleProfileClick()" style="cursor: pointer; display: flex; align-items: center; gap: 8px;">
-    <div style="width: 40px; height: 40px; background: #e5e7eb; border-radius: 50%; display: flex; align-items: center; justify-content: center; overflow: hidden; border: 1px solid #cbd5e1;">
-      <img id="userAvatar" src="" alt="Profile" style="width: 100%; height: 100%; object-fit: cover; display: none;" />
-      <i id="defaultUserIcon" class="fa-solid fa-user" style="color: #4b5563; font-size: 1rem;"></i>
-    </div>
+  <div class="nav-right" style="position: relative;">
+  <!-- Profile Circle Icon 🟢 -->
+  <div id="profileContainer" onclick="toggleDropdown()" style="cursor: pointer; width: 40px; height: 40px; border-radius: 50%; background: #e5e7eb; display: flex; align-items: center; justify-content: center; overflow: hidden; border: 1px solid #cbd5e1;">
+    <img id="userAvatar" src="" alt="Profile" style="width: 100%; height: 100%; object-fit: cover; display: none;" />
+    <i id="defaultUserIcon" class="fa-solid fa-user" style="color: #4b5563;"></i>
+  </div>
+  
+  <!-- Dropdown Menu 📋 -->
+  <div id="authDropdown" style="display: none; position: absolute; right: 0; top: 50px; background: #ffffff; border: 1px solid #e5e7eb; border-radius: 8px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); width: 140px; padding: 8px 0; z-index: 1000;">
+    <a href="login.html" style="display: block; padding: 8px 16px; color: #111111; text-decoration: none; font-size: 0.9rem;">Log In</a>
+    <a href="login.html" style="display: block; padding: 8px 16px; color: #111111; text-decoration: none; font-size: 0.9rem;">Sign Up</a>
   </div>
 </div>
   </nav>
