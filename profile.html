@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html b:css='false' b:js='false' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gdata/blender' xmlns:data='http://www.google.com/2005/gdata/data' xmlns:expr='http://www.google.com/2005/gdata/expr'>
+<head>
+  <meta charset='UTF-8'/>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'/>
+  <title>User Profile - JL Portfolio</title>
+  <link href='https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap' rel='stylesheet'/>
+  <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css' rel='stylesheet'/>
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    body {
+      background-color: #f8f9fa;
+      color: #111111;
+      padding: 20px 0;
+    }
+
+    /* Blogger Static Page Extra Elements Hide */
+    <b:if cond='data:blog.pageType == "static_page"'>
+      .post-footer, .comments, .comment-form, .post-share-buttons, .post-header, .blog-pager, .feed-links, .post-title {
+        display: none !important;
+      }
+    </b:if>
+
+    /* 👤 Main Profile Wrapper */
+    .profile-wrapper {
+      max-width: 500px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    .profile-page-title {
+      text-align: center;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #111111;
+      margin-bottom: 25px;
+    }
+
+    /* 🏷️ Section Headings */
+    .section-label {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #6b7280;
+      margin: 25px 0 10px 5px;
+    }
+
+    /* 📦 Cards Group */
+    .profile-card-group {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 8px 0;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+      border: 1px solid #f3f4f6;
+    }
+
+    /* 🖼️ User Info Header Card */
+    .user-header-card {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+      border: 1px solid #f3f4f6;
+    }
+    .user-avatar {
+      width: 65px;
+      height: 65px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    .user-details h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #111111;
+      margin-bottom: 4px;
+    }
+    .user-details p {
+      font-size: 0.85rem;
+      color: #6b7280;
+    }
+
+    /* 🔗 List Items */
+    .profile-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 20px;
+      text-decoration: none;
+      color: #1f2937;
+      transition: background 0.2s;
+    }
+    .profile-item:hover {
+      background-color: #f9fafb;
+    }
+    .item-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+    .item-left i {
+      font-size: 1.1rem;
+      color: #374151;
+      width: 24px;
+      text-align: center;
+    }
+    .item-right {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
+      color: #6b7280;
+    }
+    .item-right i {
+      font-size: 0.8rem;
+      color: #9ca3af;
+    }
+
+    /* Divider */
+    .divider {
+      height: 1px;
+      background-color: #f3f4f6;
+      margin: 0 20px;
+    }
+  </style>
+  <b:skin><![CDATA[/* Profile Page Skin */]]></b:skin>
+</head>
+<body>
+
+  <div class='profile-wrapper'>
+    <h2 class='profile-page-title'>Profile</h2>
+
+    <!-- 👤 User Profile Card -->
+    <div class='user-header-card'>
+      <img src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&amp;auto=format&amp;fit=crop&amp;q=80' alt='User Avatar' class='user-avatar'/>
+      <div class='user-details'>
+        <h3>Ronald Richards</h3>
+        <p>ronaldrichards@gmail.com</p>
+      </div>
+    </div>
+
+    <!-- ⚙️ Account Section -->
+    <div class='section-label'>Account</div>
+    <div class='profile-card-group'>
+      <a href='#' class='profile-item'>
+        <div class='item-left'><i class='fa-regular fa-user'></i> Manage Profile</div>
+        <div class='item-right'><i class='fa-solid fa-chevron-right'></i></div>
+      </a>
+      <div class='divider'></div>
+      <a href='#' class='profile-item'>
+        <div class='item-left'><i class='fa-regular fa-lock'></i> Password &amp; Security</div>
+        <div class='item-right'><i class='fa-solid fa-chevron-right'></i></div>
+      </a>
+      <div class='divider'></div>
+      <a href='#' class='profile-item'>
+        <div class='item-left'><i class='fa-regular fa-bell'></i> Notifications</div>
+        <div class='item-right'><i class='fa-solid fa-chevron-right'></i></div>
+      </a>
+      <div class='divider'></div>
+      <a href='#' class='profile-item'>
+        <div class='item-left'><i class='fa-solid fa-globe'></i> Language</div>
+        <div class='item-right'><span>English</span> <i class='fa-solid fa-chevron-right'></i></div>
+      </a>
+    </div>
+
+    <!-- ⭐ Preferences Section -->
+    <div class='section-label'>Preferences</div>
+    <div class='profile-card-group'>
+      <a href='#' class='profile-item'>
+        <div class='item-left'><i class='fa-regular fa-file-lines'></i> About Us</div>
+        <div class='item-right'><i class='fa-solid fa-chevron-right'></i></div>
+      </a>
+      <div class='divider'></div>
+      <a href='#' class='profile-item'>
+        <div class='item-left'><i class='fa-regular fa-circle-dot'></i> Theme</div>
+        <div class='item-right'><span>Light</span> <i class='fa-solid fa-chevron-right'></i></div>
+      </a>
+      <div class='divider'></div>
+      <a href='#' class='profile-item'>
+        <div class='item-left'><i class='fa-regular fa-calendar'></i> Appointments</div>
+        <div class='item-right'><i class='fa-solid fa-chevron-right'></i></div>
+      </a>
+    </div>
+
+    <!-- 🛟 Support Section -->
+    <div class='section-label'>Support</div>
+    <div class='profile-card-group'>
+      <a href='#' class='profile-item'>
+        <div class='item-left'><i class='fa-regular fa-circle-question'></i> Help Center</div>
+        <div class='item-right'><i class='fa-solid fa-chevron-right'></i></div>
+      </a>
+    </div>
+
+  </div>
+
+  <!-- Hidden Blogger Section -->
+  <div style='display:none;'>
+    <b:section id='hidden-section' showaddelement='no'>
+      <b:widget id='Blog1' locked='true' title='Blog Posts' type='Blog'/>
+    </b:section>
+  </div>
+
+</body>
+</html>
