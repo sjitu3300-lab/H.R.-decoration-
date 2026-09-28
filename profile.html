@@ -7,6 +7,11 @@
   <link href='https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap' rel='stylesheet'/>
   <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css' rel='stylesheet'/>
   
+  <!-- Firebase App (Core SDK) -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <!-- Firebase Authentication SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+
   <style>
     * {
       margin: 0;
@@ -95,6 +100,7 @@
       text-decoration: none;
       color: #1f2937;
       transition: background 0.2s;
+      cursor: pointer;
     }
     .profile-item:hover {
       background-color: #f9fafb;
@@ -138,12 +144,12 @@
   <div class='profile-wrapper'>
     <h2 class='profile-page-title'>Profile</h2>
 
-    <!-- 👤 User Profile Card -->
+    <!-- 👤 User Profile Card (Dynamic Data from Firebase) -->
     <div class='user-header-card'>
-      <img src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&amp;auto=format&amp;fit=crop&amp;q=80' alt='User Avatar' class='user-avatar'/>
+      <img id='profileImg' src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&amp;auto=format&amp;fit=crop&amp;q=80' alt='User Avatar' class='user-avatar'/>
       <div class='user-details'>
-        <h3>Ronald Richards</h3>
-        <p>ronaldrichards@gmail.com</p>
+        <h3 id='profileName'>Loading...</h3>
+        <p id='profileEmail'>Loading...</p>
       </div>
     </div>
 
@@ -197,6 +203,12 @@
         <div class='item-left'><i class='fa-regular fa-circle-question'></i> Help Center</div>
         <div class='item-right'><i class='fa-solid fa-chevron-right'></i></div>
       </a>
+      <div class='divider'></div>
+      <!-- 🚪 Logout Action Button Added -->
+      <a onclick='logoutUser()' class='profile-item' style='color: #dc2626;'>
+        <div class='item-left'><i class='fa-solid fa-right-from-bracket' style='color: #dc2626;'></i> Log Out</div>
+        <div class='item-right'><i class='fa-solid fa-chevron-right'></i></div>
+      </a>
     </div>
 
   </div>
@@ -208,5 +220,44 @@
     </b:section>
   </div>
 
+  <!-- 💻 Firebase Configuration & Auth Script -->
+  <script>
+    // Firebase Configuration
+    const firebaseConfig = {
+        apiKey: "AIzaSyBTRJbK7sDABJpLH5t9Eqo3_O-AhR_dX1Y",
+        authDomain: "jl-portfolio-auth.firebaseapp.com",
+        projectId: "jl-portfolio-auth",
+        storageBucket: "jl-portfolio-auth.firebasestorage.app",
+        messagingSenderId: "323080007478",
+        appId: "1:323080007478:web:284cd85b3b3f141e350d97",
+    };
+
+    // Firebase Initialize karna
+    firebase.initializeApp(firebaseConfig);
+
+    // User Authentication State Check & Data Display
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        // User logged in hai toh details update karein
+        document.getElementById("profileName").innerText = user.displayName || "Jitendra Soni";
+        document.getElementById("profileEmail").innerText = user.email;
+        if (user.photoURL) {
+          document.getElementById("profileImg").src = user.photoURL;
+        }
+      } else {
+        // User logged in nahi hai toh login page par bhej dein
+        window.location.href = "login.html";
+      }
+    });
+
+    // Logout Function
+    function logoutUser() {
+      firebase.auth().signOut().then(() => {
+        window.location.href = "login.html";
+      }).catch((error) => {
+        alert("Logout Error: " + error.message);
+      });
+    }
+  </script>
 </body>
 </html>
