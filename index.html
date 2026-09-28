@@ -1,18 +1,16 @@
 <!DOCTYPE html>
 <html lang="hi">
 <head>
-  <!-- Firebase App (Core SDK) -->
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-<!-- Firebase Authentication SDK -->
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+  <!-- Firebase App & Auth SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Jitendra - Portfolio & UI/UX Marketplace</title>
-  <!-- मॉडर्न क्लीन फॉन्ट -->
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
   
   <style>
-    /* 🎨 ग्लोबल रिसेट */
     * {
       margin: 0;
       padding: 0;
@@ -74,7 +72,6 @@
       color: #000000;
     }
     
-    /* ड्रॉपडाउन मेनू (Category & Sub-Category Support) */
     .dropdown-menu {
       position: absolute;
       top: 100%;
@@ -115,23 +112,7 @@
     .nav-right {
       display: flex;
       gap: 12px;
-    }
-    .btn-auth {
-      background: transparent;
-      border: 1.5px solid #111111;
-      color: #111111;
-      padding: 8px 18px;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 0.9rem;
-      font-weight: 700;
-      text-decoration: none;
-      transition: all 0.3s;
-    }
-    .btn-auth:hover {
-      background-color: #111827;
-      color: #ffffff;
-      border-color: #111827;
+      position: relative;
     }
 
     /* ✨ 2. पोर्टफोलियो टेक्स्ट स्पेशल एनिमेशन */
@@ -160,7 +141,7 @@
       100% { transform: translateX(-120%); opacity: 0; }
     }
 
-    /* 📦 3. इंट्रो बॉक्स सेक्शन (बड़ा साइज़) */
+    /* 📦 3. इंट्रो बॉक्स सेक्शन */
     .intro-section {
       padding: 50px;
       max-width: 1300px;
@@ -291,7 +272,7 @@
       line-height: 1.6;
     }
 
-    /* 🛒 5. टेम्पलेट्स सेक्शन (Fully Clickable Cards with Lightning Border Effect) */
+    /* 🛒 5. टेम्पलेट्स सेक्शन */
     .templates-section {
       padding: 20px 50px 40px 50px;
       max-width: 1300px;
@@ -319,7 +300,6 @@
       transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s;
     }
     
-    /* ⚡ Charo aur lighting effect on hover */
     .template-card::before {
       content: '';
       position: absolute;
@@ -437,7 +417,7 @@
       border-color: #111111;
     }
 
-    /* 🤖 8. Reviews सेक्शन और यूनिक ड्रॉपडाउन फॉर्म */
+    /* 🤖 8. Reviews सेक्शन */
     .review-section {
       background-color: #f8f9fa;
       padding: 60px 50px;
@@ -589,7 +569,6 @@
       color: #6b7280;
     }
 
-    /* 📱 मोबाइल रिस्पॉन्सिव फिक्स */
     @media (max-width: 768px) {
       .navbar {
         padding: 15px 20px;
@@ -632,7 +611,7 @@
 </head>
 <body>
 
-  <!-- 1. नेविगेशन बार (Updated with Category & Sub-Category Dropdown) -->
+  <!-- 1. नेविगेशन बार -->
   <nav class="navbar">
     <div class="nav-left">
       <span class="nav-logo-icon">⚡</span>
@@ -657,19 +636,20 @@
       <li><a href="#blog">Blog</a></li>
       <li><a href="#pages">Pages</a></li>
     </ul>
-  <div class="nav-right" style="position: relative;">
-  <!-- Profile Circle Icon 🟢 -->
-  <div id="profileContainer" onclick="toggleDropdown()" style="cursor: pointer; width: 40px; height: 40px; border-radius: 50%; background: #e5e7eb; display: flex; align-items: center; justify-content: center; overflow: hidden; border: 1px solid #cbd5e1;">
-    <img id="userAvatar" src="" alt="Profile" style="width: 100%; height: 100%; object-fit: cover; display: none;" />
-    <i id="defaultUserIcon" class="fa-solid fa-user" style="color: #4b5563;"></i>
-  </div>
-  
-  <!-- Dropdown Menu 📋 -->
-  <div id="authDropdown" style="display: none; position: absolute; right: 0; top: 50px; background: #ffffff; border: 1px solid #e5e7eb; border-radius: 8px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); width: 140px; padding: 8px 0; z-index: 1000;">
-    <a href="login.html" style="display: block; padding: 8px 16px; color: #111111; text-decoration: none; font-size: 0.9rem;">Log In</a>
-    <a href="login.html" style="display: block; padding: 8px 16px; color: #111111; text-decoration: none; font-size: 0.9rem;">Sign Up</a>
-  </div>
-</div>
+    
+    <div class="nav-right">
+      <!-- Profile Circle Icon (Auth Check Enabled) -->
+      <div id="profileContainer" onclick="handleProfileClick()" style="cursor: pointer; width: 40px; height: 40px; border-radius: 50%; background: #e5e7eb; display: flex; align-items: center; justify-content: center; overflow: hidden; border: 1px solid #cbd5e1;">
+        <img id="userAvatar" src="" alt="Profile" style="width: 100%; height: 100%; object-fit: cover; display: none;" />
+        <i id="defaultUserIcon" class="fa-solid fa-user" style="color: #4b5563;"></i>
+      </div>
+      
+      <!-- Dropdown Menu (Shown if not logged in) -->
+      <div id="authDropdown" style="display: none; position: absolute; right: 0; top: 50px; background: #ffffff; border: 1px solid #e5e7eb; border-radius: 8px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); width: 140px; padding: 8px 0; z-index: 1000;">
+        <a href="login.html" style="display: block; padding: 8px 16px; color: #111111; text-decoration: none; font-size: 0.9rem;">Log In</a>
+        <a href="login.html" style="display: block; padding: 8px 16px; color: #111111; text-decoration: none; font-size: 0.9rem;">Sign Up</a>
+      </div>
+    </div>
   </nav>
 
   <!-- 2. पोर्टफोलियो टेक्स्ट स्पेशल एनिमेशन -->
@@ -703,81 +683,21 @@
     <p>These UI/UX Design projects involve creating impactful digital interface marks of user mission and goals.</p>
   </div>
 
-  <!-- 5. टेम्पलेट्स कार्ड्स सेक्शन (Fully Clickable Cards without Buy/Prev buttons & Lightning Effect) -->
+  <!-- 5. टेम्पलेट्स कार्ड्स सेक्शन -->
   <section class="templates-section" id="templates">
     <div class="templates-grid">
       <script>
         const templatesData = [
-          {
-            id: "hotel",
-            title: "Inder Paradise Hotel", 
-            desc: "Luxury booking & hospitality UI layout.", 
-            img: "https://i.ibb.co/S7699GcQ/IMG-20260909-224638.jpg?w=500&auto=format&fit=crop&q=60",
-            link: "previous.html"
-          },
-          {
-            id: "restaurant",
-            title: "Restaurant & Cafe", 
-            desc: "Modern food & dining menu layout.", 
-            img: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=500&auto=format&fit=crop&q=60",
-            link: "previous.html"
-          },
-          {
-            id: "fitness",
-            title: "Fitness Tracker", 
-            desc: "Gym and sports dashboard.", 
-            img: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=500&auto=format&fit=crop&q=60",
-            link: "previous.html"
-          },
-          {
-            id: "saas",
-            title: "SaaS Landing", 
-            desc: "High conversion tech layout.", 
-            img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&auto=format&fit=crop&q=60",
-            link: "previous.html"
-          },
-          {
-            id: "portfolio",
-            title: "Portfolio UI", 
-            desc: "Creative personal showcase.", 
-            img: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=500&auto=format&fit=crop&q=60",
-            link: "previous.html"
-          },
-          {
-            id: "realestate",
-            title: "Real Estate", 
-            desc: "Property listing interface.", 
-            img: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=500&auto=format&fit=crop&q=60",
-            link: "previous.html"
-          },
-          {
-            id: "crypto",
-            title: "Crypto Dashboard", 
-            desc: "Trading and finance UI.", 
-            img: "https://images.unsplash.com/photo-1621416894569-0f39ed31d247?w=500&auto=format&fit=crop&q=60",
-            link: "previous.html"
-          },
-          {
-            id: "education",
-            title: "Education Hub", 
-            desc: "Online course platform.", 
-            img: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=500&auto=format&fit=crop&q=60",
-            link: "previous.html"
-          },
-          {
-            id: "travel",
-            title: "Travel Agency", 
-            desc: "Booking and tour design.", 
-            img: "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=500&auto=format&fit=crop&q=60",
-            link: "previous.html"
-          },
-          {
-            id: "agency",
-            title: "Agency Pro", 
-            desc: "Corporate business layout.", 
-            img: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=500&auto=format&fit=crop&q=60",
-            link: "previous.html"
-          }
+          { title: "Inder Paradise Hotel", desc: "Luxury booking & hospitality UI layout.", img: "https://i.ibb.co/S7699GcQ/IMG-20260909-224638.jpg?w=500&auto=format&fit=crop&q=60", link: "previous.html" },
+          { title: "Restaurant & Cafe", desc: "Modern food & dining menu layout.", img: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=500&auto=format&fit=crop&q=60", link: "previous.html" },
+          { title: "Fitness Tracker", desc: "Gym and sports dashboard.", img: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=500&auto=format&fit=crop&q=60", link: "previous.html" },
+          { title: "SaaS Landing", desc: "High conversion tech layout.", img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&auto=format&fit=crop&q=60", link: "previous.html" },
+          { title: "Portfolio UI", desc: "Creative personal showcase.", img: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=500&auto=format&fit=crop&q=60", link: "previous.html" },
+          { title: "Real Estate", desc: "Property listing interface.", img: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=500&auto=format&fit=crop&q=60", link: "previous.html" },
+          { title: "Crypto Dashboard", desc: "Trading and finance UI.", img: "https://images.unsplash.com/photo-1621416894569-0f39ed31d247?w=500&auto=format&fit=crop&q=60", link: "previous.html" },
+          { title: "Education Hub", desc: "Online course platform.", img: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=500&auto=format&fit=crop&q=60", link: "previous.html" },
+          { title: "Travel Agency", desc: "Booking and tour design.", img: "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=500&auto=format&fit=crop&q=60", link: "previous.html" },
+          { title: "Agency Pro", desc: "Corporate business layout.", img: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=500&auto=format&fit=crop&q=60", link: "previous.html" }
         ];
         
         document.write(templatesData.map((item) => `
@@ -816,13 +736,12 @@
     </div>
   </div>
 
-  <!-- 8. Reviews सेक्शन (6 डिफ़ॉल्ट रिव्यूज + ड्रॉपडाउन) -->
+  <!-- 8. Reviews सेक्शन -->
   <section class="review-section">
     <div class="review-heading-box">
       <h2>Reviews</h2>
     </div>
 
-    <!-- यूनिक ड्रॉपडाउन फॉर्म बॉक्स -->
     <div class="review-form-box">
       <h3>⭐ Share Your Experience</h3>
       <form id="reviewForm" onsubmit="addReview(event)">
@@ -838,22 +757,12 @@
             <option value="Amazing typography and spacing. Best place to buy production-ready templates.">4. Amazing typography and spacing. Best place to buy production-ready templates.</option>
             <option value="The sliding portfolio animation on top looks absolute class!">5. The sliding portfolio animation on top looks absolute class!</option>
             <option value="Clean architecture, fully responsive, and AdSense friendly layout. Highly recommended.">6. Clean architecture, fully responsive, and AdSense friendly layout. Highly recommended.</option>
-            <option value="Loved the modern UI elements. Saved me weeks of development time.">7. Loved the modern UI elements. Saved me weeks of development time.</option>
-            <option value="The dark theme toggle and layout styling is top-notch.">8. The dark theme toggle and layout styling is top-notch.</option>
-            <option value="Professional presentation from top to bottom. Great work Jitendra!">9. Professional presentation from top to bottom. Great work Jitendra!</option>
-            <option value="Super intuitive layout. The navigation and dropdown menus are buttery smooth.">10. Super intuitive layout. The navigation and dropdown menus are buttery smooth.</option>
-            <option value="Top-tier web design templates. Worth every penny.">11. Top-tier web design templates. Worth every penny.</option>
-            <option value="The aesthetic matches top global portfolios on Behance and Dribbble.">12. The aesthetic matches top global portfolios on Behance and Dribbble.</option>
-            <option value="Fast loading speed and immaculate component structure.">13. Fast loading speed and immaculate component structure.</option>
-            <option value="A true masterclass in modern frontend development and UI design.">14. A true masterclass in modern frontend development and UI design.</option>
-            <option value="Brilliant color contrast and very easy to customize for any project.">15. Brilliant color contrast and very easy to customize for any project.</option>
           </select>
         </div>
         <button type="submit" class="btn-submit-review">Publish Review</button>
       </form>
     </div>
 
-    <!-- रिव्यूज की ग्रिड -->
     <div class="reviews-grid" id="reviewsGrid"></div>
   </section>
 
@@ -895,8 +804,23 @@
     </div>
   </footer>
 
-  <!-- ⚡ जावास्क्रिप्ट -->
+  <!-- ⚡ जावास्क्रिप्ट और फायरबेस ऑथ चेक लॉजिक -->
   <script>
+    // Firebase Configuration (Apne credentials yahan dalein)
+    const firebaseConfig = {
+      apiKey: "AAPKI_API_KEY_YAHAN_DALEIN",
+      authDomain: "aapke-project-id.firebaseapp.com",
+      projectId: "aapke-project-id",
+      storageBucket: "aapke-project-id.appspot.com",
+      messagingSenderId: "SENDER_ID",
+      appId: "APP_ID"
+    };
+
+    if (!firebase.apps.length) {
+      firebase.initializeApp(firebaseConfig);
+    }
+
+    // Typing effect
     const textElement = document.getElementById("typingText");
     const phrase = "Web Developer & UI/UX Designer";
     let isDeleting = false;
@@ -921,7 +845,50 @@
     }
     loopTyping();
 
-    // केवल 6 चुनिंदा डिफ़ॉल्ट रिव्यूज
+    // Profile Click par Login check karna
+    function handleProfileClick() {
+      const user = firebase.auth().currentUser;
+      if (user) {
+        // Agar user login hai, toh profile page par redirect karein
+        window.location.href = "profile.html";
+      } else {
+        // Agar login nahi hai, toh dropdown toggle karein (Login/Signup options)
+        toggleDropdown();
+      }
+    }
+
+    function toggleDropdown() {
+      const dropdown = document.getElementById("authDropdown");
+      dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
+    }
+
+    // Auth State Monitor
+    firebase.auth().onAuthStateChanged((user) => {
+      const userAvatar = document.getElementById("userAvatar");
+      const defaultIcon = document.getElementById("defaultUserIcon");
+      if (user) {
+        if (user.photoURL) {
+          userAvatar.src = user.photoURL;
+          userAvatar.style.display = "block";
+          defaultIcon.style.display = "none";
+        }
+      } else {
+        userAvatar.style.display = "none";
+        defaultIcon.style.display = "block";
+      }
+    });
+
+    // Window click to close dropdown
+    window.onclick = function(event) {
+      if (!event.target.closest('#profileContainer')) {
+        const dropdown = document.getElementById("authDropdown");
+        if (dropdown && dropdown.style.display === "block") {
+          dropdown.style.display = "none";
+        }
+      }
+    };
+
+    // Reviews logic
     const defaultReviews = [
       { name: "Alex Morgan", text: "Incredible template designs! The dark and light contrast gives it a true Behance professional feel." },
       { name: "Sarah Jenkins", text: "The smooth animations and clean code made integrating this into my workflow a breeze." },
@@ -934,7 +901,6 @@
     function loadReviews() {
       const grid = document.getElementById("reviewsGrid");
       grid.innerHTML = "";
-
       const savedReviews = JSON.parse(localStorage.getItem("userReviews")) || [];
       const allReviews = [...savedReviews, ...defaultReviews];
 
@@ -954,12 +920,10 @@
       event.preventDefault();
       const name = document.getElementById("reviewerName").value;
       const text = document.getElementById("reviewDropdown").value;
-
       const newReview = { name, text };
       let savedReviews = JSON.parse(localStorage.getItem("userReviews")) || [];
       savedReviews.unshift(newReview);
       localStorage.setItem("userReviews", JSON.stringify(savedReviews));
-
       loadReviews();
       document.getElementById("reviewForm").reset();
       alert("Thank you! Your review has been saved permanently.");
@@ -967,66 +931,5 @@
 
     window.onload = loadReviews;
   </script>
-<script>
-  // 1. Aapki Firebase Project ki details (Ise apne Firebase console se replace karein)
-  const firebaseConfig = {
-    apiKey: "AAPKI_API_KEY_YAHAN_DALEIN",
-    authDomain: "aapke-project-id.firebaseapp.com",
-    projectId: "aapke-project-id",
-    storageBucket: "aapke-project-id.appspot.com",
-    messagingSenderId: "SENDER_ID",
-    appId: "APP_ID"
-  };
-
-  // Firebase ko initialize karna
-  firebase.initializeApp(firebaseConfig);
-
-  // 2. Auth Providers Setup
-  const googleProvider = new firebase.auth.GoogleAuthProvider();
-  const facebookProvider = new firebase.auth.FacebookAuthProvider();
-
-  // 3. Google Login Function
-  function loginWithGoogle() {
-    firebase.auth().signInWithPopup(googleProvider)
-      .then((result) => {
-        alert("Google Login Successful! Welcome " + result.user.displayName);
-      })
-      .catch((error) => {
-        alert("Login Error: " + error.message);
-      });
-  }
-
-  // 4. Facebook Login Function
-  function loginWithFacebook() {
-    firebase.auth().signInWithPopup(facebookProvider)
-      .then((result) => {
-        alert("Facebook Login Successful! Welcome " + result.user.displayName);
-      })
-      .catch((error) => {
-        alert("Login Error: " + error.message);
-      });
-  }
-</script>
-  <script>
-  // Dropdown ko open/close karne ka function ⚙️
-  function toggleDropdown() {
-    const dropdown = document.getElementById("authDropdown");
-    if (dropdown.style.display === "block") {
-      dropdown.style.display = "none";
-    } else {
-      dropdown.style.display = "block";
-    }
-  }
-
-  // Agar user screen par kahin aur click kare, toh dropdown band ho jaye 🖱️
-  window.onclick = function(event) {
-    if (!event.target.closest('#profileContainer')) {
-      const dropdown = document.getElementById("authDropdown");
-      if (dropdown && dropdown.style.display === "block") {
-        dropdown.style.display = "none";
-      }
-    }
-  }
-</script>
 </body>
 </html>
