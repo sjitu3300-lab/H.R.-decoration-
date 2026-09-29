@@ -13,9 +13,16 @@
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
     body { background-color: #f8f9fa; color: #111111; padding: 30px 20px; }
-    .container { max-width: 650px; margin: 0 auto; background: #ffffff; border: 1px solid #e5e7eb; border-radius: 20px; padding: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.03); }
-    .page-title { font-size: 1.5rem; font-weight: 700; margin-bottom: 10px; text-align: center; color: #111111; }
-    .page-subtitle { font-size: 0.9rem; color: #6b7280; text-align: center; margin-bottom: 25px; }
+    .container { max-width: 650px; margin: 0 auto; background: #ffffff; border: 1px solid #e5e7eb; border-radius: 20px; padding: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.04); }
+    
+    /* 🌐 Unique Header */
+    .page-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 25px; border-bottom: 1px solid #f3f4f6; padding-bottom: 15px; }
+    .back-btn { font-size: 1.1rem; color: #111111; background: #f3f4f6; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: background 0.2s; }
+    .back-btn:hover { background: #e5e7eb; color: #2563eb; }
+    .header-title { display: flex; align-items: center; gap: 10px; font-size: 1.25rem; font-weight: 700; color: #111111; }
+    .header-title i { color: #2563eb; font-size: 1.3rem; }
+
+    .page-subtitle { font-size: 0.9rem; color: #6b7280; text-align: center; margin-bottom: 20px; }
     
     /* Search Bar */
     .search-box { position: relative; margin-bottom: 25px; }
@@ -24,22 +31,35 @@
     .search-box i { position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: #6b7280; font-size: 1.1rem; }
 
     /* FAQ List */
-    .faq-category { font-size: 1.1rem; font-weight: 700; margin-bottom: 15px; color: #111111; display: flex; align-items: center; gap: 8px; }
+    .faq-category { font-size: 1.05rem; font-weight: 700; margin-bottom: 15px; color: #111111; display: flex; align-items: center; gap: 8px; }
     .faq-item { background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 12px; margin-bottom: 12px; overflow: hidden; transition: border-color 0.2s; }
     .faq-item:hover { border-color: #2563eb; }
     .faq-question { padding: 15px 20px; font-weight: 600; font-size: 0.95rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; color: #111111; }
-    .faq-answer { padding: 0 20px 15px 20px; font-size: 0.9rem; color: #4b5563; line-height: 1.5; display: none; border-top: 1px solid #f3f4f6; }
+    .faq-answer { padding: 0 20px 15px 20px; font-size: 0.9rem; color: #4b5563; line-height: 1.5; display: none; border-top: 1px solid #f3f4f6; background: #ffffff; }
     .faq-item.active .faq-answer { display: block; padding-top: 12px; }
     .faq-item.active .faq-question i { transform: rotate(180deg); color: #2563eb; }
 
-    .back-link { display: inline-block; margin-top: 25px; text-decoration: none; color: #2563eb; font-weight: 600; text-align: center; width: 100%; }
-    .back-link:hover { text-decoration: underline; }
+    /* Support Card */
+    .support-card { background: linear-gradient(135deg, #111111 0%, #1f2937 100%); color: #ffffff; border-radius: 14px; padding: 20px; text-align: center; margin-top: 25px; }
+    .support-card h4 { font-size: 1.1rem; margin-bottom: 8px; font-weight: 600; }
+    .support-card p { font-size: 0.85rem; color: #9ca3af; margin-bottom: 15px; }
+    .support-btn { background: #2563eb; color: #ffffff; border: none; padding: 10px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; text-decoration: none; display: inline-block; transition: background 0.3s; }
+    .support-btn:hover { background: #1d4ed8; }
   </style>
 </head>
 <body>
   <div class="container">
-    <h2 class="page-title">Help Center 🛟</h2>
-    <p class="page-subtitle">JL Portfolio और Firebase प्रोफाइल सिस्टम से जुड़ी समस्याओं के समाधान यहाँ खोजें।</p>
+    
+    <!-- 🧭 Unique Header: Back Button & Icon Title -->
+    <div class="page-header">
+      <a href="profile.html" class="back-btn" title="Wapas Jayein"><i class="fa-solid fa-arrow-left"></i></a>
+      <div class="header-title">
+        <i class="fa-solid fa-circle-question"></i> Help Center
+      </div>
+      <div style="width: 40px;"></div>
+    </div>
+
+    <p class="page-subtitle">JL Portfolio aur Firebase प्रोफाइल सिस्टम से जुड़ी समस्याओं के समाधान यहाँ खोजें।</p>
     
     <!-- Search Bar -->
     <div class="search-box">
@@ -47,7 +67,7 @@
       <input type="text" id="helpSearch" placeholder="अपनी समस्या खोजें (उदा. Password, Login, Profile)..." onkeyup="filterFaq()">
     </div>
 
-    <div class="faq-category"><i class="fa-solid fa-circle-question" style="color: #2563eb;"></i> सामान्य प्रश्न (FAQs)</div>
+    <div class="faq-category"><i class="fa-solid fa-list-check" style="color: #2563eb;"></i> सामान्य प्रश्न और समाधान (FAQs)</div>
 
     <!-- FAQ 1 -->
     <div class="faq-item" onclick="toggleFaq(this)">
@@ -63,11 +83,11 @@
     <!-- FAQ 2 -->
     <div class="faq-item" onclick="toggleFaq(this)">
       <div class="faq-question">
-        <span>2. लॉगिन करते समय 'Invalid Credentials' या एरर क्यों आता है?</span>
+        <span>2. लॉगिन करते समय एरर क्यों आता है?</span>
         <i class="fa-solid fa-chevron-down"></i>
       </div>
       <div class="faq-answer">
-        यह तब होता है जब ईमेल आईडी या पासवर्ड गलत दर्ज किया जाता है। सुनिश्चित करें कि आप सही Firebase अकाउंट विवरण भर रहे हैं। यदि पासवर्ड भूल गए हैं, तो लॉगिन पेज पर 'Forgot Password' का उपयोग करें।
+        यह तब होता है जब ईमेल आईडी या पासवर्ड गलत दर्ज किया जाता है। सुनिश्चित करें कि आप सही Firebase अकाउंट विवरण भर रहे हैं।
       </div>
     </div>
 
@@ -78,7 +98,7 @@
         <i class="fa-solid fa-chevron-down"></i>
       </div>
       <div class="faq-answer">
-        'Manage Profile' पेज पर जाएं, सुनिश्चित करें कि फाइल का आकार (Size) सीमित हो और वह समर्थित इमेज फॉर्मेट (JPG/PNG) में हो। बदलाव करने के बाद 'Save' बटन जरूर दबाएं।
+        'Manage Profile' पेज पर जाएं, समर्थित इमेज फॉर्मेट (JPG/PNG) की फोटो चुनें और बदलाव करने के बाद 'Save' बटन जरूर दबाएं।
       </div>
     </div>
 
@@ -89,7 +109,7 @@
         <i class="fa-solid fa-chevron-down"></i>
       </div>
       <div class="faq-answer">
-        प्रोफाइल मेनू से <b>Language</b> विकल्प चुनें, अपनी मनपसंद भाषा (जैसे हिन्दी या English) पर क्लिक करें और 'Save Language' पर क्लिक करें।
+        प्रोफाइल मेनू से <b>Language</b> विकल्प चुनें, अपनी मनपसंद भाषा पर क्लिक करें और 'Save Language' पर क्लिक करें।
       </div>
     </div>
 
@@ -100,11 +120,17 @@
         <i class="fa-solid fa-chevron-down"></i>
       </div>
       <div class="faq-answer">
-        हाँ, यह सिस्टम Google Firebase Authentication और एन्क्रिप्टेड सुरक्षा मानकों का उपयोग करता है जिससे आपका लॉगिन और पर्सनल डेटा पूरी तरह सुरक्षित रहता है।
+        हाँ, यह सिस्टम Google Firebase Authentication का उपयोग करता है जिससे आपका लॉगिन और पर्सनल डेटा एन्क्रिप्टेड और सुरक्षित रहता है।
       </div>
     </div>
 
-    <a href="profile.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Wapas Profile par jayein</a>
+    <!-- Support Card -->
+    <div class="support-card">
+      <h4>क्या आपको अभी भी मदद चाहिए? 🛠️</h4>
+      <p>हमारी सपोर्ट टीम से संपर्क करें ताकि हम आपकी समस्या का समाधान कर सकें।</p>
+      <button onclick="contactSupport()" class="support-btn">Contact Admin / Support</button>
+    </div>
+
   </div>
 
   <script>
@@ -149,6 +175,10 @@
           item.style.display = "none";
         }
       });
+    }
+
+    function contactSupport() {
+      alert("सपोर्ट टीम को आपकी शिकायत भेज दी गई है। जल्द ही आपसे संपर्क किया जाएगा!");
     }
   </script>
 </body>
