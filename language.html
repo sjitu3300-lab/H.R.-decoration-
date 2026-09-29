@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Language Settings - JL Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
+    body { background-color: #f8f9fa; color: #111111; padding: 30px 20px; }
+    .container { max-width: 600px; margin: 0 auto; background: #ffffff; border: 1px solid #e5e7eb; border-radius: 20px; padding: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.03); }
+    .page-title { font-size: 1.5rem; font-weight: 700; margin-bottom: 25px; text-align: center; color: #111111; }
+    .lang-list { display: flex; flex-direction: column; gap: 12px; margin-bottom: 25px; }
+    .lang-option { display: flex; align-items: center; justify-content: space-between; padding: 14px 20px; background: #f9fafb; border-radius: 12px; border: 1px solid #e5e7eb; cursor: pointer; transition: background 0.2s, border-color 0.2s; }
+    .lang-option:hover { background-color: #f3f4f6; border-color: #2563eb; }
+    .lang-option.selected { border-color: #2563eb; background-color: rgba(37, 99, 235, 0.04); }
+    .lang-info { display: flex; align-items: center; gap: 12px; font-weight: 600; font-size: 1rem; color: #111111; }
+    .radio-circle { width: 20px; height: 20px; border: 2px solid #cbd5e1; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+    .lang-option.selected .radio-circle { border-color: #2563eb; }
+    .lang-option.selected .radio-circle::after { content: ""; width: 10px; height: 10px; background: #2563eb; border-radius: 50%; display: block; }
+    .btn-save { width: 100%; padding: 12px; background: #111111; color: #ffffff; border: none; border-radius: 10px; font-weight: 700; cursor: pointer; transition: background 0.3s; }
+    .btn-save:hover { background: #2563eb; }
+    .back-link { display: inline-block; margin-top: 20px; text-decoration: none; color: #2563eb; font-weight: 600; text-align: center; width: 100%; }
+    .back-link:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2 class="page-title">Language Settings 🌐</h2>
+    
+    <div class="lang-list" id="langContainer">
+      <div class="lang-option selected" onclick="selectLanguage('hi', this)">
+        <div class="lang-info"><i class="fa-solid fa-globe" style="color: #2563eb;"></i> हिन्दी (Hindi)</div>
+        <div class="radio-circle"></div>
+      </div>
+      <div class="lang-option" onclick="selectLanguage('en', this)">
+        <div class="lang-info"><i class="fa-solid fa-globe" style="color: #2563eb;"></i> English</div>
+        <div class="radio-circle"></div>
+      </div>
+      <div class="lang-option" onclick="selectLanguage('es', this)">
+        <div class="lang-info"><i class="fa-solid fa-globe" style="color: #2563eb;"></i> Español (Spanish)</div>
+        <div class="radio-circle"></div>
+      </div>
+      <div class="lang-option" onclick="selectLanguage('fr', this)">
+        <div class="lang-info"><i class="fa-solid fa-globe" style="color: #2563eb;"></i> Français (French)</div>
+        <div class="radio-circle"></div>
+      </div>
+      <div class="lang-option" onclick="selectLanguage('de', this)">
+        <div class="lang-info"><i class="fa-solid fa-globe" style="color: #2563eb;"></i> Deutsch (German)</div>
+        <div class="radio-circle"></div>
+      </div>
+    </div>
+
+    <button onclick="saveLanguage()" class="btn-save">भाषा सहेजें (Save Language) 💾</button>
+
+    <a href="profile.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Wapas Profile par jayein</a>
+  </div>
+
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyBTRJbK7sDABJpLH5t9Eqo3_O-AhR_dX1Y",
+      authDomain: "jl-portfolio-auth.firebaseapp.com",
+      projectId: "jl-portfolio-auth",
+      storageBucket: "jl-portfolio-auth.firebasestorage.app",
+      messagingSenderId: "323080007478",
+      appId: "1:323080007478:web:284cd85b3b3f141e350d97"
+    };
+
+    if (!firebase.apps.length) {
+      firebase.initializeApp(firebaseConfig);
+    }
+
+    let selectedLangCode = 'hi';
+
+    function selectLanguage(code, element) {
+      selectedLangCode = code;
+      const options = document.querySelectorAll('.lang-option');
+      options.forEach(opt => opt.classList.remove('selected'));
+      element.classList.add('selected');
+    }
+
+    function saveLanguage() {
+      localStorage.setItem('app_language', selectedLangCode);
+      alert(`भाषा सफलताપurvak ${selectedLangCode.toUpperCase()} में सेट कर दी गई है!`);
+      window.location.href = "profile.html";
+    }
+  </script>
+</body>
+</html>
