@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manage Profile - JL Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  
+  <!-- 🌐 Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
+    body { background-color: #f8f9fa; color: #111111; padding: 30px 20px; }
+    .container { max-width: 600px; margin: 0 auto; background: #ffffff; border: 1px solid #e5e7eb; border-radius: 20px; padding: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.03); }
+    .page-title { font-size: 1.5rem; font-weight: 700; margin-bottom: 25px; text-align: center; color: #111111; }
+    .avatar-section { display: flex; flex-direction: column; align-items: center; margin-bottom: 25px; gap: 10px; }
+    .avatar-circle { width: 90px; height: 90px; border-radius: 50%; background: #e5e7eb; overflow: hidden; border: 2px solid #2563eb; display: flex; align-items: center; justify-content: center; }
+    .avatar-circle img { width: 100%; height: 100%; object-fit: cover; }
+    .form-group { margin-bottom: 18px; }
+    .form-group label { display: block; font-size: 0.9rem; font-weight: 600; margin-bottom: 6px; color: #333333; }
+    .form-control { width: 100%; padding: 12px 15px; border: 2px solid #cbd5e1; border-radius: 10px; font-size: 0.95rem; outline: none; transition: border-color 0.3s; }
+    .form-control:focus { border-color: #2563eb; box-shadow: 0 0 0 3px rgba(37,99,235,0.1); }
+    .btn-group { display: flex; gap: 15px; margin-top: 25px; }
+    .btn { flex: 1; padding: 12px; font-weight: 700; border-radius: 10px; cursor: pointer; text-align: center; text-decoration: none; border: none; }
+    .btn-save { background-color: #111111; color: #ffffff; transition: background 0.3s; }
+    .btn-save:hover { background-color: #2563eb; }
+    .btn-cancel { background-color: #f3f4f6; color: #111111; border: 1px solid #cbd5e1; text-decoration: none; display: flex; align-items: center; justify-content: center; }
+    .btn-cancel:hover { background-color: #e5e7eb; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2 class="page-title">Manage Profile 👤</h2>
+    
+    <div class="avatar-section">
+      <div class="avatar-circle">
+        <img id="previewImg" src="https://via.placeholder.com/150" alt="Avatar">
+      </div>
+      <input type="file" id="imageUpload" accept="image/*" style="font-size: 0.85rem;">
+    </div>
+
+    <form id="manageProfileForm" onsubmit="saveProfileData(event)">
+      <div class="form-group">
+        <label>First Name</label>
+        <input type="text" id="firstName" class="form-control" placeholder="First name" required>
+      </div>
+      <div class="form-group">
+        <label>Middle Name</label>
+        <input type="text" id="middleName" class="form-control" placeholder="Middle name">
+      </div>
+      <div class="form-group">
+        <label>Surname</label>
+        <input type="text" id="surname" class="form-control" placeholder="Surname">
+      </div>
+      <div class="form-group">
+        <label>Mobile Number 📱</label>
+        <input type="tel" id="mobile" class="form-control" placeholder="Mobile number">
+      </div>
+      <div class="form-group">
+        <label>Date of Birth 📅</label>
+        <input type="date" id="dob" class="form-control">
+      </div>
+      <div class="form-group">
+        <label>Email ✉️</label>
+        <input type="email" id="email" class="form-control" readonly>
+      </div>
+
+      <div class="btn-group">
+        <button type="submit" class="btn btn-save">Save 💾</button>
+        <a href="profile.html" class="btn btn-cancel">Cancel ❌</a>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyBTRJbK7sDABJpLH5t9Eqo3_O-AhR_dX1Y",
+      authDomain: "jl-portfolio-auth.firebaseapp.com",
+      projectId: "jl-portfolio-auth",
+      storageBucket: "jl-portfolio-auth.firebasestorage.app",
+      messagingSenderId: "323080007478",
+      appId: "1:323080007478:web:284cd85b3b3f141e350d97"
+    };
+
+    if (!firebase.apps.length) {
+      firebase.initializeApp(firebaseConfig);
+    }
+
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        document.getElementById("email").value = user.email || "";
+        if (user.displayName) {
+          const nameParts = user.displayName.split(" ");
+          document.getElementById("firstName").value = nameParts[0] || "";
+          if (nameParts.length > 2) {
+            document.getElementById("middleName").value = nameParts[1] || "";
+            document.getElementById("surname").value = nameParts.slice(2).join(" ") || "";
+          } else if (nameParts.length === 2) {
+            document.getElementById("surname").value = nameParts[1] || "";
+          }
+        }
+        if (user.photoURL) {
+          document.getElementById("previewImg").src = user.photoURL;
+        }
+      } else {
+        window.location.href = "login.html";
+      }
+    });
+
+    function saveProfileData(e) {
+      e.preventDefault();
+      const user = firebase.auth().currentUser;
+      const fName = document.getElementById("firstName").value;
+      const mName = document.getElementById("middleName").value;
+      const lName = document.getElementById("surname").value;
+      
+      const fullDisplayName = [fName, mName, lName].filter(Boolean).join(" ");
+
+      if (user) {
+        user.updateProfile({
+          displayName: fullDisplayName
+        }).then(() => {
+          alert("Profile updated successfully!");
+          window.location.href = "profile.html";
+        }).catch((error) => {
+          alert("Error: " + error.message);
+        });
+      }
+    }
+  </script>
+</body>
+</html>
