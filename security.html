@@ -13,21 +13,38 @@
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
     body { background-color: #f8f9fa; color: #111111; padding: 30px 20px; }
-    .container { max-width: 600px; margin: 0 auto; background: #ffffff; border: 1px solid #e5e7eb; border-radius: 20px; padding: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.03); }
-    .page-title { font-size: 1.5rem; font-weight: 700; margin-bottom: 25px; text-align: center; color: #111111; }
-    .section-box { margin-bottom: 20px; padding: 20px; background: #f9fafb; border-radius: 12px; border: 1px solid #e5e7eb; }
-    .section-box h3 { font-size: 1.05rem; margin-bottom: 12px; color: #111111; display: flex; align-items: center; gap: 8px; }
-    .form-control { width: 100%; padding: 12px 15px; border: 2px solid #cbd5e1; border-radius: 10px; font-size: 0.95rem; margin-bottom: 12px; outline: none; }
-    .form-control:focus { border-color: #2563eb; }
+    .container { max-width: 600px; margin: 0 auto; background: #ffffff; border: 1px solid #e5e7eb; border-radius: 20px; padding: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.04); }
+    
+    /* 🌐 Unique Header with Back Option & Icon */
+    .page-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 25px; border-bottom: 1px solid #f3f4f6; padding-bottom: 15px; }
+    .back-btn { font-size: 1.1rem; color: #111111; background: #f3f4f6; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: background 0.2s; }
+    .back-btn:hover { background: #e5e7eb; color: #2563eb; }
+    .header-title { display: flex; align-items: center; gap: 10px; font-size: 1.25rem; font-weight: 700; color: #111111; }
+    .header-title i { color: #2563eb; font-size: 1.3rem; }
+
+    .section-box { margin-bottom: 20px; padding: 20px; background: #f9fafb; border-radius: 14px; border: 1px solid #e5e7eb; transition: transform 0.2s, border-color 0.2s; }
+    .section-box:hover { border-color: #cbd5e1; transform: translateY(-2px); }
+    .section-box h3 { font-size: 1rem; margin-bottom: 12px; color: #111111; display: flex; align-items: center; gap: 8px; font-weight: 600; }
+    .section-box h3 i { color: #2563eb; }
+    
+    .form-control { width: 100%; padding: 12px 15px; border: 2px solid #cbd5e1; border-radius: 10px; font-size: 0.95rem; margin-bottom: 12px; outline: none; transition: border-color 0.3s; }
+    .form-control:focus { border-color: #2563eb; box-shadow: 0 0 0 3px rgba(37,99,235,0.1); }
+    
     .btn { padding: 10px 20px; background: #111111; color: #ffffff; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; transition: background 0.3s; }
     .btn:hover { background: #2563eb; }
-    .back-link { display: inline-block; margin-top: 15px; text-decoration: none; color: #2563eb; font-weight: 600; }
-    .back-link:hover { text-decoration: underline; }
   </style>
 </head>
 <body>
   <div class="container">
-    <h2 class="page-title">Password & Security 🛡️</h2>
+    
+    <!-- 🧭 Unique Header: Left Back Button & Center/Right Page Icon + Title -->
+    <div class="page-header">
+      <a href="profile.html" class="back-btn" title="Wapas Jayein"><i class="fa-solid fa-arrow-left"></i></a>
+      <div class="header-title">
+        <i class="fa-solid fa-shield-halved"></i> Password & Security
+      </div>
+      <div style="width: 40px;"></div> <!-- Balancer for centering -->
+    </div>
     
     <!-- 🔑 Change Password Section -->
     <div class="section-box">
@@ -36,16 +53,16 @@
       <button onclick="updatePassword()" class="btn">Update Password</button>
     </div>
 
-    <!-- 🔐 Two-Factor Authentication Section -->
+    <!-- 🛡️ Two-Factor Authentication Section -->
     <div class="section-box">
-      <h3><i class="fa-solid fa-shield-halved"></i> Two-Factor Authentication (2FA)</h3>
+      <h3><i class="fa-solid fa-user-shield"></i> Two-Factor Authentication (2FA)</h3>
       <p style="font-size: 0.85rem; color: #6b7280; margin-bottom: 10px;">लॉगिन के समय अतिरिक्त सुरक्षा के लिए 2FA सक्रिय करें।</p>
       <button onclick="toggle2FA()" id="btn2FA" class="btn" style="background: #2563eb;">2FA Enable करें</button>
     </div>
 
     <!-- 🤳 Verification Selfie Section -->
     <div class="section-box">
-      <h3><i class="fa-solid fa-camera"></i> Verification Selfie</h3>
+      <h3><i class="fa-solid fa-camera-retro"></i> Verification Selfie</h3>
       <p style="font-size: 0.85rem; color: #6b7280; margin-bottom: 10px;">पहचान सत्यापित करने के लिए अपनी सेल्फी अपलोड करें।</p>
       <input type="file" id="selfieUpload" accept="image/*" class="form-control" style="padding: 8px;">
       <button onclick="uploadSelfie()" class="btn">Upload Selfie</button>
@@ -53,7 +70,7 @@
 
     <!-- 💾 Saved Login Section -->
     <div class="section-box">
-      <h3><i class="fa-solid fa-floppy-disk"></i> Saved Login</h3>
+      <h3><i class="fa-solid fa-bookmark"></i> Saved Login</h3>
       <label style="font-size: 0.9rem; color: #374151; display: flex; align-items: center; gap: 10px; cursor: pointer;">
         <input type="checkbox" id="saveLoginToggle" onchange="toggleSavedLogin()" checked style="width: 18px; height: 18px;"> इस ब्राउज़र पर लॉगिन जानकारी याद रखें
       </label>
@@ -61,7 +78,7 @@
 
     <!-- 🔍 Security Checkup Section -->
     <div class="section-box">
-      <h3><i class="fa-solid fa-shield-virus"></i> Security Checkup</h3>
+      <h3><i class="fa-solid fa-stethoscope"></i> Security Checkup</h3>
       <button onclick="runSecurityCheckup()" class="btn" style="background: #2563eb;">Checkup Run करें</button>
       <p id="checkupResult" style="margin-top: 10px; font-size: 0.9rem; font-weight: 600; color: #10b981;"></p>
     </div>
@@ -76,14 +93,13 @@
 
     <!-- ✉️ Recent Emails Section -->
     <div class="section-box">
-      <h3><i class="fa-regular fa-envelope"></i> Recent Emails Sent</h3>
+      <h3><i class="fa-regular fa-envelope-open"></i> Recent Emails Sent</h3>
       <div style="font-size: 0.9rem; color: #374151; background: #ffffff; padding: 12px; border-radius: 8px; border: 1px solid #e5e7eb; display: flex; flex-direction: column; gap: 6px;">
         <p><i class="fa-solid fa-circle-dot" style="font-size: 0.5rem; color: #2563eb;"></i> पासवर्ड परिवर्तन सूचना - 2 दिन पहले</p>
         <p><i class="fa-solid fa-circle-dot" style="font-size: 0.5rem; color: #2563eb;"></i> सफल लॉगिन अलर्ट - आज</p>
       </div>
     </div>
 
-    <a href="profile.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Wapas Profile par jayein</a>
   </div>
 
   <script>
@@ -163,4 +179,4 @@
     });
   </script>
 </body>
-</html>
+</html>c
