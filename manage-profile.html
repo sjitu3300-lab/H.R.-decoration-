@@ -89,6 +89,22 @@
       firebase.initializeApp(firebaseConfig);
     }
 
+    // 🖼️ Image Preview Logic (Gallery se select karne par turant dikhegi)
+    const imageUpload = document.getElementById("imageUpload");
+    let selectedImageFile = null;
+
+    imageUpload.addEventListener("change", function(event) {
+      const file = event.target.files[0];
+      if (file) {
+        selectedImageFile = file;
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          document.getElementById("previewImg").src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         document.getElementById("email").value = user.email || "";
@@ -120,8 +136,12 @@
       const fullDisplayName = [fName, mName, lName].filter(Boolean).join(" ");
 
       if (user) {
+        // Agar nayi image select ki gayi hai toh preview ka data URL photoURL mein update kar sakte hain
+        const newPhotoURL = document.getElementById("previewImg").src;
+
         user.updateProfile({
-          displayName: fullDisplayName
+          displayName: fullDisplayName,
+          photoURL: newPhotoURL
         }).then(() => {
           alert("Profile updated successfully!");
           window.location.href = "profile.html";
