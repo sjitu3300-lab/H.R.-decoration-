@@ -7,9 +7,8 @@
   <link href='https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap' rel='stylesheet'/>
   <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css' rel='stylesheet'/>
   
-  <!-- Firebase App (Core SDK) -->
+  <!-- 🌐 Firebase SDK -->
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-  <!-- Firebase Authentication SDK -->
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
 
   <style>
@@ -23,16 +22,32 @@
       background-color: #f8f9fa;
       color: #111111;
       padding: 20px 0;
+      transition: background 0.3s, color 0.3s;
+    }
+    body.dark-theme {
+      background-color: #0a0a0a;
+      color: #f3f4f6;
+    }
+    body.dark-theme .profile-card-group,
+    body.dark-theme .user-header-card {
+      background: #161616;
+      border-color: #222222;
+    }
+    body.dark-theme .user-details h3,
+    body.dark-theme .profile-page-title,
+    body.dark-theme .profile-item {
+      color: #f3f4f6;
+    }
+    body.dark-theme .profile-item:hover {
+      background-color: #222222;
     }
 
-    /* Blogger Static Page Extra Elements Hide */
     <b:if cond='data:blog.pageType == "static_page"'>
       .post-footer, .comments, .comment-form, .post-share-buttons, .post-header, .blog-pager, .feed-links, .post-title {
         display: none !important;
       }
     </b:if>
 
-    /* 👤 Main Profile Wrapper */
     .profile-wrapper {
       max-width: 500px;
       margin: 0 auto;
@@ -42,37 +57,27 @@
       text-align: center;
       font-size: 1.25rem;
       font-weight: 700;
-      color: #111111;
       margin-bottom: 25px;
     }
-
-    /* 🏷️ Section Headings */
     .section-label {
       font-size: 0.95rem;
       font-weight: 600;
       color: #6b7280;
       margin: 25px 0 10px 5px;
     }
-
-    /* 📦 Cards Group */
-    .profile-card-group {
+    .profile-card-group, .user-header-card {
       background: #ffffff;
       border-radius: 20px;
-      padding: 8px 0;
+      padding: 12px 0;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
       border: 1px solid #f3f4f6;
+      margin-bottom: 10px;
     }
-
-    /* 🖼️ User Info Header Card */
     .user-header-card {
-      background: #ffffff;
-      border-radius: 20px;
       padding: 20px;
       display: flex;
       align-items: center;
       gap: 16px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
-      border: 1px solid #f3f4f6;
     }
     .user-avatar {
       width: 65px;
@@ -83,15 +88,12 @@
     .user-details h3 {
       font-size: 1.1rem;
       font-weight: 700;
-      color: #111111;
       margin-bottom: 4px;
     }
     .user-details p {
       font-size: 0.85rem;
       color: #6b7280;
     }
-
-    /* 🔗 List Items */
     .profile-item {
       display: flex;
       align-items: center;
@@ -125,16 +127,13 @@
       font-size: 0.85rem;
       color: #6b7280;
     }
-    .item-right i {
-      font-size: 0.8rem;
-      color: #9ca3af;
-    }
-
-    /* Divider */
     .divider {
       height: 1px;
       background-color: #f3f4f6;
       margin: 0 20px;
+    }
+    body.dark-theme .divider {
+      background-color: #222222;
     }
   </style>
   <b:skin><![CDATA[/* Profile Page Skin */]]></b:skin>
@@ -144,7 +143,7 @@
   <div class='profile-wrapper'>
     <h2 class='profile-page-title'>Profile</h2>
 
-    <!-- 👤 User Profile Card (Dynamic Data from Firebase) -->
+    <!-- 👤 User Profile Card -->
     <div class='user-header-card'>
       <img id='profileImg' src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&amp;auto=format&amp;fit=crop&amp;q=80' alt='User Avatar' class='user-avatar'/>
       <div class='user-details'>
@@ -156,41 +155,41 @@
     <!-- ⚙️ Account Section -->
     <div class='section-label'>Account</div>
     <div class='profile-card-group'>
-      <a href='#' class='profile-item'>
+      <a onclick='manageProfile()' class='profile-item'>
         <div class='item-left'><i class='fa-regular fa-user'></i> Manage Profile</div>
         <div class='item-right'><i class='fa-solid fa-chevron-right'></i></div>
       </a>
       <div class='divider'></div>
-      <a href='#' class='profile-item'>
+      <a onclick='openSecuritySettings()' class='profile-item'>
         <div class='item-left'><i class='fa-regular fa-lock'></i> Password &amp; Security</div>
         <div class='item-right'><i class='fa-solid fa-chevron-right'></i></div>
       </a>
       <div class='divider'></div>
-      <a href='#' class='profile-item'>
+      <a onclick='toggleNotifications()' class='profile-item'>
         <div class='item-left'><i class='fa-regular fa-bell'></i> Notifications</div>
-        <div class='item-right'><i class='fa-solid fa-chevron-right'></i></div>
+        <div class='item-right'><span id='notifStatus'>On</span> <i class='fa-solid fa-chevron-right'></i></div>
       </a>
       <div class='divider'></div>
-      <a href='#' class='profile-item'>
+      <a onclick='changeLanguage()' class='profile-item'>
         <div class='item-left'><i class='fa-solid fa-globe'></i> Language</div>
-        <div class='item-right'><span>English</span> <i class='fa-solid fa-chevron-right'></i></div>
+        <div class='item-right'><span id='langText'>English</span> <i class='fa-solid fa-chevron-right'></i></div>
       </a>
     </div>
 
     <!-- ⭐ Preferences Section -->
     <div class='section-label'>Preferences</div>
     <div class='profile-card-group'>
-      <a href='#' class='profile-item'>
+      <a onclick='showAboutUs()' class='profile-item'>
         <div class='item-left'><i class='fa-regular fa-file-lines'></i> About Us</div>
         <div class='item-right'><i class='fa-solid fa-chevron-right'></i></div>
       </a>
       <div class='divider'></div>
-      <a href='#' class='profile-item'>
+      <a onclick='toggleTheme()' class='profile-item'>
         <div class='item-left'><i class='fa-regular fa-circle-dot'></i> Theme</div>
-        <div class='item-right'><span>Light</span> <i class='fa-solid fa-chevron-right'></i></div>
+        <div class='item-right'><span id='themeText'>Light</span> <i class='fa-solid fa-chevron-right'></i></div>
       </a>
       <div class='divider'></div>
-      <a href='#' class='profile-item'>
+      <a onclick='showAppointments()' class='profile-item'>
         <div class='item-left'><i class='fa-regular fa-calendar'></i> Appointments</div>
         <div class='item-right'><i class='fa-solid fa-chevron-right'></i></div>
       </a>
@@ -199,12 +198,11 @@
     <!-- 🛟 Support Section -->
     <div class='section-label'>Support</div>
     <div class='profile-card-group'>
-      <a href='#' class='profile-item'>
+      <a onclick='showHelpCenter()' class='profile-item'>
         <div class='item-left'><i class='fa-regular fa-circle-question'></i> Help Center</div>
         <div class='item-right'><i class='fa-solid fa-chevron-right'></i></div>
       </a>
       <div class='divider'></div>
-      <!-- 🚪 Logout Action Button Added -->
       <a onclick='logoutUser()' class='profile-item' style='color: #dc2626;'>
         <div class='item-left'><i class='fa-solid fa-right-from-bracket' style='color: #dc2626;'></i> Log Out</div>
         <div class='item-right'><i class='fa-solid fa-chevron-right'></i></div>
@@ -213,16 +211,13 @@
 
   </div>
 
-  <!-- Hidden Blogger Section -->
   <div style='display:none;'>
     <b:section id='hidden-section' showaddelement='no'>
       <b:widget id='Blog1' locked='true' title='Blog Posts' type='Blog'/>
     </b:section>
   </div>
 
-  <!-- 💻 Firebase Configuration & Auth Script -->
   <script>
-    // Firebase Configuration
     const firebaseConfig = {
         apiKey: "AIzaSyBTRJbK7sDABJpLH5t9Eqo3_O-AhR_dX1Y",
         authDomain: "jl-portfolio-auth.firebaseapp.com",
@@ -231,32 +226,85 @@
         messagingSenderId: "323080007478",
         appId: "1:323080007478:web:284cd85b3b3f141e350d97",
     };
-
-    // Firebase Initialize karna
     firebase.initializeApp(firebaseConfig);
 
-    // User Authentication State Check & Data Display
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
-        // User logged in hai toh details update karein
         document.getElementById("profileName").innerText = user.displayName || "Jitendra Soni";
         document.getElementById("profileEmail").innerText = user.email;
         if (user.photoURL) {
           document.getElementById("profileImg").src = user.photoURL;
         }
       } else {
-        // User logged in nahi hai toh login page par bhej dein
         window.location.href = "login.html";
       }
     });
 
-    // Logout Function
+    // 👤 1. Manage Profile Function
+    function manageProfile() {
+      const user = firebase.auth().currentUser;
+      if (user) {
+        const newName = prompt("Enter your new name:", user.displayName || "");
+        if (newName) {
+          user.updateProfile({ displayName: newName }).then(() => {
+            alert("Profile name updated successfully!");
+            document.getElementById("profileName").innerText = newName;
+          }).catch((error) => alert("Error: " + error.message));
+        }
+      }
+    }
+
+    // 🔒 2. Password & Security Function
+    function openSecuritySettings() {
+      const email = firebase.auth().currentUser?.email;
+      if (confirm(`Send password reset email to ${email}?`)) {
+        firebase.auth().sendPasswordResetEmail(email).then(() => {
+          alert("Password reset link sent to your email.");
+        }).catch((error) => alert("Error: " + error.message));
+      }
+    }
+
+    // 🔔 3. Notifications Toggle
+    function toggleNotifications() {
+      const status = document.getElementById("notifStatus");
+      status.innerText = status.innerText === "On" ? "Off" : "On";
+      alert("Notification status changed to: " + status.innerText);
+    }
+
+    // 🌐 4. Language Selector
+    function changeLanguage() {
+      const lang = document.getElementById("langText");
+      lang.innerText = lang.innerText === "English" ? "Hindi" : "English";
+      alert("Language switched to " + lang.innerText);
+    }
+
+    // 📄 5. About Us
+    function showAboutUs() {
+      alert("JL Portfolio: Crafted with clean code and modern UI/UX principles by Jitendra.");
+    }
+
+    // 🌓 6. Theme Toggle
+    function toggleTheme() {
+      document.body.classList.toggle("dark-theme");
+      const themeText = document.getElementById("themeText");
+      themeText.innerText = document.body.classList.contains("dark-theme") ? "Dark" : "Light";
+    }
+
+    // 📅 7. Appointments
+    function showAppointments() {
+      alert("You have no active appointments currently scheduled.");
+    }
+
+    // 🛟 8. Help Center
+    function showHelpCenter() {
+      alert("For support, contact admin or check documentation.");
+    }
+
+    // 🚪 9. Log Out
     function logoutUser() {
       firebase.auth().signOut().then(() => {
         window.location.href = "login.html";
-      }).catch((error) => {
-        alert("Logout Error: " + error.message);
-      });
+      }).catch((error) => alert("Logout Error: " + error.message));
     }
   </script>
 </body>
