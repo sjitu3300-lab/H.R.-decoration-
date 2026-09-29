@@ -24,7 +24,7 @@
       padding: 20px 0;
     }
 
-    /* 👤 Main Wrapper matching profile.html */
+    /* 👤 Main Wrapper Matching Profile Page */
     .profile-wrapper {
       max-width: 500px;
       margin: 0 auto;
@@ -42,14 +42,14 @@
       gap: 10px;
     }
 
-    /* 📦 Card Group matching profile-card-group */
+    /* 📦 Cards Group & Header Card Style from Profile */
     .profile-card-group {
       background: #ffffff;
       border-radius: 20px;
       padding: 20px;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
       border: 1px solid #f3f4f6;
-      margin-bottom: 15px;
+      margin-bottom: 20px;
     }
 
     /* 🖼️ Avatar Section */
@@ -76,6 +76,12 @@
       height: 100%;
       object-fit: cover;
     }
+    .file-input-label {
+      font-size: 0.85rem;
+      color: #2563eb;
+      font-weight: 600;
+      cursor: pointer;
+    }
 
     /* 📝 Form Controls */
     .form-group {
@@ -92,24 +98,24 @@
       width: 100%;
       padding: 12px 15px;
       border: 1px solid #e5e7eb;
+      background-color: #f9fafb;
       border-radius: 12px;
       font-size: 0.95rem;
-      outline: none;
-      background: #f9fafb;
       color: #111111;
-      transition: border-color 0.3s, background 0.3s;
+      outline: none;
+      transition: border-color 0.3s, background-color 0.3s;
     }
     .form-control:focus {
       border-color: #2563eb;
-      background: #ffffff;
-      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+      background-color: #ffffff;
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.08);
     }
 
-    /* 🔘 Buttons */
+    /* 🔘 Buttons Group */
     .btn-group {
       display: flex;
       gap: 12px;
-      margin-top: 20px;
+      margin-top: 25px;
     }
     .btn {
       flex: 1;
@@ -121,38 +127,41 @@
       text-decoration: none;
       border: none;
       font-size: 0.95rem;
-      transition: background 0.3s;
     }
     .btn-save {
       background-color: #111111;
       color: #ffffff;
+      transition: background 0.3s;
     }
     .btn-save:hover {
       background-color: #2563eb;
     }
     .btn-cancel {
       background-color: #f3f4f6;
-      color: #111111;
+      color: #1f2937;
       border: 1px solid #e5e7eb;
       display: flex;
       align-items: center;
       justify-content: center;
-      text-decoration: none;
     }
     .btn-cancel:hover {
       background-color: #e5e7eb;
     }
 
-    /* 🔙 Back Link Styling */
-    .back-link {
-      display: inline-flex;
+    /* Top Back Link Style */
+    .top-nav {
+      display: flex;
       align-items: center;
-      gap: 8px;
+      margin-bottom: 15px;
+    }
+    .back-link {
       text-decoration: none;
       color: #4b5563;
       font-weight: 600;
       font-size: 0.9rem;
-      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
       transition: color 0.2s;
     }
     .back-link:hover {
@@ -162,11 +171,14 @@
 </head>
 <body>
 
-  <div class='profile-wrapper'>
+  <div class="profile-wrapper">
     
-    <!-- 🧭 Back Navigation & Title -->
-    <a href="profile.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Back to Profile</a>
-    <h2 class='profile-page-title'><i class='fa-regular fa-user' style='color: #2563eb;'></i> Manage Profile</h2>
+    <!-- Top Navigation Back Link -->
+    <div class="top-nav">
+      <a href="profile.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Back to Profile</a>
+    </div>
+
+    <h2 class="profile-page-title"><i class="fa-regular fa-user" style="color: #2563eb;"></i> Manage Profile</h2>
 
     <div class="profile-card-group">
       <div class="avatar-section">
@@ -203,7 +215,7 @@
         </div>
 
         <div class="btn-group">
-          <button type="submit" class="btn btn-save">Save 💾</button>
+          <button type="submit" class="btn btn-save">Save Changes 💾</button>
           <a href="profile.html" class="btn btn-cancel">Cancel ❌</a>
         </div>
       </form>
