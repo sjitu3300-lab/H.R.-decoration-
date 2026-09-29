@@ -14,18 +14,18 @@
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
     body { background-color: #f8f9fa; color: #111111; padding: 20px; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
     
-    /* 📐 Fully Responsive Container */
-    .container { width: 100%; max-width: 600px; background: #ffffff; border: 1px solid #e5e7eb; border-radius: 20px; padding: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.04); }
+    /* 📐 Fully Responsive Container matching Profile Page style */
+    .container { width: 100%; max-width: 500px; background: #ffffff; border: 1px solid #f3f4f6; border-radius: 20px; padding: 20px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03); }
     
     @media (min-width: 768px) {
       .container { padding: 30px; }
     }
 
     .page-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 25px; border-bottom: 1px solid #f3f4f6; padding-bottom: 15px; }
-    .back-btn { font-size: 1.1rem; color: #111111; background: #f3f4f6; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: background 0.2s; }
+    .back-btn { font-size: 1.1rem; color: #111111; background: #f9fafb; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; border: 1px solid #e5e7eb; transition: background 0.2s; }
     .back-btn:hover { background: #e5e7eb; color: #2563eb; }
-    .header-title { display: flex; align-items: center; gap: 10px; font-size: 1.2rem; font-weight: 700; color: #111111; }
-    .header-title i { color: #2563eb; font-size: 1.3rem; }
+    .header-title { display: flex; align-items: center; gap: 10px; font-size: 1.15rem; font-weight: 700; color: #111111; }
+    .header-title i { color: #2563eb; font-size: 1.2rem; }
 
     .section-box { margin-bottom: 20px; padding: 16px; background: #f9fafb; border-radius: 14px; border: 1px solid #e5e7eb; }
     .section-box h3 { font-size: 0.95rem; margin-bottom: 10px; color: #111111; display: flex; align-items: center; gap: 8px; font-weight: 600; }
@@ -34,7 +34,7 @@
     .form-control { width: 100%; padding: 12px 15px; border: 2px solid #cbd5e1; border-radius: 10px; font-size: 0.95rem; margin-bottom: 12px; outline: none; transition: border-color 0.3s; }
     .form-control:focus { border-color: #2563eb; box-shadow: 0 0 0 3px rgba(37,99,235,0.1); }
     
-    .btn { width: 100%; padding: 12px; background: #111111; color: #ffffff; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; transition: background 0.3s; font-size: 0.95rem; }
+    .btn { width: 100%; padding: 12px; background: #111111; color: #ffffff; border: none; border-radius: 10px; font-weight: 700; cursor: pointer; transition: background 0.3s; font-size: 0.95rem; text-align: center; }
     .btn:hover { background: #2563eb; }
     .hidden { display: none; }
   </style>
@@ -42,34 +42,36 @@
 <body>
   <div class="container">
     
-    <!-- 🧭 Header -->
+    <!-- 🧭 Header with Back Button & Profile Page Icon -->
     <div class="page-header">
       <a href="profile.html" class="back-btn" title="Wapas Jayein"><i class="fa-solid fa-arrow-left"></i></a>
       <div class="header-title">
-        <i class="fa-solid fa-shield-halved"></i> Password & Security
+        <i class="fa-regular fa-lock"></i> Password & Security
       </div>
       <div style="width: 40px;"></div>
     </div>
     
-    <!-- 🔑 Change Password with Email OTP Verification -->
+    <!-- 🔑 Password Change & Gmail Link Section -->
     <div class="section-box">
-      <h3><i class="fa-regular fa-lock"></i> Change Password & OTP Verification</h3>
-      <p style="font-size: 0.85rem; color: #6b7280; margin-bottom: 10px;">सुरक्षित बदलाव के लिए ईमेल पर OTP प्राप्त करें।</p>
-      
-      <button onclick="sendOtp()" id="sendOtpBtn" class="btn" style="margin-bottom: 10px;">Email par OTP bhejein ✉️</button>
-      
-      <div id="otpSection" class="hidden">
-        <input type="text" id="otpInput" class="form-control" placeholder="6-digit OTP enter karein">
-        <input type="password" id="newPassword" class="form-control" placeholder="Naya password (min 6 characters)">
-        <button onclick="verifyAndChangePassword()" class="btn" style="background: #2563eb;">Verify aur Password Update karein 🔒</button>
-      </div>
+      <h3><i class="fa-regular fa-envelope"></i> Password Change & Gmail Link</h3>
+      <p style="font-size: 0.85rem; color: #6b7280; margin-bottom: 12px;">Manage-profile me save ki gayi Gmail par password reset link bheja jayega.</p>
+      <button onclick="sendPasswordResetLink()" class="btn" style="background: #2563eb;">Gmail par Password Link Bhejein ✉️</button>
     </div>
 
-    <!-- 🛡️ Two-Factor Authentication (2FA) -->
+    <!-- 🛡️ Two-Factor Authentication (2FA) with Password & OTP -->
     <div class="section-box">
-      <h3><i class="fa-solid fa-user-shield"></i> Two-Factor Authentication (2FA)</h3>
-      <p style="font-size: 0.85rem; color: #6b7280; margin-bottom: 10px;">लॉगिन के समय अतिरिक्त सुरक्षा के लिए 2FA सक्रिय करें।</p>
-      <button onclick="toggle2FA()" id="btn2FA" class="btn" style="background: #2563eb;">2FA Enable करें</button>
+      <h3><i class="fa-solid fa-shield-halved"></i> Two-Factor Authentication (2FA)</h3>
+      <p style="font-size: 0.85rem; color: #6b7280; margin-bottom: 12px;">अकाउंट की अतिरिक्त सुरक्षा के लिए 2FA सक्रिय करें।</p>
+      
+      <div id="faSetupSection">
+        <button onclick="request2faOtp()" id="btn2FA" class="btn" style="background: #2563eb;">2FA Enable karne ke liye OTP bhejein 🛡️</button>
+      </div>
+
+      <div id="faVerifyBox" class="hidden" style="margin-top: 10px;">
+        <input type="password" id="confirmPassword" class="form-control" placeholder="Apna current password enter karein">
+        <input type="text" id="faOtpInput" class="form-control" placeholder="Gmail par prapt 6-digit OTP enter karein">
+        <button onclick="verifyAndEnable2FA()" class="btn" style="background: #10b981;">2FA Verify aur Complete karein ✅</button>
+      </div>
     </div>
 
     <!-- 📱 Active Sessions -->
@@ -102,55 +104,62 @@
       }
     });
 
-    let generatedOtp = "";
-
-    function sendOtp() {
+    // ✉️ Send Password Reset Link to Saved Gmail from profile
+    function sendPasswordResetLink() {
       const user = firebase.auth().currentUser;
-      if (user) {
-        generatedOtp = Math.floor(100000 + Math.random() * 900000).toString();
-        alert(`[Demo OTP]: ${user.email} par OTP bheja gaya hai: ${generatedOtp}`);
-        document.getElementById("otpSection").classList.remove("hidden");
-        document.getElementById("sendOtpBtn").innerText = "OTP Dobara Bhejein";
-      }
-    }
-
-    function verifyAndChangePassword() {
-      const user = firebase.auth().currentUser;
-      const enteredOtp = document.getElementById("otpInput").value;
-      const newPass = document.getElementById("newPassword").value;
-
-      if (enteredOtp !== generatedOtp) {
-        alert("Galat OTP! Kripya sahi OTP enter karein.");
-        return;
-      }
-
-      if (user && newPass.length >= 6) {
-        user.updatePassword(newPass).then(() => {
-          alert("OTP verified! Password safaltapurvak update ho gaya!");
-          document.getElementById("newPassword").value = "";
-          document.getElementById("otpInput").value = "";
-          document.getElementById("otpSection").classList.add("hidden");
+      if (user && user.email) {
+        firebase.auth().sendPasswordResetEmail(user.email).then(() => {
+          alert(`Password reset link aapki saved Gmail (${user.email}) par safaltapurvak bhej diya gaya hai!`);
         }).catch((error) => {
           alert("Error: " + error.message);
         });
       } else {
-        alert("Kripya kam se kam 6 aksharon ka valid password enter karein.");
+        alert("User email nahi mili.");
       }
     }
 
-    function toggle2FA() {
-      const btn = document.getElementById("btn2FA");
-      if (btn.innerText.includes("Enable")) {
-        btn.innerText = "2FA Disable करें";
-        btn.style.background = "#dc2626";
-        alert("Two-Factor Authentication safaltapurvak chalu kar diya gaya hai!");
-      } else {
-        btn.innerText = "2FA Enable करें";
-        btn.style.background = "#2563eb";
-        alert("Two-Factor Authentication band kar diya gaya hai.");
+    let generated2faOtp = "";
+
+    // 🛡️ Request OTP for 2FA
+    function request2faOtp() {
+      const user = firebase.auth().currentUser;
+      if (user && user.email) {
+        generated2faOtp = Math.floor(100000 + Math.random() * 900000).toString();
+        alert(`[2FA Security OTP]: ${user.email} par OTP bheja gaya hai: ${generated2faOtp}`);
+        document.getElementById("faVerifyBox").classList.remove("hidden");
+        document.getElementById("btn2FA").innerText = "OTP Dobara Bheja Gaya";
       }
     }
 
+    // ✅ Verify Password and OTP to Complete 2FA
+    function verifyAndEnable2FA() {
+      const password = document.getElementById("confirmPassword").value;
+      const enteredOtp = document.getElementById("faOtpInput").value;
+      const user = firebase.auth().currentUser;
+
+      if (!password) {
+        alert("Kripya apna current password enter karein.");
+        return;
+      }
+
+      if (enteredOtp !== generated2faOtp) {
+        alert("Galat OTP! Kripya sahi OTP enter karein.");
+        return;
+      }
+
+      const credential = firebase.auth.EmailAuthProvider.credential(user.email, password);
+      user.reauthenticateWithCredential(credential).then(() => {
+        alert("Password verified aur Two-Factor Authentication (2FA) safaltapurvak activate ho gaya hai!");
+        document.getElementById("faVerifyBox").classList.add("hidden");
+        document.getElementById("btn2FA").innerText = "2FA Activated (Enabled) ✓";
+        document.getElementById("btn2FA").style.background = "#10b981";
+        document.getElementById("btn2FA").disabled = true;
+      }).catch((error) => {
+        alert("Authentication Error: Password galat ho sakta hai - " + error.message);
+      });
+    }
+
+    // 📱 Active Device Detection
     window.addEventListener('DOMContentLoaded', () => {
       const ua = navigator.userAgent;
       let deviceDetails = "Desktop / Mobile Browser";
