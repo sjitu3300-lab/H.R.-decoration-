@@ -12,91 +12,71 @@
 
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
-    body { background-color: #f8f9fa; color: #111111; padding: 30px 20px; }
-    .container { max-width: 600px; margin: 0 auto; background: #ffffff; border: 1px solid #e5e7eb; border-radius: 20px; padding: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.04); }
+    body { background-color: #f8f9fa; color: #111111; padding: 20px; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
     
-    /* 🌐 Unique Header with Back Option & Icon */
+    /* 📐 Fully Responsive Container */
+    .container { width: 100%; max-width: 600px; background: #ffffff; border: 1px solid #e5e7eb; border-radius: 20px; padding: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.04); }
+    
+    @media (min-width: 768px) {
+      .container { padding: 30px; }
+    }
+
     .page-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 25px; border-bottom: 1px solid #f3f4f6; padding-bottom: 15px; }
     .back-btn { font-size: 1.1rem; color: #111111; background: #f3f4f6; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: background 0.2s; }
     .back-btn:hover { background: #e5e7eb; color: #2563eb; }
-    .header-title { display: flex; align-items: center; gap: 10px; font-size: 1.25rem; font-weight: 700; color: #111111; }
+    .header-title { display: flex; align-items: center; gap: 10px; font-size: 1.2rem; font-weight: 700; color: #111111; }
     .header-title i { color: #2563eb; font-size: 1.3rem; }
 
-    .section-box { margin-bottom: 20px; padding: 20px; background: #f9fafb; border-radius: 14px; border: 1px solid #e5e7eb; transition: transform 0.2s, border-color 0.2s; }
-    .section-box:hover { border-color: #cbd5e1; transform: translateY(-2px); }
-    .section-box h3 { font-size: 1rem; margin-bottom: 12px; color: #111111; display: flex; align-items: center; gap: 8px; font-weight: 600; }
+    .section-box { margin-bottom: 20px; padding: 16px; background: #f9fafb; border-radius: 14px; border: 1px solid #e5e7eb; }
+    .section-box h3 { font-size: 0.95rem; margin-bottom: 10px; color: #111111; display: flex; align-items: center; gap: 8px; font-weight: 600; }
     .section-box h3 i { color: #2563eb; }
     
     .form-control { width: 100%; padding: 12px 15px; border: 2px solid #cbd5e1; border-radius: 10px; font-size: 0.95rem; margin-bottom: 12px; outline: none; transition: border-color 0.3s; }
     .form-control:focus { border-color: #2563eb; box-shadow: 0 0 0 3px rgba(37,99,235,0.1); }
     
-    .btn { padding: 10px 20px; background: #111111; color: #ffffff; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; transition: background 0.3s; }
+    .btn { width: 100%; padding: 12px; background: #111111; color: #ffffff; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; transition: background 0.3s; font-size: 0.95rem; }
     .btn:hover { background: #2563eb; }
+    .hidden { display: none; }
   </style>
 </head>
 <body>
   <div class="container">
     
-    <!-- 🧭 Unique Header: Left Back Button & Center/Right Page Icon + Title -->
+    <!-- 🧭 Header -->
     <div class="page-header">
       <a href="profile.html" class="back-btn" title="Wapas Jayein"><i class="fa-solid fa-arrow-left"></i></a>
       <div class="header-title">
         <i class="fa-solid fa-shield-halved"></i> Password & Security
       </div>
-      <div style="width: 40px;"></div> <!-- Balancer for centering -->
+      <div style="width: 40px;"></div>
     </div>
     
-    <!-- 🔑 Change Password Section -->
+    <!-- 🔑 Change Password with Email OTP Verification -->
     <div class="section-box">
-      <h3><i class="fa-regular fa-lock"></i> Change Password</h3>
-      <input type="password" id="newPassword" class="form-control" placeholder="Naya password darj karein (min 6 characters)">
-      <button onclick="updatePassword()" class="btn">Update Password</button>
+      <h3><i class="fa-regular fa-lock"></i> Change Password & OTP Verification</h3>
+      <p style="font-size: 0.85rem; color: #6b7280; margin-bottom: 10px;">सुरक्षित बदलाव के लिए ईमेल पर OTP प्राप्त करें।</p>
+      
+      <button onclick="sendOtp()" id="sendOtpBtn" class="btn" style="margin-bottom: 10px;">Email par OTP bhejein ✉️</button>
+      
+      <div id="otpSection" class="hidden">
+        <input type="text" id="otpInput" class="form-control" placeholder="6-digit OTP enter karein">
+        <input type="password" id="newPassword" class="form-control" placeholder="Naya password (min 6 characters)">
+        <button onclick="verifyAndChangePassword()" class="btn" style="background: #2563eb;">Verify aur Password Update karein 🔒</button>
+      </div>
     </div>
 
-    <!-- 🛡️ Two-Factor Authentication Section -->
+    <!-- 🛡️ Two-Factor Authentication (2FA) -->
     <div class="section-box">
       <h3><i class="fa-solid fa-user-shield"></i> Two-Factor Authentication (2FA)</h3>
       <p style="font-size: 0.85rem; color: #6b7280; margin-bottom: 10px;">लॉगिन के समय अतिरिक्त सुरक्षा के लिए 2FA सक्रिय करें।</p>
       <button onclick="toggle2FA()" id="btn2FA" class="btn" style="background: #2563eb;">2FA Enable करें</button>
     </div>
 
-    <!-- 🤳 Verification Selfie Section -->
-    <div class="section-box">
-      <h3><i class="fa-solid fa-camera-retro"></i> Verification Selfie</h3>
-      <p style="font-size: 0.85rem; color: #6b7280; margin-bottom: 10px;">पहचान सत्यापित करने के लिए अपनी सेल्फी अपलोड करें।</p>
-      <input type="file" id="selfieUpload" accept="image/*" class="form-control" style="padding: 8px;">
-      <button onclick="uploadSelfie()" class="btn">Upload Selfie</button>
-    </div>
-
-    <!-- 💾 Saved Login Section -->
-    <div class="section-box">
-      <h3><i class="fa-solid fa-bookmark"></i> Saved Login</h3>
-      <label style="font-size: 0.9rem; color: #374151; display: flex; align-items: center; gap: 10px; cursor: pointer;">
-        <input type="checkbox" id="saveLoginToggle" onchange="toggleSavedLogin()" checked style="width: 18px; height: 18px;"> इस ब्राउज़र पर लॉगिन जानकारी याद रखें
-      </label>
-    </div>
-
-    <!-- 🔍 Security Checkup Section -->
-    <div class="section-box">
-      <h3><i class="fa-solid fa-stethoscope"></i> Security Checkup</h3>
-      <button onclick="runSecurityCheckup()" class="btn" style="background: #2563eb;">Checkup Run करें</button>
-      <p id="checkupResult" style="margin-top: 10px; font-size: 0.9rem; font-weight: 600; color: #10b981;"></p>
-    </div>
-
-    <!-- 📱 Where You're Logged In Section -->
+    <!-- 📱 Active Sessions -->
     <div class="section-box">
       <h3><i class="fa-solid fa-laptop-code"></i> Where You're Logged In</h3>
-      <div id="deviceList" style="font-size: 0.9rem; color: #374151; background: #ffffff; padding: 12px; border-radius: 8px; border: 1px solid #e5e7eb;">
+      <div id="deviceList" style="font-size: 0.85rem; color: #374151; background: #ffffff; padding: 12px; border-radius: 8px; border: 1px solid #e5e7eb;">
         <i class="fa-solid fa-circle-check" style="color: #10b981;"></i> Active Session: <span id="browserInfo">लोड हो रहा है...</span>
-      </div>
-    </div>
-
-    <!-- ✉️ Recent Emails Section -->
-    <div class="section-box">
-      <h3><i class="fa-regular fa-envelope-open"></i> Recent Emails Sent</h3>
-      <div style="font-size: 0.9rem; color: #374151; background: #ffffff; padding: 12px; border-radius: 8px; border: 1px solid #e5e7eb; display: flex; flex-direction: column; gap: 6px;">
-        <p><i class="fa-solid fa-circle-dot" style="font-size: 0.5rem; color: #2563eb;"></i> पासवर्ड परिवर्तन सूचना - 2 दिन पहले</p>
-        <p><i class="fa-solid fa-circle-dot" style="font-size: 0.5rem; color: #2563eb;"></i> सफल लॉगिन अलर्ट - आज</p>
       </div>
     </div>
 
@@ -122,14 +102,34 @@
       }
     });
 
-    function updatePassword() {
+    let generatedOtp = "";
+
+    function sendOtp() {
       const user = firebase.auth().currentUser;
+      if (user) {
+        generatedOtp = Math.floor(100000 + Math.random() * 900000).toString();
+        alert(`[Demo OTP]: ${user.email} par OTP bheja gaya hai: ${generatedOtp}`);
+        document.getElementById("otpSection").classList.remove("hidden");
+        document.getElementById("sendOtpBtn").innerText = "OTP Dobara Bhejein";
+      }
+    }
+
+    function verifyAndChangePassword() {
+      const user = firebase.auth().currentUser;
+      const enteredOtp = document.getElementById("otpInput").value;
       const newPass = document.getElementById("newPassword").value;
-      
+
+      if (enteredOtp !== generatedOtp) {
+        alert("Galat OTP! Kripya sahi OTP enter karein.");
+        return;
+      }
+
       if (user && newPass.length >= 6) {
         user.updatePassword(newPass).then(() => {
-          alert("Password safaltapurvak update ho gaya!");
+          alert("OTP verified! Password safaltapurvak update ho gaya!");
           document.getElementById("newPassword").value = "";
+          document.getElementById("otpInput").value = "";
+          document.getElementById("otpSection").classList.add("hidden");
         }).catch((error) => {
           alert("Error: " + error.message);
         });
@@ -151,24 +151,6 @@
       }
     }
 
-    function uploadSelfie() {
-      const fileInput = document.getElementById("selfieUpload");
-      if (fileInput.files.length > 0) {
-        alert("Verification selfie safaltapurvak upload ho gayi hai!");
-      } else {
-        alert("Kripya pehle ek selfie image chunein.");
-      }
-    }
-
-    function toggleSavedLogin() {
-      const isChecked = document.getElementById("saveLoginToggle").checked;
-      alert(isChecked ? "Saved login active hai." : "Saved login disable kar diya gaya hai.");
-    }
-
-    function runSecurityCheckup() {
-      document.getElementById("checkupResult").innerText = "🔍 Jaanch poori hui: Aapka account poori tarah surakshit hai!";
-    }
-
     window.addEventListener('DOMContentLoaded', () => {
       const ua = navigator.userAgent;
       let deviceDetails = "Desktop / Mobile Browser";
@@ -179,4 +161,4 @@
     });
   </script>
 </body>
-</html>c
+</html>
