@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Help Center - JL Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
+    body { background-color: #f8f9fa; color: #111111; padding: 30px 20px; }
+    .container { max-width: 650px; margin: 0 auto; background: #ffffff; border: 1px solid #e5e7eb; border-radius: 20px; padding: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.03); }
+    .page-title { font-size: 1.5rem; font-weight: 700; margin-bottom: 10px; text-align: center; color: #111111; }
+    .page-subtitle { font-size: 0.9rem; color: #6b7280; text-align: center; margin-bottom: 25px; }
+    
+    /* Search Bar */
+    .search-box { position: relative; margin-bottom: 25px; }
+    .search-box input { width: 100%; padding: 14px 15px 14px 45px; border: 2px solid #cbd5e1; border-radius: 12px; font-size: 0.95rem; outline: none; transition: border-color 0.3s; }
+    .search-box input:focus { border-color: #2563eb; box-shadow: 0 0 0 3px rgba(37,99,235,0.1); }
+    .search-box i { position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: #6b7280; font-size: 1.1rem; }
+
+    /* FAQ List */
+    .faq-category { font-size: 1.1rem; font-weight: 700; margin-bottom: 15px; color: #111111; display: flex; align-items: center; gap: 8px; }
+    .faq-item { background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 12px; margin-bottom: 12px; overflow: hidden; transition: border-color 0.2s; }
+    .faq-item:hover { border-color: #2563eb; }
+    .faq-question { padding: 15px 20px; font-weight: 600; font-size: 0.95rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; color: #111111; }
+    .faq-answer { padding: 0 20px 15px 20px; font-size: 0.9rem; color: #4b5563; line-height: 1.5; display: none; border-top: 1px solid #f3f4f6; }
+    .faq-item.active .faq-answer { display: block; padding-top: 12px; }
+    .faq-item.active .faq-question i { transform: rotate(180deg); color: #2563eb; }
+
+    .back-link { display: inline-block; margin-top: 25px; text-decoration: none; color: #2563eb; font-weight: 600; text-align: center; width: 100%; }
+    .back-link:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2 class="page-title">Help Center 🛟</h2>
+    <p class="page-subtitle">JL Portfolio और Firebase प्रोफाइल सिस्टम से जुड़ी समस्याओं के समाधान यहाँ खोजें।</p>
+    
+    <!-- Search Bar -->
+    <div class="search-box">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <input type="text" id="helpSearch" placeholder="अपनी समस्या खोजें (उदा. Password, Login, Profile)..." onkeyup="filterFaq()">
+    </div>
+
+    <div class="faq-category"><i class="fa-solid fa-circle-question" style="color: #2563eb;"></i> सामान्य प्रश्न (FAQs)</div>
+
+    <!-- FAQ 1 -->
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-question">
+        <span>1. मैं अपना पासवर्ड कैसे बदल सकता हूँ?</span>
+        <i class="fa-solid fa-chevron-down"></i>
+      </div>
+      <div class="faq-answer">
+        अपने पोर्टफोलियो डैशबोर्ड में जाएं, <b>Password & Security</b> विकल्प पर क्लिक करें, और 'Change Password' सेक्शन में नया पासवर्ड दर्ज करके 'Update Password' बटन दबाएं।
+      </div>
+    </div>
+
+    <!-- FAQ 2 -->
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-question">
+        <span>2. लॉगिन करते समय 'Invalid Credentials' या एरर क्यों आता है?</span>
+        <i class="fa-solid fa-chevron-down"></i>
+      </div>
+      <div class="faq-answer">
+        यह तब होता है जब ईमेल आईडी या पासवर्ड गलत दर्ज किया जाता है। सुनिश्चित करें कि आप सही Firebase अकाउंट विवरण भर रहे हैं। यदि पासवर्ड भूल गए हैं, तो लॉगिन पेज पर 'Forgot Password' का उपयोग करें।
+      </div>
+    </div>
+
+    <!-- FAQ 3 -->
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-question">
+        <span>3. प्रोफाइल फोटो या अवतार (Avatar) अपडेट क्यों नहीं हो रहा?</span>
+        <i class="fa-solid fa-chevron-down"></i>
+      </div>
+      <div class="faq-answer">
+        'Manage Profile' पेज पर जाएं, सुनिश्चित करें कि फाइल का आकार (Size) सीमित हो और वह समर्थित इमेज फॉर्मेट (JPG/PNG) में हो। बदलाव करने के बाद 'Save' बटन जरूर दबाएं।
+      </div>
+    </div>
+
+    <!-- FAQ 4 -->
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-question">
+        <span>4. वेबसाइट की भाषा (Language) कैसे बदलें?</span>
+        <i class="fa-solid fa-chevron-down"></i>
+      </div>
+      <div class="faq-answer">
+        प्रोफाइल मेनू से <b>Language</b> विकल्प चुनें, अपनी मनपसंद भाषा (जैसे हिन्दी या English) पर क्लिक करें और 'Save Language' पर क्लिक करें।
+      </div>
+    </div>
+
+    <!-- FAQ 5 -->
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-question">
+        <span>5. क्या मेरा डेटा Firebase पर सुरक्षित है?</span>
+        <i class="fa-solid fa-chevron-down"></i>
+      </div>
+      <div class="faq-answer">
+        हाँ, यह सिस्टम Google Firebase Authentication और एन्क्रिप्टेड सुरक्षा मानकों का उपयोग करता है जिससे आपका लॉगिन और पर्सनल डेटा पूरी तरह सुरक्षित रहता है।
+      </div>
+    </div>
+
+    <a href="profile.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Wapas Profile par jayein</a>
+  </div>
+
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyBTRJbK7sDABJpLH5t9Eqo3_O-AhR_dX1Y",
+      authDomain: "jl-portfolio-auth.firebaseapp.com",
+      projectId: "jl-portfolio-auth",
+      storageBucket: "jl-portfolio-auth.firebasestorage.app",
+      messagingSenderId: "323080007478",
+      appId: "1:323080007478:web:284cd85b3b3f141e350d97"
+    };
+
+    if (!firebase.apps.length) {
+      firebase.initializeApp(firebaseConfig);
+    }
+
+    firebase.auth().onAuthStateChanged((user) => {
+      if (!user) {
+        window.location.href = "login.html";
+      }
+    });
+
+    // Toggle FAQ Accordion
+    function toggleFaq(element) {
+      const allItems = document.querySelectorAll('.faq-item');
+      allItems.forEach(item => {
+        if (item !== element) item.classList.remove('active');
+      });
+      element.classList.toggle('active');
+    }
+
+    // Live Search Filter for FAQs
+    function filterFaq() {
+      const query = document.getElementById("helpSearch").value.toLowerCase();
+      const items = document.querySelectorAll(".faq-item");
+
+      items.forEach(item => {
+        const text = item.innerText.toLowerCase();
+        if (text.includes(query)) {
+          item.style.display = "block";
+        } else {
+          item.style.display = "none";
+        }
+      });
+    }
+  </script>
+</body>
+</html>
