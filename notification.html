@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notifications - JL Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
+    body { background-color: #f8f9fa; color: #111111; padding: 30px 20px; }
+    .container { max-width: 600px; margin: 0 auto; background: #ffffff; border: 1px solid #e5e7eb; border-radius: 20px; padding: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.03); }
+    .page-title { font-size: 1.5rem; font-weight: 700; margin-bottom: 25px; text-align: center; color: #111111; }
+    .notif-item { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; background: #f9fafb; border-radius: 12px; border: 1px solid #e5e7eb; margin-bottom: 15px; }
+    .notif-info h4 { font-size: 1rem; font-weight: 600; color: #111111; margin-bottom: 4px; }
+    .notif-info p { font-size: 0.85rem; color: #6b7280; }
+    /* Custom Toggle Switch Style */
+    .switch { position: relative; display: inline-block; width: 50px; height: 26px; }
+    .switch input { opacity: 0; width: 0; height: 0; }
+    .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #cbd5e1; transition: .3s; border-radius: 34px; }
+    .slider:before { position: absolute; content: ""; height: 20px; width: 20px; left: 3px; bottom: 3px; background-color: white; transition: .3s; border-radius: 50%; }
+    input:checked + .slider { background-color: #2563eb; }
+    input:checked + .slider:before { transform: translateX(24px); }
+    .btn-save { width: 100%; padding: 12px; background: #111111; color: #ffffff; border: none; border-radius: 10px; font-weight: 700; cursor: pointer; margin-top: 10px; transition: background 0.3s; }
+    .btn-save:hover { background: #2563eb; }
+    .back-link { display: inline-block; margin-top: 20px; text-decoration: none; color: #2563eb; font-weight: 600; text-align: center; width: 100%; }
+    .back-link:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2 class="page-title">Notifications Settings 🔔</h2>
+    
+    <div class="notif-item">
+      <div class="notif-info">
+        <h4>Email Notifications</h4>
+        <p>खाते से जुड़े महत्वपूर्ण अपडेट और ईमेल प्राप्त करें।</p>
+      </div>
+      <label class="switch">
+        <input type="checkbox" id="emailNotif" checked>
+        <span class="slider"></span>
+      </label>
+    </div>
+
+    <div class="notif-item">
+      <div class="notif-info">
+        <h4>Push Notifications</h4>
+        <p>ब्राउज़र पर तुरंत अलर्ट और सूचनाएं पाएं।</p>
+      </div>
+      <label class="switch">
+        <input type="checkbox" id="pushNotif" checked>
+        <span class="slider"></span>
+      </label>
+    </div>
+
+    <div class="notif-item">
+      <div class="notif-info">
+        <h4>Security Alerts</h4>
+        <p>किसी नए डिवाइस से लॉगिन होने पर तुरंत चेतावनी पाएं।</p>
+      </div>
+      <label class="switch">
+        <input type="checkbox" id="securityNotif" checked>
+        <span class="slider"></span>
+      </label>
+    </div>
+
+    <div class="notif-item">
+      <div class="notif-info">
+        <h4>App Updates & News</h4>
+        <p>नए फीचर्स और पोर्टफोलियो अपडेट की जानकारी।</p>
+      </div>
+      <label class="switch">
+        <input type="checkbox" id="updateNotif">
+        <span class="slider"></span>
+      </label>
+    </div>
+
+    <button onclick="saveNotificationPreferences()" class="btn-save">Preferences सेव करें 💾</button>
+
+    <a href="profile.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Wapas Profile par jayein</a>
+  </div>
+
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyBTRJbK7sDABJpLH5t9Eqo3_O-AhR_dX1Y",
+      authDomain: "jl-portfolio-auth.firebaseapp.com",
+      projectId: "jl-portfolio-auth",
+      storageBucket: "jl-portfolio-auth.firebasestorage.app",
+      messagingSenderId: "323080007478",
+      appId: "1:323080007478:web:284cd85b3b3f141e350d97"
+    };
+
+    if (!firebase.apps.length) {
+      firebase.initializeApp(firebaseConfig);
+    }
+
+    firebase.auth().onAuthStateChanged((user) => {
+      if (!user) {
+        window.location.href = "login.html";
+      }
+    });
+
+    function saveNotificationPreferences() {
+      const emailVal = document.getElementById("emailNotif").checked;
+      const pushVal = document.getElementById("pushNotif").checked;
+      const securityVal = document.getElementById("securityNotif").checked;
+      const updateVal = document.getElementById("updateNotif").checked;
+
+      // आप चाहें तो इसे Firebase Firestore में भी सेव कर सकते हैं
+      alert("आपकी नोटिफिकेशन प्राथमिकताएं (Preferences) सफलतापूर्वक सहेज ली गई हैं!");
+    }
+  </script>
+</body>
+</html>
