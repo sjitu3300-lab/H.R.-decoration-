@@ -36,10 +36,6 @@
       font-weight: 700;
       color: #111111;
       margin-bottom: 25px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
     }
 
     /* 📦 Cards Group Style from Profile Page */
@@ -61,8 +57,8 @@
       gap: 12px;
     }
     .avatar-circle {
-      width: 80px;
-      height: 80px;
+      width: 75px;
+      height: 75px;
       border-radius: 50%;
       background: #f3f4f6;
       overflow: hidden;
@@ -144,20 +140,15 @@
     }
 
     /* 🧭 Top Back Navigation Link */
-    .top-nav {
-      display: flex;
-      align-items: center;
-      margin-bottom: 15px;
-    }
     .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
       text-decoration: none;
       color: #4b5563;
       font-weight: 600;
       font-size: 0.9rem;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      transition: color 0.2s;
+      margin-bottom: 15px;
     }
     .back-link:hover {
       color: #2563eb;
@@ -168,11 +159,9 @@
   <div class="profile-wrapper">
     
     <!-- Top Back Navigation Link -->
-    <div class="top-nav">
-      <a href="profile.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Wapas Profile par jayein</a>
-    </div>
+    <a href="profile.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Wapas Profile par jayein</a>
 
-    <h2 class="profile-page-title"><i class="fa-regular fa-user" style="color: #2563eb;"></i> Manage Profile</h2>
+    <h2 class="profile-page-title">Manage Profile 👤</h2>
     
     <div class="profile-card-group">
       <div class="avatar-section">
@@ -230,7 +219,7 @@
       firebase.initializeApp(firebaseConfig);
     }
 
-    // 🖼️ Image Preview Logic[span_0](start_span)[span_0](end_span)
+    // 🖼️ Image Preview Logic[span_6](start_span)[span_6](end_span)
     const imageUpload = document.getElementById("imageUpload");
     let selectedImageFile = null;
 
