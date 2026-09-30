@@ -10,9 +10,8 @@
   <!-- 🌐 Firebase SDK -->
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
-
-  <style>
-    * {
+<style>
+ * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
@@ -22,9 +21,26 @@
       background-color: #f8f9fa;
       color: #111111;
       padding: 20px 0;
+      transition: background 0.3s, color 0.3s;
+    }
+    body.dark-theme {
+      background-color: #0a0a0a;
+      color: #f3f4f6;
+    }
+    body.dark-theme .profile-card-group,
+    body.dark-theme .user-header-card {
+      background: #161616;
+      border-color: #222222;
+    }
+    body.dark-theme .user-details h3,
+    body.dark-theme .profile-page-title,
+    body.dark-theme .profile-item {
+      color: #f3f4f6;
+    }
+    body.dark-theme .profile-item:hover {
+      background-color: #222222;
     }
 
-    /* 👤 Main Wrapper Matching Profile Page Structure */
     .profile-wrapper {
       max-width: 500px;
       margin: 0 auto;
@@ -34,126 +50,85 @@
       text-align: center;
       font-size: 1.25rem;
       font-weight: 700;
-      color: #111111;
       margin-bottom: 25px;
     }
-
-    /* 📦 Cards Group Style from Profile Page */
-    .profile-card-group {
+    .section-label {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #6b7280;
+      margin: 25px 0 10px 5px;
+    }
+    .profile-card-group, .user-header-card {
       background: #ffffff;
       border-radius: 20px;
-      padding: 20px;
+      padding: 12px 0;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
       border: 1px solid #f3f4f6;
-      margin-bottom: 20px;
+      margin-bottom: 10px;
     }
-
-    /* 🖼️ Avatar Section */
-    .avatar-section {
+    .user-header-card {
+      padding: 20px;
       display: flex;
-      flex-direction: column;
       align-items: center;
-      margin-bottom: 25px;
-      gap: 12px;
+      gap: 16px;
     }
-    .avatar-circle {
-      width: 75px;
-      height: 75px;
+    .user-avatar {
+      width: 65px;
+      height: 65px;
       border-radius: 50%;
-      background: #f3f4f6;
-      overflow: hidden;
-      border: 2px solid #2563eb;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .avatar-circle img {
-      width: 100%;
-      height: 100%;
       object-fit: cover;
     }
-
-    /* 📝 Form Controls */
-    .form-group {
-      margin-bottom: 18px;
-    }
-    .form-group label {
-      display: block;
-      font-size: 0.9rem;
-      font-weight: 600;
-      margin-bottom: 6px;
-      color: #374151;
-    }
-    .form-control {
-      width: 100%;
-      padding: 12px 15px;
-      border: 1px solid #e5e7eb;
-      background-color: #f9fafb;
-      border-radius: 12px;
-      font-size: 0.95rem;
-      color: #111111;
-      outline: none;
-      transition: border-color 0.3s, background-color 0.3s;
-    }
-    .form-control:focus {
-      border-color: #2563eb;
-      background-color: #ffffff;
-      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.08);
-    }
-
-    /* 🔘 Buttons Group */
-    .btn-group {
-      display: flex;
-      gap: 12px;
-      margin-top: 25px;
-    }
-    .btn {
-      flex: 1;
-      padding: 12px;
+    .user-details h3 {
+      font-size: 1.1rem;
       font-weight: 700;
-      border-radius: 12px;
-      cursor: pointer;
-      text-align: center;
-      text-decoration: none;
-      border: none;
-      font-size: 0.95rem;
+      margin-bottom: 4px;
     }
-    .btn-save {
-      background-color: #111111;
-      color: #ffffff;
-      transition: background 0.3s;
+    .user-details p {
+      font-size: 0.85rem;
+      color: #6b7280;
     }
-    .btn-save:hover {
-      background-color: #2563eb;
-    }
-    .btn-cancel {
-      background-color: #f3f4f6;
-      color: #1f2937;
-      border: 1px solid #e5e7eb;
+    .profile-item {
       display: flex;
       align-items: center;
-      justify-content: center;
+      justify-content: space-between;
+      padding: 14px 20px;
       text-decoration: none;
+      color: #1f2937;
+      transition: background 0.2s;
+      cursor: pointer;
     }
-    .btn-cancel:hover {
-      background-color: #e5e7eb;
+    .profile-item:hover {
+      background-color: #f9fafb;
     }
-
-    /* 🧭 Top Back Navigation Link */
-    .back-link {
-      display: inline-flex;
+    .item-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+    .item-left i {
+      font-size: 1.1rem;
+      color: #374151;
+      width: 24px;
+      text-align: center;
+    }
+    .item-right {
+      display: flex;
       align-items: center;
       gap: 8px;
-      text-decoration: none;
-      color: #4b5563;
-      font-weight: 600;
-      font-size: 0.9rem;
-      margin-bottom: 15px;
+      font-size: 0.85rem;
+      color: #6b7280;
     }
-    .back-link:hover {
-      color: #2563eb;
+    .divider {
+      height: 1px;
+      background-color: #f3f4f6;
+      margin: 0 20px;
     }
-  </style>
+    body.dark-theme .divider {
+      background-color: #222222;
+    }
+</style>
 </head>
 <body>
   <div class="profile-wrapper">
