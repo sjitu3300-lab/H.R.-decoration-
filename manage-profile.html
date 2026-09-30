@@ -24,7 +24,7 @@
       padding: 20px 0;
     }
 
-    /* 👤 Main Wrapper Matching Profile Page */
+    /* 👤 Main Wrapper Matching Profile Page Structure */
     .profile-wrapper {
       max-width: 500px;
       margin: 0 auto;
@@ -42,7 +42,7 @@
       gap: 10px;
     }
 
-    /* 📦 Cards Group & Header Card Style from Profile */
+    /* 📦 Cards Group Style from Profile Page */
     .profile-card-group {
       background: #ffffff;
       border-radius: 20px;
@@ -57,7 +57,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      margin-bottom: 20px;
+      margin-bottom: 25px;
       gap: 12px;
     }
     .avatar-circle {
@@ -76,16 +76,10 @@
       height: 100%;
       object-fit: cover;
     }
-    .file-input-label {
-      font-size: 0.85rem;
-      color: #2563eb;
-      font-weight: 600;
-      cursor: pointer;
-    }
 
     /* 📝 Form Controls */
     .form-group {
-      margin-bottom: 16px;
+      margin-bottom: 18px;
     }
     .form-group label {
       display: block;
@@ -143,12 +137,13 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      text-decoration: none;
     }
     .btn-cancel:hover {
       background-color: #e5e7eb;
     }
 
-    /* Top Back Link Style */
+    /* 🧭 Top Back Navigation Link */
     .top-nav {
       display: flex;
       align-items: center;
@@ -170,16 +165,15 @@
   </style>
 </head>
 <body>
-
   <div class="profile-wrapper">
     
-    <!-- Top Navigation Back Link -->
+    <!-- Top Back Navigation Link -->
     <div class="top-nav">
-      <a href="profile.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Back to Profile</a>
+      <a href="profile.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Wapas Profile par jayein</a>
     </div>
 
     <h2 class="profile-page-title"><i class="fa-regular fa-user" style="color: #2563eb;"></i> Manage Profile</h2>
-
+    
     <div class="profile-card-group">
       <div class="avatar-section">
         <div class="avatar-circle">
@@ -215,12 +209,11 @@
         </div>
 
         <div class="btn-group">
-          <button type="submit" class="btn btn-save">Save Changes 💾</button>
+          <button type="submit" class="btn btn-save">Save 💾</button>
           <a href="profile.html" class="btn btn-cancel">Cancel ❌</a>
         </div>
       </form>
     </div>
-
   </div>
 
   <script>
@@ -237,7 +230,7 @@
       firebase.initializeApp(firebaseConfig);
     }
 
-    // 🖼️ Image Preview Logic
+    // 🖼️ Image Preview Logic[span_0](start_span)[span_0](end_span)
     const imageUpload = document.getElementById("imageUpload");
     let selectedImageFile = null;
 
@@ -284,7 +277,7 @@
       const fullDisplayName = [fName, mName, lName].filter(Boolean).join(" ");
 
       if (user) {
-        const newPhotoURL = user.photoURL || "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80";
+        const newPhotoURL = document.getElementById("previewImg").src;
 
         user.updateProfile({
           displayName: fullDisplayName,
