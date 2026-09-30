@@ -1,17 +1,18 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html b:css='false' b:js='false' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gdata/blender' xmlns:data='http://www.google.com/2005/gdata/data' xmlns:expr='http://www.google.com/2005/gdata/expr'>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset='UTF-8'/>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'/>
   <title>Manage Profile - JL Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link href='https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap' rel='stylesheet'/>
+  <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css' rel='stylesheet'/>
   
   <!-- 🌐 Firebase SDK -->
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
-<style>
- * {
+
+  <style>
+    * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
@@ -37,9 +38,6 @@
     body.dark-theme .profile-item {
       color: #f3f4f6;
     }
-    body.dark-theme .profile-item:hover {
-      background-color: #222222;
-    }
 
     .profile-wrapper {
       max-width: 500px;
@@ -51,6 +49,10 @@
       font-size: 1.25rem;
       font-weight: 700;
       margin-bottom: 25px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
     }
     .section-label {
       font-size: 0.95rem;
@@ -61,114 +63,160 @@
     .profile-card-group, .user-header-card {
       background: #ffffff;
       border-radius: 20px;
-      padding: 12px 0;
+      padding: 16px 20px;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
       border: 1px solid #f3f4f6;
       margin-bottom: 10px;
     }
     .user-header-card {
-      padding: 20px;
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
-    .user-avatar {
-      width: 65px;
-      height: 65px;
-      border-radius: 50%;
-      object-fit: cover;
-    }
-    .user-details h3 {
-      font-size: 1.1rem;
-      font-weight: 700;
-      margin-bottom: 4px;
-    }
-    .user-details p {
-      font-size: 0.85rem;
-      color: #6b7280;
-    }
-    .profile-item {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 14px 20px;
-      text-decoration: none;
-      color: #1f2937;
-      transition: background 0.2s;
+    }
+    .user-avatar {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #2563eb;
+    }
+    
+    /* Form fields styled as profile rows */
+    .form-row {
+      margin-bottom: 15px;
+    }
+    .form-row:last-child {
+      margin-bottom: 0;
+    }
+    .form-row label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #6b7280;
+      margin-bottom: 5px;
+    }
+    .form-control {
+      width: 100%;
+      padding: 10px 14px;
+      border: 1px solid #e5e7eb;
+      border-radius: 10px;
+      font-size: 0.95rem;
+      color: #111111;
+      background: #f9fafb;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .form-control:focus {
+      border-color: #2563eb;
+      background: #ffffff;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 12px;
+      margin-top: 20px;
+    }
+    .btn {
+      flex: 1;
+      padding: 12px;
+      font-weight: 700;
+      border-radius: 12px;
       cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      border: none;
+      font-size: 0.95rem;
     }
-    .profile-item:hover {
-      background-color: #f9fafb;
+    .btn-save {
+      background-color: #111111;
+      color: #ffffff;
+      transition: background 0.2s;
     }
-    .item-left {
+    .btn-save:hover {
+      background-color: #2563eb;
+    }
+    .btn-cancel {
+      background-color: #f3f4f6;
+      color: #1f2937;
+      border: 1px solid #e5e7eb;
       display: flex;
       align-items: center;
-      gap: 14px;
-      font-size: 0.95rem;
-      font-weight: 500;
+      justify-content: center;
     }
-    .item-left i {
-      font-size: 1.1rem;
-      color: #374151;
-      width: 24px;
-      text-align: center;
+    .btn-cancel:hover {
+      background-color: #e5e7eb;
     }
-    .item-right {
-      display: flex;
+
+    .back-link {
+      display: inline-flex;
       align-items: center;
       gap: 8px;
-      font-size: 0.85rem;
-      color: #6b7280;
+      text-decoration: none;
+      color: #4b5563;
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-bottom: 15px;
+    }
+    .back-link:hover {
+      color: #2563eb;
     }
     .divider {
       height: 1px;
       background-color: #f3f4f6;
-      margin: 0 20px;
+      margin: 15px 0;
     }
-    body.dark-theme .divider {
-      background-color: #222222;
-    }
-</style>
+  </style>
 </head>
 <body>
-  <div class="profile-wrapper">
-    
-    <!-- Top Back Navigation Link -->
-    <a href="profile.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Wapas Profile par jayein</a>
 
-    <h2 class="profile-page-title">Manage Profile 👤</h2>
+  <div class='profile-wrapper'>
+    <a href='profile.html' class='back-link'><i class='fa-solid fa-arrow-left'></i> Wapas Profile par jayein</a>
     
-    <div class="profile-card-group">
-      <div class="avatar-section">
-        <div class="avatar-circle">
-          <img id="previewImg" src="https://via.placeholder.com/150" alt="Avatar">
+    <h2 class='profile-page-title'>Manage Profile 👤</h2>
+
+    <!-- 🖼️ Avatar Upload Section -->
+    <div class='user-header-card' style="justify-content: space-between;">
+      <div style="display: flex; align-items: center; gap: 14px;">
+        <img id='previewImg' src='https://via.placeholder.com/150' alt='User Avatar' class='user-avatar'/>
+        <div>
+          <h3 style="font-size: 1rem; font-weight: 700; margin-bottom: 4px;">Profile Photo</h3>
+          <p style="font-size: 0.8rem; color: #6b7280;">Nayi photo select karein</p>
         </div>
-        <input type="file" id="imageUpload" accept="image/*" style="font-size: 0.85rem;">
       </div>
+      <input type="file" id="imageUpload" accept="image/*" style="font-size: 0.8rem; max-width: 130px;">
+    </div>
 
+    <!-- 📝 Profile Details Form Group -->
+    <div class='section-label'>Personal Details</div>
+    <div class='profile-card-group'>
       <form id="manageProfileForm" onsubmit="saveProfileData(event)">
-        <div class="form-group">
+        <div class='form-row'>
           <label>First Name</label>
           <input type="text" id="firstName" class="form-control" placeholder="First name" required>
         </div>
-        <div class="form-group">
+        <div class='divider'></div>
+        <div class='form-row'>
           <label>Middle Name</label>
           <input type="text" id="middleName" class="form-control" placeholder="Middle name">
         </div>
-        <div class="form-group">
+        <div class='divider'></div>
+        <div class='form-row'>
           <label>Surname</label>
           <input type="text" id="surname" class="form-control" placeholder="Surname">
         </div>
-        <div class="form-group">
+        <div class='divider'></div>
+        <div class='form-row'>
           <label>Mobile Number 📱</label>
           <input type="tel" id="mobile" class="form-control" placeholder="Mobile number">
         </div>
-        <div class="form-group">
+        <div class='divider'></div>
+        <div class='form-row'>
           <label>Date of Birth 📅</label>
           <input type="date" id="dob" class="form-control">
         </div>
-        <div class="form-group">
-          <label>Email ✉️</label>
+        <div class='divider'></div>
+        <div class='form-row'>
+          <label>Email ✉️️</label>
           <input type="email" id="email" class="form-control" readonly>
         </div>
 
@@ -178,6 +226,7 @@
         </div>
       </form>
     </div>
+
   </div>
 
   <script>
